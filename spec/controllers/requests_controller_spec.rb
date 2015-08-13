@@ -129,8 +129,10 @@ describe RequestsController do
     end # when record found 
 
     context 'when record not found' do
-
-
+      it 'alerts the user' do
+        delete :destroy, id: 999, user_id: @user.id
+        expect(flash[:alert]).to eq 'Sorry. The walk no longer exists' 
+      end
     end # 'when record not found'
 
   end # destroy
