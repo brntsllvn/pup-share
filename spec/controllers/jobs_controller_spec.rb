@@ -79,7 +79,16 @@ describe JobsController do
   end
 
   describe 'GET #edit' do
-    # edit calls a job method that is unit-tested elsewhere
+
+    let(:user)   { create(:user) }
+    let(:walker) { create(:user) }
+    let(:job1)   { create(:job, user_id: user.id, actual_walker_id: walker.id) }
+
+    it 'redirects to create a new pup' do
+      sign_in user
+      get :edit, id: job1, user_id: user.id
+      expect(response).to redirect_to jobs_path
+    end
   end
 
   describe 'POST #create' do
