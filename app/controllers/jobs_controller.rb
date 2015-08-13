@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
   before_action :set_job, except: [:index, :new, :create] 
-  
+
   def index
     @jobs = Job.all
   end
@@ -17,7 +17,7 @@ class JobsController < ApplicationController
   end
 
   def edit # facilitates mailer links
-    redirect_to jobs_path, notice: @job.update_follow_up_attr(params[:feedback]) 
+    redirect_to job_path, notice: @job.update_follow_up_attr(params[:feedback]) 
   end
 
   def create
@@ -32,12 +32,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      # TODO: tuck this logic into the model: job.message
-      if params[:job][:hidden]
-        redirect_to user_path(current_user), alert: 'Walk cancelled'
-      else
-        redirect_to user_path(current_user), notice: 'Job updated'
-      end
+      redirect_to user_path(current_user), notice: 'Job updated'
     else
       render :edit
     end

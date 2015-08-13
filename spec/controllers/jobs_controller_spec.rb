@@ -87,7 +87,7 @@ describe JobsController do
     it 'redirects to create a new pup' do
       sign_in user
       get :edit, id: job1, user_id: user.id
-      expect(response).to redirect_to jobs_path
+      expect(response).to redirect_to job_path
     end
   end
 
