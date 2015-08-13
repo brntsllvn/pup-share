@@ -44,16 +44,18 @@ describe User do
 
   # methods
 
-  let(:owner)    { FactoryGirl.create(:user) }
-  let(:job1)     { FactoryGirl.create(:job, user_id: owner.id) }
-  let(:request2) { FactoryGirl.create(:request, user_id: owner.id, job_id: job2.id)}  
+  let(:owner)    { create(:user) }
+  let(:job1)     { create(:job, user_id: owner.id) }
+  let(:request2) { create(:request, user_id: owner.id, job_id: job2.id)}  
 
-  let(:walker)   { FactoryGirl.create(:user) }
-  let(:job2)     { FactoryGirl.create(:job, user_id: walker.id) }
-  let(:request1)  { FactoryGirl.create(:request, user_id: walker.id, job_id: job1.id)}
+  let(:walker)   { create(:user) }
+  let(:job2)     { create(:job, user_id: walker.id) }
+  let(:request1)  { create(:request, user_id: walker.id, job_id: job1.id)}
 
-  let(:pup1)     { FactoryGirl.create(:pup, user_id: owner.id, hidden: true) }
-  let(:pup2)     { FactoryGirl.create(:pup, user_id: owner.id, hidden: false) }
+  let(:pup1)     { create(:pup, user_id: owner.id, hidden: true) }
+  let(:pup2)     { create(:pup, user_id: owner.id, hidden: false) }
+
+  let(:user)     { create(:user) }
 
   before :each do
     walker.requests << request1
@@ -75,6 +77,10 @@ describe User do
   context '.all_my_jobs' do
     it 'returns all jobs a user is related to' do
       expect(owner.all_my_jobs).to eq ([job1,job2])
+    end
+
+    it '...or an empty array' do
+      expect(user.all_my_jobs).to eq ([])
     end
   end
 
