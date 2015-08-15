@@ -17,4 +17,5 @@ Rails.application.routes.draw do
 
   resources :jobs 
   # resources :availabilities
+  resources :contact_forms, only: [:new, :create]
 end

@@ -5,18 +5,18 @@ describe Job do
   # validations
 
   it 'is valid with drop-off time, drop-off location, pick_up_time, pick_up_location, pup and user' do
-    job = FactoryGirl.build(:job, pup_id: 1, user_id: 1)  
+    job = build(:job, pup_id: 1, user_id: 1)  
     expect(job).to be_valid
   end
 
   it 'is invalid without drop_off_time' do
-    job = FactoryGirl.build(:job, pup_id: 1, user_id: 1, drop_off_time: nil)
+    job = build(:job, pup_id: 1, user_id: 1, drop_off_time: nil)
     job.valid?
     expect(job.errors[:drop_off_time]).to include("can't be blank")
   end
 
   it 'is invalid without drop_off_location' do
-    job = FactoryGirl.build(:job, pup_id: 1, user_id: 1, drop_off_location: nil)
+    job = build(:job, pup_id: 1, user_id: 1, drop_off_location: nil)
     job.valid?
     expect(job.errors[:drop_off_location]).to include("can't be blank")    
   end

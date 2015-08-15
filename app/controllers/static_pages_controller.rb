@@ -8,4 +8,12 @@ class StaticPagesController < ApplicationController
   
   def privacy_policy; end
   
+  def bug
+    
+  end
+  
+  def feature_request
+    
+  end
+  
 end
