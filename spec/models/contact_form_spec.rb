@@ -39,6 +39,12 @@ describe ContactForm do
     expect(contact_form.errors[:comment]).to include "can't be blank"
   end
 
+  it 'is invalid is email does not have \@' do
+    contact_form = build(:contact_form, email: 'brnt.brnt')
+    contact_form.valid?
+    expect(contact_form.errors[:email]).to include "Need a valid email address"
+  end
+
   # methods
 
 end
