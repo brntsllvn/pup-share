@@ -5,7 +5,7 @@ FactoryGirl.define do
     pup_breed 'Labrador Retriever'
     pup_weight 65
     pup_gender 'Male'
-    pup_vet_phone 555-555-5555
+    pup_vet_phone '555-555-5555'
     pup_care_instructions 'Watch out! He\'s a jumper'
     pup_age 3
     spayed_neutered true
