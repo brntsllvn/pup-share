@@ -49,6 +49,13 @@ feature 'Creating new job' do
     click_on 'New Pup'
     expect(current_path).to eql(new_user_pup_path(user))
     fill_in 'Pup name', with: 'Ace'
+    fill_in 'Pup breed', with: 'Lab'
+    fill_in 'Pup weight', with: 65
+    fill_in 'Pup gender', with: 'Male'
+    fill_in 'Pup age', with: 3.5
+    fill_in 'Pup vet phone', with: '555-555-5555'
+    find(:css, "#pup_spayed_neutered").set(true)
+    find(:css, "#pup_special_needs").set(true)
     click_on 'Create Pup'
     expect(current_path).to eql(new_job_path(user))
     # create job

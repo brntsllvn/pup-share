@@ -8,6 +8,7 @@ FactoryGirl.define do
     pup_vet_phone 555-555-5555
     pup_care_instructions 'Watch out! He\'s a jumper'
     pup_age 3
+    spayed_neutered true
     
     # causes one file to be uploaded for every user created...
     # need a trash clean up for this...

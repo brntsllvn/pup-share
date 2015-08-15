@@ -6,7 +6,7 @@ describe Pup do
 
   let(:pup) { FactoryGirl.create(:pup) }
 
-  it 'is valid with name' do
+  it 'is valid with name, weight, gender, vet phone, age, spayed\neutered' do
     expect(pup).to be_valid
   end
 

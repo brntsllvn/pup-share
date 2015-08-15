@@ -1,6 +1,11 @@
 class Pup < ActiveRecord::Base
   validates :pup_name, presence: true
-  # validates :pup_vet_phone, presence: true # TODO
+  validates :pup_weight, presence: true
+  validates :pup_gender, presence: true
+  validates :pup_vet_phone, presence: true
+  validates :pup_age, presence: true
+  validates :spayed_neutered, presence: true
+  validates :pup_breed, presence: true
 
   belongs_to :user
   has_many :jobs, dependent: :destroy
