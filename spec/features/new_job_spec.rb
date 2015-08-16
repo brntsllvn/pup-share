@@ -51,7 +51,7 @@ feature 'Creating new job' do
     fill_in 'Pup name', with: 'Ace'
     fill_in 'Pup breed', with: 'Lab'
     fill_in 'Pup weight', with: 65
-    fill_in 'Pup gender', with: 'Male'
+    find(:css, "#pup_pup_gender_m").set(true)
     fill_in 'Pup age', with: 3.5
     fill_in 'Pup vet phone', with: '555-555-5555'
     find(:css, "#pup_spayed_neutered").set(true)

@@ -77,7 +77,7 @@ describe PupsController do
       it 'notifies the user of creation' do
         post :create, user_id: user.id, 
         pup: FactoryGirl.attributes_for(:pup, user_id: user.id)
-        expect(flash[:notice]). to eql 'You created a pup. Use this form to find a walker'
+        expect(flash[:notice]). to eql "You created a pup. Use this form to post a walk your co-workers can view."
       end
     end
 

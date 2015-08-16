@@ -14,7 +14,7 @@
     <%= f.input :pup_weight %>
   </div>
   <div class="col-md-4">
-    <%= f.input :pup_gender %> 
+    <%= f.input :pup_gender, as: :radio_buttons, collection: ['M', 'F'], include_blank: false %> 
     <%= f.input :pup_age %>
     <%= f.input :pup_vet_phone %>
   </div>
