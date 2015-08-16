@@ -31,10 +31,10 @@ describe Request do
 
   context '.approve_walk_request' do
 
-    it 'updates job actual walker' do
+    it 'updates job walker' do
       my_request.approve_walk_request
-      expect(my_request.job).to have_attributes(actual_walker_id: user.id)
-      # expect(my_request.job).to have_attributes(actual_walker_id: user.id, enqueued_job_id: some_array.last.id)
+      expect(my_request.job).to have_attributes(walker_id: user.id)
+      # expect(my_request.job).to have_attributes(walker_id: user.id, enqueued_job_id: some_array.last.id)
     end
 
     it 'updates request status' do

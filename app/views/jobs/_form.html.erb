@@ -3,25 +3,27 @@
 
 <br>
 
-<div class="form-inputs col-md-2">
+<div class="form-inputs col-md-6">
   <%= f.association :pup, as: :radio_buttons, label_method: :pup_name, collection: current_user.all_pups_not_hidden, include_blank: false %>
+  <%= link_to 'Need to add a new pup?', new_user_pup_path(current_user), class: 'btn btn-primary' %>
   <br>
-  <%= link_to 'New Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %>
-</div>
-
-<div class="form-inputs col-md-4">
+  <br>
   <%= f.input :drop_off_location %>
   <%= f.input :drop_off_time, ampm: true, start_hour: 6, end_hour: 18, minute_step: 5, start_year: Time.now.year, end_year: Time.now.year + 1 %>
-</div>
-
-<div class="form-inputs col-md-2">
-  <%= f.input :walk_duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false %>
-</div>
-
-<div class="form-inputs col-md-4">
+  <%= f.input :walk_duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false, checked: '15' %>
   <%= f.input :pick_up_location %>
-  
 </div>
+
+<div class="form-inputs col-md-6">
+  <h2>My details</h2>
+  <h6><i>These details will be provided to the person who walks your pup via email<i></h6>
+  <%= f.input :owner_first_name, input_html: {value: current_user.first_name } %>
+  <%= f.input :owner_last_name, input_html: {value: current_user.last_name } %>
+  <%= f.input :owner_phone, input_html: {value: current_user.phone } %>
+  <%= f.input :owner_emergency_phone, input_html: {value: current_user.emergency_phone } %>
+  <%= f.input :owner_building_name, input_html: {value: current_user.building } %>
+</div>
+
 
 <div class="form-actions col-md-12">
   <%= f.button :submit, class: 'btn btn-success'%>

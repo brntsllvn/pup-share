@@ -6,6 +6,14 @@ class Job < ActiveRecord::Base
   validates :pup_id,                   presence: true
   validates :user_id,                  presence: true
 
+  validates :owner_first_name,         presence: true 
+  validates :owner_last_name,          presence: true
+  validates :owner_phone,              presence: true, 
+  format: { with: /\d{3}-\d{3}-\d{4}/, message: 'Format: 555-555-5555. We will store this value so you do not need to enter it again.' }
+  validates :owner_emergency_phone,    presence: true,
+  format: { with: /\d{3}-\d{3}-\d{4}/, message: 'Format: 555-555-5555. We will store this value so you do not need to enter it again.' }
+  validates :owner_building_name,      presence: true
+
   belongs_to :user
   belongs_to :pup
   has_many   :requests, dependent: :destroy
@@ -21,7 +29,7 @@ class Job < ActiveRecord::Base
     # self.update_attributes how_did_it_go: feedback
     self.update_attributes hidden: true
 
-    walker = User.find(self.actual_walker_id)
+    walker = User.find(self.walker_id)
     walker.increment!(:walks_completed, by = 1)
     self.pup.increment!(:walks_completed, by = 1)
 

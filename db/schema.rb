@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150815003042) do
+ActiveRecord::Schema.define(version: 20150816164236) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,16 +60,26 @@ ActiveRecord::Schema.define(version: 20150815003042) do
     t.string   "drop_off_location"
     t.datetime "pick_up_time"
     t.string   "pick_up_location"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "user_id"
     t.integer  "pup_id"
     t.integer  "availability_id"
-    t.boolean  "hidden",            default: false
+    t.boolean  "hidden",                 default: false
     t.string   "how_did_it_go"
     t.string   "status"
-    t.integer  "actual_walker_id"
+    t.integer  "walker_id"
     t.integer  "walk_duration"
+    t.string   "owner_first_name"
+    t.string   "owner_last_name"
+    t.string   "owner_phone"
+    t.string   "owner_emergency_phone"
+    t.string   "owner_building_name"
+    t.string   "walker_first_name"
+    t.string   "walker_last_name"
+    t.string   "walker_phone"
+    t.string   "walker_emergency_phone"
+    t.string   "walker_building_name"
   end
 
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree

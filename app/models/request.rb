@@ -16,7 +16,7 @@ class Request < ActiveRecord::Base
 
   def approve_walk_request
     WalkRequest.walk_request_approved(self).deliver_now 
-    self.job.update_attributes actual_walker_id: self.user.id
+    self.job.update_attributes walker_id: self.user.id
     # WalkRequest.walk_request_follow_up(self).deliver_later(wait: 1.second)
     # setting enqueued_job_id allows me to locate the enqueued job later for deletion if a request is denied or cancelled
     self.update_attributes status: 'approved'#, enqueued_job_id: Delayed::Job.last.id

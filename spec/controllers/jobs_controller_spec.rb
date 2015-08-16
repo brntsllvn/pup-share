@@ -82,7 +82,7 @@ describe JobsController do
 
     let(:user)   { create(:user) }
     let(:walker) { create(:user) }
-    let(:job1)   { create(:job, user_id: user.id, actual_walker_id: walker.id) }
+    let(:job1)   { create(:job, user_id: user.id, walker_id: walker.id) }
 
     it 'redirects to create a new pup' do
       sign_in user
