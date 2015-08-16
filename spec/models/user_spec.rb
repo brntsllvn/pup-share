@@ -62,27 +62,26 @@ describe User do
     owner.requests << request2
   end
 
-  context '.walker_jobs' do
+#   context '.walker_jobs' do
+#     it 'returns jobs assocaited with a user\'s requests' do
+#       expect(walker.walker_jobs).to eq ([job1])
+#     end
 
-    it 'returns jobs assocaited with a user\'s requests' do
-      expect(walker.walker_jobs).to eq ([job1])
-    end
+#     it 'returns nothing with a user has no requests' do
+#       empty_walker = FactoryGirl.create(:user)
+#       expect(empty_walker.walker_jobs).to be_empty
+#     end
+#   end
 
-    it 'returns nothing with a user has no requests' do
-      empty_walker = FactoryGirl.create(:user)
-      expect(empty_walker.walker_jobs).to be_empty
-    end
-  end
+#   context '.all_my_jobs' do
+#     it 'returns all jobs a user is related to' do
+#       expect(owner.all_my_jobs).to eq ([job1,job2])
+#     end
 
-  context '.all_my_jobs' do
-    it 'returns all jobs a user is related to' do
-      expect(owner.all_my_jobs).to eq ([job1,job2])
-    end
-
-    it '...or an empty array' do
-      expect(user.all_my_jobs).to eq ([])
-    end
-  end
+#     it '...or an empty array' do
+#       expect(user.all_my_jobs).to eq ([])
+#     end
+#   end
 
   it '.all_pups_not_hidden' do
     expect(owner.all_pups_not_hidden).to eq ([pup2])

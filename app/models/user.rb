@@ -13,20 +13,20 @@ class User < ActiveRecord::Base
 
   mount_uploader :pic, UserPicUploader
 
-  def walker_jobs
-    walker_jobs = []
-    self.requests.each do |request|
-      walker_jobs << request.job      
-    end
-    return walker_jobs
-  end
+#   def walker_jobs
+#     walker_jobs = []
+#     self.requests.each do |request|
+#       walker_jobs << request.job      
+#     end
+#     return walker_jobs
+#   end
 
-  def all_my_jobs
-    empty_arr = []
-    all_my_jobs = self.jobs + self.walker_jobs
-    return all_my_jobs unless all_my_jobs.nil?
-    return empty_arr
-  end
+#   def all_my_jobs
+#     empty_arr = []
+#     all_my_jobs = self.jobs + self.walker_jobs
+#     return all_my_jobs unless all_my_jobs.nil?
+#     return empty_arr
+#   end
 
   def all_pups_not_hidden
     self.pups.where(hidden: false)
