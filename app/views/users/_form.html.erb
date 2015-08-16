@@ -5,12 +5,12 @@
 
   <div class="col-md-4">  
     <h2>Profile</h2>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
+    <%= f.input :first_name, hint: '*Necessary to be a walker' %>
+    <%= f.input :last_name, hint: '*Necessary to be a walker' %>
     <%= f.input :email %>
-    <%= f.input :phone %>   
-    <%= f.input :emergency_phone %>
-    <%= f.input :building %>
+    <%= f.input :phone, hint: '*Necessary to be a walker. Format 555-555-5555' %>   
+    <%= f.input :emergency_phone, hint: '*Necessary to be a walker. Format 555-555-5555' %>
+    <%= f.input :building, hint: '*necessary to be a walker' %>
     <%= f.input :address %>
   </div>
 
