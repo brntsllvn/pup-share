@@ -5,7 +5,7 @@ describe User do
 
   # validations
 
-  it 'is valid with an email' do
+  it 'is valid with an email, first and last names, phone and emergency phone' do
     user = FactoryGirl.build(:user)
     expect(user).to be_valid
   end

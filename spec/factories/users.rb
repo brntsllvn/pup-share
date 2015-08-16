@@ -3,8 +3,10 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do  
 
   factory :user do
-    sequence(:email) { |n| "email#{n}@amazon.com" }
     first_name Faker::Name.first_name
+    last_name 'Wallace'  
+    phone '555-555-5555'    
+    sequence(:email) { |n| "email#{n}@amazon.com" }
     password 'lalalala'
     password_confirmation 'lalalala'
     confirmed_at Time.now

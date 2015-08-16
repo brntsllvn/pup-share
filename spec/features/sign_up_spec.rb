@@ -4,7 +4,7 @@ feature 'Visitor signs up' do
 
   scenario 'with VALID credentials' do
     sign_up_with 'macklemore@amazon.com', 'ryan_lewis'
-    expect(page).to have_content 'A message with a confirmation link has been sent to your email address. Please follow the link to activate your account.'
+    expect(page).to have_content 'a confirmation link has been sent'
   end
 
   scenario 'with INVALID credentials' do
