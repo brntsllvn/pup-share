@@ -5,11 +5,13 @@ FactoryGirl.define do
   factory :user do
     first_name Faker::Name.first_name
     last_name 'Wallace'  
-    phone '555-555-5555'    
+    phone '555-555-5555'
+    emergency_phone '555-555-5555'
     sequence(:email) { |n| "email#{n}@amazon.com" }
     password 'lalalala'
     password_confirmation 'lalalala'
     confirmed_at Time.now
+    building 'Ruby'
 
     # causes one file to be uploaded for every user created...
     # need a trash clean up for this...

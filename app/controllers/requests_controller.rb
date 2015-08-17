@@ -15,8 +15,7 @@ class RequestsController < ApplicationController
   def create
     @request = current_user.requests.create(request_params)
     @request.walk_request
-    flash[:notice] = "Offer to walk sent to the owner. You will receive an email with their response. Thanks!"
-    redirect_to :back
+    redirect_to :back, notice: "Offer to walk sent to the owner. You will receive an email with their response. Thanks!"
   end
 
   def edit # all links in mailers points here

@@ -39,50 +39,6 @@ describe Job do
     expect(job.errors[:user_id]).to include("can't be blank")     
   end
 
-  context 'is invalid without owner' do
-    it 'first name' do
-      job = FactoryGirl.build(:job, pup_id: 1, owner_first_name: nil)
-      job.valid?
-      expect(job.errors[:owner_first_name]).to include("can't be blank")   
-    end
-
-    it 'last name' do
-      job = FactoryGirl.build(:job, pup_id: 1, owner_last_name: nil)
-      job.valid?
-      expect(job.errors[:owner_last_name]).to include("can't be blank") 
-    end
-
-    it 'phone' do
-      job = FactoryGirl.build(:job, pup_id: 1, owner_phone: nil)
-      job.valid?
-      expect(job.errors[:owner_phone]).to include("can't be blank") 
-    end
-
-    it 'formatted phone' do
-      job = FactoryGirl.build(:job, pup_id: 1, owner_phone: '1234')
-      job.valid?
-      expect(job.errors[:owner_phone]).to include("Format: 555-555-5555. We will store this value so you do not need to enter it again.") 
-    end
-
-    it 'emergency phone' do
-      job = FactoryGirl.build(:job, pup_id: 1, owner_emergency_phone: nil)
-      job.valid?
-      expect(job.errors[:owner_emergency_phone]).to include("can't be blank")   
-    end
-
-    it 'formatted emergency phone' do
-      job = FactoryGirl.build(:job, pup_id: 1, owner_emergency_phone: '1234')
-      job.valid?
-      expect(job.errors[:owner_emergency_phone]).to include("Format: 555-555-5555. We will store this value so you do not need to enter it again.") 
-    end
-
-    it 'building' do
-      job = FactoryGirl.build(:job, pup_id: 1, owner_building_name: nil)
-      job.valid?
-      expect(job.errors[:owner_building_name]).to include("can't be blank") 
-    end
-  end # 'is invalid without owner'
-
   # methods
 
   let(:user) { FactoryGirl.create(:user) }

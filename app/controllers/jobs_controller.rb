@@ -22,7 +22,6 @@ class JobsController < ApplicationController
 
   def create
     @job = current_user.jobs.new(job_params)
-    @job.user.update_attributes(first_name: @job.owner_first_name, last_name: @job.owner_last_name, phone: @job.owner_phone, emergency_phone: @job.owner_emergency_phone, building: @job.owner_building_name)
     @job.update_attributes(pick_up_time: @job.drop_off_time + @job.walk_duration * 60)
     if @job.save
       redirect_to jobs_path, notice: 'Job created. You can monitor its status in you \'My Upcoming Walks\' tab'

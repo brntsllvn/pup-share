@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150816164236) do
+ActiveRecord::Schema.define(version: 20150817010754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,26 +60,16 @@ ActiveRecord::Schema.define(version: 20150816164236) do
     t.string   "drop_off_location"
     t.datetime "pick_up_time"
     t.string   "pick_up_location"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.integer  "user_id"
     t.integer  "pup_id"
     t.integer  "availability_id"
-    t.boolean  "hidden",                 default: false
+    t.boolean  "hidden",            default: false
     t.string   "how_did_it_go"
     t.string   "status"
     t.integer  "walker_id"
     t.integer  "walk_duration"
-    t.string   "owner_first_name"
-    t.string   "owner_last_name"
-    t.string   "owner_phone"
-    t.string   "owner_emergency_phone"
-    t.string   "owner_building_name"
-    t.string   "walker_first_name"
-    t.string   "walker_last_name"
-    t.string   "walker_phone"
-    t.string   "walker_emergency_phone"
-    t.string   "walker_building_name"
   end
 
   add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
@@ -115,12 +105,12 @@ ActiveRecord::Schema.define(version: 20150816164236) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "building"
+    t.string   "first_name",                  default: ""
+    t.string   "last_name",                   default: ""
+    t.string   "building",                    default: ""
     t.string   "address"
-    t.string   "phone"
-    t.string   "emergency_phone"
+    t.string   "phone",                       default: ""
+    t.string   "emergency_phone",             default: ""
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.string   "email",                       default: "",    null: false
