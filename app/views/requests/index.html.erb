@@ -2,11 +2,15 @@
 <br>
 <br>
 <% @jobs.each do |job| %>
-<%= render partial: 'jobs/job', locals: { job: job } %>
+<% if !job.nil? # if user had not created any jobs yet %>
+<%= render partial: 'jobs/job', locals: { job: job } unless job.hidden %>
+<% end %>
 <% end %>
 
 <h1>I am walking someone else's pup</h1> 
 <br>
 <% @requests.each do |request| %>
+<% if !request.job.nil? # if user had not created any requests yet %>
 <%= render partial: 'jobs/job', locals: { job: request.job } unless request.hidden %>
+<% end %>
 <% end %>

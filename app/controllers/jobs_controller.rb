@@ -24,7 +24,7 @@ class JobsController < ApplicationController
     @job = current_user.jobs.new(job_params)
     @job.update_attributes(pick_up_time: @job.drop_off_time + @job.walk_duration * 60)
     if @job.save
-      redirect_to jobs_path, notice: 'Job created. You can monitor its status in you \'My Upcoming Walks\' tab'
+      redirect_to user_path(current_user), notice: 'Job created. You can monitor its status in you \'My Upcoming Walks\' tab'
     else
       render :new
     end
@@ -32,7 +32,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      redirect_to user_path(current_user), notice: 'Job updated'
+      redirect_to :back, notice: 'Job updated'
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job.destroy
-    redirect_to user_path(current_user), notice: 'Job destroyed'
+    redirect_to :back, notice: 'Job destroyed'
   end
 
   private

@@ -22,12 +22,6 @@ describe Pup do
     expect(invalid_pup.errors[:pup_weight]).to include("can't be blank")
   end
 
-  it 'is invalid without numeric weight' do
-    invalid_pup = FactoryGirl.build(:pup, pup_weight: nil)
-    invalid_pup.valid?
-    expect(invalid_pup.errors[:pup_weight]).to include('is not a number')   
-  end
-
   it 'is invalid without gender' do
     invalid_pup = FactoryGirl.build(:pup, pup_gender: nil)
     invalid_pup.valid?

@@ -1,6 +1,6 @@
 class Pup < ActiveRecord::Base
   validates :pup_name,           presence: true
-  validates :pup_weight,         presence: true, numericality: true
+  validates :pup_weight,         presence: true
   validates :pup_gender,         presence: true
   validates :pup_vet_phone,      presence: true, 
   format: { with: /\d{3}-\d{3}-\d{4}/, message: 'Please format like: 555-555-5555' }

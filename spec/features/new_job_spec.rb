@@ -45,22 +45,20 @@ feature 'Creating new job' do
     expect(page).to have_content 'Signed in successfully'
     # create pup
     visit user_path(user)
-    expect(current_path).to eql(user_path(user))
     click_on 'New Pup'
-    expect(current_path).to eql(new_user_pup_path(user))
+    expect(page).to have_content 'New Pup'
     fill_in 'Pup name', with: 'Ace'
     fill_in 'Pup breed', with: 'Lab'
-    fill_in 'Pup weight', with: 65
+    choose "pup_pup_weight_small_0-25lbs"
     find(:css, "#pup_pup_gender_m").set(true)
     fill_in 'Pup age', with: 3.5
     fill_in 'Pup vet phone', with: '555-555-5555'
-    find(:css, "#pup_spayed_neutered").set(true)
-    find(:css, "#pup_special_needs").set(true)
+    choose "pup_spayed_neutered_true"
+    choose "pup_special_needs_true"
     click_on 'Create Pup'
-    expect(current_path).to eql(new_job_path(user))
+    expect(page).to have_content 'Schedule walk'
     # create job
     visit jobs_path
-    expect(current_path).to eql(jobs_path)
     click_on 'walker needed'
     expect(current_path).to eql(new_job_path)
     choose "job_pup_id_#{Pup.last.id}"
@@ -70,6 +68,5 @@ feature 'Creating new job' do
     fill_in 'Pick up location', with: 'some other place'     
     click_on 'Create Job'
     expect(page).to have_content 'Job created'
-    expect(current_path).to eql(jobs_path)
   end
 end

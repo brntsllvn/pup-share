@@ -95,7 +95,8 @@ describe JobsController do
 
     before :each do
       sign_in @user = create(:user)
-      @pup = create(:pup)        
+      @pup = create(:pup)   
+      request.env["HTTP_REFERER"] = user_path(@user)
     end
 
     context 'with valid attributes' do
@@ -104,9 +105,9 @@ describe JobsController do
           post :create, job: attributes_for(:job, user_id: @user.id, pup_id: @pup.id)}.to change(Job, :count).by(1)
       end
 
-      it 'redirects to jobs index' do
+      it 'redirects' do
         post :create, job: attributes_for(:job, user_id: @user.id, pup_id: @pup.id)
-        expect(response).to redirect_to jobs_path
+        expect(response).to redirect_to user_path(@user)
       end
 
       it 'notifies the user of creation' do
@@ -135,6 +136,7 @@ describe JobsController do
       @job = create(:job,
         drop_off_time: Time.now + 1.hours,
         drop_off_location: 'Ruby')
+      request.env["HTTP_REFERER"] = user_path(@user)
     end    
 
     context 'with valid attributes' do
@@ -183,6 +185,7 @@ describe JobsController do
     before :each do
       sign_in @user = create(:user) 
       @job = create(:job)
+      request.env["HTTP_REFERER"] = user_path(@user)
     end 
 
     it 'deletes the job from the database' do

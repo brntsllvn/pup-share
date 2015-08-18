@@ -5,12 +5,12 @@
 
   <div class="col-md-4">  
     <h2>Profile</h2>
-    <%= f.input :first_name, hint: '*Necessary to be a walker' %>
-    <%= f.input :last_name, hint: '*Necessary to be a walker' %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
     <%= f.input :email %>
-    <%= f.input :phone, hint: '*Necessary to be a walker. Format 555-555-5555' %>   
-    <%= f.input :emergency_phone, hint: '*Necessary to be a walker. Format 555-555-5555' %>
-    <%= f.input :building, hint: '*necessary to be a walker' %>
+    <%= f.input :phone, hint: 'Format: 555-555-5555' %>   
+    <%= f.input :emergency_phone, hint: 'Format: 555-555-5555' %>
+    <%= f.input :building, hint: 'Example: Ruby'%>
     <%= f.input :address %>
   </div>
 
@@ -31,7 +31,7 @@
     <strong>Pup Age</strong>
     <%= f.input :puppies %>
     <%= f.input :senior_pups %>
-    <strong>Other Needs</strong>
+    <strong>Misc.</strong>
     <%= f.input :pups_w_special_needs %>
     <%= f.input :oral_med_admin %>
   </div>

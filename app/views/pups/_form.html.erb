@@ -5,13 +5,13 @@
 
 <div class="form-inputs row">
   <div class="col-md-2">
-    <%= image_tag @pup.pup_pic, :class => 'img-responsive' %>
+    <%= image_tag @pup.pup_pic, class: 'img-responsive' %>
     <%= f.input :pup_pic %>
   </div>  
   <div class="col-md-4">
     <%= f.input :pup_name %>
     <%= f.input :pup_breed %>
-    <%= f.input :pup_weight %>
+    <%= f.input :pup_weight, label: 'Pup size', as: :radio_buttons, collection: ['Small (0-25lbs)', 'Medium (25-50lbs)', 'Large (50-100lbs)', 'Extra-Large (100+lbs)'], include_blank: false %>
   </div>
   <div class="col-md-4">
     <%= f.input :pup_gender, as: :radio_buttons, collection: ['M', 'F'], include_blank: false %> 
@@ -19,8 +19,8 @@
     <%= f.input :pup_vet_phone %>
   </div>
   <div class="col-md-2">
-    <%= f.input :spayed_neutered %> 
-    <%= f.input :special_needs %> 
+    <%= f.input :spayed_neutered, label: 'My pup spayed/neutered', as: :radio_buttons, collection: [true, false], include_blank: false %> 
+    <%= f.input :special_needs, label: 'My pup has special needs?', as: :radio_buttons, collection: [true, false], include_blank: false %> 
   </div>
 </div>
 
