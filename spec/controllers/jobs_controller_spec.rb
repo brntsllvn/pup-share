@@ -148,10 +148,10 @@ describe JobsController do
       it 'changes @job attributes' do
         patch :update, id: @job,
         job: attributes_for(:job, 
-          drop_off_time: Time.new(2002, 10, 31),
+          drop_off_time: Time.new(2020, 1, 1),
           drop_off_location: 'Blackfoot')
         @job.reload
-        expect(@job.drop_off_time).to eq(Time.new(2002, 10, 31))
+        expect(@job.drop_off_time).to eq(Time.new(2020, 1, 1))
         expect(@job.drop_off_location).to eq('Blackfoot')
       end
 

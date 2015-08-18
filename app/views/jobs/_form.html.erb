@@ -5,7 +5,10 @@
 
 <div class="form-inputs col-md-6">
   <h2>Walk details</h2>
-  <%= f.association :pup, as: :radio_buttons, label_method: :pup_name, collection: current_user.all_pups_not_hidden, include_blank: false %>
+  <%#= f.association :pup, as: :radio_buttons, label_method: :pup_name, collection: current_user.all_pups_not_hidden, include_blank: false %>
+  <%= f.collection_radio_buttons(:pup, current_user.all_pups_not_hidden, :id, :pup_pic) do |b| %>
+  <%= b.label { b.radio_button + image_tag(b.object.pup_pic) } %>
+  <% end %>
   <%= link_to 'Need to add a new pup?', new_user_pup_path(current_user), class: 'btn btn-primary' %>
   <br>
   <br>

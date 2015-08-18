@@ -49,3 +49,5 @@ gem 'puma' # new server, Heroku/ProductHunt recommended
 
 gem 'delayed_job_active_record' # asynchronous mailers
 gem 'daemons'
+
+gem 'date_validator' # allows, uh, validation of dates

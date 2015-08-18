@@ -63,7 +63,7 @@ feature 'Creating new job' do
     expect(current_path).to eql(new_job_path)
     choose "job_pup_id_#{Pup.last.id}"
     fill_in 'Drop off location', with: 'some place'    
-    select '2015', from: "job[drop_off_time(1i)]" 
+    select '2016', from: "job[drop_off_time(1i)]" 
     choose 'job_walk_duration_10'
     fill_in 'Pick up location', with: 'some other place'     
     click_on 'Create Job'

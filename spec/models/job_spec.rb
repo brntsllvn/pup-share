@@ -4,12 +4,18 @@ describe Job do
 
   # validations
 
-  it 'is valid with drop-off time, drop-off location, pick_up_time, pick_up_location, pup, user, owner first name, owner last name, owner phone, emergency phone and building' do
+  it 'is valid with drop-off time (in the future), drop-off location, pick_up_time, pick_up_location, pup, user, owner first name, owner last name, owner phone, emergency phone and building' do
     job = build(:job, pup_id: 1, user_id: 1)  
     expect(job).to be_valid
   end
 
   it 'is invalid without drop_off_time' do
+    job = build(:job, pup_id: 1, user_id: 1, drop_off_time: Time.now - 100.hours)
+    job.valid?
+    expect(job.errors[:drop_off_time]).to include("New walk must be in the future")
+  end
+
+  it 'is invalid without drop off in the future' do
     job = build(:job, pup_id: 1, user_id: 1, drop_off_time: nil)
     job.valid?
     expect(job.errors[:drop_off_time]).to include("can't be blank")
