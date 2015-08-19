@@ -12,10 +12,7 @@ feature 'Creating new job' do
 
   scenario 'while logged in' do
     # log in
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
+    log_in user
     expect(page).to have_content 'Signed in successfully'
     # 
     visit jobs_path
@@ -25,10 +22,7 @@ feature 'Creating new job' do
 
   scenario 'without pup' do
     # log in
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
+    log_in user
     expect(page).to have_content 'Signed in successfully'
     # 
     visit jobs_path
@@ -38,10 +32,7 @@ feature 'Creating new job' do
 
   scenario 'with pup' do
     # log in
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Log in'
+    log_in user
     expect(page).to have_content 'Signed in successfully'
     # create pup
     visit user_path(user)
@@ -69,4 +60,13 @@ feature 'Creating new job' do
     click_on 'Create Job'
     expect(page).to have_content 'Job created'
   end
+
+  def log_in(user)
+    visit new_user_session_path
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: user.password
+    click_on 'Log in'
+  end
+
+
 end
