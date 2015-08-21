@@ -13,7 +13,7 @@
   <br>
   <br>
   <%= f.input :drop_off_location %>
-  <%= f.input :drop_off_time, ampm: true, start_hour: 6, end_hour: 18, minute_step: 5, start_year: Time.now.year, end_year: Time.now.year + 1 %>
+  <%= f.input :drop_off_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 5, start_year: Time.now.year, end_year: Time.now.year + 1 %>
   <%= f.input :walk_duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false, checked: '15' %>
   <%= f.input :pick_up_location %>
 </div>

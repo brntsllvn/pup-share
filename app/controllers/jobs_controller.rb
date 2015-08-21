@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   before_action :set_job, except: [:index, :new, :create] 
 
   def index
-    @jobs = Job.all
+    @jobs = Job.where(drop_off_time: DateTime.now..DateTime.now + 100.years) # only show future jobs
   end
 
   def show; end

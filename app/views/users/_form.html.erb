@@ -7,7 +7,7 @@
     <h2>Profile</h2>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <%= f.input :email %>
+    <%= f.input :email, readonly: true %>
     <%= f.input :phone, hint: 'Format: 555-555-5555' %>   
     <%= f.input :emergency_phone, hint: 'Format: 555-555-5555' %>
     <%= f.input :building, hint: 'Example: Ruby'%>

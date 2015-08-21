@@ -2,8 +2,10 @@ class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:edit]
 
   def index
-    @jobs = current_user.jobs
-    @requests = current_user.requests
+    @jobs = current_user.jobs.where(drop_off_time: DateTime.now..DateTime.now + 100.years)
+    @requests = Job.where(walker_id: current_user, drop_off_time: DateTime.now..DateTime.now + 100.years)
+    @past_jobs = current_user.jobs.where(drop_off_time: 10.years.ago..DateTime.now)
+    @past_requests = Job.where(walker_id: current_user, drop_off_time: 100.years.ago..DateTime.now)
   end
 
   def show; end

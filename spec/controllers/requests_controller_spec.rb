@@ -2,26 +2,24 @@ require 'rails_helper'
 
 describe RequestsController do 
 
-  let(:requested_of_user) { FactoryGirl.create(:user) }
-  let(:job) { FactoryGirl.create(:job) }
+  let(:requested_of_user) { create(:user) }
+  let(:job) { create(:job) }
 
   describe 'GET #index' do
     before :each do
-      sign_in @user = FactoryGirl.create(:user) 
+      sign_in @user = create(:user) 
     end
 
-    let(:request1) { FactoryGirl.create(:request, user_id: @user.id, status: 'approved') }
-    let(:request2) { FactoryGirl.create(:request, user_id: @user.id) }    
+    let(:job1)     { create(:job, user_id: @user.id, drop_off_time: DateTime.now + 1.year) }
+    let(:job2)     { create(:job, user_id: @user.id, drop_off_time: DateTime.now - 1.year) }
+    let(:request1) { create(:request, user_id: @user.id, status: 'approved', job_id: rjob1.id) }
+    let(:request2) { create(:request, user_id: @user.id, job_id: rjob2.id) }    
 
-    it 'renders the :index template' do
-      get :index, user_id: @user.id
-      expect(response).to render_template :index
-    end
   end #GET #index
 
   describe 'GET #new' do
     it 'assigns a new request to @request' do
-      sign_in @user = FactoryGirl.create(:user) 
+      sign_in @user = create(:user) 
       get :new, id: request, user_id: @user.id
       expect(assigns(:request)).to be_a_new(Request)       
     end

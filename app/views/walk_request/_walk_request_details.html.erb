@@ -11,7 +11,7 @@
 <p>Gender: <%= @request.job.pup.pup_gender %></p>
 <p>Vet Phone: <%= @request.job.pup.pup_vet_phone %></p>
 <p>Care Instructions: <%= @request.job.pup.pup_care_instructions %></p>
-<p><%= image_tag @request.job.pup.pup_pic, class: 'img-responsive profile-image' %></p>
+<p><%= image_tag(@request.job.pup.pup_pic, class: 'img-responsive') %></p>
   
   
 
