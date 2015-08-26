@@ -1,5 +1,8 @@
-require "codeclimate-test-reporter"
+require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
+
+require 'capybara/rspec'
+require 'capybara/email/rspec'
 
 RSpec.configure do |config|
 
@@ -12,7 +15,5 @@ RSpec.configure do |config|
   config.mock_with :rspec do |mocks|
     mocks.verify_partial_doubles = true
   end
-
-  require 'capybara/rspec'
 
 end

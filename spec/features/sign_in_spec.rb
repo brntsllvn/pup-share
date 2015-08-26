@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Signing in' do
 
-  let(:user) { FactoryGirl.create(:user, password: 'lolololol', password_confirmation: 'lolololol') } 
+  let(:user) { create(:user, password: 'lolololol', password_confirmation: 'lolololol') } 
   
   scenario 'Signing in with correct credentials' do
     visit new_user_session_path
