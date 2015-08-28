@@ -6,6 +6,9 @@ class WalkRequest < ApplicationMailer
     @requested_by = request.user
     @requested_of = request.requested_of_user
     @request      = request # need this in the mailer views
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
     mail( to: @requested_of.email, 
       subject: 'PupShare: Please approve or deny a walk request' )
   end
@@ -13,7 +16,10 @@ class WalkRequest < ApplicationMailer
   def walk_request_approved(request)
     @requested_by = request.user	
     @requested_of = request.requested_of_user   		
-    @request      = request # need this in the mailer views	
+    @request      = request # need this in the mailer views
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
     mail( to: @requested_by.email,
       subject: 'PupShare: Yay! Your walk request was approved' )
   end
@@ -21,7 +27,10 @@ class WalkRequest < ApplicationMailer
   def walk_request_denied(request)
     @requested_by = request.user	
     @requested_of = request.requested_of_user   		
-    @request      = request # need this in the mailer views	
+    @request      = request # need this in the mailer views
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
     mail( to: @requested_by.email, 
       subject: 'PupShare: Sorry. Your walk request was denied' )
   end
@@ -29,7 +38,10 @@ class WalkRequest < ApplicationMailer
   def walk_request_cancel(request)
     @requested_by = request.user	
     @requested_of = request.requested_of_user   		
-    @request      = request # need this in the mailer views	
+    @request      = request # need this in the mailer views
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
     mail( to: [@requested_by.email, @requested_of.email],
       subject: 'PupShare: Request cancelled notification' )
   end
