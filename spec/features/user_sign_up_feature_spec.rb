@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature 'user sign up' do
   background do
-    visit  '/'
-    click_link 'sign up'
+#     visit  '/'
+#     click_link 'sign up'
     # expect to see sign up form
-    expect(page).to have_content ''
+#     expect(page).to have_content ''
   end
 
   scenario 'success' do
