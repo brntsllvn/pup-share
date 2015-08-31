@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to 'Walk a Pup', jobs_path %>
-            <li><%= link_to 'Find a Walker', users_path %>
+            <li><%#= link_to 'Find a Walker', users_path %>
           </ul>
           <ul class="nav navbar-nav navbar-right"> 
             <% if user_signed_in? %>
@@ -46,8 +46,8 @@
       </div>
 
       <div class="col-md-10">
-        <%= render partial: 'users/session_buttons' %>
-        <%= render partial: 'jobs/new_job_button' %>
+        <%#= render partial: 'users/session_buttons' %>
+        <%#= render partial: 'jobs/new_job_button' %>
         <%= yield %>      
       </div>
 
