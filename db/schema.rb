@@ -11,23 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150817010754) do
+ActiveRecord::Schema.define(version: 20150901051711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "availabilities", force: :cascade do |t|
-    t.datetime "available_from"
-    t.datetime "available_to"
-    t.text     "location"
-    t.text     "comment"
-    t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "pup_id"
-    t.integer  "job_id"
-    t.string   "walk_type"
-  end
 
   create_table "contact_forms", force: :cascade do |t|
     t.string   "name"
@@ -60,14 +47,10 @@ ActiveRecord::Schema.define(version: 20150817010754) do
     t.string   "drop_off_location"
     t.datetime "pick_up_time"
     t.string   "pick_up_location"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "user_id"
     t.integer  "pup_id"
-    t.integer  "availability_id"
-    t.boolean  "hidden",            default: false
-    t.string   "how_did_it_go"
-    t.string   "status"
     t.integer  "walker_id"
     t.integer  "walk_duration"
   end
@@ -77,18 +60,15 @@ ActiveRecord::Schema.define(version: 20150817010754) do
   create_table "pups", force: :cascade do |t|
     t.string   "pup_name"
     t.string   "pup_breed"
-    t.string   "pup_weight"
     t.string   "pup_gender"
     t.string   "pup_vet_phone"
     t.text     "pup_care_instructions"
     t.integer  "pup_age"
     t.integer  "user_id"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "pup_pic"
-    t.boolean  "special_needs"
     t.boolean  "spayed_neutered"
-    t.boolean  "hidden",                default: false
     t.integer  "walks_completed",       default: 0
   end
 
@@ -97,28 +77,25 @@ ActiveRecord::Schema.define(version: 20150817010754) do
     t.integer  "requested_of_user_id"
     t.string   "status"
     t.integer  "job_id"
-    t.integer  "availability_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.boolean  "hidden",               default: false
-    t.integer  "enqueued_job_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",                  default: ""
-    t.string   "last_name",                   default: ""
-    t.string   "building",                    default: ""
+    t.string   "first_name",             default: ""
+    t.string   "last_name",              default: ""
+    t.string   "building",               default: ""
     t.string   "address"
-    t.string   "phone",                       default: ""
-    t.string   "emergency_phone",             default: ""
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
-    t.string   "email",                       default: "",    null: false
-    t.string   "encrypted_password",          default: "",    null: false
+    t.string   "phone",                  default: ""
+    t.string   "emergency_phone",        default: ""
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",               default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
@@ -126,21 +103,8 @@ ActiveRecord::Schema.define(version: 20150817010754) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.integer  "user_pending_requests_count", default: 0
     t.string   "pic"
-    t.boolean  "pups_w_special_needs"
-    t.text     "walking_experience"
-    t.boolean  "small_pups"
-    t.boolean  "medium_pups"
-    t.boolean  "large_pups"
-    t.boolean  "giant_pups"
-    t.boolean  "oral_med_admin"
-    t.boolean  "senior_pups"
-    t.boolean  "puppies"
-    t.boolean  "bathroom_breaks"
-    t.boolean  "hidden",                      default: false
-    t.integer  "walks_completed",             default: 0
-    t.float    "feedback_rating",             default: 0.0
+    t.integer  "walks_completed",        default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -1,16 +1,15 @@
-<% if !job.hidden  %>
 <div class="booyah-box">
   <p><strong><%= job.requests.last.status unless job.requests.empty? %></strong><p>
   <div class="row">
     <div class="col-md-3">
       <p><strong>Pup Owner</strong></p>
       <%= "#{job.user.email}" %>
-      <%= image_tag job.user.pic, class: 'img-responsive profile-image' %>
+      <%= image_tag job.user.pic, class: 'img-responsive' %>
     </div>
     <div class="col-md-3">
       <p><strong>Pup</strong></p>
       <%= "#{job.pup.pup_name}" %>
-      <%= image_tag job.pup.pup_pic, class: 'img-responsive profile-image' %>
+      <%= image_tag job.pup.pup_pic, class: 'img-responsive' %>
     </div>
     <div class="col-md-3">
       <p><strong>Walk Details</strong></p>
@@ -22,20 +21,19 @@
       <% if user_signed_in? %>
       <%= render partial: 'jobs/buttons', locals: { job: job } %>
       <% else %>
-      <%#= link_to 'Walk this pup!', new_user_session_path, class: 'btn btn-success' %>
+      <%= render partial: 'users/session_buttons' %>
       <% end %>
-      
+
     </div>
     <div class="col-md-3">
       <p><strong>Walker</strong></p>
       <% if job.requests.empty? %>
-      <%= image_tag "fallback/question_mark.jpg", :class => 'img-responsive profile-image' %>
+      <%= image_tag "fallback/question_mark.jpg", :class => 'img-responsive' %>
       <% else %>
       <%= "#{job.requests.last.user.email}" %>
-      <%= image_tag job.requests.last.user.pic, :class => 'img-responsive profile-image' %>
+      <%= image_tag job.requests.last.user.pic, :class => 'img-responsive' %>
       <% end %>
     </div>
   </div><!-- row -->
 </div><!-- booyah-box -->
 <br>
-<% end %>

@@ -6,20 +6,15 @@ describe Request do
     Delayed::Worker.delay_jobs = false
   end
 
-  # validations
-
-  # methods
-
-  let(:job) { FactoryGirl.create(:job) }
-  let(:user) { FactoryGirl.create(:user) } 
-  let(:requested_of_user) { FactoryGirl.create(:user) } 
-  let(:my_request) { FactoryGirl.create(:request, user_id: user.id,
-    requested_of_user_id: requested_of_user.id, job_id: job.id) }
+  let(:job) { create(:job) }
+  let(:user) { create(:user) } 
+  let(:requested_of_user) { create(:user) } 
+  let(:my_request) { create(:request, user_id: user.id, requested_of_user_id: requested_of_user.id, job_id: job.id) }
   let(:delayed_job_last_id) { 999 }
 
   before :each do
-    #     Delayed::Job = []
-    #     Delayed::Job << job # overwriting definition for testing
+    # Delayed::Job = []
+    # Delayed::Job << job # overwriting definition for testing
     some_array = []
     some_array << job
   end
@@ -59,11 +54,6 @@ describe Request do
       expect(my_request.status).to eq 'declined'
     end
 
-    it 'hides the request' do
-      my_request.deny_walk_request
-      expect(my_request.hidden).to eq true
-    end
-
     it 'returns a notice' do
       expect(my_request.deny_walk_request).to eq 'Request declined'
     end
@@ -73,11 +63,6 @@ describe Request do
     it 'updates status' do
       my_request.cancel_walk
       expect(my_request.status).to eq 'cancelled'
-    end
-
-    it 'hides the request' do
-      my_request.cancel_walk
-      expect(my_request.hidden).to eq true
     end
 
     it 'returns a notice' do

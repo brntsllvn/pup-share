@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     confirmations: 'confirmations' 
     }
 
-  root 'static_pages#index'
+  root 'jobs#index'
+
+  get 'index', to: 'static_pages#index'
   get 'about', to: 'static_pages#about'
   get 'terms_of_service', to: 'static_pages#terms_of_service'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
@@ -16,6 +18,5 @@ Rails.application.routes.draw do
   end
 
   resources :jobs 
-  # resources :availabilities
   resources :contact_forms, only: [:new, :create]
 end

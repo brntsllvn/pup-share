@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
             <li><%= link_to 'Walk a Pup', jobs_path %>
-            <li><%#= link_to 'Find a Walker', users_path %>
+            <li><%= link_to 'Find a Walker', new_job_path %>
           </ul>
           <ul class="nav navbar-nav navbar-right"> 
             <% if user_signed_in? %>
@@ -33,21 +33,21 @@
       </div><!-- /.container-fluid -->
     </nav> 
     <!-- end navbar -->
-
+    
     <% if notice.present? %>		
     <p class="alert alert-info"><%= notice %></p>		
     <% end %>		
     <% if alert.present? %>		
     <p class="alert alert-danger"><%= alert %></p>		
     <% end %>
-
+    
     <div class="row">
       <div class="col-md-1">
       </div>
 
       <div class="col-md-10">
         <%#= render partial: 'users/session_buttons' %>
-        <%= render partial: 'jobs/new_job_button' %>
+        <%#= render partial: 'jobs/new_job_button' %>
         <%= yield %>      
       </div>
 

@@ -4,8 +4,6 @@ class RequestsController < ApplicationController
   def index
     @jobs = current_user.jobs
     @requests = current_user.requests
-    # @past_jobs = current_user.jobs.where(drop_off_time: 10.years.ago..DateTime.now)
-    # @past_requests = Job.where(walker_id: current_user, drop_off_time: 100.years.ago..DateTime.now)
   end
 
   def show; end
@@ -17,19 +15,19 @@ class RequestsController < ApplicationController
   def create
     @request = current_user.requests.create(request_params)
     @request.walk_request
-    redirect_to :back, notice: "Offer to walk sent to the owner. You will receive an email with their response. Thanks!"
+    redirect_to :back, notice: "Offer to walk sent to the owner. You will receive an email with their response"
   end
 
-  def edit # all links in mailers points here
+  def edit
     @request = Request.find(params[:id])
     redirect_to jobs_path, notice: @request.send_request_mailers(params[:status]) 
   rescue ActiveRecord::RecordNotFound
     redirect_to jobs_path, alert: 'Sorry. The walk no longer exists'   
   end
 
-  def update; end # email does not support :post requests
+  def update; end
 
-  def destroy # redundant functionality with #edit 
+  def destroy
     @request = Request.find(params[:id])
     @request.destroy
     redirect_to :back, alert: 'Walk cancelled'

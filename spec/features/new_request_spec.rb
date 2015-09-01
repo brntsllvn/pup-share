@@ -18,17 +18,15 @@ feature 'User submits an offer to walk a pup' do
     expect(page).to have_content 'New Pup'
     fill_in 'Pup name', with: 'Ace'
     fill_in 'Pup breed', with: 'Lab'
-    choose "pup_pup_weight_small_0-25lbs"
     find(:css, "#pup_pup_gender_m").set(true)
     fill_in 'Pup age', with: 3.5
     fill_in 'Pup vet phone', with: '555-555-5555'
     choose "pup_spayed_neutered_true"
-    choose "pup_special_needs_true"
     click_on 'Create Pup'
-    expect(page).to have_content 'Schedule walk'
+    expect(page).to have_content 'Find a Walker'
     # create job
     visit jobs_path
-    click_on 'walker needed'
+    click_on 'Find a Walker'
     expect(current_path).to eql(new_job_path)
     choose "job_pup_id_#{Pup.last.id}"
     fill_in 'Drop off location', with: 'some place'    
@@ -48,7 +46,7 @@ feature 'User submits an offer to walk a pup' do
     expect(page).to have_content 'Signed in successfully'
     # offer to walk a pup
     click_on 'Walk a Pup'
-    expect(page).to have_content 'Pups in need of a walk'
+    expect(page).to have_content 'These pups need a walk!'
     click_on 'Walk this pup!'
     expect(page).to have_content 'Offer to walk sent to the owner.'
     # check job buttons are updated
@@ -57,5 +55,4 @@ feature 'User submits an offer to walk a pup' do
     click_on 'My Upcoming Walks'
     expect(page).to have_content 'I want to cancel my offer to walk this pup' # checks that a new request/offer was added
   end
-
 end # 'User submits an offer to walk a pup'

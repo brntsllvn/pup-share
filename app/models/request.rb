@@ -25,14 +25,14 @@ class Request < ActiveRecord::Base
 
   def deny_walk_request
     WalkRequest.walk_request_denied(self).deliver_now
-    self.update_attributes status: 'declined', hidden: true
+    self.update_attributes status: 'declined'
     # self.destroy_enqueued_job
     return 'Request declined'
   end
 
   def cancel_walk
     WalkRequest.walk_request_cancel(self).deliver_now 
-    self.update_attributes status: 'cancelled', hidden: true
+    self.update_attributes status: 'cancelled'
     # self.destroy_enqueued_job
     return 'Walk cancelled'
   end

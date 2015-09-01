@@ -1,4 +1,3 @@
-<% if !pup.hidden %>
 <div class="booyah-box"> 
   <div class="row">
     <div class="col-md-2">  
@@ -7,22 +6,18 @@
 
     <div class="col-md-5">
       <p><%= "#{pup.pup_name} #{pup.pup_breed}" %></p>
-      <p><%= "#{pup.pup_age} years old, #{pup.pup_weight} #{pup.pup_gender}" %></p>   
+      <p><%= "#{pup.pup_age} years old, #{pup.pup_gender}" %></p>   
       <p>Vet phone: <%= pup.pup_vet_phone %></p>
       <p>Care notes: <%= pup.pup_care_instructions %></p>
     </div>
 
     <div class="col-md-5">
-      <p><%= "special needs? #{pup.special_needs}" %></p>
       <p><%= "spayed/neutered? #{pup.spayed_neutered}" %></p>
     </div>
 
     <div class="col-md-6">
       <%= link_to 'Edit Pup', edit_user_pup_path(current_user, pup), class: 'btn btn-warning' %>
-      <%= simple_form_for pup, url: user_pup_path(current_user, pup, pup: { hidden: true }) do |f| %>
-      <%= f.button :submit, 'Delete Pup', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%>
-      <% end %>
+      <%= link_to 'Destroy Pup', user_pup_path(current_user, pup), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
     </div>
   </div><!-- row -->
-</div><!-- booyah-box --> 
-<% end %>
+</div><!-- booyah-box -->

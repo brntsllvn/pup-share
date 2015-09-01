@@ -1,7 +1,7 @@
-<h1>Pups in need of a walk</h1>
+<h1>These pups need a walk!</h1>
 
 <% @jobs.each do |job| %>
 <% if !job.nil? %>
-<%= render partial: 'jobs/job', locals: { job: job } unless job.hidden %>
+<%= render partial: 'jobs/job', locals: { job: job } %>
 <% end %>
 <% end %>

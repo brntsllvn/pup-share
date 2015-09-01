@@ -9,7 +9,7 @@ class JobsController < ApplicationController
   def show; end
 
   def new
-    if current_user.all_pups_not_hidden.empty?
+    if current_user.pups.empty?
       redirect_to new_user_pup_path(current_user), alert: 'Create a pup to add to your job'
     else
       @job = Job.new
@@ -17,14 +17,14 @@ class JobsController < ApplicationController
   end
 
   def edit # facilitates mailer links
-    redirect_to job_path, notice: @job.update_follow_up_attr(params[:feedback]) 
+    redirect_to job_path, notice: 'To do...maybe put some stuff here...?' 
   end
 
   def create
     @job = current_user.jobs.new(job_params)
     @job.update_attributes(pick_up_time: @job.drop_off_time + @job.walk_duration * 60)
     if @job.save
-      redirect_to user_path(current_user), notice: 'Job created. You can monitor its status in you \'My Upcoming Walks\' tab'
+      redirect_to user_path(current_user), notice: 'Job created. You can monitor its status in your My Upcoming Walks'
     else
       render :new
     end

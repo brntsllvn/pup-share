@@ -17,12 +17,10 @@ feature 'Creating a new pup' do
     # fill out new pup form
     fill_in 'Pup name', with: 'Ace'
     fill_in 'Pup breed', with: 'Lab'
-    choose 'pup_pup_weight_small_0-25lbs'
     find(:css, "#pup_pup_gender_m").set(true)
     fill_in 'Pup age', with: 3.5
     fill_in 'Pup vet phone', with: '555-555-5555'
     choose 'pup_spayed_neutered_true'
-    choose 'pup_special_needs_true'
     click_on 'Create Pup'
     expect(page).to have_content 'You created a pup'
   end
