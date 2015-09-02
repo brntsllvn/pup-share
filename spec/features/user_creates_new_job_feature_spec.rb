@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Creating new job' do
 
-  let (:user) { create(:user, password: 'lolololol', password_confirmation: 'lolololol') }
+  let (:user) { create(:user) }
 
   scenario 'not logged in' do
     visit jobs_path
@@ -24,8 +24,7 @@ feature 'Creating new job' do
     sign_in(user.email, user.password)
     # create pup
     visit user_path(user)
-    click_on 'New Pup'
-    create_pup(user)
+    create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555', true)
     expect(page).to have_content 'Find a Walker'
     # create job
     visit jobs_path
@@ -38,17 +37,5 @@ feature 'Creating new job' do
     fill_in 'Pick up location', with: 'some other place'     
     click_on 'Create Job'
     expect(page).to have_content 'Job created'
-  end
-
-  def create_pup(user)
-    visit user_path(user)
-    click_on 'New Pup'
-    fill_in 'Pup name', with: 'Ace'
-    fill_in 'Pup breed', with: 'Lab'
-    find(:css, "#pup_pup_gender_m").set(true)
-    fill_in 'Pup age', with: 3.5
-    fill_in 'Pup vet phone', with: '555-555-5555'
-    choose "pup_spayed_neutered_true"
-    click_on 'Create Pup'
   end
 end
