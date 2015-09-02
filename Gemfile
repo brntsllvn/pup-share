@@ -52,3 +52,5 @@ gem 'delayed_job_active_record' # asynchronous mailers
 gem 'daemons'
 
 gem 'date_validator' # allows, uh, validation of dates
+
+gem 'stripe', git: 'https://github.com/stripe/stripe-ruby' # payments
