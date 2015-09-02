@@ -6,12 +6,8 @@ feature 'User submits an offer to walk a pup' do
   let (:walker) { create(:user, password: 'lolololol', password_confirmation: 'lolololol') }
   
   scenario 'with pup' do
-    # log in
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
+    # sign in
+    sign_in(user.email, user.password)
     # create pup
     visit user_path(user)
     click_on 'New Pup'
@@ -39,10 +35,7 @@ feature 'User submits an offer to walk a pup' do
     click_on 'Sign Out'
     expect(page).to have_content 'Signed out successfully.'
     # log in as walker
-    visit new_user_session_path
-    fill_in 'Email', with: walker.email
-    fill_in 'Password', with: walker.password
-    click_on 'Sign in'
+    sign_in(walker.email, walker.password)
     expect(page).to have_content 'Signed in successfully'
     # offer to walk a pup
     click_on 'Walk a Pup'
@@ -55,4 +48,4 @@ feature 'User submits an offer to walk a pup' do
     click_on 'My Upcoming Walks'
     expect(page).to have_content 'Cancel my offer to walk this pup' # checks that a new request/offer was added
   end
-end # 'User submits an offer to walk a pup'
+end

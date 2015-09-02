@@ -6,12 +6,8 @@ feature 'Owner responds to walk offer:' do
   let (:walker) { create(:user, password: 'lolololol', password_confirmation: 'lolololol') }
 
   background do
-    # owner logs in
-    visit new_user_session_path
-    fill_in 'Email', with: owner.email
-    fill_in 'Password', with: owner.password
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
+    # sign in
+    sign_in(owner.email, owner.password)
     # creates a pup
     visit user_path(owner)
     click_on 'New Pup'
@@ -40,12 +36,8 @@ feature 'Owner responds to walk offer:' do
   end
 
   scenario 'Owner approves' do
-    # log in as walker
-    visit new_user_session_path
-    fill_in 'Email', with: walker.email
-    fill_in 'Password', with: walker.password
-    click_on 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
+    # sign in as walker
+    sign_in(walker.email, walker.password)
     # offer to walk a pup
     click_on 'Walk a Pup'
     expect(page).to have_content 'These pups need a walk!'

@@ -16,5 +16,4 @@ feature 'Submitting contact form' do
     click_on 'Submit'
     expect(page).to have_content 'Thanks for reaching out!'
   end
-
 end

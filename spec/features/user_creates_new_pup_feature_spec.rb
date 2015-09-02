@@ -2,12 +2,11 @@ require 'rails_helper'
 
 feature 'Creating a new pup' do
 
-  let(:user) { create(:user) }
+  let (:user)   { create(:user, password: 'lolololol', password_confirmation: 'lolololol') }
 
   scenario 'Successfully creating a pup' do
-    # log in
-    log_in user
-    expect(page).to have_content 'Signed in successfully'
+    # sign in
+    sign_in(user.email, user.password)
     # navigate to Profile & Pups
     click_on "Profile \& Pups"
     expect(page).to have_content 'New Pup'
@@ -24,12 +23,4 @@ feature 'Creating a new pup' do
     click_on 'Create Pup'
     expect(page).to have_content 'You created a pup'
   end
-
-  def log_in(user)
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Sign in'
-  end
-
 end

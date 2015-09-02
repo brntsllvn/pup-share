@@ -11,9 +11,8 @@ feature 'Creating new job' do
   end
 
   scenario 'without pup' do
-    # log in
-    log_in user
-    expect(page).to have_content 'Signed in successfully'
+    # sign in
+    sign_in(user.email, user.password)
     # no pup
     visit jobs_path
     click_on 'Find a Walker'
@@ -21,9 +20,8 @@ feature 'Creating new job' do
   end
 
   scenario 'with pup' do
-    # log in
-    log_in user
-    expect(page).to have_content 'Signed in successfully'
+    # sign in
+    sign_in(user.email, user.password)
     # create pup
     visit user_path(user)
     click_on 'New Pup'
@@ -40,13 +38,6 @@ feature 'Creating new job' do
     fill_in 'Pick up location', with: 'some other place'     
     click_on 'Create Job'
     expect(page).to have_content 'Job created'
-  end
-
-  def log_in(user)
-    visit new_user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_on 'Sign in'
   end
 
   def create_pup(user)

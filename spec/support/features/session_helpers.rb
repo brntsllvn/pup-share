@@ -1,11 +1,10 @@
 module Features
   module SessionHelpers
-    def sign_in
-      user = create(:user)
+    def sign_in(email, password)
       visit '/'
-      find(:xpath, "//a[@href='/users/sign_in']").click
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: user.password
+      find_by_id('nav-sign-in').click
+      fill_in 'Email', with: email
+      fill_in 'Password', with: password
       click_button 'Sign in'
     end
   end
