@@ -3,9 +3,9 @@ CodeClimate::TestReporter.start
 
 require 'capybara/rspec'
 require 'capybara/email/rspec'
-require '/home/nitrous/pup-share/spec/support/features/session_helpers.rb'
+require 'rails_helper.rb'
 
-# Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.include Features::SessionHelpers, type: :feature
