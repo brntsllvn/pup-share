@@ -31,6 +31,7 @@ class JobsController < ApplicationController
   end
 
   def update
+    binding.pry
     if @job.update(job_params)
       redirect_to :back, notice: 'Job updated'
     else

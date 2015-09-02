@@ -1,17 +1,14 @@
-<% # if current_user is the pup owner, then allow them to hide the job %> 
-<% if current_user.jobs.include?(job) %>
-    <%= simple_form_for job, url: job_path(job, job: { hidden: true }) do |f| %>
-<%= f.button :submit, 'I no longer need a walker', data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>    
-    <% end %>
+<% if job.user == current_user %>
+<%= link_to 'Cancel Walk', job_path(job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 
-<% # elsif current_user is the requester, then allow them to hide their request %>
+<% # elsif current_user is the requester, then allow them to destroy their request %>
 <% elsif !(current_user.requests & job.requests).empty? %>
-<%= link_to 'I want to cancel my offer to walk this pup', [current_user, job.requests.last], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%= link_to 'Cancel my offer to walk this pup', [current_user, job.requests.last], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 
 <% # else current_user is just some other guy, then create a new request %>
 <% else %>
-    <%= simple_form_for Request.new, url: user_requests_path(current_user, 
-      request: { user_id: current_user, requested_of_user_id: job.user, job_id: job, status: 'pending'}), method: :post do |f| %>
-    <%= f.button :submit, 'Walk this pup!', class: 'btn btn-success' %>
-    <% end %>
+<%= simple_form_for Request.new, url: user_requests_path(current_user, 
+  request: { user_id: current_user, requested_of_user_id: job.user, job_id: job, status: 'pending'}), method: :post do |f| %>
+<%= f.button :submit, 'Walk this pup!', class: 'btn btn-success' %>
+<% end %>
 <% end %>

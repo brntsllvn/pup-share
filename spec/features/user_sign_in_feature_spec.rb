@@ -1,22 +1,27 @@
 require 'rails_helper'
 
-feature 'Signing in' do
+feature 'User signs in' do
 
   let(:user) { create(:user, password: 'lolololol', password_confirmation: 'lolololol') } 
-  
-  scenario 'Signing in with correct credentials' do
+
+  scenario 'success' do
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
-    click_on 'Log in'
+    click_on 'Sign in'
     expect(page).to have_content 'Signed in successfully'
   end
+
+  #   scenario 'with valid email and password' do
+  #     sign_in
+  #     expect(page).to have_content 'Signed in successfully'
+  #   end
 
   scenario 'Signing in with bad credentials' do
     visit new_user_session_path
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'booger' # incorrect
-    click_on 'Log in'
+    click_on 'Sign in'
     expect(page).to have_content 'Invalid email or password'
   end
 end
