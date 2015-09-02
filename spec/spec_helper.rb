@@ -9,6 +9,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
 RSpec.configure do |config|
   config.include Features::SessionHelpers, type: :feature
+  config.include Features::PupHelpers, type: :feature
 
   config.before(:each) { ActionMailer::Base.deliveries.clear } # uses email_spec gem to clear mail delivereies
 
