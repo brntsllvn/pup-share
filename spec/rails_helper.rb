@@ -10,6 +10,8 @@ require 'faker'
 require 'devise'
 require 'email_spec'
 
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
@@ -19,5 +21,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
+  config.include Features::SessionHelpers, type: :feature # helper
+  config.include Features::PupHelpers, type: :feature # helper
 end
 

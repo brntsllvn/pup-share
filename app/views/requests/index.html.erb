@@ -1,15 +1,35 @@
-<h1>Someone else is walking my pup</h1> 
-<br>
-<% @jobs.each do |job| %>
-<% if !job.nil? # if user has not created any jobs yet %>
-<%= render partial: 'jobs/job', locals: { job: job } %>
-<% end %>
-<% end %>
+<div class="col-md-6">
+  <h1>Someone walks my pup</h1> 
+  <br>
+  <h3>Upcoming</h3>
+  <% @jobs.each do |job| %>
+  <% if !job.nil? # if user has not created any jobs yet %>
+  <%= render partial: 'jobs/job', locals: { job: job } %>
+  <% end %>
+  <% end %>
+  <br>
+  <h3>No walker yet</h3>
+  <% @jobs_no_walker.each do |job| %>
+  <% if !job.nil? # if user has not created any jobs yet %>
+  <%= render partial: 'jobs/job', locals: { job: job } %>
+  <% end %>
+  <% end %>
+</div>
 
-<h1>I am walking someone else's pup</h1> 
-<br>
-<% @requests.each do |request| %>
-<% if !request.nil? # if user has not created any requests yet %>
-<%= render partial: 'jobs/job', locals: { job: request.job } %>
-<% end %>
-<% end %>
+<div class="col-md-6">
+  <h1>I walk someone's pup</h1> 
+  <br>
+  <h3>Upcoming</h3>
+  <% @requests.each do |request| %>
+  <% if !request.nil? # if user has not created any requests yet %>
+  <%= render partial: 'jobs/job', locals: { job: request.job } %>
+  <% end %>
+  <% end %>
+  <br>
+  <h3>Pending offers</h3>
+  <% @requests_pending.each do |request| %>
+  <% if !request.nil? # if user has not created any requests yet %>
+  <%= render partial: 'jobs/job', locals: { job: request.job } %>
+  <% end %>
+  <% end %>
+</div>

@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     resources :requests
   end
 
-  resources :jobs 
+  resources :jobs
   resources :contact_forms, only: [:new, :create]
-  
+
   resources :charges # Stripe
 end

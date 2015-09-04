@@ -24,7 +24,7 @@ class JobsController < ApplicationController
     @job = current_user.jobs.new(job_params)
     @job.update_attributes(pick_up_time: @job.drop_off_time + @job.walk_duration * 60)
     if @job.save
-      redirect_to user_path(current_user), notice: 'Job created. You can monitor its status in your My Upcoming Walks'
+      redirect_to root_path, notice: 'Job created. You can monitor its status in your My Upcoming Walks'
     else
       render :new
     end

@@ -5,7 +5,7 @@ feature 'User creates a new pup' do
   let (:user) { create(:user) }
 
   background do
-    sign_in(user.email, user.password)
+    sign_in user.email, user.password
     click_on "Profile \& Pups"
     expect(page).to have_content 'New Pup'
   end

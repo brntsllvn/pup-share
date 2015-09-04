@@ -3,21 +3,22 @@
 
 <br>
 
-<div class="form-inputs col-md-4">
+<div class="form-inputs col-md-5">
   <%= f.association :pup, as: :radio_buttons, label_method: :pup_name, collection: current_user.pups, include_blank: false %>
   <%#= f.collection_radio_buttons(:pup, current_user.pups, :id, :pup_pic) do |b| %>
   <%#= b.label { b.radio_button + b.object.pup_name + image_tag(b.object.pup_pic) } %>
   <%# end %>
   <%= link_to 'Need to add a new pup?', new_user_pup_path(current_user), class: 'btn btn-primary' %>
+  <br><br>
   <%= f.input :drop_off_location %>
   <%= f.input :drop_off_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 5, start_year: Time.now.year, end_year: Time.now.year + 1 %>
 </div>
 
-<div class="form-inputs col-md-4">
+<div class="form-inputs col-md-2">
   <%= f.input :walk_duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false, checked: '15' %>
 </div>
 
-<div class="form-inputs col-md-4">
+<div class="form-inputs col-md-5">
   <%= f.input :pick_up_location %>
 </div>
 

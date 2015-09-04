@@ -31,9 +31,8 @@
       <% if job.requests.empty? %>
       <%= image_tag "fallback/question_mark.jpg", class: 'img-responsive' %>
       <% else %>
-      <%= job.requests.each do |request| %>
-      <%= image_tag request.user.email, class: 'img-responsive profile-image' %>
-      <% end %>
+      <%= "#{job.requests.last.user.email}" %>
+      <%= image_tag job.requests.last.user.pic, class: 'img-responsive' %>
       <% end %>
     </div>
   </div><!-- row -->
