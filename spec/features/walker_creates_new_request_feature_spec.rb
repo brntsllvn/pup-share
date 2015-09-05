@@ -35,9 +35,5 @@ feature 'User offers to walk a pup' do
     expect(page).to have_content 'Offer to walk sent to the owner.'
     # checks the job changes status
     expect(page).to have_content 'Cancel my offer to walk this pup' 
-    # checks job moved to 'upcoming walks'
-    click_on 'My Upcoming Walks' 
-    # checks new request/offer was added
-    expect(page).to have_content 'Cancel my offer to walk this pup' 
   end
 end
