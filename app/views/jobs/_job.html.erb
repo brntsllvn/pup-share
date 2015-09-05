@@ -30,10 +30,6 @@
       <p><strong>Walker</strong></p>
       <% if job.requests.empty? %>
       <%= image_tag "fallback/question_mark.jpg", class: 'img-responsive' %>
-      <% else %>
-      <%= job.requests.each do |request| %>
-      <%= image_tag request.user.email, class: 'img-responsive profile-image' %>
-      <% end %>
       <% end %>
     </div>
   </div><!-- row -->

@@ -2,9 +2,9 @@ class RequestsController < ApplicationController
   before_action :authenticate_user!, except: [:edit]
 
   def index
-    @jobs = current_user.jobs.where.not(walker_id: nil)
-    @requests = current_user.requests.where.not(status: 'pending') 
-    @jobs_no_walker = current_user.jobs.where(walker_id: nil)
+    @jobs             = current_user.jobs.where.not(walker_id: nil)
+    @requests         = current_user.requests.where.not(status: 'pending') 
+    @jobs_no_walker   = current_user.jobs.where(walker_id: nil)
     @requests_pending = current_user.requests.where(status: 'pending') 
   end
 
