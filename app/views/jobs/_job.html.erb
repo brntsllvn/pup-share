@@ -14,9 +14,9 @@
 
     <div class="col-md-3">
       <p><strong>Walk Details</strong></p>
-      <p>Drop off: <%= job.drop_off_time.to_formatted_s(:long_ordinal) %></p>
+      <p>Walk Begins: <%= job.drop_off_time.to_formatted_s(:long_ordinal) %></p>
       <p>Place: <%= job.drop_off_location %></p>
-      <p>Pick up: <%= job.pick_up_time.to_formatted_s(:long_ordinal) %></p>
+      <p>Walks Ends: <%= job.pick_up_time.to_formatted_s(:long_ordinal) %></p>
       <p>Place: <%= job.pick_up_location %></p>
 
       <% if user_signed_in? %>
@@ -29,7 +29,15 @@
     <div class="col-md-3">
       <p><strong>Walker</strong></p>
       <% if job.requests.empty? %>
+      Nobody yet...
       <%= image_tag "fallback/question_mark.jpg", class: 'img-responsive' %>
+      <% elsif !job.walker.nil? %>
+      Hand-picked walker
+      <%= job.walker.email %>
+      <%= image_tag job.walker.pic %>
+      <% else %>
+      Check out the offers
+      <%= link_to "#{job.requests.count} offers", job_path(job) %>
       <% end %>
     </div>
   </div><!-- row -->

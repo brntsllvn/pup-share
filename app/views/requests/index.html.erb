@@ -11,11 +11,11 @@
     <% current_user.requests.each do |request| %>
     <!-- TODO: SORTING...Package.includes(:package_size).order("package_sizes.sort_order") -->
     <tr>
-      <th><%= link_to 'Details', job_path(request.job.id) %></th>
+      <th><%= link_to 'Details', job_path(request.job) %></th>
       <td><%= link_to "#{request.job.pup.pup_name}", user_pup_path(request.job.user,request.job.pup) %></td>
       <td><%= distance_of_time_in_words request.job.drop_off_time, DateTime.now %></td>
       <td><%= request.status %></td>
-      <td>Cancel</td>
+      <td><%= link_to 'Rescind Offer', user_request_path(current_user, request), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
     </tr>
     <% end %>
   </table>
@@ -35,12 +35,12 @@
       <th><%= link_to 'Details', job_path(job) %></th>
       <td><%= link_to "#{job.pup.pup_name}", user_pup_path(job.user,job.pup) %></td>
       <td><%= distance_of_time_in_words job.drop_off_time, DateTime.now %></td>
-      <% if job.walker_id.nil? %>
+      <% if job.walker.nil? %>
       <td><%= link_to "#{job.requests.count} offers", job_path(job) %></td>
       <% else %>
-      <td><% job.walker_id %></td>
+      <td><%= link_to "#{job.walker.first_name}", user_path(job.walker) %></td>
       <% end %>
-      <td>Cancel</td>
+      <td><%= link_to 'Cancel Walk', job_path(job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %></td>
     </tr>
     <% end %>
   </table>

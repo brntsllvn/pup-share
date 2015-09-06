@@ -3,7 +3,8 @@ class JobsController < ApplicationController
   before_action :set_job, except: [:index, :new, :create] 
 
   def index
-    @jobs = Job.where(drop_off_time: DateTime.now..DateTime.now + 100.years) # only show future jobs
+    # only show future jobs
+    @jobs = Job.where(drop_off_time: DateTime.now..DateTime.now + 100.years)
   end
 
   def show; end
@@ -31,8 +32,9 @@ class JobsController < ApplicationController
   end
 
   def update
-    binding.pry
     if @job.update(job_params)
+      # binding.pry
+      # something here to update a job's walker_id after owner selects a walker
       redirect_to :back, notice: 'Job updated'
     else
       render :edit

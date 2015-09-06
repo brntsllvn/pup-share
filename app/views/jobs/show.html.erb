@@ -1,5 +1,16 @@
-<h1>job stuff goes here...<h1>
+<h2>Walk</h2>
 
-  <h2>Include offers here also with tiny person bios</h2>
-  
-  <h3>if signed in and job belongs to you, then show a button next to each offer with 'Select'</h3>
+<%= render partial: 'job', locals: { job: @job } %>
+
+<% if @job.walker.nil? # don't show offers for already-accepted job %>
+  <h2>Offers to walk</h2>
+    <% @job.requests.each do |request| %>
+    <%= render partial: 'users/user', locals: { user: request.user } %>
+    <% if @job.user == current_user %>
+      <%= simple_form_for @job do |f| %>
+      <%= f.hidden_field :walker_id, value: request.user.id %>
+      <%= f.button :submit, 'Choose me', class: 'btn btn-success' %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
