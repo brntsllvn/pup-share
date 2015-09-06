@@ -38,7 +38,6 @@ feature 'Owner responds to walk offer:' do
     sign_in(walker.email, walker.password)
     # offer to walk a pup
     click_on 'Walk a Pup'
-    expect(page).to have_content 'These pups need a walk!'
     click_on 'Walk this pup!'
     expect(page).to have_content 'Offer to walk sent to the owner.'
   end

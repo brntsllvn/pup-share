@@ -29,7 +29,7 @@ feature 'User offers to walk a pup' do
     expect(page).to have_content 'Signed in successfully'
     # offer
     click_on 'Walk a Pup' 
-    expect(page).to have_content 'These pups need a walk!'
+    expect(page).to have_content 'Walk a pup'
     # checks request submitted
     click_on 'Walk this pup!'
     expect(page).to have_content 'Offer to walk sent to the owner.'

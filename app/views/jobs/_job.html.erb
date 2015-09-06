@@ -35,9 +35,6 @@
       Hand-picked walker
       <%= job.walker.email %>
       <%= image_tag job.walker.pic %>
-      <% else %>
-      Check out the offers
-      <%= link_to "#{job.requests.count} offers", job_path(job) %>
       <% end %>
     </div>
   </div><!-- row -->

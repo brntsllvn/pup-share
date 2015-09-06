@@ -1,3 +1,24 @@
-<h1>These pups need a walk!</h1>
-
-<%= render @jobs %>
+<div class="col-md-12">
+  <h1>Walk a pup</h1>
+  <table class = 'table'>
+    <tr>
+      <th>Owner</th>
+      <th>Pup</th>
+      <th>Countdown</th>
+      <th>Walker</th>
+      <th></th>
+    </tr>
+    <% @jobs.order(:drop_off_time).each do |job| %>
+    <tr>
+      <th><%= link_to "#{job.user.first_name}", user_path(job.user) %></th>
+      <td><%= link_to "#{job.pup.pup_name}", user_path(job.user) %></td>
+      <td><%= distance_of_time_in_words job.drop_off_time, DateTime.now %></td>
+      <% if job.walker.nil? %>
+      <td><%= link_to "#{job.requests.count} offers", job_path(job) %></td>
+      <% else %>
+      <td><%= link_to "#{job.walker.first_name}", user_path(job.walker) %></td>
+      <% end %>
+      <td><%= render partial: 'jobs/buttons', locals: {job: job} %></td>
+      <% end %>
+  </table>
+</div>
