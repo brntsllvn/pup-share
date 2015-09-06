@@ -33,6 +33,6 @@ feature 'Creating new job' do
     choose 'job_walk_duration_10'
     fill_in 'Pick up location', with: 'some other place'     
     click_on 'Create Job'
-    expect(page).to have_content 'Job created'
+    expect(page).to have_content 'Walk created'
   end
 end

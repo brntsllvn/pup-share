@@ -1,14 +1,18 @@
-<p><strong>
-  <%= link_to 'Approve', edit_user_request_url(id: @request,
-  user_id: @request.user, 
-  status: 'approved') %>
-  </strong></p>
+<!-- <p><strong> -->
+  <%#= link_to 'Approve', edit_user_request_url(id: @request,
+  #user_id: @request.user, 
+  #status: 'approved') %>
+<!--   </strong></p> -->
 
-<p><strong>
-  <%= link_to 'Decline', edit_user_request_url(id: @request,
-  user_id: @request.user, 
-  status: 'declined') %>
-  </strong></p>
+<!-- <p><strong> -->
+  <%#= link_to 'Decline', edit_user_request_url(id: @request,
+  #user_id: @request.user, 
+  #status: 'declined') %>
+<!--   </strong></p> -->
+
+<h3>Someone offered to walk your pup</h3>
+
+<%= link_to "Check it out here", user_requests_url(user_id: @request.user) %>
 
 <%= render 'walk_request_person_details' %>
 <br>

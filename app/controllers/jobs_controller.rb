@@ -17,15 +17,14 @@ class JobsController < ApplicationController
     end
   end
 
-  def edit # facilitates mailer links
-    redirect_to job_path, notice: 'To do...maybe put some stuff here...?' 
+  def edit # mailer links 
   end
 
   def create
     @job = current_user.jobs.new(job_params)
     @job.update_attributes(pick_up_time: @job.drop_off_time + @job.walk_duration * 60)
     if @job.save
-      redirect_to root_path, notice: 'Job created. You can monitor its status in your My Upcoming Walks'
+      redirect_to user_requests_path(current_user), notice: 'Walk created. You can monitor its status in My Upcoming Walks'
     else
       render :new
     end
@@ -33,9 +32,8 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      # binding.pry
-      # something here to update a job's walker_id after owner selects a walker
-      redirect_to :back, notice: 'Job updated'
+      # if !params[:job][:walker_id].nil?
+      redirect_to user_requests_path(current_user), notice: 'Job updated'
     else
       render :edit
     end
@@ -43,7 +41,7 @@ class JobsController < ApplicationController
 
   def destroy
     @job.destroy
-    redirect_to :back, notice: 'Job destroyed'
+    redirect_to user_requests_path(current_user), notice: 'Job destroyed'
   end
 
   private

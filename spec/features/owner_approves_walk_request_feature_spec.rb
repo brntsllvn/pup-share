@@ -28,7 +28,6 @@ feature 'Owner responds to walk offer:' do
     choose 'job_walk_duration_10'
     fill_in 'Pick up location', with: 'some other place'     
     click_on 'Create Job'
-    expect(page).to have_content 'Job created'
     # signs out
     click_on 'Sign Out'
     expect(page).to have_content 'Signed out successfully.'

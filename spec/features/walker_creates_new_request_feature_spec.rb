@@ -22,7 +22,7 @@ feature 'User offers to walk a pup' do
     choose 'job_walk_duration_10'
     fill_in 'Pick up location', with: 'some other place'     
     click_on 'Create Job'
-    expect(page).to have_content 'Job created'
+
     click_on 'Sign Out'
     expect(page).to have_content 'Signed out successfully.'
     sign_in(walker.email, walker.password)
@@ -34,6 +34,6 @@ feature 'User offers to walk a pup' do
     click_on 'Walk this pup!'
     expect(page).to have_content 'Offer to walk sent to the owner.'
     # checks the job changes status
-    expect(page).to have_content 'Cancel my offer to walk this pup' 
+    expect(page).to have_content 'Rescind Offer' 
   end
 end

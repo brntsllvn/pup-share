@@ -1,5 +1,3 @@
 <h1>These pups need a walk!</h1>
 
-<% @jobs.each do |job| %>
-<%= render partial: 'jobs/job', locals: { job: job } %>
-<% end %>
+<%= render @jobs %>

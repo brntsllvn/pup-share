@@ -2,8 +2,9 @@
 <%= link_to 'Cancel Walk', job_path(job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 
 <% # elsif current_user is the requester, then allow them to destroy their request %>
-<% elsif !(current_user.requests & job.requests).empty? %>
-<%= link_to 'Cancel my offer to walk this pup', [current_user, job.requests.last], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<%# elsif !(current_user.requests & job.requests).empty? %>
+<% elsif !job.requests.where(user_id: current_user.id).empty? %>
+<%= link_to 'Rescind Offer', [current_user, job.requests.last], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
 
 <% # else current_user is just some other guy, then create a new request %>
 <% else %>
