@@ -6,8 +6,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = current_user
-    @pups = current_user.pups
+    @pups = @user.pups
   end
 
   def new
