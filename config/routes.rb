@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   resources :contact_forms, only: [:new, :create]
 
   resources :charges # Stripe
+  
+  get "/auth/paypal/callback", to: "sessions#create" # PayPal
+  
 end
