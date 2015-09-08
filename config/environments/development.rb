@@ -1,7 +1,10 @@
 Rails.application.configure do
 
   config.cache_classes = false
-
+  
+  # recommended: https://github.com/auth0/omniauth-auth0
+  config.cache_store = :memory_store
+  
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -38,6 +41,6 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'http://ruby-on-rails-103993.nitrousapp.com:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
-  
+
   BetterErrors::Middleware.allow_ip! '54.244.95.60'
 end

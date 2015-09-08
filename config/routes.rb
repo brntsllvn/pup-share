@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get "/auth/auth0/callback" => "auth0#callback"
+  get "/auth/failure" => "auth0#failure"
+
   devise_for :users, controllers: { 
     registrations: 'registrations', 
     confirmations: 'confirmations' 
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
   resources :contact_forms, only: [:new, :create]
 
   resources :charges # Stripe
-  
+
   get "/auth/paypal/callback", to: "sessions#create" # PayPal
-  
+
 end

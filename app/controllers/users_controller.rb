@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @user_linkedin = session[:userinfo]
     @pups = @user.pups
   end
 

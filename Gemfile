@@ -55,3 +55,7 @@ gem 'date_validator' # allows, uh, validation of dates
 
 gem 'stripe', git: 'https://github.com/stripe/stripe-ruby' # payments
 gem "omniauth-paypal"
+
+# authentication
+gem 'omniauth', '~> 1.2'
+gem 'omniauth-auth0', '~> 1.1'
