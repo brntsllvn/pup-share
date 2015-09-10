@@ -1,20 +1,22 @@
 <% if user_signed_in? %>
-<% if job.user == current_user %>
-<%= link_to 'Cancel Walk', job_path(job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
 
-<% # elsif current_user is the requester, then allow them to destroy their request %>
-<% elsif !job.requests.where(user_id: current_user.id).empty? %>
-<%= link_to 'Rescind Offer', [current_user, job.requests.last], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
+  <% if job.user == current_user %>
+    <%= link_to 'Cancel Walk', job_path(job), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
 
-<% # else current_user is just some other guy, then create a new request %>
-<% else %>
-<%= simple_form_for Request.new, url: user_requests_path(current_user, 
-  request: { user_id: current_user, requested_of_user_id: job.user, job_id: job, status: 'pending'}), method: :post do |f| %>
-<%= f.button :submit, 'Walk this pup!', class: 'btn btn-success btn-xs' %>
-<% end %>
-<% end %>
-<% else %>
-<%= link_to "Sign in", new_user_session_path, class: 'btn btn-success btn-xs' %> or 
-<%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success btn-xs' %>
-to walk this pup
+    <% # elsif current_user is the requester, then allow them to destroy their request %>
+    <% elsif !job.requests.where(user_id: current_user.id).empty? %>
+    <%= link_to 'Rescind Offer', [current_user, job.requests.last], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
+
+    <% # else current_user is just some other guy, then create a new request %>
+    <% else %>
+    <%= simple_form_for Request.new, url: user_requests_path(current_user, 
+      request: { user_id: current_user, requested_of_user_id: job.user, job_id: job, status: 'pending'}), method: :post do |f| %>
+    <%= f.button :submit, 'Walk this pup!', class: 'btn btn-success btn-xs' %>
+    <% end %>
+  <% end %>
+
+  <% else %>
+  <%= link_to "Sign in", new_user_session_path, class: 'btn btn-success btn-xs' %> or 
+  <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success btn-xs' %>
+  to walk this pup
 <% end%>
