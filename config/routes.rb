@@ -3,11 +3,6 @@ Rails.application.routes.draw do
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/failure" => "auth0#failure"
 
-  devise_for :users, controllers: { 
-    registrations: 'registrations', 
-    confirmations: 'confirmations' 
-    }
-
   root 'jobs#index'
 
   get 'index', to: 'static_pages#index'

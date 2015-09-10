@@ -4,8 +4,6 @@ gem 'rails', '4.2.0'
 
 gem 'pg'
 
-gem 'devise', '>= 3.2.4'
-
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '>= 3.2'
 gem 'uglifier', '>= 1.3.0'
@@ -36,8 +34,6 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
-  gem 'capybara-email'
-  gem 'email_spec'
   gem 'codeclimate-test-reporter', require: nil
 end
 
@@ -48,7 +44,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'puma' # new server, Heroku/ProductHunt recommended
 
-gem 'delayed_job_active_record' # asynchronous mailers
 gem 'daemons'
 
 gem 'date_validator' # allows, uh, validation of dates

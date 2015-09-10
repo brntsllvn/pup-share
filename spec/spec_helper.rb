@@ -2,7 +2,6 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
 require 'capybara/rspec'
-require 'capybara/email/rspec'
 
 RSpec.configure do |config|
   config.before(:each) { ActionMailer::Base.deliveries.clear } # uses email_spec gem to clear mail delivereies

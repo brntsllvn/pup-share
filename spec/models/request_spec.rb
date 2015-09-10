@@ -2,22 +2,11 @@ require 'rails_helper'
 
 describe Request do
 
-  before :each do
-    Delayed::Worker.delay_jobs = false
-  end
-
   let(:job) { create(:job) }
   let(:user) { create(:user) } 
   let(:requested_of_user) { create(:user) } 
   let(:my_request) { create(:request, user_id: user.id, requested_of_user_id: requested_of_user.id, job_id: job.id) }
   let(:delayed_job_last_id) { 999 }
-
-  before :each do
-    # Delayed::Job = []
-    # Delayed::Job << job # overwriting definition for testing
-    some_array = []
-    some_array << job
-  end
 
   it '.walk_request updates status' do
     my_request.walk_request
