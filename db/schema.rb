@@ -42,10 +42,13 @@ ActiveRecord::Schema.define(version: 20150910040202) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",                  limit: 255
+    t.string   "first_name",            limit: 255
+    t.string   "last_name",             limit: 255
     t.string   "address"
     t.date     "date_of_birth"
     t.string   "ssn_last_four"
+    t.string   "phone"
+    t.string   "emergency_phone"
     t.string   "email",                 limit: 255
     t.string   "password_digest",       limit: 255
     t.string   "publishable_key",       limit: 255
