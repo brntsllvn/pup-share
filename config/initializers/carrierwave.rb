@@ -11,7 +11,6 @@ CarrierWave.configure do |config|
     # region:          ENV['']
     }
 
-  # see this link for more detail: https://github.com/carrierwaveuploader/carrierwave
   if Rails.env.test?
     config.storage = :file
     config.enable_processing = false
