@@ -1,0 +1,47 @@
+<div class="col-md-6">
+  <h1>I walk someone's pup</h1> 
+  <table class = 'table'>
+    <tr>
+      <th>Specifics</th>
+      <th>Pup</th>
+      <th>Countdown</th>
+      <th>Offer</th>
+      <th></th>
+    </tr>
+    <% current_user.offers.each do |offer| %>
+    <!-- TODO: SORTING...Package.includes(:package_size).order("package_sizes.sort_order") -->
+    <tr>
+      <th><%= link_to 'Details', walk_path(offer.walk) %></th>
+      <td><%= link_to "#{offer.walk.pup.name}", user_path(offer.walk.user) %></td>
+      <td><%= distance_of_time_in_words offer.walk.begin_time, DateTime.now %></td>
+      <td><%= offer.status %></td>
+      <td><%= render partial: 'walks/buttons', locals: { walk: offer.walk } %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="col-md-6">
+  <h1>Someone walks my pup</h1> 
+  <table class = 'table'>
+    <tr>
+      <th>Specifics</th>
+      <th>Pup</th>
+      <th>Countdown</th>
+      <th>Walker</th>
+    </tr>
+    <% current_user.walks.order(:begin_time).each do |walk| %>
+    <tr>
+      <th><%= link_to 'Details', walk_path(walk) %></th>
+      <td><%= link_to "#{walk.pup.name}", user_path(walk.owner) %></td>
+      <td><%= distance_of_time_in_words walk.begin_time, DateTime.now %></td>
+      <% if walk.walker.nil? %>
+      <td><%= link_to "#{walk.offers.count} offers", walk_path(walk) %></td>
+      <% else %>
+      <td><%= link_to "#{walk.walker.first_name}", user_path(walk.walker) %></td>
+      <% end %>
+      <td><%= render partial: 'walks/buttons', locals: { walk: walk } %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

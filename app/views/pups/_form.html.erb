@@ -5,24 +5,25 @@
 
 <div class="form-inputs row">
   <div class="col-md-2">
-    <%= image_tag @pup.pup_pic, class: 'img-responsive' %>
-    <%= f.input :pup_pic %>
+    <%= image_tag @pup.pic, class: 'img-responsive' %>
+    <%= f.input :pic %>
   </div>  
   <div class="col-md-4">
-    <%= f.input :pup_name %>
-    <%= f.input :pup_breed %>
+    <%= f.input :name %>
+    <%= f.input :breed %>
   </div>
   <div class="col-md-4">
-    <%= f.input :pup_gender, as: :radio_buttons, collection: ['M', 'F'], include_blank: false %> 
-    <%= f.input :pup_age %>
-    <%= f.input :pup_vet_phone %>
-    <%= f.input :spayed_neutered, label: 'My pup spayed/neutered', as: :radio_buttons, collection: [true, false], include_blank: false %> 
+    <%= f.input :male_female, as: :radio_buttons, collection: ['M', 'F'], include_blank: false %> 
+    <%= f.input :age %>
+    <%= f.input :vet_phone %>
+    <%= f.input :vet_name %>
+    <%= f.input :insurance_provider %>
   </div>
 </div>
 
 <div class="form-inputs row">
   <div class="col-md-12">
-    <%= f.input :pup_care_instructions %>
+    <%= f.input :care_instructions %>
 
   </div>
 </div>

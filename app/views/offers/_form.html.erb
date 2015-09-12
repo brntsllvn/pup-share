@@ -1,0 +1,14 @@
+<%= simple_form_for [current_user, @offer] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :owner_id %>
+    <%= f.input :walker_id %>
+    <%= f.input :status %>
+    <%= f.input :walk_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

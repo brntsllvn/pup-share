@@ -1,0 +1,30 @@
+<div class="col-md-12">
+  <h1>Walk a pup</h1>
+  <table class = 'table'>
+    <tr>
+      <th>Owner</th>
+      <th>Pup</th>
+      <th>Location</th>
+      <th>Countdown</th>
+      <th>Length</th>
+      <th>Pay</th>
+      <th>Winner</th>
+      <th></th>
+    </tr>
+    <% @walks.order(:begin_time).each do |walk| %>
+    <tr>
+      <th><%= link_to "#{walk.owner.first_name}", user_path(walk.owner) %></th>
+      <td><%= link_to "#{walk.pup.name}", user_path(walk.owner) %></td>
+      <td>Location</td>
+      <td><%= distance_of_time_in_words walk.begin_time, DateTime.now %></td>
+      <td><%= "#{walk.duration} min" %></td>
+      <td><%= "$#{walk.duration / 12 * 5}" %></td>
+      <% if walk.walker.nil? %>
+      <td><%= link_to "#{walk.offers.count} offers", walk_path(walk) %></td>
+      <% else %>
+      <td><%= link_to "#{walk.walker.first_name}", user_path(walk.walker) %></td>
+      <% end %>
+      <td><%= render partial: 'walks/buttons', locals: { walk: walk } %></td>
+      <% end %>
+  </table>
+</div>

@@ -1,0 +1,22 @@
+<% if user_signed_in? %>
+
+<% if walk.owner == current_user %>
+    <%= link_to 'Cancel Walk', walk_path(walk), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' %>
+
+<% # elsif current_user is the offerer, then allow them to destroy their request %>
+<% elsif !walk.offers.where(walker_id: current_user.id).empty? %>
+<%= link_to 'Rescind Offer', [current_user, walk.offers.where(walker_id: current_user.id)], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
+
+    <% # else current_user is just some other guy, then create a new request %>
+    <% else %>
+<%= simple_form_for Offer.new, url: user_offers_path(current_user, 
+  offer: { walker_id: current_user, owner_id: walk.owner, walk_id: walk, status: 'pending'}), method: :post do |f| %>
+    <%= f.button :submit, 'Walk this pup!', class: 'btn btn-success btn-xs' %>
+    <% end %>
+  <% end %>
+
+  <% else %>
+  <%= link_to "Sign in", new_user_session_path, class: 'btn btn-success btn-xs' %> or 
+  <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-success btn-xs' %>
+  to walk this pup
+<% end%>

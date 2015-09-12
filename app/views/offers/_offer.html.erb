@@ -1,0 +1,40 @@
+<div class="booyah-box">
+  <div class="row">
+    <div class="col-md-3">
+      <p><strong>Owner</strong></p>
+      <%= "#{walk.user.email}" %>
+      <%= image_tag walk.user.pic, class: 'img-responsive' %>
+    </div>
+
+    <div class="col-md-3">
+      <p><strong>Pup</strong></p>
+      <%= "#{walk.pup.name}" %>
+      <%= image_tag walk.pup.pic, class: 'img-responsive' %>
+    </div>
+
+    <div class="col-md-3">
+      <p><strong>Details</strong></p>
+      <p>Begin: <%= walk.begin_time.to_formatted_s(:long_ordinal) %></p>
+      <p>Place: <%= walk.begin_location %></p>
+      <p>End: <%= walk.end_time.to_formatted_s(:long_ordinal) %></p>
+      <p>Place: <%= walk.end_location %></p>
+
+      <% if user_signed_in? %>
+      <%= render partial: 'walks/buttons', locals: { walk: walk } %>
+      <% else %>
+      <%= render partial: 'users/session_buttons' %>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <p><strong>Walker</strong></p>
+      <% if walk.offers.empty? %>
+      <%= image_tag "fallback/question_mark.jpg", class: 'img-responsive' %>
+      <% else %>
+      <%= "#{walk.offers.last.user.email}" %>
+      <%= image_tag walk.offers.last.user.pic, class: 'img-responsive' %>
+      <% end %>
+    </div>
+  </div><!-- row -->
+</div><!-- booyah-box -->
+<br>

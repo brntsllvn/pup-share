@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/failure" => "auth0#failure"
 
-  root 'jobs#index'
+  root 'walks#index'
 
   get 'index', to: 'static_pages#index'
   get 'about', to: 'static_pages#about'
@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :pups
-    resources :requests
+    resources :offers
   end
 
-  resources :jobs
-  resources :contact_forms, only: [:new, :create]
+  resources :walks
+  resources :visitor_messages, only: [:new, :create]
 
   resources :charges # Stripe
 

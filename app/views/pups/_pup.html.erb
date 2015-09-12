@@ -1,18 +1,16 @@
 <div class="booyah-box"> 
   <div class="row">
     <div class="col-md-2">  
-      <%= image_tag pup.pup_pic, class: 'img-responsive profile-image' %>   
+      <%= image_tag pup.pic, class: 'img-responsive profile-image' %>   
     </div>
 
     <div class="col-md-5">
-      <p><%= "#{pup.pup_name} #{pup.pup_breed}" %></p>
-      <p><%= "#{pup.pup_age} years old, #{pup.pup_gender}" %></p>   
-      <p>Vet phone: <%= pup.pup_vet_phone %></p>
-      <p>Care notes: <%= pup.pup_care_instructions %></p>
-    </div>
-
-    <div class="col-md-5">
-      <p><%= "spayed/neutered? #{pup.spayed_neutered}" %></p>
+      <p><%= "#{pup.name} #{pup.breed}" %></p>
+      <p><%= "#{pup.age} years old, #{pup.male_female}" %></p>   
+      <p>Vet phone: <%= pup.vet_phone %></p>
+      <p>Vet name: <%= pup.vet_name %></p>
+      <p>Insured by: <%= pup.insurance_provider %></p>
+      <p>Care notes: <%= pup.care_instructions %></p>
     </div>
 
     <div class="col-md-6">
