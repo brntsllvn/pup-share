@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  mount Knock::Engine => "/knock"
+  
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/failure" => "auth0#failure"
 
@@ -17,9 +18,5 @@ Rails.application.routes.draw do
 
   resources :walks
   resources :visitor_messages, only: [:new, :create]
-
-  resources :charges # Stripe
-
-  get "/auth/paypal/callback", to: "sessions#create" # PayPal
 
 end
