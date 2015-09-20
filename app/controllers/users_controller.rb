@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
-  
+
   def show
     @user_linkedin = session[:userinfo]
     @pups = @user.pups
