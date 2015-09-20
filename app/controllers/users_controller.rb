@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, only: [:show]
-
+  before_action :authenticate, only: [:show] # knock
+  before_action :logged_in_using_omniauth? # auth0
+  
   def index
     @users = User.all
   end
