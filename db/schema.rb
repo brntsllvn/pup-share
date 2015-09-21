@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910040202) do
+ActiveRecord::Schema.define(version: 20150921221109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,7 +59,12 @@ ActiveRecord::Schema.define(version: 20150910040202) do
     t.string   "currency_symbol",       limit: 3
     t.datetime "created_at",                                       null: false
     t.datetime "updated_at",                                       null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.text     "auth_hash"
   end
+
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
 
   create_table "visitor_messages", force: :cascade do |t|
     t.string   "name"

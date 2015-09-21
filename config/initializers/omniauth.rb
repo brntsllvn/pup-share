@@ -6,4 +6,8 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     'pupshare.auth0.com',
     callback_path: "/auth/auth0/callback"
   )
+  
+  provider :linkedin, ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET']
+  # same thing for other providers
+  
 end

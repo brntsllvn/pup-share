@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  mount Knock::Engine => "/knock"
   
-  get "/auth/auth0/callback" => "auth0#callback"
-  get "/auth/failure" => "auth0#failure"
-
+  get "/auth/:provider/callback" => "auth#callback"
+  get "/auth/failure" => "auth#failure"
+  delete "/auth/destroy" => "auth#destroy", as: "destroy_user_session"
+  
   root 'walks#index'
 
   get 'index', to: 'static_pages#index'

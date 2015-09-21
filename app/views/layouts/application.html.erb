@@ -27,13 +27,13 @@
             <li><%= link_to 'Post a Walk', new_walk_path %>
           </ul>
           <ul class="nav navbar-nav navbar-right"> 
-            <% if logged_in_using_omniauth? %>
+            <% if current_user != "Guest" %>
             <li><%= link_to 'My Upcoming Walks', user_offers_path(current_user) %> 
             <li><%= link_to 'Profile & Pups', user_path(current_user) %> 
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             <% else %>
-            <li><%= link_to 'Sign In', new_user_session_path, id: 'nav-sign-in' %></li>
-            <li><%= link_to 'Sign Up', new_user_registration_path, id: 'nav-sign-up' %></li>
+            <li><%= link_to 'Sign In w Auth0', "/auth/auth0", id: 'nav-sign-in' %></li>
+            <li><%= link_to 'Sign In w Linkedin', "/auth/linkedin", id: 'nav-sign-in' %></li>
             <% end %>          
           </ul>
         </div> <!-- end div class="collapse navbar-collapse" -->
