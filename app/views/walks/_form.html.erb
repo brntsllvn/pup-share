@@ -2,7 +2,6 @@
 <%= f.error_notification %>
 
 <br>
-
 <div class="form-inputs col-md-5">
   <%= f.association :pup, as: :radio_buttons, label_method: :name, collection: current_user.pups, include_blank: false %>
   <%#= f.collection_radio_buttons(:pup, current_user.pups, :id, :pup_pic) do |b| %>

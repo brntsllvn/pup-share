@@ -5,19 +5,16 @@
 
   <div class="col-md-4">  
     <h2>Profile</h2>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
     <%= f.input :address %>
     <%= f.input :date_of_birth %>
     <%= f.input :ssn_last_four %>
     <%= f.input :phone, hint: 'Format: 555-555-5555' %>   
     <%= f.input :emergency_phone, hint: 'Format: 555-555-5555' %>
-    <%= f.input :email, readonly: true %>
   </div>
 
   <div class="col-md-4">  
     <h2></h2>
-    <%= image_tag @user.pic, class: 'img-responsive'  %>
+    <%= image_tag @user.image, class: 'img-responsive'  %>
     <%= f.input :pic %>
   </div>
 </div>

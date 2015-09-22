@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921221109) do
+ActiveRecord::Schema.define(version: 20150922034355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150921221109) do
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "pups", force: :cascade do |t|
@@ -39,17 +40,15 @@ ActiveRecord::Schema.define(version: 20150921221109) do
     t.integer  "owner_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",            limit: 255
-    t.string   "last_name",             limit: 255
     t.string   "address"
     t.date     "date_of_birth"
     t.string   "ssn_last_four"
     t.string   "phone"
     t.string   "emergency_phone"
-    t.string   "email",                 limit: 255
     t.string   "password_digest",       limit: 255
     t.string   "publishable_key",       limit: 255
     t.string   "secret_key",            limit: 255
@@ -86,6 +85,7 @@ ActiveRecord::Schema.define(version: 20150921221109) do
     t.integer  "pup_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "user_id"
   end
 
 end

@@ -1,8 +1,8 @@
 <div class="booyah-box">
   <div class="row">
     <div class="col-md-2">
-      <p><%= image_tag user.pic, :class => 'img-responsive profile-image'  %></p>
-      <% if user_signed_in? && user == current_user %>
+      <p><%= image_tag user.image, :class => 'img-responsive profile-image'  %></p>
+      <% if user == current_user %>
       <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'btn btn-warning' %>
       <% end %>
     </div>
@@ -14,6 +14,5 @@
       <p> <%= "Emergency phone #{user.emergency_phone}" %></p>   
       <p> <%= "Address #{user.address}" %></p>
     </div>
-
   </div><!-- row -->
 </div><!-- booyah-box -->

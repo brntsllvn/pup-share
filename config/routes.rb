@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-  get "/auth/:provider/callback" => "auth#callback"
-  get "/auth/failure" => "auth#failure"
+  get    "/auth/:provider/callback" => "auth#callback"
+  get    "/auth/failure" => "auth#failure"
   delete "/auth/destroy" => "auth#destroy", as: "destroy_user_session"
   
   root 'walks#index'

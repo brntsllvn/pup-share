@@ -3,18 +3,14 @@ class WalksController < ApplicationController
   before_action :set_walk, except: [:index, :new, :create] 
 
   def index
-    # only show future walks
-    @walks = Walk.where("begin_time > ?", DateTime.now) 
+    @walks = Walk.where("begin_time > ?", DateTime.now) # only show future walks
   end
 
-  def show; end
+  def show
+  end
 
   def new
-    if current_user.pups.empty?
-      redirect_to new_user_pup_path(current_user), alert: 'Create a pup to add to your walk'
-    else
-      @walk = Walk.new
-    end
+    @walk = Walk.new
   end
 
   def edit # mailer links 

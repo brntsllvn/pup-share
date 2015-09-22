@@ -1,20 +1,16 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:update, :destroy]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate, only: [:show] # knock
-  before_action :logged_in_using_omniauth? # auth0
-  
+
   def index
     @users = User.all
   end
 
   def show
-    @user_linkedin = session[:userinfo]
-    @pups = @user.pups
+    # @pups = @user.pups unless @user.pups.nil?
   end
 
-  def new
-    @user = User.new
-  end
+  def new; end
 
   def edit; end
 
@@ -29,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated'
+      redirect_to @user, notice: 'User updated'
     else
       render :edit
     end
@@ -37,7 +33,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, notice: 'Account deleted. Sorry to see you go'
+    redirect_to root_path, notice: 'Account deleted'
   end
 
   private

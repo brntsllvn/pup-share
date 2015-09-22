@@ -8,6 +8,8 @@ class Pup < ActiveRecord::Base
 #   validates :pup_breed,          presence: true
 
   belongs_to :user
+  belongs_to :owner, class_name: 'User'
+  belongs_to :walker, class_name: 'User'
   has_many :walks, dependent: :destroy
 
   mount_uploader :pic, PupPicUploader
