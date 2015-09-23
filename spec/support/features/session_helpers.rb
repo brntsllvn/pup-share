@@ -1,11 +1,7 @@
-module Features
+specmodule Features
   module SessionHelpers
-    def sign_in(email, password)
-      visit '/'
-      find_by_id('nav-sign-in').click
-      fill_in 'Email', with: email
-      fill_in 'Password', with: password
-      click_button 'Sign in'
+    def sign_in(user)
+#       request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:linkedin]
     end
   end
 end
