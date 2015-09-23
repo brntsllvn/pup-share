@@ -1,4 +1,4 @@
-class VisitorMessages < ActiveRecord::Base
+class VisitorMessage < ActiveRecord::Base
   validates :name,              presence: true
   validates :email,             presence: true
   validates :type,              presence: true
