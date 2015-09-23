@@ -8,6 +8,8 @@ class Walk < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :pup
+  belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
+  
 end

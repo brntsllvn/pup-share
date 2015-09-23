@@ -3,11 +3,15 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :current_user
-
+  helper_method :user_signed_in?
+  
   def current_user
-    # return session[:userinfo][:uid] if session[:userinfo]
     return User.where(uid: session[:userinfo][:uid]).first if session[:userinfo]
-    "Guest"
+    'Guest'
+  end
+  
+  def user_signed_in?
+    return current_user != 'Guest' ? true : false
   end
 
   private

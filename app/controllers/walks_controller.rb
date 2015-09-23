@@ -18,9 +18,10 @@ class WalksController < ApplicationController
 
   def create
     @walk = current_user.walks.new(walk_params)
-    @walk.update_attributes(end_time: @walk.begin_time + @walk.duration * 60)
+    @walk.update_attributes end_time: @walk.begin_time + @walk.duration * 60, 
+    owner_id: @walk.user_id # TODO: this is a hack...use single-table inheritance user/owner/walker
     if @walk.save
-      redirect_to user_requests_path(current_user), notice: 'Walk created. Monitor status in My Upcoming Walks'
+      redirect_to user_offers_path(current_user), notice: 'Walk created'
     else
       render :new
     end
@@ -28,7 +29,7 @@ class WalksController < ApplicationController
 
   def update
     if @walk.update(walk_params)
-      redirect_to user_requests_path(current_user), notice: 'Walk updated'
+      redirect_to user_offers_path(current_user), notice: 'Walk updated'
     else
       render :edit
     end

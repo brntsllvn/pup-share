@@ -18,18 +18,22 @@ class User < ActiveRecord::Base
     end
   end
 
+  # TODO: test
   def first_name
     self.auth_hash[:info][:first_name]
   end
 
+  # TODO: test
   def last_name
     self.auth_hash[:info][:last_name]
   end
 
+  # TODO: test
   def email
     self.auth_hash[:info][:email]
   end
 
+  # TODO: test
   def image
     self.auth_hash[:info][:image]
   end
