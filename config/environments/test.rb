@@ -44,13 +44,13 @@ Rails.application.configure do
 
 
   OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:linkedin] = { 
+  OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({ 
     'provider' => 'linkedin', 
     'uid' => '123545', 
     "info"=>
       { "email"=>"infinite@jest.com",
         "first_name"=>"Dave",
         "last_name"=>"Wallace" }
-    }
+    })
   
 end

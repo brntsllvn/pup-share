@@ -6,7 +6,6 @@ class Walk < ActiveRecord::Base
   validates :end_location,          presence: true
   validates :pup_id,                presence: true
 
-  belongs_to :user
   belongs_to :pup
   belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
