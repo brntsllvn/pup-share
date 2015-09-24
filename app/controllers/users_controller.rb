@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if @user.update(user_params) && @user == current_user
       redirect_to @user, notice: 'User updated'
     else
       render :edit
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    @user.destroy if && @user == current_user
     redirect_to root_path, notice: 'Account deleted'
   end
 

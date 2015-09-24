@@ -31,7 +31,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer = Offer.find(params[:id])
-    @offer.destroy
+    @offer.destroy if @offer.user == current_user
     redirect_to :back, alert: 'Walk cancelled'
   rescue ActiveRecord::RecordNotFound
     redirect_to :back, alert: 'Walk no longer exists' 

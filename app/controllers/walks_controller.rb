@@ -3,7 +3,7 @@ class WalksController < ApplicationController
   before_action :set_walk, except: [:index, :new, :create] 
 
   def index
-    @walks = Walk.where("begin_time > ?", DateTime.now) # only show future walks
+    @walks = Walk.where("begin_time > ?", DateTime.now) # show future walks
   end
 
   def show

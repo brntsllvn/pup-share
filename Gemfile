@@ -48,6 +48,4 @@ gem 'daemons'
 
 gem 'date_validator' # allows, uh, validation of dates
 
-# authentication
-# gem 'omniauth', '~> 1.2'
-gem 'omniauth-linkedin-oauth2'
+gem 'omniauth-linkedin-oauth2' # authentication with Linkedin
