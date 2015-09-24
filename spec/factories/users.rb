@@ -3,6 +3,12 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do  
 
   factory :user do
+    provider 'linkedin'
+    
+    sequence :uid do |n| 
+      "linkedin_#{n}"
+    end
+    
     address "#{Faker::Address.street_address} #{Faker::Address.city}"
     date_of_birth Faker::Date.backward(10000)
     ssn_last_four '1234'
