@@ -1,4 +1,4 @@
-class VisitorMessageController < ApplicationController
+class VisitorMessagesController < ApplicationController
 
   def new
     @visitor_message = VisitorMessage.new
@@ -7,7 +7,7 @@ class VisitorMessageController < ApplicationController
   def create
     @visitor_message = VisitorMessage.new(visitor_message_params)
     if @visitor_message.save
-      ContactMailer.contact_mailer(@visitor_message).deliver_now 
+      VisitorMessageMailer.visitor_message_mailer(@visitor_message).deliver_now 
       redirect_to root_path, notice: 'Thanks for reaching out!'
     else
       render :new
@@ -17,6 +17,6 @@ class VisitorMessageController < ApplicationController
   private
 
   def visitor_message_params
-    params.require(:contact_form).permit!
+    params.require(:visitor_message).permit!
   end
 end
