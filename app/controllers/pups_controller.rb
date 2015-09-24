@@ -1,5 +1,5 @@
 class PupsController < ApplicationController
-  before_action :authenticate_user! [
+  before_action :authenticate_user!
   before_action :set_pup, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -32,7 +32,7 @@ class PupsController < ApplicationController
   end
 
   def destroy
-    @pup.destroy if @pup.owner == current_user
+    @pup.destroy if @pup.user == current_user
     redirect_to user_path(current_user), notice: 'Pup destroyed'
   end
 

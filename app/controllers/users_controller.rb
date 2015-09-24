@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @pups = @user.pups unless @user.pups.nil?
+    @pups = @user.pups unless @user.pups.nil?
   end
 
   def new; end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy if && @user == current_user
+    @user.destroy if @user == current_user
     redirect_to root_path, notice: 'Account deleted'
   end
 

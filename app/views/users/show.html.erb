@@ -1,25 +1,14 @@
 <h1>Me</h1>
 
-<div>
-  <img class="avatar" src="<%#= @user_linkedin[:info][:image] %>"/>
-  <p><%#= "#{@user_linkedin[:extra][:raw_info][:given_name]} #{@user_linkedin[:extra][:raw_info][:family_name]}" %></p>
-  <p><%#= @user_linkedin[:extra][:raw_info][:headline] %></p>
-  <p><%#= @user_linkedin[:extra][:raw_info][:location][:name] %></p>
-</div>
-
 <h2>PupShare profile</h2>
 <%= render @user %>
 <br>
 
 <h1>My Pups</h1> 
 <%= link_to 'New Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %>
-<br>
-<br>
-<%# @pups.each do |pup| %>
-<%#= render partial: 'pups/pup', locals: { pup: pup } %>
-<br>
-<%# end %>
+<br><br>
+<%= render @pups %>
 
-<br><br><br>
-<%= link_to 'Delete Account', user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-<br><br><br>
+<br>
+<%= link_to 'Delete Account :(', user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<br>
