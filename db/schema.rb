@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924012933) do
+ActiveRecord::Schema.define(version: 20150925205533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150924012933) do
   create_table "offers", force: :cascade do |t|
     t.integer  "walk_id"
     t.integer  "walker_id"
-    t.integer  "owner_id"
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,6 +60,11 @@ ActiveRecord::Schema.define(version: 20150924012933) do
     t.string   "provider"
     t.string   "uid"
     t.text     "auth_hash"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "image"
+    t.string   "headline"
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree

@@ -1,7 +1,6 @@
 class Offer < ActiveRecord::Base
 
   belongs_to :user
-  belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
   belongs_to :walk
 
@@ -10,12 +9,7 @@ class Offer < ActiveRecord::Base
     self.update_attributes status: 'pending'
   end
 
-  def destroy_enqueued_job
-    Delayed::Job.find(self.enqueued_job_id).destroy
-  end
-
   def approve_walk_request
-    WalkRequest.walk_request_approved(self).deliver_now 
     self.job.update_attributes walker_id: self.user.id
     # WalkRequest.walk_request_follow_up(self).deliver_later(wait: 1.second)
     # setting enqueued_job_id allows me to locate the enqueued job later for deletion if a request is denied or cancelled
@@ -24,14 +18,12 @@ class Offer < ActiveRecord::Base
   end
 
   def deny_walk_request
-    WalkRequest.walk_request_denied(self).deliver_now
     self.update_attributes status: 'declined'
     # self.destroy_enqueued_job
     return 'Request declined'
   end
 
   def cancel_walk
-    WalkRequest.walk_request_cancel(self).deliver_now 
     self.update_attributes status: 'cancelled'
     # self.destroy_enqueued_job
     return 'Walk cancelled'

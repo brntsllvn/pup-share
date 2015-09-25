@@ -1,6 +1,6 @@
 class OfferMailer < ApplicationMailer
 
-  def offer_mailer(offer)
+  def offer(offer)
     @walker = offer.walker
     @owner  = offer.owner
     @offer  = offer # need this in the mailer views

@@ -1,6 +1,6 @@
 <h2>Walk</h2>
 
-<%= render partial: 'walk', locals: { walk: @walk } %>
+<%= render @walk %>
 
 <% if @walk.walker.nil? # don't show offers for already-accepted job %>
 <h2>Offers to walk</h2>

@@ -2,10 +2,8 @@ class OffersController < ApplicationController
   before_action :authenticate_user!, except: [:edit]
 
   def index
-    @walks             = current_user.walks.where.not(walker_id: nil)
-    @offers            = current_user.offers.where.not(status: 'pending') 
-    @walks_no_walker   = current_user.walks.where(walker_id: nil)
-    @offers_pending    = current_user.offers.where(status: 'pending') 
+    @walks  = current_user.walks
+    @offers = current_user.offers
   end
 
   def show; end

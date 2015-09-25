@@ -11,31 +11,23 @@ class User < ActiveRecord::Base
     if user
       # TODO: extract to another instance method for 
       # single responsbility and easier testing
-      user.auth_hash = auth
+      user.first_name = auth[:info][:first_name],
+      user.last_name  = auth[:info][:last_name],
+      user.email      = auth[:info][:email],
+      user.image      = auth[:info][:image],
+      user.auth_hash  = auth
       user.save
     else
-      create(provider: auth[:provider], uid: auth[:uid], auth_hash: auth)
+      create(
+        provider:   auth[:provider], 
+        uid:        auth[:uid], 
+        first_name: auth[:info][:first_name],
+        last_name:  auth[:info][:last_name],
+        email:      auth[:info][:email],
+        image:      auth[:info][:image],
+        headline:   auth[:info][:description],
+        auth_hash:  auth
+        )
     end
   end
-
-  # TODO: test
-  def first_name
-    self.auth_hash[:info][:first_name]
-  end
-
-  # TODO: test
-  def last_name
-    self.auth_hash[:info][:last_name]
-  end
-
-  # TODO: test
-  def email
-    self.auth_hash[:info][:email]
-  end
-
-  # TODO: test
-  def image
-    self.auth_hash[:info][:image]
-  end
-
 end
