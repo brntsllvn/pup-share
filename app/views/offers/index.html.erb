@@ -1,48 +1,54 @@
-<div class="col-md-6">
-  <h1>I walk someone's pup</h1> 
-  <table class = 'table'>
-    <tr>
-      <th>Specifics</th>
-      <th>Pup</th>
-      <th>Countdown</th>
-      <th>Offer</th>
-      <th></th>
-    </tr>
-    <% current_user.offers.each do |offer| %>
-    <!-- TODO: SORTING...Package.includes(:package_size).order("package_sizes.sort_order") -->
-    <tr>
-      <th><%= link_to 'Details', walk_path(offer.walk) %></th>
-      <td><%= link_to "#{offer.walk.pup.name}", user_path(offer.walk.owner) %></td>
-      <td><%= distance_of_time_in_words offer.walk.begin_time, DateTime.now %></td>
-      <td><%= offer.status %></td>
-      <td><%= render partial: 'walks/buttons', locals: { walk: offer.walk } %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+<h1>Someone walks my pup</h1> 
 
-<div class="col-md-6">
-  <h1>Someone walks my pup</h1> 
-  <table class = 'table'>
-    <tr>
-      <th>Specifics</th>
-      <th>Pup</th>
-      <th>Countdown</th>
-      <th>Walker</th>
-    </tr>
-    <% current_user.walks.order(:begin_time).each do |walk| %>
-    <tr>
-      <th><%= link_to 'Details', walk_path(walk) %></th>
-      <!-- # TODO: should be user_path(walk.owner), but need single-table inheritance...?  -->
-      <td><%= link_to "#{walk.pup.name}", user_path(walk.owner) %></td>
-      <td><%= distance_of_time_in_words walk.begin_time, DateTime.now %></td>
-      <% if walk.walker.nil? %>
-      <td><%= link_to "#{walk.offers.count} offers", walk_path(walk) %></td>
-      <% else %>
-      <td><%= link_to "#{walk.walker.first_name}", user_path(walk.walker) %></td>
-      <% end %>
-      <td><%= render partial: 'walks/buttons', locals: { walk: walk } %></td>
-    </tr>
-    <% end %>
-  </table>
-</div>
+<div class="bs-example">
+
+  <% current_user.walks.order(:begin_time).each_with_index do |walk, index| %>
+
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'><%= "#{walk.pup.name} @ #{walk.begin_time.to_formatted_s(:long_ordinal)}" %></a>
+        </h4>
+      </div><!-- <div class="panel-heading"> -->
+
+      <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse in">
+        <div class="panel-body"> 
+
+          <!-------------->
+          <!---- DATA ---->
+          <!-------------->
+          <table class = 'table'>
+            <tr>
+              <th>Owner</th>
+              <th>Pup</th>
+              <th>Countdown</th>
+              <th>Walker</th>
+              <th>Action</th>
+            </tr>
+
+            <tr>
+              <td><%= link_to image_tag(walk.owner.image, class: 'img-responsive profile-image'), user_path(walk.owner) %></td>
+              <td><%= link_to image_tag(walk.pup.pic, class: 'img-responsive profile-image'), user_path(walk.owner) %></td>
+              <td><%= distance_of_time_in_words walk.begin_time, DateTime.now %></td>
+              <% if walk.walker.nil? %>
+              <td><%= link_to "#{walk.offers.count} offers", walk_path(walk) %></td>
+              <% else %>
+              <td><%= link_to "#{walk.walker.first_name}", user_path(walk.walker) %></td>
+              <% end %>
+              <td><%= render partial: 'walks/buttons', locals: { walk: walk } %></td>
+            </tr>
+
+          </table>
+          <!-------------->
+          <!-- END DATA -->
+          <!-------------->
+
+        </div><!-- <div class="panel-body"> -->
+      </div><!-- <div id="collapseOne" class="panel-collapse collapse in"> -->
+    </div><!-- <div class="panel panel-default"> -->
+  </div><!-- <div class="panel-group" id="accordion"> -->
+
+  <% end %>
+
+</div><!-- <div class="bs-example"> -->
