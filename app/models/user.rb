@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     if user
       # TODO: extract to another instance method for 
       # single responsbility and easier testing
-      user.first_name = auth[:info][:first_name],
+      user.first_name = auth[:info][:first_name], # ??? TODO: value changes after user.save...???
       user.last_name  = auth[:info][:last_name],
       user.email      = auth[:info][:email],
       user.image      = auth[:info][:image],
