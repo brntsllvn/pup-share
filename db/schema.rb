@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150925205533) do
+ActiveRecord::Schema.define(version: 20150926230827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(version: 20150925205533) do
   create_table "offers", force: :cascade do |t|
     t.integer  "walk_id"
     t.integer  "walker_id"
+    t.integer  "user_id"
     t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "user_id"
   end
 
   create_table "pups", force: :cascade do |t|
@@ -37,12 +37,17 @@ ActiveRecord::Schema.define(version: 20150925205533) do
     t.string   "pic"
     t.integer  "walks_completed",    default: 0
     t.integer  "owner_id"
+    t.integer  "user_id"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
-    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "image"
+    t.string   "headline"
     t.string   "address"
     t.date     "date_of_birth"
     t.string   "ssn_last_four"
@@ -60,11 +65,6 @@ ActiveRecord::Schema.define(version: 20150925205533) do
     t.string   "provider"
     t.string   "uid"
     t.text     "auth_hash"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.string   "email"
-    t.string   "image"
-    t.string   "headline"
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
@@ -87,9 +87,9 @@ ActiveRecord::Schema.define(version: 20150925205533) do
     t.integer  "owner_id"
     t.integer  "walker_id"
     t.integer  "pup_id"
+    t.integer  "user_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.integer  "user_id"
   end
 
 end
