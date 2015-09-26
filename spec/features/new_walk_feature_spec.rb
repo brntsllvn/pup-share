@@ -22,7 +22,7 @@ feature 'Create new walk' do
     sign_in owner
     # create pup
     visit user_path(owner)
-    create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555', true)
+    create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555')
     # create walk
     create_walk
     expect(page).to have_content 'Walk created'

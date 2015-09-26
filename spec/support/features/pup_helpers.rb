@@ -1,6 +1,6 @@
 module Features
   module PupHelpers
-    def create_pup(name, breed, gender, age, vet_phone, spayed_neutered)
+    def create_pup(name, breed, gender, age, vet_phone)
       click_on 'New Pup'
       # fill out new pup form
       fill_in 'Name', with: name
