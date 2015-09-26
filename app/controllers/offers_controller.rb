@@ -14,15 +14,15 @@ class OffersController < ApplicationController
 
   def create
     @offer = current_user.offers.create(offer_params)
-    @offer.walk_request
+    @offer.send_mailer
     redirect_to :back, notice: 'Offer to walk sent to the owner'
   end
 
   def edit
     @offer = Offer.find(params[:id])
-    redirect_to jobs_path, notice: @offer.send_request_mailers(params[:status]) 
+    redirect_to walks_path, notice: @offer.send_request_mailers(params[:status]) 
   rescue ActiveRecord::RecordNotFound
-    redirect_to jobs_path, alert: 'Walk no longer exists'   
+    redirect_to walks_path, alert: 'Walk no longer exists'   
   end
 
   def update; end

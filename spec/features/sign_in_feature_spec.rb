@@ -5,6 +5,5 @@ feature 'Sign in with LinkedIn' do
   
   scenario 'success' do
     sign_in(owner)
-    binding.pry
   end
 end

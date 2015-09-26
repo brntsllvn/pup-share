@@ -10,11 +10,11 @@
 <p>Place: <%= @offer.walk.end_location %></p>
 
 <h3>Pup</h3>
-<p>Pup: <%= @offer.walk.pup.pup_name %></p>
+<p>Pup: <%= @offer.walk.pup.name %></p>
 <p><%= image_tag(@offer.walk.pup.pic, class: 'img-responsive') %></p>
 
 <h3>Walker</h3>
-<p><%= image_tag @offer.walker.pic %></p>
+<p><%= image_tag @offer.walker.image %></p>
 <p>First: <%= @offer.walker.first_name %></p>
 <p>Last: <%= @offer.walker.last_name %></p>
 <p>Phone: <%= @offer.walker.phone %></p>

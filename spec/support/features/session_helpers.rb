@@ -8,11 +8,5 @@ module Features
       expect(page).to have_content 'Sign Out'
       expect(page).to have_content 'hi there'
     end
-
-    def sign_out
-      expect(page).to have_content 'Sign Out'
-      click_on 'Sign Out'
-      expect(page).to have_no_content 'Sign Out'
-    end
   end
 end

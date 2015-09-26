@@ -10,7 +10,11 @@ class WalksController < ApplicationController
   end
 
   def new
-    @walk = Walk.new
+    if current_user.pups.empty?
+      redirect_to new_user_pup_path(current_user), notice:'Add a pup first'
+    else
+      @walk = Walk.new
+    end
   end
 
   def edit # mailer links 

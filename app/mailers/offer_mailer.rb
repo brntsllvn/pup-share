@@ -1,8 +1,8 @@
 class OfferMailer < ApplicationMailer
 
-  def offer(offer)
+  def offer_mailer(offer)
     @walker = offer.walker
-    @owner  = offer.owner
+    @owner  = offer.walk.owner
     @offer  = offer # need this in the mailer views
 
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'

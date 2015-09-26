@@ -5,12 +5,12 @@
 
 <% # elsif current_user is the offerer, then allow them to destroy their request %>
 <% elsif !walk.offers.where(walker_id: current_user.id).empty? %>
-<%= link_to 'Rescind Offer', [current_user, walk.offers.where(walker_id: current_user.id)], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
+<%= link_to 'Rescind Offer', [current_user, walk.offers.where(walker_id: current_user.id).first], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xs' %>
 
 <% # else current_user is just some other guy, then create a new request %>
 <% else %>
 <%= simple_form_for Offer.new, url: user_offers_path(current_user, 
-  offer: { walker_id: current_user, owner_id: walk.owner, walk_id: walk, status: 'pending'}), method: :post do |f| %>
+  offer: { walker_id: current_user, walk_id: walk, status: 'pending'}), method: :post do |f| %>
 <%= f.button :submit, 'Walk this pup!', class: 'btn btn-success btn-xs' %>
 <% end %>
 <% end %>
