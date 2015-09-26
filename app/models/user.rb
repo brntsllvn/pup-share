@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
       user.last_name  = auth[:info][:last_name],
       user.email      = auth[:info][:email],
       user.image      = auth[:info][:image],
+      user.headline   = auth[:info][:description],
       user.auth_hash  = auth
       user.save
     else

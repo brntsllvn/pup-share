@@ -42,15 +42,15 @@
             <% if walk.walker.nil? %>
             Nobody yet
             <% else %>
-            <%= link_to "#{walk.walker.first_name}", user_path(walk.walker) %>
+            <%= link_to "#{walk.pup.owner.first_name}", user_path(walk.walker) %>
             <% end %>
           </div>
 
           <div class="col-md-12">
             Offers
             <% walk.offers.each do |offer| %>
-            <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image'), user_path(offer.walker), label: 'some link' %>
-            
+            <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image'), user_path(offer.walker) %>
+            <%= offer.walker.headline %>
             <% end %>
           </div>
 
