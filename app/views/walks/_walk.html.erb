@@ -1,42 +1,63 @@
-<div class="booyah-box">
-  <div class="row">
-    <div class="col-md-3">
-      <p><strong>Pup Owner</strong></p>
-      <%= "#{walk.owner.email}" %>
-      <%= image_tag walk.owner.image, class: 'img-responsive' %>
-    </div>
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" 
+             data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'><%= "#{walk.pup.name} in #{distance_of_time_in_words walk.begin_time, DateTime.now}" %></a>
+        </h4>
+      </div><!-- <div class="panel-heading"> -->
 
-    <div class="col-md-3">
-      <p><strong>Pup</strong></p>
-      <%= "#{walk.pup.name}" %>
-      <%= image_tag walk.pup.pic, class: 'img-responsive' %>
-    </div>
+      <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse in">
+        <div class="panel-body"> 
 
-    <div class="col-md-3">
-      <p><strong>Walk</strong></p>
-      <p>Walk Begins: <%= walk.begin_time.to_formatted_s(:long_ordinal) %></p>
-      <p>Place: <%= walk.begin_location %></p>
-      <p>Walks Ends: <%= walk.end_time.to_formatted_s(:long_ordinal) %></p>
-      <p>Place: <%= walk.end_location %></p>
+          <!-------------->
+          <!---- DATA ---->
+          <!-------------->
 
-      <% if user_signed_in? %>
-      <%= render partial: 'walks/buttons', locals: { walk: walk } %>
-      <% else %>
-      <%= render partial: 'users/session_buttons' %>
-      <% end %>
-    </div>
+          <div class="col-md-1">
+            Owner
+            <%= link_to image_tag(walk.owner.image, class: 'img-responsive profile-image'), user_path(walk.owner) %>
+            <%= walk.owner.first_name %>
+          </div>
 
-    <div class="col-md-3">
-      <p><strong>Walker</strong></p>
-      <% if walk.offers.empty? %>
-      Nobody yet...
-      <%= image_tag "fallback/question_mark.jpg", class: 'img-responsive' %>
-      <% elsif !walk.walker.nil? %>
-      Hand-picked walker
-      <%= walk.walker.email %>
-      <%= image_tag walk.walker.pic %>
-      <% end %>
-    </div>
-  </div><!-- row -->
-</div><!-- booyah-box -->
-<br>
+          <div class="col-md-1">
+            Pup
+            <%= link_to image_tag(walk.pup.pic, class: 'img-responsive profile-image'), user_path(walk.owner) %>
+            <%= walk.pup.name %>
+          </div>
+
+          <div class="col-md-3">
+            Walk<br>
+            Begin: <%= walk.begin_time.to_formatted_s(:short) %><br>
+            Where: <%= walk.begin_location %><br>
+            End: <%= walk.end_time.to_formatted_s(:short) %><br>
+          </div>
+
+          <div class="col-md-3">
+            <% if walk.walker.nil? %>
+            Nobody yet
+            <% else %>
+            <%= link_to "#{walk.pup.owner.first_name}", user_path(walk.walker) %>
+            <% end %>
+          </div>
+
+          <div class="col-md-12">
+            Offers
+            <% walk.offers.each do |offer| %>
+            <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image'), user_path(offer.walker) %>
+            <%= offer.walker.headline %>
+            <% end %>
+          </div>
+
+          <div class="col-md-1">
+            <%= render partial: 'walks/buttons', locals: { walk: walk } %>
+          </div>
+
+          <!-------------->
+          <!-- END DATA -->
+          <!-------------->
+
+        </div><!-- <div class="panel-body"> -->
+      </div><!-- <div id="collapseOne" class="panel-collapse collapse in"> -->
+    </div><!-- <div class="panel panel-default"> -->
+  </div><!-- <div class="panel-group" id="accordion"> -->
