@@ -16,7 +16,6 @@ feature 'User offers to walk a pup' do
     create_walk
     # sign owner out
     click_on 'Sign Out'
-
     # sign walker in
     sign_in walker
     # offer

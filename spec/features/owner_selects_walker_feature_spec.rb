@@ -1,44 +1,30 @@
-# require 'rails_helper'
+require 'rails_helper'
 
-# feature 'Owner responds to walk offer:' do
+feature 'Owner selects walker' do
 
-#   let (:owner)  { create(:user) }
-#   let (:walker) { create(:user) }
+  let (:owner)  { create(:user) }
+  let (:walker) { create(:user) }
 
-#   background do
-#     # sign in
-#     sign_in(owner.email, owner.password)
-#     # creates a pup
-#     visit user_path(owner)
-#     click_on 'New Pup'
-#     expect(page).to have_content 'New Pup'
-#     fill_in 'Pup name', with: 'Ace'
-#     fill_in 'Pup breed', with: 'Lab'
-#     find(:css, "#pup_pup_gender_m").set(true)
-#     fill_in 'Pup age', with: 3.5
-#     fill_in 'Pup vet phone', with: '555-555-5555'
-#     choose "pup_spayed_neutered_true"
-#     click_on 'Create Pup'
-#     # creates a job
-#     click_on 'Post a Walk'
-#     expect(current_path).to eql(new_job_path)
-#     choose "job_pup_id_#{Pup.last.id}"
-#     fill_in 'Drop off location', with: 'some place'    
-#     select '2016', from: "job[drop_off_time(1i)]" 
-#     choose 'job_walk_duration_10'
-#     fill_in 'Pick up location', with: 'some other place'     
-#     click_on 'Create Job'
-#     # signs out
-#     click_on 'Sign Out'
-#     expect(page).to have_content 'Signed out successfully.'
-#   end
+  background do
+    # owner creates a pup and walk
+    sign_in owner
+    visit user_path(owner)
+    create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555')
+    visit walks_path
+    create_walk
+    click_on 'Sign Out'
+    # walker offers to walk
+    sign_in walker
+    click_on 'Walk a Pup' 
+    expect{click_on 'Walk this pup!'}.to change(Offer, :count).by (1)
+    click_on 'Sign Out'
+  end
 
-#   scenario 'Owner approves' do
-#     # sign in as walker
-#     sign_in(walker.email, walker.password)
-#     # offer to walk a pup
-#     click_on 'Walk a Pup'
-#     click_on 'Walk this pup!'
-#     expect(page).to have_content 'Offer to walk sent to the owner.'
-#   end
-# end 
+  scenario 'success' do
+    sign_in owner
+    visit user_upcoming_walks_path(owner)
+    # owner can see offer to walk
+    expect(page).to have_content(walker.uid)
+    
+  end
+end 

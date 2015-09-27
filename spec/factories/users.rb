@@ -14,7 +14,6 @@ FactoryGirl.define do
     provider 'linkedin'
     sequence(:uid) { |n| "linkedin_#{n}" }
     image 'dilbert.jpg'
-    headline "Miles Davis impersonator and avid reader"
-
+    headline 'Avid reader'
   end
 end
