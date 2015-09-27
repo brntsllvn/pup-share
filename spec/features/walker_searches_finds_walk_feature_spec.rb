@@ -29,9 +29,9 @@ feature 'Walker searches and finds a walk' do
       expect(current_path).to eql(walks_path)
       # see the walk/pup created above
       expect(page).to have_content 'Ace'
+      click_on 'Walk this pup!'
+      expect(page).to have_content 'Offer to walk sent to the owner'
+      expect(page).to have_content 'Rescind Offer'
     end
   end
-
-
-
 end
