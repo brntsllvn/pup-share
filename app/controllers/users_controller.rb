@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   def show
     @pups = @user.pups unless @user.pups.nil?
   end
+  
+  def upcoming_walks
+    @walks = current_user.walks.order(:begin_time)
+  end
 
   def new; end
 
