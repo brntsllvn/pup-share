@@ -26,6 +26,9 @@ feature 'Owner selects walker' do
     # owner can see offer
     expect(page).to have_content(walker.uid)
     # owner selects walker
-    
+    # TDD
+    # what should happen after an owner selects a walker?
+    # write the test
+    # write the code
   end
 end 
