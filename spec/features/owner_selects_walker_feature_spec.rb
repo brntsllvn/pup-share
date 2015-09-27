@@ -23,8 +23,9 @@ feature 'Owner selects walker' do
   scenario 'success' do
     sign_in owner
     visit user_upcoming_walks_path(owner)
-    # owner can see offer to walk
+    # owner can see offer
     expect(page).to have_content(walker.uid)
+    # owner selects walker
     
   end
 end 
