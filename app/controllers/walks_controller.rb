@@ -26,7 +26,7 @@ class WalksController < ApplicationController
     owner_id: @walk.user_id, # TODO: this is a hack, no need to store both user and owner
     end_location: @walk.begin_location # TODO: clumsy
     if @walk.save
-      redirect_to user_offers_path(current_user), notice: 'Walk created'
+      redirect_to user_upcoming_walks_path(current_user), notice: 'Walk created'
     else
       render :new
     end

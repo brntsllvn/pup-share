@@ -19,12 +19,14 @@ feature 'Create new walk' do
   end
 
   scenario 'success' do
-    sign_in owner
-    # create pup
-    visit user_path(owner)
-    create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555')
-    # create walk
-    create_walk
+    expect{
+      sign_in owner
+      # create pup
+      visit user_path(owner)
+      create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555')
+      # create walk
+      create_walk
+      }.to change(Walk, :count).by (1)
     expect(page).to have_content 'Walk created'
   end
 end

@@ -8,7 +8,8 @@ feature 'Walker searches and finds a walk' do
   background do
     sign_in owner
     click_on 'Profile & Pups'
-    create_pup('Ace','Lab','M',4,'555-5555')
+    create_pup('Ace','Lab','M',4,'555-555-5555')
+    expect(page).to have_content 'You created a pup'    
     create_walk
     expect(page).to have_content 'Walk created'
     click_on 'Sign Out'
