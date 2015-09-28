@@ -34,24 +34,33 @@
         </div>
 
         <div class="col-md-3">
+          Walker
           <% if walk.walker.nil? %>
           Nobody yet
           <% else %>
-          <%= link_to "#{walk.pup.owner.first_name}", user_path(walk.walker) %>
+          <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image'), user_path(walk.walker) %>
+          <%= walk.walker.first_name %>
           <% end %>
         </div>
 
         <div class="col-md-12">
           Offers
+          <% if walk.walker.nil? %>
+          
           <% walk.offers.each do |offer| %>
           <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image'), user_path(offer.walker) %>
           <%= offer.walker.first_name %>
           <%= offer.walker.last_name %>
           <%= offer.walker.headline %>
           <%= offer.walker.uid %>
+          <%= link_to "Accept offer", walk_path(offer.walk,
+  walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-xs' %>
+          <% end %>
+          
           <% end %>
         </div>
 
+        <br>
         <div class="col-md-1">
           <%= render partial: 'walks/buttons', locals: { walk: walk } %>
         </div>

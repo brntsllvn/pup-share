@@ -34,7 +34,7 @@ class WalksController < ApplicationController
 
   def update
     if @walk.update(walk_params)
-      redirect_to user_offers_path(current_user), notice: 'Walk updated'
+      redirect_to user_upcoming_walks_path(current_user), notice: 'Walk updated'
     else
       render :edit
     end

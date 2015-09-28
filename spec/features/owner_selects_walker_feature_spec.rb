@@ -23,12 +23,22 @@ feature 'Owner selects walker' do
   scenario 'success' do
     sign_in owner
     visit user_upcoming_walks_path(owner)
+    # owner has not chosen a walker yet
+    expect(page).to have_content('Nobody yet')
     # owner can see offer
-    expect(page).to have_content(walker.uid)
-    # owner selects walker
+    expect(page).to have_content(walker.uid) # TODO: change this to walker.first_name when issue resolved
+
     # TDD
-    # what should happen after an owner selects a walker?
-    # write the test
-    # write the code
+    expect(page).to have_content('Accept offer') # button
+    ## owner selects walker by clicking on button "Choose me"
+    click_on 'Accept offer'
+    ### see alert pop-up 
+    ### click 'OK' on pup up
+    ### owner confirms
+    expect(page).to have_content('Walk updated')
+    ## 'Nobody yet' disappears
+    expect(page).to have_no_content('Nobody yet')
+    ## 'Accept offer' disappears
+    expect(page).to have_no_content('Accept offer')
   end
 end 
