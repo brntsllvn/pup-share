@@ -26,7 +26,7 @@ feature 'Owner selects walker' do
     # owner has not chosen a walker yet
     expect(page).to have_content('Nobody yet')
     # owner can see offer
-    expect(page).to have_content(walker.uid) # TODO: change this to walker.first_name when issue resolved
+    expect(page).to have_content(walker.first_name)
 
     # TDD
     expect(page).to have_content('Accept offer') # button

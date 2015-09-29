@@ -9,9 +9,15 @@ class UsersController < ApplicationController
   def show
     @pups = @user.pups unless @user.pups.nil?
   end
-  
+
   def upcoming_walks
-    @walks = current_user.walks.order(:begin_time)
+    # TODO: order results once combined
+    walks = current_user.walks
+    offer_walks = []
+    current_user.offers.each do |offer|
+      offer_walks << offer.walk
+    end
+    @walks_plus_offers = (walks + offer_walks).uniq.sort_by{ |e| e[:begin_time] }
   end
 
   def new; end

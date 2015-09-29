@@ -52,7 +52,6 @@
           <%= offer.walker.first_name %>
           <%= offer.walker.last_name %>
           <%= offer.walker.headline %>
-          <%= offer.walker.uid %>
           <%= link_to "Accept offer", walk_path(offer.walk,
   walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-xs' %>
           <% end %>

@@ -9,7 +9,7 @@ class AuthController < ApplicationController
     User.find_or_create_by_hash(session[:userinfo])
     
     # Redirect after successfull auth
-    redirect_to '/', notice: "hi there"
+    redirect_to '/', notice: 'hi there'
   end
 
   def failure
