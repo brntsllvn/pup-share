@@ -7,7 +7,7 @@ class AuthController < ApplicationController
 
     # create user if one does not exist
     User.find_or_create_by_hash(session[:userinfo])
-
+    
     # Redirect after successfull auth
     redirect_to '/', notice: "hi there"
   end
