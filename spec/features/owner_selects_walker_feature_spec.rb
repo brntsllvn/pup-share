@@ -17,6 +17,9 @@ feature 'Owner selects walker' do
     sign_in walker
     click_on 'Walk a Pup' 
     expect{click_on 'Walk this pup!'}.to change(Offer, :count).by (1)
+    click_on 'My Upcoming Walks'
+    # 'Accept offer' button only visible to pup's owner
+    expect(page).to have_no_content('Accept offer') 
     click_on 'Sign Out'
   end
 
@@ -35,9 +38,9 @@ feature 'Owner selects walker' do
     ### puts page.driver.browser.alert.text, this does not really work
     # owner confirms
     expect(page).to have_content('Walk updated')
-    # 'Nobody yet' disappears
+    # 'Nobody yet', 'Accept offer', and 'Offers' disappear
     expect(page).to have_no_content('Nobody yet')
-    # 'Accept offer' disappears
     expect(page).to have_no_content('Accept offer')
+    expect(page).to have_no_content('Offers')
   end
 end 

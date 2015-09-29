@@ -44,18 +44,18 @@
         </div>
 
         <div class="col-md-12">
-          Offers
           <% if walk.walker.nil? %>
-          
+          Offers
           <% walk.offers.each do |offer| %>
           <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image'), user_path(offer.walker) %>
           <%= offer.walker.first_name %>
           <%= offer.walker.last_name %>
           <%= offer.walker.headline %>
-          <%= link_to "Accept offer", walk_path(offer.walk,
+          <% if offer.walk.owner == current_user %>
+          <%= link_to 'Accept offer', walk_path(offer.walk,
   walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-xs' %>
           <% end %>
-          
+          <% end %>
           <% end %>
         </div>
 
