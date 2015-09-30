@@ -11,10 +11,10 @@ class UsersController < ApplicationController
   end
 
   def upcoming_walks
-    walks = current_user.walks
+    walks = current_user.walks.where('begin_time > ?', Time.now) 
     offer_walks = []
     current_user.offers.each do |offer|
-      offer_walks << offer.walk
+      offer_walks << offer.walk if offer.walk.begin_time > Time.now 
     end
     @walks_plus_offers = (walks + offer_walks).uniq.sort_by{ |e| e[:begin_time] }
   end
