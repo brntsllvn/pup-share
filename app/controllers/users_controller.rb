@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def upcoming_walks
-    # TODO: order results once combined
     walks = current_user.walks
     offer_walks = []
     current_user.offers.each do |offer|

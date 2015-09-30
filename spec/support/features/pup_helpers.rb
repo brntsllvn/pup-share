@@ -17,7 +17,7 @@ module Features
       expect(current_path).to eql(new_walk_path)
       fill_in 'Where?', with: 'Your desk'
       choose "walk_pup_id_#{Pup.last.id}"  
-      select '2016', from: "walk[begin_time(1i)]" 
+      select Time.now.year + 1, from: "walk[begin_time(1i)]" 
       choose 'walk_duration_15'    
       click_on 'Create Walk'
     end
