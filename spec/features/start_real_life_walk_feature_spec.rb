@@ -31,14 +31,12 @@ feature 'Start real life walk' do
   scenario 'success' do
     # walk begins in 5 minutes
     # owner starts walk
-    visit 'My Upcoming Walks'
+    click_on 'My Upcoming Walks'
     click_on 'Start Walk'
-    expect(page).to have_content("Waiting for #{walker.first_name} to initiate the walk on their end")
     click_on 'Sign Out'
     # walker starts walk
     sign_in walker
-    visit 'My Upcoming Walks'
-    expect(page).to have_content("#{owner.first_name} initiated the walk on their end. Waiting for you now.")
+    click_on 'My Upcoming Walks'
     click_on 'Start Walk'
     # walk begins in the real world
     expect(page).to have_content('Walk officially started')

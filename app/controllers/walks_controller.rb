@@ -34,9 +34,9 @@ class WalksController < ApplicationController
 
   def update
     if @walk.update(walk_params)
-      redirect_to user_upcoming_walks_path(current_user), notice: 'Walk updated'
+      redirect_to :back, notice: 'Walk updated'
     else
-      render :edit
+      redirect_to :back, notice: 'Something went wrong'
     end
   end
 

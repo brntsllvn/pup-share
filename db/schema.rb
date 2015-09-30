@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150926230827) do
+ActiveRecord::Schema.define(version: 20150930175805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,8 +88,12 @@ ActiveRecord::Schema.define(version: 20150926230827) do
     t.integer  "walker_id"
     t.integer  "pup_id"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "started_by_owner",  default: false
+    t.boolean  "started_by_walker", default: false
+    t.boolean  "ended_by_owner",    default: false
+    t.boolean  "ended_by_walker",   default: false
   end
 
 end
