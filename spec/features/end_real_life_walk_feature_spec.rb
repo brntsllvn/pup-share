@@ -26,21 +26,31 @@ feature 'Start real life walk' do
     sign_in owner
     visit user_upcoming_walks_path(owner)
     click_on 'Accept offer'
-  end
-
-  scenario 'success' do
     # walk begins in 5 minutes
     # owner starts walk
     click_on 'My Upcoming Walks'
     click_on 'Start Walk'
-    expect(page).to have_content('End Walk') # button
     click_on 'Sign Out'
     # walker starts walk
     sign_in walker
     click_on 'My Upcoming Walks'
     click_on 'Start Walk'
-    expect(page).to have_content('End Walk') # button
     # walk begins in the real world
-    expect(page).to have_content('Walk officially started')
+  end
+
+  scenario 'success' do
+    # walker ends walk
+    visit root_path
+    click_on 'My Upcoming Walks'
+    click_on 'End Walk'    
+    expect(page).to have_content('Walk updated')
+    click_on 'Sign Out'
+    # owner ends walk
+    sign_in owner
+    click_on 'My Upcoming Walks'
+    click_on 'End Walk'
+    expect(page).to have_content('Walk updated')
+    # walk concludes
+    expect(page).to have_content('Walk officially ended')
   end
 end
