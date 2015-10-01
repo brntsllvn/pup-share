@@ -4,6 +4,12 @@ body {
   background: image-url('fabric_plaid.png');
 }
 
+#nav-sign-in {
+  max-width: auto; 
+  max-height: auto;
+  padding: 5px;
+}
+
 .footer {
   position:relative;
   bottom:0;
