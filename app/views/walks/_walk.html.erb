@@ -2,8 +2,9 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" 
-           data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'><%= "#{walk.id} #{walk.pup.name} in #{distance_of_time_in_words walk.begin_time, DateTime.now}" %></a>
+        <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
+          <%= "#{walk.id} #{walk.pup.name} in #{distance_of_time_in_words walk.begin_time, DateTime.now}" %>
+        </a>
       </h4>
     </div><!-- <div class="panel-heading"> -->
 
@@ -34,36 +35,36 @@
         </div>
 
         <div class="col-md-3">
-          
+
           Walker
           <% if walk.walker.nil? %>
-              Nobody yet
+          Nobody yet
           <% else %>
-              <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image'), user_path(walk.walker) %>
-              <%= walk.walker.first_name %>
-              <br>
-              <% if walk.begin_time - Time.now < 60.minutes %>
-                  <% if walk.owner == current_user %>    
-                      <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }), method: :put, class: 'btn btn-success btn-xl' %>
-                      <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_owner: true }),   method: :put, class: 'btn btn-danger btn-xl' %>
-                  <% elsif walk.walker == current_user %>   
-                      <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
-                      <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_walker: true }),   method: :put, class: 'btn btn-danger btn-xl' %>
-                  <% end %>  
-              <% end %>
-          
-              <% if walk.started_by_owner && walk.started_by_walker %>    
-                  Walk officially started
-              <% end %>
-          
-              <br>
-          
-              <% if walk.ended_by_owner && walk.ended_by_walker %>    
-                  Walk officially ended
-              <% end %>
-          
+          <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image'), user_path(walk.walker) %>
+          <%= walk.walker.first_name %>
+          <br>
+          <% if walk.begin_time - Time.now < 60.minutes %>
+          <% if walk.owner == current_user %>    
+          <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }), method: :put, class: 'btn btn-success btn-xl' %>
+          <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_owner: true }),   method: :put, class: 'btn btn-danger btn-xl' %>
+          <% elsif walk.walker == current_user %>   
+          <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
+          <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_walker: true }),   method: :put, class: 'btn btn-danger btn-xl' %>
+          <% end %>  
           <% end %>
-          
+
+          <% if walk.started_by_owner && walk.started_by_walker %>    
+          Walk officially started
+          <% end %>
+
+          <br>
+
+          <% if walk.ended_by_owner && walk.ended_by_walker %>    
+          Walk officially ended
+          <% end %>
+
+          <% end %>
+
         </div>
 
         <div class="col-md-12">
