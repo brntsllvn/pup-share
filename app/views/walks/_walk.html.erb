@@ -3,7 +3,9 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
-          <%= "#{walk.id} #{walk.pup.name} in #{distance_of_time_in_words walk.begin_time, DateTime.now}" %>
+          <%= "##{walk.id}" %>
+          <%= image_tag walk.pup.pic, class: 'img-responsive profile-image' %>
+          <%= "#{walk.pup.name} in #{distance_of_time_in_words walk.begin_time, DateTime.now}" %>
         </a>
       </h4>
     </div><!-- <div class="panel-heading"> -->
