@@ -5,6 +5,7 @@
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
           <%= image_tag walk.pup.pic, class: 'img-responsive profile-image pull-left' %>
           <h4><%= walk.pup.name %></h4>
+          <p><%= walk.id %></p> <!-- TODO: for testing; to be removed -->
           <p><%= distance_of_time_in_words walk.begin_time, DateTime.now %></p>
           <p><%= walk.begin_location %></p>
         </a>

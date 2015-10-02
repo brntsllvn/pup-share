@@ -4,6 +4,7 @@ FactoryGirl.define do
     status Faker::Lorem.word
     
     association :user
+    association :walk  
   end
 
 end

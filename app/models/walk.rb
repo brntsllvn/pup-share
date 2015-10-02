@@ -7,6 +7,7 @@ class Walk < ActiveRecord::Base
   validates :pup_id,                presence: true
 
   belongs_to :pup
+  belongs_to :user
   belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
