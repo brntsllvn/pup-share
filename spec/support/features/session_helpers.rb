@@ -7,6 +7,7 @@ module Features
       click_link 'nav-sign-in' # image/button: Sign in with LinkedIn
       expect(page).to have_content 'Sign Out'
       expect(page).to have_content 'hi there'
+      visit user_path(user)
     end
   end
 end

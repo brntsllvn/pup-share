@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :pups
     resources :offers
     get 'upcoming_walks'
+    get 'past_walks'
   end
 
   resources :walks

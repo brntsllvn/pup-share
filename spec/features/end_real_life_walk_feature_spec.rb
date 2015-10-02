@@ -8,9 +8,8 @@ feature 'Start real life walk' do
   background do
     # owner creates pup and walk
     sign_in owner
-    visit user_path(owner)
     create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555')
-    visit walks_path
+    click_on 'Walk a Pup'
     create_walk
     # walk not yet visible b/c too far in the future
     expect(page).to have_no_content('Start Walk')
@@ -24,7 +23,7 @@ feature 'Start real life walk' do
     click_on 'Sign Out'
     # owner accepts offer
     sign_in owner
-    visit user_upcoming_walks_path(owner)
+    click_on 'My Upcoming Walks'
     click_on 'Accept offer'
     # walk begins in 5 minutes
     # owner starts walk
@@ -52,5 +51,18 @@ feature 'Start real life walk' do
     expect(page).to have_content('Walk updated')
     # walk concludes
     expect(page).to have_content('Walk officially ended')
+    Walk.last.update_attributes(end_time: Time.now)
+    # walk moved to 'My Past Walks'
+    click_on 'My Upcoming Walks' # refresh the page
+    expect(page).to have_no_content('Ace')
+    click_on 'My Past Walks'
+    expect(page).to have_content('Ace')
+    click_on 'Sign Out'
+    # walker: check views
+    sign_in walker
+    click_on 'My Upcoming Walks'
+    expect(page).to have_no_content('Ace')
+    click_on 'My Past Walks'
+    expect(page).to have_content('Ace')
   end
 end
