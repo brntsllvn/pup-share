@@ -35,34 +35,22 @@ FactoryGirl.define do
       end
     end # :user_with_offers
 
-    factory :user_with_upcoming_walks do
-      transient do
-        upcoming_walks_count 5
-      end
-      after(:create) do |user, evaluator|
-        create_list(:upcoming_walk, evaluator.upcoming_walks_count, user: user)
-      end
-    end # :user_with_upcoming_walks
-
-    factory :user_with_past_walks do
-      transient do
-        past_walks_count 5
-      end
-      after(:create) do |user, evaluator|
-        create_list(:past_walk, evaluator.past_walks_count, user: user)
-      end
-    end # :user_with_past_walks
-
-    factory :user_w_upcoming_walks_and_offers do
+    factory :user_w_walks_and_offers do
       transient do
         upcoming_walks_count 2
+        past_walks_count 2
         offers_count 3
       end
       after(:create) do |user, evaluator|
         create_list(:upcoming_walk, evaluator.upcoming_walks_count, user: user)
         create_list(:offer, evaluator.offers_count, user: user)
-      end 
-    end # :user_w_upcoming_walks_and_offers
+        # build_list does not support skipping validations. Here is a hack: 
+        3.times do
+          w = build(:past_walk, user: user)
+          w.save validate: false
+        end
+      end
+    end # :user_w_walks_and_offer_of_nonspecific_times
 
   end # :user
 

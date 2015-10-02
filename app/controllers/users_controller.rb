@@ -11,23 +11,11 @@ class UsersController < ApplicationController
   end
 
   def upcoming_walks
-    # TODO: put this logic in the model
-    walks = current_user.walks.where('end_time > ?', Time.now) 
-    offer_walks = []
-    current_user.offers.each do |offer|
-      offer_walks << offer.walk if offer.walk.end_time > Time.now
-    end
-    @walks_plus_offers = (walks + offer_walks).uniq.sort_by{ |e| e[:begin_time] }
+    @walks_plus_offers = current_user.upcoming_walks_and_offers
   end
 
   def past_walks
-    # TODO: put this logic in the model
-    walks = current_user.walks.where('end_time < ?', Time.now) 
-    offer_walks = []
-    current_user.offers.each do |offer|
-      offer_walks << offer.walk if offer.walk.end_time < Time.now
-    end
-    @walks_plus_offers = (walks + offer_walks).uniq.sort_by{ |e| e[:begin_time] }
+    @walks_plus_offers = current_user.past_walks_and_offers
   end
 
   def new; end
