@@ -10,5 +10,9 @@ class Walk < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
+
+  def self.walker_or_offers
+    
+  end
   
 end
