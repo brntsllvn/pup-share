@@ -6,6 +6,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
   </head>
+  
   <body>
 
     <!-- start navbar -->
@@ -61,15 +62,11 @@
       </div>     
     </div>
 
-    <br>
-    <br>
-    <br>
-
     <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
-      <p><%= link_to 'Contact', new_visitor_message_path %></p>      
-      <p><%= link_to 'About', about_path %></p>
-      <p><%= link_to 'Terms of Service', terms_of_service_path %></p>
-      <p><%= link_to 'Privacy Policy', privacy_policy_path %></p>
+      <p class='pull-left'><%= link_to 'Contact', new_visitor_message_path %></p>      
+      <p class='pull-left'><%= link_to 'About', about_path %></p>
+      <p class='pull-right'><%= link_to 'Terms of Service', terms_of_service_path %></p>
+      <p class='pull-right'><%= link_to 'Privacy', privacy_policy_path %></p>
       <br>
     </div>
 

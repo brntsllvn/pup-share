@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
-          <%= image_tag walk.pup.pic, class: 'img-responsive profile-image pull-left' %>
+          <%= image_tag walk.pup.pic, class: 'img-responsive profile-image pull-left img-circle' %>
           <h4><%= walk.pup.name %></h4>
           <p><%= walk.id %></p> <!-- TODO: for testing; to be removed -->
           <p><%= distance_of_time_in_words walk.begin_time, DateTime.now %></p>
@@ -21,13 +21,13 @@
 
         <div class="col-md-1">
           Owner
-          <%= link_to image_tag(walk.owner.image, class: 'img-responsive profile-image'), user_path(walk.owner) %>
+          <%= link_to image_tag(walk.owner.image, class: 'img-responsive profile-image img-circle'), user_path(walk.owner) %>
           <%= walk.owner.first_name %>
         </div>
 
         <div class="col-md-1">
           Pup
-          <%= link_to image_tag(walk.pup.pic, class: 'img-responsive profile-image'), user_path(walk.owner) %>
+          <%= link_to image_tag(walk.pup.pic, class: 'img-responsive profile-image img-circle'), user_path(walk.owner) %>
           <%= walk.pup.name %>
         </div>
 
@@ -44,7 +44,7 @@
           <% if walk.walker.nil? %>
           Nobody yet
           <% else %>
-          <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image'), user_path(walk.walker) %>
+          <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image img-circle'), user_path(walk.walker) %>
           <%= walk.walker.first_name %>
           <br>
           <% if walk.begin_time - Time.now < 60.minutes %>
@@ -75,7 +75,7 @@
           <% if walk.walker.nil? %>
           Offers
           <% walk.offers.each do |offer| %>
-          <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image'), user_path(offer.walker) %>
+          <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image img-circle'), user_path(offer.walker) %>
           <%= offer.walker.first_name %>
           <%= offer.walker.last_name %>
           <%= offer.walker.headline %>
