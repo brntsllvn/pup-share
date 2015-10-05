@@ -6,20 +6,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
   </head>
-  
+
   <body>
 
     <!-- start navbar -->
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
+        
         <div class="navbar-header">
+          
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <span class="sr-only">Toggle Navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span> 
           </button>
-          <%= link_to image_tag('logo.png'), root_path, class: 'logo' %>
           <%= link_to 'Pup Share', root_path, class: 'navbar-brand'  %>
         </div> <!-- end div class="navbar-header" -->
 
