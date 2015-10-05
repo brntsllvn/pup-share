@@ -32,7 +32,6 @@
           <ul class="nav navbar-nav navbar-right"> 
             <% if user_signed_in? %>
             <li><%= link_to 'My Upcoming Walks', user_upcoming_walks_path(current_user) %> 
-            <li><%= link_to 'My Past Walks', user_past_walks_path(current_user) %> 
             <li><%= link_to 'Profile & Pups', user_path(current_user) %> 
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             <% else %>

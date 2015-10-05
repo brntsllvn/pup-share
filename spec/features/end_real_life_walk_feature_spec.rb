@@ -55,14 +55,14 @@ feature 'Start real life walk' do
     # walk moved to 'My Past Walks'
     click_on 'My Upcoming Walks' # refresh the page
     expect(page).to have_no_content('Ace')
-    click_on 'My Past Walks'
+    click_on 'Past Walks'
     expect(page).to have_content('Ace')
     click_on 'Sign Out'
     # walker: check views
     sign_in walker
     click_on 'My Upcoming Walks'
     expect(page).to have_no_content('Ace')
-    click_on 'My Past Walks'
+    click_on 'Past Walks'
     expect(page).to have_content('Ace')
   end
 end
