@@ -7,14 +7,13 @@ class AuthController < ApplicationController
 
     # create user if one does not exist
     User.find_or_create_by_hash(session[:userinfo])
-    
+
     # Redirect after successfull auth
-    redirect_to '/', notice: 'hi there'
+    redirect_to user_upcoming_walks_path(current_user), notice: 'hi there'
   end
 
   def failure
-    # show a failure page or redirect to an error page
-    @error_msg = request.params['message']
+    redirect_to '/', alert: request.params['message']
   end
 
   def destroy

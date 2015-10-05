@@ -4,11 +4,11 @@ feature 'Create new walk' do
 
   let (:owner) { create(:user) }
 
-  scenario 'fails when not signed in' do
-    visit '/'
-    click_on 'Post a Walk'
-    expect(page).to have_content 'Sign in, please'
-  end
+  #   scenario 'fails when not signed in' do
+  #     visit '/'
+  #     click_on 'Post a Walk'
+  #     expect(page).to have_content 'Sign in, please'
+  #   end
 
   scenario 'fails when no pup' do
     visit '/'

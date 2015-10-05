@@ -31,7 +31,6 @@ p {
 }
 
 .btn-transparent {
-  display: inline-block;
   max-width: 100%;
   background-color: transparent;
   border: 1px solid white;
@@ -39,4 +38,10 @@ p {
   border-radius: 10px;
   text-decoration: none;
   color: white;
+}
+
+.contact {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
 }

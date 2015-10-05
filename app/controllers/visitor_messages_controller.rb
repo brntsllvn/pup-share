@@ -8,7 +8,7 @@ class VisitorMessagesController < ApplicationController
     @visitor_message = VisitorMessage.new(visitor_message_params)
     if @visitor_message.save
       VisitorMessageMailer.visitor_message_mailer(@visitor_message).deliver_now 
-      redirect_to root_path, notice: 'Thanks for reaching out!'
+      redirect_to root_path, notice: 'Thanks for the message'
     else
       render :new
     end
