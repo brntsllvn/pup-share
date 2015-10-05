@@ -8,7 +8,6 @@ body {
 
 .box {
   background-color: rgba(0,0,0,0);
-  opacity: 1;
   padding: 2%;
   width: 80%;
   margin: 5% auto;
@@ -29,4 +28,15 @@ h1 {
 p {
   font-weight: 100;
   font-size: 200%;
+}
+
+.btn-transparent {
+  display: inline-block;
+  max-width: 100%;
+  background-color: transparent;
+  border: 1px solid white;
+  padding: 0 8px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
 }

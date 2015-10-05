@@ -10,9 +10,13 @@
     <div class='container-fluid'>
       <div class='.col-xs-12 .col-md-8'>
         <div class='box'>
-          <h1>Welcome to PupShare</h1>
-          <p>Walk Dogs - Make Friends</p>
-          <br><br>
+          <h1>PupShare</h1>
+          <p>Walk a Pup - Build Your Network</p>
+          <% if !user_signed_in? %>
+          <p><%= link_to image_tag('sign_in_w_linkedin.png'), "/auth/linkedin", id: 'nav-sign-in' %></p>
+          <% else %>
+          <p><%= link_to 'My Upcoming Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent' %></p>
+          <% end %>
         </div>
       </div>
     </div> 
