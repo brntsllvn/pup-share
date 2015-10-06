@@ -66,14 +66,14 @@
 
         <div class="col-md-12">
           <% if !walk.walker %>
-          Offers
-          <% walk.offers.each do |offer| %>
-          <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image img-circle'), user_path(offer.walker) %>
-          <%= offer.walker.first_name %>
-          <%= offer.walker.last_name %>
-          <%= offer.walker.headline %>
-          <%= link_to 'Accept offer', walk_path(offer.walk, walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-xs' if policy(offer.walk).owner_current_user? %>
-          <% end %>
+            Offers
+            <% walk.offers.each do |offer| %>
+            <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image img-circle'), user_path(offer.walker) %>
+            <%= offer.walker.first_name %>
+            <%= offer.walker.last_name %>
+            <%= offer.walker.headline %>
+            <%= link_to 'Accept offer', walk_path(offer.walk, walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-xs' if policy(offer.walk).owner_current_user? %>
+            <% end %>
           <% end %>
         </div>
 
