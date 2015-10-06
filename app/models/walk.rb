@@ -12,8 +12,9 @@ class Walk < ActiveRecord::Base
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
 
-  def coming_up?(minutes)
-    return self.begin_time - Time.now < minutes.minutes
+  # TODO: change 600000 to a reasonable number in prod
+  def coming_up?
+    return self.begin_time - Time.now < 600000.minutes
     false
   end
     
