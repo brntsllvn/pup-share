@@ -2,6 +2,7 @@ require 'codeclimate-test-reporter'
 CodeClimate::TestReporter.start
 
 require 'capybara/rspec'
+require 'pundit/rspec'
 
 RSpec.configure do |config|
 
