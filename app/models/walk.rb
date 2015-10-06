@@ -17,4 +17,12 @@ class Walk < ActiveRecord::Base
     false
   end
   
+  def owner_signed_in?
+    
+  end
+  
+  def walker_signed_in?
+    
+  end
+  
 end
