@@ -52,3 +52,5 @@ gem 'daemons'
 gem 'date_validator' # allows, uh, validation of dates
 
 gem 'omniauth-linkedin-oauth2' # authentication with Linkedin
+
+gem 'pundit' # authorization from the creators of Capybara

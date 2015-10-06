@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base    
-  # Prevent CSRF attacks by raising an exception
+  include Pundit
   protect_from_forgery with: :exception
 
   helper_method :current_user

@@ -16,13 +16,5 @@ class Walk < ActiveRecord::Base
     return self.begin_time - Time.now < minutes.minutes
     false
   end
-  
-  def owner_signed_in?
     
-  end
-  
-  def walker_signed_in?
-    
-  end
-  
 end
