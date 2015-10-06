@@ -24,7 +24,7 @@
           <h1>PupShare</h1>
           <p>Walk a Pup - Build Your Network</p>
           <% if !user_signed_in? %>
-          <p><%= link_to image_tag('sign_in_w_linkedin.png'), "/auth/linkedin", id: 'nav-sign-in' %></p>
+          <p><%= link_to 'Sign in with Linkedin', "/auth/linkedin", class: 'btn-transparent' %></p>
           <% else %>
           <p><%= link_to 'My Upcoming Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent' %></p>
           <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent' %></p>

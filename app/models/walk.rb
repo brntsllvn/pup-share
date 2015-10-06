@@ -12,4 +12,9 @@ class Walk < ActiveRecord::Base
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
 
+  def coming_up?(minutes)
+    return self.begin_time - Time.now < minutes.minutes
+    false
+  end
+  
 end

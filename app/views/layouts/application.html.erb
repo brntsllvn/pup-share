@@ -35,7 +35,7 @@
             <li><%= link_to 'Profile & Pups', user_path(current_user) %> 
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             <% else %>
-            <li><%= link_to image_tag('sign_in_w_linkedin.png'), "/auth/linkedin", id: 'nav-sign-in' %></li>
+            <li><%= link_to 'Sign in with Linkedin', "/auth/linkedin" %></li>
             <% end %>          
           </ul>
         </div> <!-- end div class="collapse navbar-collapse" -->
@@ -66,7 +66,6 @@
       <p class='pull-left'><%= link_to 'Contact', new_visitor_message_path %></p>
       <p class='pull-right'><%= link_to 'Terms of Service', terms_of_service_path %></p>
       <p class='pull-left'><%= link_to 'About', about_path %></p>
-      <p class='pull-right'><%= link_to 'Privacy', privacy_policy_path %></p>
       <br>
     </div>
 
