@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   serialize :auth_hash, Hash
 
   has_many :walks, dependent: :destroy
+#     has_many :walking_walks, class_name: Walk, as: "walker", dependent: :destroy
+#     has_many :owning_walks, class_name: Walk, as: "owner", dependent: :destroy 
   has_many :pups, dependent: :destroy
   has_many :offers, dependent: :destroy
 

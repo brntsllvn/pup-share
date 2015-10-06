@@ -3,7 +3,7 @@
 
 <br>
 
-<div class="form-inputs col-md-3">
+<div class="form-inputs col-md-2">
   <%= f.input :begin_location, label: 'Where?' %>
 </div>
 
@@ -15,20 +15,35 @@
   <%= link_to 'New pup', new_user_pup_path(current_user), class: 'btn btn-primary' %>
 </div>
 
-<div class="form-inputs col-md-3">
-  <%= f.input :begin_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 5, start_year: Time.now.year, end_year: Time.now.year + 1 %>
+<!-- <div class="form-inputs col-md-3">
+<div class='input-group date' id='datetimepicker1'>
+<input type='text' name='walk[begin_time]' class="form-control" /> <!-- TODO: seems like a hack to me, not leverging rails form helpers -->
+<%#= f.input :begin_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 5, start_year: Time.now.year, end_year: Time.now.year + 1 %>
+<!--     <span class="input-group-addon">
+<span class="glyphicon glyphicon-calendar"></span>
+</span>
+</div>
+</div> -->
+
+<div class="form-inputs col-md-2">
+  <%= f.input :begin_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 15, start_year: Time.now.year, end_year: Time.now.year + 1 %>
 </div>
 
 <div class="form-inputs col-md-2">
   <%= f.input :duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false, checked: '15' %>
 </div>
 
-<div class="form-actions col-md-2">
+<div class="form-actions col-md-12">
   <%= f.button :submit, class: 'btn btn-success'%>
 </div>
 
 <% end %>
 
-
+<script type="text/javascript">
+  $(function () {
+    $('#datetimepicker1').datetimepicker({
+    });
+  });
+</script>
 
 

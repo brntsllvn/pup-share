@@ -13,6 +13,9 @@ gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease
 
 gem 'simple_form'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+
 gem 'carrierwave-aws' # picture uploading
 gem 'mini_magick'
 

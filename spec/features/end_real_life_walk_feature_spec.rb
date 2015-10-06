@@ -51,7 +51,7 @@ feature 'Start real life walk' do
     expect(page).to have_content('Walk updated')
     # walk concludes
     expect(page).to have_content('Walk officially ended')
-    Walk.last.update_attributes(end_time: Time.now)
+    Walk.last.update_attributes(end_time: Time.now) # cheating: code smell...maybe look for gem
     # walk moved to 'My Past Walks'
     click_on 'My Upcoming Walks' # refresh the page
     expect(page).to have_no_content('Ace')
