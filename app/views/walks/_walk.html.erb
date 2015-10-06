@@ -42,31 +42,31 @@
 
           Walker
           <% if walk.walker %>
-            <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image img-circle'), user_path(walk.walker) %>
-            <%= walk.walker.first_name %>
-            <br>
-            <% if walk.coming_up? 60 %>
-              <% if walk.owner == current_user %>    
-              <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }), method: :put, class: 'btn btn-success btn-xl' %>
-              <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_owner: true }),   method: :put, class: 'btn btn-danger btn-xl' %>
-              <% elsif walk.walker == current_user %>   
-              <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
-              <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_walker: true }),   method: :put, class: 'btn btn-danger btn-xl' %>
-              <% end %>  
-            <% end %>
+          <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image img-circle'), user_path(walk.walker) %>
+          <%= walk.walker.first_name %>
+          <br>
+          
+          <% if walk.coming_up? 60000000 %> <!-- TODO: for view testing, reduce to 15 min in prod %> -->
 
-            <% if walk.started_by_owner && walk.started_by_walker %>    
-              Walk officially started
-            <% end %>
+          <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }),  method: :put, class: 'btn btn-success btn-xl' if policy(walk).owner_update_start? %>
+          <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_owner: true }),    method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).owner_update_end? %>
+          <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' if policy(walk).walker_update_start? %>
+          <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_walker: true }),   method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).walker_update_end? %>
+
+          <% end %>
+
+          <% if walk.started_by_owner && walk.started_by_walker %>    
+          Walk officially started
+          <% end %>
 
           <br>
 
-            <% if walk.ended_by_owner && walk.ended_by_walker %>    
-              Walk officially ended
-            <% end %>
-                   
+          <% if walk.ended_by_owner && walk.ended_by_walker %>    
+          Walk officially ended
+          <% end %>
+
           <% else %>
-            Nobody yet
+          Nobody yet
           <% end %>
 
         </div>

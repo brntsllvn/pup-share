@@ -42,7 +42,7 @@ class WalksController < ApplicationController
 
   def destroy
     @walk.destroy
-    redirect_to user_offers_path(current_user), notice: 'Walk destroyed'
+    redirect_to user_upcoming_walks_path(@walk.owner), notice: 'Walk destroyed'
   end
 
   private
