@@ -1,6 +1,6 @@
 <div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
+  <div class='<%="panel panel-default"%>'>
+    <div class='<%="panel-heading #{walk.owner == current_user ? 'walker' : 'owner'}" %>'>
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
           <%= image_tag walk.pup.pic, class: 'img-responsive profile-image pull-left img-circle' %>
