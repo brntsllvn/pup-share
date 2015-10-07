@@ -58,8 +58,19 @@ div.panel-heading.owner {
 }
 
 .img-circle {
-  border-radius: 25px;
+  border-radius: 25%;
   margin: 25px;
+}
+
+.offer-image {
+  max-height: 50px; 
+  max-width: 50px;
+  border-radius: 25%;
+  padding: 0px; 
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
 }
 
 

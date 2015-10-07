@@ -8,6 +8,8 @@
           <p><%= walk.id %></p> <!-- TODO: for testing; to be removed -->
           <p><%= distance_of_time_in_words walk.begin_time, DateTime.now %></p>
           <p><%= walk.begin_location %></p>
+          <p class='pull-right'><%= 'Walk officially started' if policy(walk).started? %></p>
+          <p class='pull-right'><%= 'Walk officially ended'   if policy(walk).ended?   %></p>
         </a>
       </h4>
     </div><!-- <div class="panel-heading"> -->
@@ -19,68 +21,73 @@
         <!---- DATA ---->
         <!-------------->
 
-        <div class="col-md-1">
-          Owner
-          <%= link_to image_tag(walk.owner.image, class: 'img-responsive profile-image img-circle'), user_path(walk.owner) %>
-          <%= walk.owner.first_name %>
-        </div>
+        <h3>Details</h3>
 
-        <div class="col-md-1">
-          Pup
-          <%= link_to image_tag(walk.pup.pic, class: 'img-responsive profile-image img-circle'), user_path(walk.owner) %>
-          <%= walk.pup.name %>
-        </div>
+        <!-- start Details table -->
+        <table class="table">
+          <tr>
+            <th>Owner</th>
+            <th>Pup</th>
+            <th>Walk</th>
+            <th>Walker</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td>
+              <%= walk.owner.first_name %>
+              <%= link_to image_tag(walk.owner.image, class: 'img-responsive offer-image'), user_path(walk.owner) %>
+            </td>
+            <td>
+              <%= walk.pup.name %>
+              <%= link_to image_tag(walk.pup.pic, class: 'img-responsive offer-image'), user_path(walk.owner) %>
+            </td>
+            <td>          
+              Begin: <%= walk.begin_time.to_formatted_s(:short) %><br>
+              Where: <%= walk.begin_location %><br>
+              End:   <%= walk.end_time.to_formatted_s(:short) %><br>
+            </td>
+            <td>
+              <% if !walk.walker %>
+              Nobody yet
+              <% else %>
+              <%= walk.walker.first_name %>
+              <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image img-circle'), user_path(walk.walker) %>
+            </td>
+            <td>
+              something goes here
+              <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }),  method: :put, class: 'btn btn-success btn-xl' if policy(walk).owner_update_start? %>
+              <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_owner: true }),    method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).owner_update_end? %>
+              <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' if policy(walk).walker_update_start? %>
+              <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_walker: true }),   method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).walker_update_end? %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
+        <!-- end Details table -->
 
-        <div class="col-md-3">
-          Walk<br>
-          Begin: <%= walk.begin_time.to_formatted_s(:short) %><br>
-          Where: <%= walk.begin_location %><br>
-          End:   <%= walk.end_time.to_formatted_s(:short) %><br>
-        </div>
+        <% if !walk.walker %>
 
-        <div class="col-md-3">
+        <h3>Offers</h3>
 
-          Walker
-          <% if walk.walker %>
-          <%= link_to image_tag(walk.walker.image, class: 'img-responsive profile-image img-circle'), user_path(walk.walker) %>
-          <%= walk.walker.first_name %>
+        <table class="table">
+          <% walk.offers.each do |offer| %>
+          <tr>
+            <td><%= link_to image_tag(offer.walker.image, class: 'img-responsive offer-image'), user_path(offer.walker) %></td>
+            <td><%= "#{offer.walker.first_name} #{offer.walker.first_name}" %></td>
+            <td><%= offer.walker.headline %></td>
+            <td><%= "#{offer.walker.address_city}, #{offer.walker.address_state}" %></td>
+            <td><%= link_to 'Accept offer', walk_path(offer.walk, walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-lg' if policy(offer.walk).owner_current_user? %></td>
+          </tr>
+        </table>
+        <% end %><!-- end walk.offers loop -->
+        <% end %><!-- end !walk.walker if-stmt -->
 
-          <%= walk.started_by_owner  %>
-          <%= walk.ended_by_owner    %>
-          <%= walk.started_by_walker %>
-          <%= walk.ended_by_owner    %>
 
-          <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }),  method: :put, class: 'btn btn-success btn-xl' if policy(walk).owner_update_start? %>
-          <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_owner: true }),    method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).owner_update_end? %>
-          <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' if policy(walk).walker_update_start? %>
-          <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_walker: true }),   method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).walker_update_end? %>
-
-          <%= 'Walk officially started' if policy(walk).started? %>
-          <%= 'Walk officially ended'   if policy(walk).ended?   %>
-
-          <% else %>
-          Nobody yet
-          <% end %>
-
-        </div>
-
-        <div class="col-md-12">
-          <% if !walk.walker %>
-            Offers
-            <% walk.offers.each do |offer| %>
-            <%= link_to image_tag(offer.walker.image, class: 'img-responsive profile-image img-circle'), user_path(offer.walker) %>
-            <%= offer.walker.first_name %>
-            <%= offer.walker.last_name %>
-            <%= offer.walker.headline %>
-            <%= link_to 'Accept offer', walk_path(offer.walk, walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-xs' if policy(offer.walk).owner_current_user? %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <br>
-        <div class="col-md-12">
-          <%= render partial: 'walks/buttons', locals: { walk: walk } %>
-        </div>
+        <table class="table">
+          <tr>
+            <td><%= render partial: 'walks/buttons', locals: { walk: walk } %></td>
+          </tr>
+        </table>
 
         <!-------------->
         <!-- END DATA -->
