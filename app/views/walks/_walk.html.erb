@@ -5,21 +5,16 @@
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
 
           <div class="col-md-2">
+            <%= "Job ID: #{walk.id}" %><!-- TODO: for testing; to be removed -->
             <%= image_tag walk.pup.pic, class: 'img-responsive' %>
           </div>
 
           <div class="col-md-2">
-            <%= walk.pup.name %>
-            <br>
-            <%= walk.pup.breed %>
+            <%= "#{walk.pup.name} the #{walk.pup.breed} (#{walk.pup.male_female})" %>
           </div>
 
           <div class="col-md-4">
-            <%= walk.id %><!-- TODO: for testing; to be removed -->
-            <br>
-            <%= "#{walk.duration}-minute walk" %>
-            <br>
-            <%= "Starting in: #{distance_of_time_in_words walk.begin_time, DateTime.now}" %>          
+            <%= "#{walk.duration}-minute walk in #{distance_of_time_in_words_to_now walk.begin_time}" %>          
           </div>
 
           <div class="col-md-2">
@@ -27,18 +22,7 @@
           </div>
 
           <div class="col-md-2">
-            <% if !walk.walker %>
-            Nobody yet
-            <% else %>
-            <%= walk.walker.first_name %>
-            <%= link_to image_tag(walk.walker.image, class: 'img-responsive'), user_path(walk.walker) %>
-            <% end %>
-          </div>
-
-          <div class="col-md-12">
-            Status
-            <%= 'Walk officially started' if policy(walk).started? %>
-            <%= 'Walk officially ended'   if policy(walk).ended?   %>
+            <%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %>
           </div>
 
         </a>
@@ -84,6 +68,12 @@
           </div>
 
         </div> <!-- class="row" -->
+
+        <div class="col-md-12">
+          <%= 'Walk officially started' if policy(walk).started? %>
+          <%= 'Walk officially ended'   if policy(walk).ended?   %>
+        </div>
+
 
         <div class="row">
 
