@@ -27,7 +27,7 @@ feature 'Owner selects walker' do
     sign_in owner
     visit user_upcoming_walks_path(owner)
     # owner has not chosen a walker yet
-    expect(page).to have_content('Nobody yet')
+    expect(page).to have_content('offers')
     # owner can see offer
     expect(page).to have_content(walker.first_name)
     expect(page).to have_content('Accept offer') # button
@@ -39,7 +39,6 @@ feature 'Owner selects walker' do
     # owner confirms
     expect(page).to have_content('Walk updated')
     # 'Nobody yet', 'Accept offer', and 'Offers' disappear
-    expect(page).to have_no_content('Nobody yet')
     expect(page).to have_no_content('Accept offer')
     expect(page).to have_no_content('Offers')
   end
