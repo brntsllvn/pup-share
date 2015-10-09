@@ -8,7 +8,7 @@ feature 'Start real life walk' do
   background do
     # owner creates pup and walk
     sign_in owner
-    create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555')
+    create_pup('Ace', 'Lab', 'M', '555-555-5555')
     click_on 'Walk a Pup'
     create_walk
     # walk not yet visible b/c too far in the future
@@ -51,7 +51,7 @@ feature 'Start real life walk' do
     expect(page).to have_content('Walk updated')
     # walk concludes
     expect(page).to have_content('Walk officially ended')
-    Walk.last.update_attributes(end_time: Time.now) # cheating: code smell...maybe look for gem
+    Walk.last.update_attribute(:begin_time, Time.now - 1.hour) # skip validations
     # walk moved to 'My Past Walks'
     click_on 'My Upcoming Walks' # refresh the page
     expect(page).to have_no_content('Ace')

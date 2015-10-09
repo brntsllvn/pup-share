@@ -22,9 +22,7 @@ class WalksController < ApplicationController
 
   def create
     @walk = current_user.walks.new(walk_params)
-    @walk.update_attributes end_time: @walk.begin_time + @walk.duration * 60, 
-    owner_id: @walk.user_id, # TODO: this is a hack, no need to store both user and owner
-    end_location: @walk.begin_location # TODO: clumsy
+    @walk.update_attributes owner_id: @walk.user_id # TODO: this is a hack, no need to store both user and owner
     if @walk.save
       redirect_to user_upcoming_walks_path(current_user), notice: 'Walk created'
     else

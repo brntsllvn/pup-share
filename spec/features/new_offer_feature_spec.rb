@@ -10,7 +10,7 @@ feature 'User offers to walk a pup' do
     sign_in owner
     # pup
     visit user_path(owner)
-    create_pup('Ace', 'Lab', 'M', 4.0, '555-555-5555')
+    create_pup('Ace', 'Lab', 'M', '555-555-5555')
     # walk
     visit walks_path
     create_walk

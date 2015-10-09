@@ -1,10 +1,14 @@
 Rails.application.configure do
 
   config.cache_classes = false
-  
+
+  # USA states helpers
+  config.action_controller.include_all_helpers = true
+
+
   # recommended: https://github.com/auth0/omniauth-auth0
   config.cache_store = :memory_store
-  
+
   # Do not eager load code on boot.
   config.eager_load = false
 

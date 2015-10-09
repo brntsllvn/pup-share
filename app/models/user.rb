@@ -24,11 +24,11 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_walks
-    self.walks.where('end_time > ?', the_crux_of_past_and_future) 
+    self.walks.where('begin_time > ?', the_crux_of_past_and_future) 
   end
 
   def upcoming_walks_through_offers
-    Walk.includes(:offers).where(offers: { user: self }).where('end_time > ?', the_crux_of_past_and_future)
+    Walk.includes(:offers).where(offers: { user: self }).where('begin_time > ?', the_crux_of_past_and_future)
   end
 
   def upcoming_walks_and_offers
@@ -36,11 +36,11 @@ class User < ActiveRecord::Base
   end
 
   def past_walks
-    self.walks.where('end_time <= ?', the_crux_of_past_and_future) 
+    self.walks.where('begin_time <= ?', the_crux_of_past_and_future) 
   end
 
   def past_walks_through_offers
-    Walk.includes(:offers).where(offers: { user: self }).where('end_time <= ?', the_crux_of_past_and_future)
+    Walk.includes(:offers).where(offers: { user: self }).where('begin_time <= ?', the_crux_of_past_and_future)
   end
 
   def past_walks_and_offers

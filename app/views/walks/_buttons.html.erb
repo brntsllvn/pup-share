@@ -10,7 +10,7 @@
 <% # else current_user is just some other guy, then create a new request %>
 <% else %>
 <%= simple_form_for Offer.new, url: user_offers_path(current_user, 
-  offer: { walker_id: current_user, walk_id: walk, status: 'pending'}), method: :post do |f| %>
+  offer: { walker_id: current_user, walk_id: walk }), method: :post do |f| %>
 <%= f.button :submit, 'Walk this pup!', class: 'btn btn-success btn-lg' %>
 <% end %>
 <% end %>

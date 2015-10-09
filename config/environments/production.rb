@@ -4,6 +4,9 @@ Rails.application.configure do
 
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # USA states helpers
+  config.action_controller.include_all_helpers = true
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

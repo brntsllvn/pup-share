@@ -1,16 +1,14 @@
 <div class="booyah-box"> 
   <div class="row">
     <div class="col-md-2">  
-      <%= image_tag pup.pic, class: 'img-responsive profile-image' %>   
+      <%= image_tag pup.pic, class: 'img-responsive' %>   
     </div>
 
     <div class="col-md-5">
       <p><%= "#{pup.name} #{pup.breed}" %></p>
-      <p><%= "#{pup.age} years old, #{pup.male_female}" %></p>   
+      <p><%= "#{pup.male_female}" %></p>   
       <p>Vet phone: <%= pup.vet_phone %></p>
-      <p>Vet name: <%= pup.vet_name %></p>
       <p>Insured by: <%= pup.insurance_provider %></p>
-      <p>Care notes: <%= pup.care_instructions %></p>
     </div>
 
     <div class="col-md-6">

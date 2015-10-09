@@ -42,7 +42,7 @@ describe User do
   end
 
   describe '.past_walks_and_offers' do
-    it '' do
+    it 'success' do
       expect(jim_bob.past_walks_and_offers.count).to eq 3 # all walks minus future walks
     end
   end

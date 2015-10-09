@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002034834) do
+ActiveRecord::Schema.define(version: 20151009014111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20151002034834) do
     t.integer  "walk_id"
     t.integer  "walker_id"
     t.integer  "user_id"
-    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,9 +29,6 @@ ActiveRecord::Schema.define(version: 20151002034834) do
     t.string   "breed"
     t.string   "male_female"
     t.string   "vet_phone"
-    t.string   "vet_name"
-    t.text     "care_instructions"
-    t.integer  "age"
     t.string   "insurance_provider"
     t.string   "pic"
     t.integer  "walks_completed",    default: 0
@@ -50,18 +46,11 @@ ActiveRecord::Schema.define(version: 20151002034834) do
     t.string   "headline"
     t.string   "phone"
     t.string   "emergency_phone"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "provider"
     t.string   "uid"
     t.text     "auth_hash"
-    t.string   "address_desk"
-    t.string   "address_building"
-    t.string   "address_street"
-    t.string   "address_city"
-    t.string   "address_zip_code"
-    t.string   "address_state"
-    t.string   "address_country"
   end
 
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
@@ -77,20 +66,26 @@ ActiveRecord::Schema.define(version: 20151002034834) do
 
   create_table "walks", force: :cascade do |t|
     t.datetime "begin_time"
-    t.string   "begin_location"
     t.integer  "duration"
-    t.datetime "end_time"
-    t.string   "end_location"
     t.integer  "owner_id"
     t.integer  "walker_id"
     t.integer  "pup_id"
     t.integer  "user_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.boolean  "started_by_owner",  default: false
-    t.boolean  "started_by_walker", default: false
-    t.boolean  "ended_by_owner",    default: false
-    t.boolean  "ended_by_walker",   default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "started_by_owner",     default: false
+    t.boolean  "started_by_walker",    default: false
+    t.boolean  "ended_by_owner",       default: false
+    t.boolean  "ended_by_walker",      default: false
+    t.string   "address_desk"
+    t.string   "address_building"
+    t.string   "address_neighborhood"
+    t.string   "address_street"
+    t.string   "address_city"
+    t.string   "address_zip_code"
+    t.string   "address_state"
+    t.string   "address_country"
+    t.text     "message"
   end
 
 end

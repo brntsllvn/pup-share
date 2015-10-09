@@ -18,11 +18,7 @@ class OffersController < ApplicationController
     redirect_to :back, notice: 'Offer to walk sent to the owner'
   end
 
-  def edit
-    @offer = Offer.find(params[:id])
-    redirect_to walks_path, notice: @offer.send_request_mailers(params[:status]) 
-  rescue ActiveRecord::RecordNotFound
-    redirect_to walks_path, alert: 'Walk no longer exists'   
+  def edit   
   end
 
   def update; end
