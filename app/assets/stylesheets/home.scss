@@ -14,13 +14,12 @@ body {
   text-align: left;
 }
 
-h1, p {
-  color: white;
-  font-family: 'Helvetica Neue', Helvetica;
-  margin: 5%;
+.big-button {
+  font-size: 75px
 }
 
-h1 {
+.banner {
+  color: white;
   font-weight: 100;
   font-size: 500%;
 }
@@ -28,6 +27,9 @@ h1 {
 p {
   font-weight: 100;
   font-size: 200%;
+  color: white;
+  font-family: 'Helvetica Neue', Helvetica;
+  margin: 5%;
 }
 
 .btn-transparent {
@@ -42,6 +44,10 @@ p {
 
 .contact {
   position: absolute;
-  left: 20px;
-  bottom: 20px;
+  left: 30px;
+  bottom: 30px;
+  font-size: 115px;
 }
+
+@import "bootstrap-sprockets";
+@import "bootstrap";

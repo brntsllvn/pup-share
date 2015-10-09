@@ -2,37 +2,50 @@
 <html>
   <head>
     <title>PupShare</title>
-    <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'home', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false  %>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
 
+    <div class='col-md-9 col-md-offset-2'>
 
-    <div class='container-fluid'>
-      <div class='col-xs-12 col-md-8'>
-        
-        <% if notice.present? %>		
-        <p class="alert alert-info"><%= notice %></p>		
-        <% end %>		
-        <% if alert.present? %>		
-        <p class="alert alert-danger"><%= alert %></p>		
-        <% end %>
-        
-        <div class='box'>
-          <h1>PupShare</h1>
-          <p>Walk a Pup - Build Your Network</p>
-          <% if !user_signed_in? %>
-          <p><%= link_to 'Sign in with Linkedin', "/auth/linkedin", class: 'btn-transparent' %></p>
-          <% else %>
-          <p><%= link_to 'My Upcoming Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent' %></p>
-          <p><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent' %></p>
-          <% end %>
-        </div>
+      <% if notice.present? %>
+      <p class="alert alert-info"><%= notice %></p>	
+      <% elsif alert.present? %>
+      <p class="alert alert-danger"><%= alert %></p>		
+      <% end %>
+
+      <div class='col-md-12'>
+        <h1 class='banner'>PupShare</h1>
       </div>
-      <p><%= link_to 'Contact', new_visitor_message_path, class: 'btn-transparent contact' %></p>
-    </div> 
+
+      <div class='col-md-12'>
+        <p>Walk | Network</p>
+      </div>
+
+      <br><br><br>
+      <br><br><br>
+      <br><br><br>
+
+      <div class='col-md-12'>
+        <% if user_signed_in? %>
+        <h3><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent big-buttont' %></h3>
+        <h3><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent big-button' %></h3>
+        <% else %>
+        <h1><%= link_to 'in', "/auth/linkedin", class: 'btn-transparent big-button' %></h1>
+        <% end %>
+      </div>
+
+    </div><!--<div class='col-md-9 col-md-offset-2'>-->
+
+    <div class='big-button contact'>
+      <%= link_to new_visitor_message_path, class: "btn btn-transparent" do %>
+      <h1 class="glyphicon glyphicon-envelope"></h1>
+      <% end %>
+    </div>
+
   </body>
 
 </html>
