@@ -6,7 +6,7 @@
 
           <div class="col-md-2">
             <%= "Job ID: #{walk.id}" %><!-- TODO: for testing; to be removed -->
-            <%= image_tag walk.pup.pic, class: 'img-responsive' %>
+            <%= image_tag walk.pup.pic, class: 'img-responsive center-block img-rounded' %>
           </div>
 
           <div class="col-md-2">
@@ -18,7 +18,7 @@
           </div>
 
           <div class="col-md-2">
-            <%#= walk.begin_location %>
+            <%= "#{walk.address_neighborhood}, #{walk.address_city}" %>
           </div>
 
           <div class="col-md-2">

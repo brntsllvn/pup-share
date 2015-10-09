@@ -1,7 +1,12 @@
-<h1>Past Walks</h1> 
+<div class="col-md-12 text-center">
+  <h1>Past Walks</h1> 
+  <%= link_to 'Upcoming Walks', user_upcoming_walks_path(current_user), class:'btn btn-primary' %>
+</div>
 
-<% @walks_plus_offers.each_with_index do |walk, index| %>
+<br>
 
-<%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
-
-<% end %>
+<div class="text-center">
+  <% @walks_plus_offers.each_with_index do |walk, index| %>
+  <%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
+  <% end %>
+</div>
