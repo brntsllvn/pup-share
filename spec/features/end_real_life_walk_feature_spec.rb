@@ -40,7 +40,7 @@ feature 'Start real life walk' do
   scenario 'success' do
     # walker ends walk
     visit root_path
-    click_on 'My Upcoming Walks'
+    click_on 'My Walks'
     click_on 'End Walk'    
     expect(page).to have_content('Walk updated')
     click_on 'Sign Out'

@@ -6,7 +6,7 @@ feature 'Visitor send message' do
 
   background do
     visit '/'
-    click_on 'Contact'
+    find('.contact').click
     expect(page).to have_content 'Say hello'
   end
 
