@@ -14,10 +14,6 @@ body {
   text-align: left;
 }
 
-.big-button {
-  font-size: 75px
-}
-
 .banner {
   color: white;
   font-weight: 100;
@@ -42,11 +38,14 @@ p {
   color: white;
 }
 
-.contact {
-  position: absolute;
-  left: 30px;
-  bottom: 30px;
-  font-size: 115px;
+.big-button {
+  font-size: 75px
+}
+
+h1.glyphicon {
+  font-size: 3.75em;
+  position: relative;
+  left: -3px;
 }
 
 @import "bootstrap-sprockets";

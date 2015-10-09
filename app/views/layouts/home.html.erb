@@ -24,12 +24,11 @@
       <div class='col-md-12'>
         <p>Walk | Network</p>
       </div>
+      
+      <br><br><br>
+      <br><br><br>
 
-      <br><br><br>
-      <br><br><br>
-      <br><br><br>
-
-      <div class='col-md-12'>
+      <div class='col-md-1 big-button contact'>
         <% if user_signed_in? %>
         <h3><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent big-buttont' %></h3>
         <h3><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent big-button' %></h3>
@@ -38,12 +37,12 @@
         <% end %>
       </div>
 
-    </div><!--<div class='col-md-9 col-md-offset-2'>-->
+      <div class='col-md-1 big-button contact'>
+        <%= link_to new_visitor_message_path, class: "btn btn-transparent" do %>
+        <h1 class="glyphicon glyphicon-envelope"></h1>
+        <% end %>
+      </div>
 
-    <div class='big-button contact'>
-      <%= link_to new_visitor_message_path, class: "btn btn-transparent" do %>
-      <h1 class="glyphicon glyphicon-envelope"></h1>
-      <% end %>
     </div>
 
   </body>
