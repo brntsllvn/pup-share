@@ -43,27 +43,58 @@
           <div class="col-md-2">
             <h3>Owner</h3>
             <%= walk.owner.first_name %>
-            <%= link_to image_tag(walk.owner.image, class: 'img-responsive'), user_path(walk.owner) %>
+            <%= link_to image_tag(walk.owner.image, class: 'img-responsive center-block img-rounded'), user_path(walk.owner) %>
           </div>
 
           <div class="col-md-3">
             <h3>When</h3>
-            Begin:<%= walk.begin_time.to_formatted_s(:short) %>
+            <%= walk.begin_time.to_formatted_s(:short) %>
           </div>
 
           <div class="col-md-3">
             <h3>Where</h3>
-            Where: <%#= walk.begin_location %>
+            <%= walk.address_desk %>
           </div>
 
+          <!-- Start/End Buttons -->
           <div class="col-md-12">
             <% if walk.walker %>
-            <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }),  method: :put, class: 'btn btn-success btn-xl' if policy(walk).owner_update_start? %>
-            <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_owner: true }),    method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).owner_update_end? %>
-            <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' if policy(walk).walker_update_start? %>
-            <%= link_to 'End Walk',   walk_path(walk, walk: { ended_by_walker: true }),   method: :put, class: 'btn btn-danger btn-xl'  if policy(walk).walker_update_end? %>
+
+            <% if policy(walk).owner_current_user? %>
+
+            <% if policy(walk).owner_update_start? %>
+            <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }), method: :put, class: 'btn btn-success btn-xl' %>
+            <% else %>
+            <%= link_to 'Start Walk', {}, method: :put, disabled: true, class: 'btn btn-success btn-xl disabled' %>
             <% end %>
+
+            <% if policy(walk).owner_update_end? %>
+            <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_owner: true }), method: :put, class: 'btn btn-danger btn-xl' %>
+            <% else %>
+            <%= link_to 'End Walk', {}, method: :put, disabled: true, class: 'btn btn-danger btn-xl disabled' %>
+            <% end %>
+
+            <% end %><%# if policy(walk).owner_current_user? %>
+
+            <% if policy(walk).walker_current_user? %>
+
+            <% if policy(walk).walker_update_start? %>
+            <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
+            <% else %>
+            <%= link_to 'Start Walk', {}, method: :put, class: 'btn btn-success btn-xl disabled' %>
+            <% end %>
+
+            <% if policy(walk).walker_update_end? %>
+            <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl' %>
+            <% else %>
+            <%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>    
+            <% end %>
+
+            <% end %><%# if policy(walk).walker_current_user? %>
+
+            <% end %><%# if walk.walker %>
           </div>
+          <!-- Start/End Buttons -->
 
         </div> <!-- class="row" -->
 
@@ -108,7 +139,9 @@
 
         <div class="row">
           <div class="col-md-12">
+            <% if policy(walk).not_started? %>
             <%= render partial: 'walks/buttons', locals: { walk: walk } %>
+            <% end %>
           </div>
         </div> <!-- class="row" -->
 

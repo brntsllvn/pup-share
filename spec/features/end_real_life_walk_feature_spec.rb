@@ -50,6 +50,7 @@ feature 'Start real life walk' do
     click_on 'End Walk'
     expect(page).to have_content('Walk updated')
     # walk concludes
+    expect(page).to have_no_content('Walk officially started')
     expect(page).to have_content('Walk officially ended')
     Walk.last.update_attribute(:begin_time, Time.now - 1.hour) # skip validations
     # walk moved to 'My Past Walks'
