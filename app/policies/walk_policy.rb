@@ -1,9 +1,9 @@
 class WalkPolicy < ApplicationPolicy
-  
+
   def owner_current_user?
     record.owner == user
   end
-  
+
   def owner_update_start?
     record.owner == user and not record.started_by_owner and record.coming_up?
   end
@@ -21,7 +21,7 @@ class WalkPolicy < ApplicationPolicy
   end
 
   def started?
-    record.started_by_owner and record.started_by_walker
+    record.started_by_owner and record.started_by_walker and not record.ended_by_owner and not record.ended_by_walker
   end
 
   def ended?

@@ -4,24 +4,24 @@
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
 
-          <div class="col-md-2">
+          <div class="col-md-2 text-center">
             <%= "Job ID: #{walk.id}" %><!-- TODO: for testing; to be removed -->
             <%= image_tag walk.pup.pic, class: 'img-responsive center-block img-rounded' %>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-md-2 text-center">
             <%= "#{walk.pup.name} the #{walk.pup.breed} (#{walk.pup.male_female})" %>
           </div>
 
-          <div class="col-md-4">
-            <%= "#{walk.duration}-minute walk in #{distance_of_time_in_words_to_now walk.begin_time}" %>          
+          <div class="col-md-4 text-center">
+            <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %>          
           </div>
 
-          <div class="col-md-2">
+          <div class="col-md-2 text-center">
             <%= "#{walk.address_neighborhood}, #{walk.address_city}" %>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-md-2 text-center">
             <%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %>
           </div>
 
@@ -33,7 +33,7 @@
       <div class="panel-body"> 
 
         <!-------------->
-        <!---- DATA ---->
+        <!---- BODY ---->
         <!-------------->
 
         <div class="row">
@@ -68,8 +68,8 @@
         </div> <!-- class="row" -->
 
         <div class="col-md-12">
-          <%= 'Walk officially started' if policy(walk).started? %>
-          <%= 'Walk officially ended'   if policy(walk).ended?   %>
+          <%= 'Walk officially started' if policy(walk).started? %> 
+          <%= 'Walk officially ended' if policy(walk).ended? %>
         </div>
 
 
@@ -113,7 +113,7 @@
         </div> <!-- class="row" -->
 
         <!-------------->
-        <!-- END DATA -->
+        <!-- END BODY -->
         <!-------------->
 
       </div><!-- <div class="panel-body"> -->
