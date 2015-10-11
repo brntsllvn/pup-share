@@ -28,10 +28,10 @@
 
       <br><br><br>
 
-      <div class='col-md-2 big-button'>
+      <div class='col-md-12'>
         <% if user_signed_in? %>
-        <h1><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent big-buttont' %></h1>
-        <h1><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent big-button' %></h1>
+        <h1><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent md-buttont' %></h1>
+        <h1><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent md-button' %></h1>
         <% else %>
         <h1><%= link_to 'in', "/auth/linkedin", class: 'btn-transparent big-button' %></h1>
         <% end %>
