@@ -1,6 +1,6 @@
 <div class="panel-group" id="accordion">
   <div class='<%="panel panel-default"%>'>
-    <div class='<%="panel-heading #{walk.owner == current_user ? 'walker' : 'owner'}" %>'>
+    <div class='<%="panel-heading #{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
 
@@ -60,22 +60,6 @@
           <div class="col-md-12">
             <% if walk.walker %>
 
-            <% if policy(walk).owner_current_user? %>
-
-            <% if policy(walk).owner_update_start? %>
-            <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_owner: true }), method: :put, class: 'btn btn-success btn-xl' %>
-            <% else %>
-            <%= link_to 'Start Walk', {}, method: :put, disabled: true, class: 'btn btn-success btn-xl disabled' %>
-            <% end %>
-
-            <% if policy(walk).owner_update_end? %>
-            <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_owner: true }), method: :put, class: 'btn btn-danger btn-xl' %>
-            <% else %>
-            <%= link_to 'End Walk', {}, method: :put, disabled: true, class: 'btn btn-danger btn-xl disabled' %>
-            <% end %>
-
-            <% end %><%# if policy(walk).owner_current_user? %>
-
             <% if policy(walk).walker_current_user? %>
 
             <% if policy(walk).walker_update_start? %>
@@ -117,7 +101,7 @@
           </div>
 
           <div class="col-md-2">
-            <%= "#{offer.walker.first_name} #{offer.walker.last_name[0]}" %>
+            <%= "#{offer.walker.first_name} #{offer.walker.last_name[0]}." %>
           </div>
 
           <div class="col-md-4">

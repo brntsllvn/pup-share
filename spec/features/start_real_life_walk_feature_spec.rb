@@ -8,7 +8,6 @@ feature 'Start real life walk' do
   background do
     # owner creates pup and walk
     sign_in owner
-    visit user_path(owner)
     create_pup('Ace', 'Lab', 'M')
     visit walks_path
     create_walk
@@ -26,20 +25,14 @@ feature 'Start real life walk' do
     sign_in owner
     visit user_upcoming_walks_path(owner)
     click_on 'Accept offer'
+    click_on 'Sign Out'
   end
 
   scenario 'success' do
-    # walk begins in 5 minutes
-    # owner starts walk
-    click_on 'My Upcoming Walks'
-    click_on 'Start Walk'
-    expect(page).to have_content('End Walk') # button
-    click_on 'Sign Out'
     # walker starts walk
     sign_in walker
     click_on 'My Upcoming Walks'
     click_on 'Start Walk'
-    expect(page).to have_content('End Walk') # button
     # walk begins in the real world
     expect(page).to have_content('Walk officially started')
   end

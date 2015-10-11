@@ -11,10 +11,6 @@ feature 'Start real life walk' do
     create_pup('Ace', 'Lab', 'M')
     click_on 'Walk a Pup'
     create_walk
-    # walk not yet visible b/c too far in the future
-    expect(page).to have_no_content('Start Walk')
-    # make walk 5min from now to simulate time passing
-    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
     click_on 'Sign Out'
     # walker offers to walk
     sign_in walker
@@ -25,11 +21,9 @@ feature 'Start real life walk' do
     sign_in owner
     click_on 'My Upcoming Walks'
     click_on 'Accept offer'
-    # walk begins in 5 minutes
-    # owner starts walk
-    click_on 'My Upcoming Walks'
-    click_on 'Start Walk'
     click_on 'Sign Out'
+    # make walk 5min from now to simulate time passing
+    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
     # walker starts walk
     sign_in walker
     click_on 'My Upcoming Walks'
@@ -43,17 +37,13 @@ feature 'Start real life walk' do
     click_on 'My Walks'
     click_on 'End Walk'    
     expect(page).to have_content('Walk updated')
-    click_on 'Sign Out'
-    # owner ends walk
-    sign_in owner
-    click_on 'My Upcoming Walks'
-    click_on 'End Walk'
-    expect(page).to have_content('Walk updated')
-    # walk concludes
     expect(page).to have_no_content('Walk officially started')
     expect(page).to have_content('Walk officially ended')
+    click_on 'Sign Out'
+    # walk concludes
     Walk.last.update_attribute(:begin_time, Time.now - 1.hour) # skip validations
     # walk moved to 'My Past Walks'
+    sign_in owner
     click_on 'My Upcoming Walks' # refresh the page
     expect(page).to have_no_content('Ace')
     click_on 'Past Walks'
