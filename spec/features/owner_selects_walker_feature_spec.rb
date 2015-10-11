@@ -9,7 +9,7 @@ feature 'Owner selects walker' do
     # owner creates pup and walk
     sign_in owner
     visit user_path(owner)
-    create_pup('Ace', 'Lab', 'M', '555-555-5555')
+    create_pup('Ace', 'Lab', 'M')
     visit walks_path
     create_walk
     click_on 'Sign Out'

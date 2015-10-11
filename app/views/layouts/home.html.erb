@@ -10,7 +10,7 @@
 
   <body>
 
-    <div class='col-md-9 col-md-offset-2'>
+    <div class='col-md-9 col-md-offset-1'>
 
       <% if notice.present? %>
       <p class="alert alert-info"><%= notice %></p>	
@@ -27,21 +27,30 @@
       </div>
 
       <br><br><br>
-      <br><br><br>
 
-      <div class='col-md-1 big-button'>
+      <div class='col-md-2 big-button'>
         <% if user_signed_in? %>
-        <h3><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent big-buttont' %></h3>
-        <h3><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent big-button' %></h3>
+        <h1><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent big-buttont' %></h1>
+        <h1><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent big-button' %></h1>
         <% else %>
         <h1><%= link_to 'in', "/auth/linkedin", class: 'btn-transparent big-button' %></h1>
         <% end %>
       </div>
 
-      <div class='col-md-1 big-button'>
+      <div class='col-md-2 big-button'>
         <%= link_to new_visitor_message_path, class: "btn btn-transparent contact" do %>
         <h1 class="glyphicon glyphicon-envelope"></h1>
         <% end %>
+      </div>
+
+      <div class='col-md-12'>
+        <br><br>
+      </div>
+
+      <div class='col-md-6'>
+        <p class='about'>
+          Offer to walk a pup or find a walker for your pup
+        </p>
       </div>
 
     </div>

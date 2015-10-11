@@ -8,7 +8,7 @@ feature 'Start real life walk' do
   background do
     # owner creates pup and walk
     sign_in owner
-    create_pup('Ace', 'Lab', 'M', '555-555-5555')
+    create_pup('Ace', 'Lab', 'M')
     click_on 'Walk a Pup'
     create_walk
     # walk not yet visible b/c too far in the future

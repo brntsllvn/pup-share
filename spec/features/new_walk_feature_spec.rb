@@ -17,7 +17,7 @@ feature 'Create new walk' do
       sign_in owner
       # create pup
       visit user_path(owner)
-      create_pup('Ace', 'Lab', 'M', '555-555-5555')
+      create_pup('Ace', 'Lab', 'M')
       # create walk
       create_walk
       }.to change(Walk, :count).by (1)
