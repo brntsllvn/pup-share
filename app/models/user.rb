@@ -2,21 +2,25 @@ class User < ActiveRecord::Base
   serialize :auth_hash, Hash
 
   has_many :walks, dependent: :destroy
-#     has_many :walking_walks, class_name: Walk, as: "walker", dependent: :destroy
-#     has_many :owning_walks, class_name: Walk, as: "owner", dependent: :destroy 
+  #     has_many :walking_walks, class_name: Walk, as: "walker", dependent: :destroy
+  #     has_many :owning_walks, class_name: Walk, as: "owner", dependent: :destroy 
   has_many :pups, dependent: :destroy
   has_many :offers, dependent: :destroy
 
   # Passes hash to built-in Rails method; no need to test
   def self.find_or_create_by_hash(auth) 
-    User.find_or_create_by(provider: auth[:provider], uid: auth[:uid]) do |user|
-      user.first_name = auth[:info][:first_name]
-      user.last_name  = auth[:info][:last_name]
-      user.email      = auth[:info][:email]
-      user.image      = auth[:info][:image]
-      user.headline   = auth[:info][:description]
-      user.auth_hash  = auth
-    end
+    user = User.find_or_initialize_by(provider: auth[:provider], uid: auth[:uid])
+
+    user.update_attributes(
+      first_name:   auth[:info][:first_name],
+      last_name:    auth[:info][:last_name],
+      email:        auth[:info][:email],
+      image:        auth[:info][:image],
+      headline:     auth[:info][:description],
+      linkedin_url: auth[:info][:urls][:public_profile],
+      location:     auth[:info][:location][:name],
+      auth_hash:    auth
+      )
   end
 
   def the_crux_of_past_and_future

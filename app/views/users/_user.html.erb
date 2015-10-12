@@ -1,15 +1,22 @@
 <div class="well row">
+<%# fail %>
   <div class="col-md-2">
     <p><%= image_tag user.image, :class => 'img-responsive'  %></p>
+
     <% if user == current_user %>
     <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'btn btn-warning' %>
     <% end %>
   </div>
 
-  <div class="col-md-4">           
+  <div class="col-md-10">           
     <p><strong><%= "#{user.first_name} #{user.last_name}" %></strong></p>
     <p><%= "#{user.email}" %></p>
+    <p><%= "#{user.location}" %></p>
+    <p><%= "#{user.headline}" %></p>
+    <p><%= link_to 'LinkedIn Public Profile', user.linkedin_url, class:'linkedin-profile' %></p>
     <p><%= "Phone #{user.phone}" %></p>   
-    <p><%= "Emergency phone #{user.emergency_phone}" %></p>   
+    <p><%= "Emergency phone #{user.emergency_phone}" %></p> 
+
   </div>
-</div><!-- row -->
+
+</div><!-- well row -->
