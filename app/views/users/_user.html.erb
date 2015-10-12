@@ -1,17 +1,15 @@
-<div class="booyah-box">
-  <div class="row">
-    <div class="col-md-2">
-      <p><%= image_tag user.image, :class => 'img-responsive profile-image'  %></p>
-      <% if user == current_user %>
-      <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'btn btn-warning' %>
-      <% end %>
-    </div>
+<div class="well row">
+  <div class="col-md-2">
+    <p><%= image_tag user.image, :class => 'img-responsive'  %></p>
+    <% if user == current_user %>
+    <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'btn btn-warning' %>
+    <% end %>
+  </div>
 
-    <div class="col-md-4">           
-      <p><strong><%= "#{user.first_name} #{user.last_name}" %></strong></p>
-      <p><%= "#{user.email}" %></p>
-      <p><%= "Phone #{user.phone}" %></p>   
-      <p><%= "Emergency phone #{user.emergency_phone}" %></p>   
-    </div>
-  </div><!-- row -->
-</div><!-- booyah-box -->
+  <div class="col-md-4">           
+    <p><strong><%= "#{user.first_name} #{user.last_name}" %></strong></p>
+    <p><%= "#{user.email}" %></p>
+    <p><%= "Phone #{user.phone}" %></p>   
+    <p><%= "Emergency phone #{user.emergency_phone}" %></p>   
+  </div>
+</div><!-- row -->
