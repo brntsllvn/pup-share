@@ -44,13 +44,17 @@ Rails.application.configure do
 
 
   OmniAuth.config.test_mode = true
+  # I don't know if this definition is necessary...
+  # see Session Helpers for location of mock used in examples
   OmniAuth.config.mock_auth[:linkedin] = OmniAuth::AuthHash.new({ 
     'provider' => 'linkedin', 
     'uid' => '123545', 
     "info"=>
-      { "email"=>"infinite@jest.com",
-        "first_name"=>"Dave",
-        "last_name"=>"Wallace" }
+      { "email" => "infinite@jest.com",
+        "first_name" => "Dave",
+        "last_name" => "Wallace",
+        "urls" => { "public_profile" => "www.example.com" },
+        "location" => { "name" => "Greater Spokane area" } }
     })
-  
+
 end

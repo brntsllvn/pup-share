@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
 
   # Passes hash to built-in Rails method; no need to test
   def self.find_or_create_by_hash(auth) 
-    user = User.find_or_initialize_by(provider: auth[:provider], uid: auth[:uid])
+
+    user = User.find_or_create_by(provider: auth[:provider], uid: auth[:uid])
 
     user.update_attributes(
       first_name:   auth[:info][:first_name],
