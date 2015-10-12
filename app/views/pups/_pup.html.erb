@@ -1,11 +1,17 @@
 <div class="well row">
-  <div class="col-md-2">  
-    <%= image_tag pup.pic, class: 'img-responsive' %>   
+
+  <div class="col-md-4">  
+    <%= image_tag pup.pic, class: 'img-responsive' %>  
   </div>
 
   <div class="col-md-5">
-    <p><%= "#{pup.name} #{pup.breed}" %></p>
+    <strong><p><%= "#{pup.name}" %></p></strong>
+    <p><%= "#{pup.breed}" %></p>
     <p><%= "#{pup.male_female}" %></p>   
+    <p><%= "#{pup.age} years old" %></p>  
+    <p><%= "#{pup.weight} pounds" %></p>  
+    <p><%= "#{pup.additional_info}" %></p>
+    <p><%= "Walks completed #{pup.walks_completed}" %></p>
   </div>
 
   <div class="col-md-6">
