@@ -5,7 +5,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
 
   <body>
@@ -51,17 +51,10 @@
     <p class="alert alert-danger"><%= alert %></p>		
     <% end %>
 
-    <div class="row">
-      <div class="col-md-1">
-      </div>
-
-      <div class="col-md-10">
-        <%= yield %>      
-      </div>
-
-      <div class="col-md-1">
-      </div>     
+    <div class="col-md-12">
+      <%= yield %>      
     </div>
+
 
     <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
       <p class='pull-left'><%= link_to 'Contact', new_visitor_message_path %></p>
