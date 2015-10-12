@@ -18,14 +18,6 @@ body {
   color:#9d9d9d;
 }
 
-.booyah-box {
-  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
-  box-shadow: 1px 1px 2px 0 #d0d0d0;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
-}
 
 .panel-title {
   overflow: auto; 
@@ -48,22 +40,6 @@ div.panel-heading.owner {
   background-color: #A8C090;
 }
 
-.img-circle {
-  border-radius: 25%;
-  margin: 25px;
+img.walk-detail {
+  width: 65px;
 }
-
-.offer-image {
-  max-height: 50px; 
-  max-width: 50px;
-  border-radius: 25%;
-  padding: 0px; 
-}
-
-.table > tbody > tr > td {
-  vertical-align: middle;
-}
-
-
-
-

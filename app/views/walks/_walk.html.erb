@@ -1,29 +1,28 @@
-<div class="panel-group" id="accordion">
+<div class="panel-group text-center" id="accordion">
   <div class='<%="panel panel-default"%>'>
     <div class='<%="panel-heading #{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
 
-          <div class="col-md-2 text-center">
+          <div class="col-md-2">
             <%= "Job ID: #{walk.id}" %><!-- TODO: for testing; to be removed -->
             <%= image_tag walk.pup.pic, class: 'img-responsive center-block img-rounded' %>
           </div>
 
-          <div class="col-md-2 text-center">
+          <div class="col-md-2">
             <%= "#{walk.pup.name} the #{walk.pup.weight}lb, #{walk.pup.age} year-old #{walk.pup.breed} (#{walk.pup.male_female})" %>
           </div>
 
-          <div class="col-md-4 text-center">
-            <%= "#{walk.begin_time.strftime("%A")}, " %>
+          <div class="col-md-4">
             <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %>
-            
+
           </div>
 
-          <div class="col-md-2 text-center">
+          <div class="col-md-2">
             <%= "#{walk.city}" %>
           </div>
 
-          <div class="col-md-2 text-center">
+          <div class="col-md-2">
             <%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %>
           </div>
 
@@ -40,36 +39,36 @@
 
         <div class="row">
 
-          <h2>Details</h2>
-
           <div class="col-md-2">
             <h3>Owner</h3>
             <%= walk.owner.first_name %>
-            <%= link_to image_tag(walk.owner.image, class: 'img-responsive center-block img-rounded'), user_path(walk.owner) %>
+            <%= link_to image_tag(walk.owner.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.owner) %>
           </div>
 
           <div class="col-md-2">
             <h3>Pup</h3>
             <%= walk.pup.name%>
-            <%= link_to image_tag(walk.pup.pic, class: 'img-responsive center-block img-rounded'), user_path(walk.owner) %>
-            
+            <%= link_to image_tag(walk.pup.pic, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.owner) %>
+
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-2">
             <h3>When</h3>
-            <%= walk.begin_time.to_formatted_s(:short) %>
+            <%= "#{walk.begin_time.strftime("%A")}, #{walk.begin_time.to_formatted_s(:short)}" %>
           </div>
 
-          <div class="col-md-3">
+          <div class="col-md-2">
             <h3>Where</h3>
             <%= walk.desk %>
           </div>
 
           <!-- Start/End Buttons -->
-          <div class="col-md-12">
+          <div class="col-md-3">
+
             <% if walk.walker %>
 
             <% if policy(walk).walker_current_user? %>
+            <h3>What now?</h3>
 
             <% if policy(walk).walker_update_start? %>
             <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
@@ -83,9 +82,19 @@
             <%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>    
             <% end %>
 
+            <% else %>
+
+            <h3>Walker</h3>
+            <%= walk.walker.first_name %>
+            <%= link_to image_tag(walk.walker.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.walker) %> 
+
             <% end %><%# if policy(walk).walker_current_user? %>
 
+            <% else %>
+            <h5>Choose a walker from the offers below</h5>
+
             <% end %><%# if walk.walker %>
+
           </div>
           <!-- Start/End Buttons -->
 
@@ -106,7 +115,7 @@
           <% walk.offers.each do |offer| %>
 
           <div class="col-md-2">
-            <%= link_to image_tag(offer.walker.image, class: 'img-responsive'), user_path(offer.walker) %>
+            <%= link_to image_tag(offer.walker.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(offer.walker) %>
           </div>
 
           <div class="col-md-2">
