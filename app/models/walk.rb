@@ -3,6 +3,10 @@ class Walk < ActiveRecord::Base
   date: { after: Proc.new { Time.now }, message: 'Walk must be in the future' }
   validates :duration,              presence: true
   validates :pup_id,                presence: true
+  validates :street,                presence: true
+  validates :city,                  presence: true
+  validates :state,                 presence: true
+  validates :zip,                   presence: true
 
   belongs_to :pup
   belongs_to :user
@@ -15,5 +19,5 @@ class Walk < ActiveRecord::Base
     return self.begin_time - Time.now < 600000.minutes
     false
   end
-    
+
 end

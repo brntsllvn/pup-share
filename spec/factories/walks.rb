@@ -3,6 +3,12 @@ FactoryGirl.define do
   factory :walk do
     begin_time Time.now + 1.hour
     duration 15
+    desk "xyz-123"
+    building "Ruby"
+    street "111 Harvard Ave. E"
+    city "Seattle"
+    state "Washington"
+    zip "98111"
 
     association :user
     association :pup
@@ -23,6 +29,6 @@ FactoryGirl.define do
         create_list(:upcoming_walk, evaluator.offers_count, walk: walk)
       end
     end # :walk_with_offers
-    
+
   end
 end
