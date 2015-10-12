@@ -3,35 +3,26 @@
 
 <div class='col-md-12'>
   <div class='col-md-2'>
-    <%= f.input :address_desk %>
+    <%= f.input :desk %>
   </div>
   <div class='col-md-2'>
-    <%= f.input :address_building %>
-  </div>
-  <div class='col-md-4'>
-    <%= f.input :address_neighborhood %>
+    <%= f.input :building %>
   </div>
 </div>
 
 <div class='col-md-12'>
   <div class='col-md-4'>
-    <%= f.input :address_street %>
+    <%= f.input :street %>
   </div>
   <div class='col-md-3'>
-    <%= f.input :address_city %>
+    <%= f.input :city %>
   </div>
   <div class='col-md-2'>
-    <%= f.input :address_state, collection: us_states %> 
+    <%= f.input :state, collection: us_states %> 
   </div>
   <div class='col-md-2'>
-    <%= f.input :address_zip_code %>
+    <%= f.input :zip %>
   </div> 
-</div>
-
-<div class='col-md-12'>
-  <div class='col-md-2'>
-    <%= f.input :address_country %>
-  </div>
 </div>
 
 <div class='col-md-12'>

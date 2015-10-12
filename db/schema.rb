@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011222225) do
+ActiveRecord::Schema.define(version: 20151012032106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,20 +71,18 @@ ActiveRecord::Schema.define(version: 20151011222225) do
     t.integer  "walker_id"
     t.integer  "pup_id"
     t.integer  "user_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.boolean  "started_by_owner",     default: false
-    t.boolean  "started_by_walker",    default: false
-    t.boolean  "ended_by_owner",       default: false
-    t.boolean  "ended_by_walker",      default: false
-    t.string   "address_desk"
-    t.string   "address_building"
-    t.string   "address_neighborhood"
-    t.string   "address_street"
-    t.string   "address_city"
-    t.string   "address_zip_code"
-    t.string   "address_state"
-    t.string   "address_country"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "started_by_owner",  default: false
+    t.boolean  "started_by_walker", default: false
+    t.boolean  "ended_by_owner",    default: false
+    t.boolean  "ended_by_walker",   default: false
+    t.string   "desk"
+    t.string   "building"
+    t.string   "street"
+    t.string   "city"
+    t.string   "zip"
+    t.string   "state"
     t.text     "message"
   end
 

@@ -18,7 +18,7 @@
           </div>
 
           <div class="col-md-2 text-center">
-            <%= "#{walk.address_neighborhood}, #{walk.address_city}" %>
+            <%= "#{walk.city}" %>
           </div>
 
           <div class="col-md-2 text-center">
@@ -53,7 +53,7 @@
 
           <div class="col-md-3">
             <h3>Where</h3>
-            <%= walk.address_desk %>
+            <%= walk.desk %>
           </div>
 
           <!-- Start/End Buttons -->
@@ -106,10 +106,6 @@
 
           <div class="col-md-4">
             <%= offer.walker.headline %>
-          </div>
-
-          <div class="col-md-2">
-            <%#= "#{offer.walker.address_city}, #{offer.walker.address_state}" %>
           </div>
 
           <div class="col-md-2">
