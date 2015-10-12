@@ -6,6 +6,8 @@ module Features
       fill_in 'Name', with: name
       fill_in 'Breed', with: breed
       find(:css, "#pup_male_female_m").set(true)
+      fill_in 'Age', with: 4
+      fill_in 'Weight', with: 71
       click_on 'Create Pup'
     end
 

@@ -10,11 +10,13 @@
           </div>
 
           <div class="col-md-2 text-center">
-            <%= "#{walk.pup.name} the #{walk.pup.breed} (#{walk.pup.male_female})" %>
+            <%= "#{walk.pup.name} the #{walk.pup.weight}lb, #{walk.pup.age} year-old #{walk.pup.breed} (#{walk.pup.male_female})" %>
           </div>
 
           <div class="col-md-4 text-center">
-            <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %>          
+            <%= "#{walk.begin_time.strftime("%A")}, " %>
+            <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %>
+            
           </div>
 
           <div class="col-md-2 text-center">
@@ -44,6 +46,13 @@
             <h3>Owner</h3>
             <%= walk.owner.first_name %>
             <%= link_to image_tag(walk.owner.image, class: 'img-responsive center-block img-rounded'), user_path(walk.owner) %>
+          </div>
+
+          <div class="col-md-2">
+            <h3>Pup</h3>
+            <%= walk.pup.name%>
+            <%= link_to image_tag(walk.pup.pic, class: 'img-responsive center-block img-rounded'), user_path(walk.owner) %>
+            
           </div>
 
           <div class="col-md-3">
