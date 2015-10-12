@@ -3,17 +3,26 @@
 
 <br>
 
-<div class="form-inputs row">
-  <div class="col-md-2">
+<div class="well form-inputs row">
+
+  <div class="col-md-4">
     <%= image_tag @pup.pic, class: 'img-responsive' %>
     <%= f.input :pic %>
   </div>  
+
   <div class="col-md-4">
     <%= f.input :name %>
     <%= f.input :breed %>
-  </div>
-  <div class="col-md-4">
     <%= f.input :male_female, as: :radio_buttons, collection: ['M', 'F'], include_blank: false %> 
+  </div>
+
+  <div class="col-md-4">
+    <%= f.input :age %>
+    <%= f.input :weight %>
+  </div>
+  
+  <div class="col-md-8 col-md-offset-4">
+    <%= f.input :additional_info, label: 'Additional Information' %>
   </div>
 </div>
 
