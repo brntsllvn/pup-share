@@ -11,11 +11,13 @@ class UsersController < ApplicationController
   end
 
   def upcoming_walks
-    @walks_plus_offers = current_user.upcoming_walks_and_offers
+    @walks_plus_offers = current_user.walks
+    #     @walks_plus_offers = current_user.walks_and_offers.upcoming
   end
 
   def past_walks
-    @walks_plus_offers = current_user.past_walks_and_offers
+    @walks_plus_offers = current_user.walks
+    #     @walks_plus_offers = current_user.walks_and_offers.past
   end
 
   def new; end

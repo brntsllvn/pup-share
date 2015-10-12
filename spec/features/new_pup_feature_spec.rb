@@ -2,10 +2,10 @@ require 'rails_helper'
 
 feature 'User creates a new pup' do
 
-  let (:user) { create(:user) }
+  let (:owner) { create(:user) }
 
   background do
-    sign_in user
+    sign_in owner
     click_on "Profile \& Pups"
     expect(page).to have_content 'New Pup'
   end

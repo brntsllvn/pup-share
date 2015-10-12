@@ -32,6 +32,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'faker'
   # gem 'spring' # speeds up app
+  gem 'guard-rspec', require: false
 end
 
 group :test do

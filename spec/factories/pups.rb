@@ -8,8 +8,8 @@ FactoryGirl.define do
     age 4
     weight 71
     walks_completed 100
-    
-    association :user
+
+    association :owner
   end
 
 end

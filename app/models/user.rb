@@ -1,14 +1,15 @@
 class User < ActiveRecord::Base
   serialize :auth_hash, Hash
 
-  has_many :walks, dependent: :destroy
-  #     has_many :walking_walks, class_name: Walk, as: "walker", dependent: :destroy
-  #     has_many :owning_walks, class_name: Walk, as: "owner", dependent: :destroy 
-  has_many :pups, dependent: :destroy
+  has_many :walks_as_walker, dependent: :destroy, class_name: 'Walk', foreign_key: :walker_id
+  has_many :walks_as_owner, dependent: :destroy, class_name: 'Walk', foreign_key: :owner_id
+
+  has_many :pups, dependent: :destroy, foreign_key: :owner_id
+
   has_many :offers, dependent: :destroy
 
   # Passes hash to built-in Rails method; no need to test
-  def self.find_or_create_by_hash(auth) 
+  def self.find_or_create_by_hash(auth)
 
     user = User.find_or_create_by(provider: auth[:provider], uid: auth[:uid])
 
@@ -24,32 +25,25 @@ class User < ActiveRecord::Base
       )
   end
 
-  def the_crux_of_past_and_future
-    Time.now
+  def walks
+    Walk.for_user(self)
   end
 
-  def upcoming_walks
-    self.walks.where('begin_time > ?', the_crux_of_past_and_future) 
-  end
 
-  def upcoming_walks_through_offers
-    Walk.includes(:offers).where(offers: { user: self }).where('begin_time > ?', the_crux_of_past_and_future)
-  end
+  #   def upcoming_walks_and_offers
+  #     self.walks.upcoming 
+  #     #       + self.walks.upcoming_walks_through_offers).uniq.sort_by{ |e| e[:begin_time] }
+  #   end
 
-  def upcoming_walks_and_offers
-    (self.upcoming_walks + self.upcoming_walks_through_offers).uniq.sort_by{ |e| e[:begin_time] }
-  end
+  #   def past_walks_through_offers
+  #     Walk.past.includes(:offers).where(offers: { user: self })
+  #   end
 
-  def past_walks
-    self.walks.where('begin_time <= ?', the_crux_of_past_and_future) 
-  end
+  #   def past_walks_and_offers
+  #     (walks.past + past_walks_through_offers).uniq.sort_by{ |e| e[:begin_time] }
+  #   end
 
-  def past_walks_through_offers
-    Walk.includes(:offers).where(offers: { user: self }).where('begin_time <= ?', the_crux_of_past_and_future)
-  end
-
-  def past_walks_and_offers
-    (self.past_walks + self.past_walks_through_offers).uniq.sort_by{ |e| e[:begin_time] }
-  end
-
+  #   def upcoming_walks_through_offers
+  #     Walk.upcoming.includes(:offers).where(offers: { user: self })
+  #   end
 end
