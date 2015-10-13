@@ -13,9 +13,9 @@
     <div class='col-md-9 col-md-offset-1'>
 
       <% if notice.present? %>
-      <p class="alert alert-info"><%= notice %></p>	
+      <p class="alert alert-info small"><%= notice %></p>	
       <% elsif alert.present? %>
-      <p class="alert alert-danger"><%= alert %></p>		
+      <p class="alert alert-danger small"><%= alert %></p>		
       <% end %>
 
       <div class='col-md-12'>
@@ -23,10 +23,10 @@
       </div>
 
       <div class='col-md-12'>
-        <p>Walk | Network</p>
+        <p class='about'>Sign in to walk a pup or find a walker near you</p>
       </div>
 
-      <br><br><br>
+      <br>
 
       <div class='col-md-12'>
         <% if user_signed_in? %>
@@ -41,16 +41,6 @@
         <%= link_to new_visitor_message_path, class: "btn btn-transparent contact" do %>
         <h1 class="glyphicon glyphicon-envelope"></h1>
         <% end %>
-      </div>
-
-      <div class='col-md-12'>
-        <br><br>
-      </div>
-
-      <div class='col-md-6'>
-        <p class='about'>
-          Sign in to walk or find a walker
-        </p>
       </div>
 
     </div>

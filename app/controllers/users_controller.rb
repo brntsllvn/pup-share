@@ -11,12 +11,10 @@ class UsersController < ApplicationController
   end
 
   def upcoming_walks
-    # SORT
     @walks_plus_offers = current_user.upcoming_walks_and_offers.sort_by{ |e| e[:begin_time] }
   end
 
   def past_walks
-    # SORT
     @walks_plus_offers = current_user.past_walks_and_offers.sort_by{ |e| e[:begin_time] }
   end
 
