@@ -1,11 +1,5 @@
 <%= simple_form_for(@walk) do |f| %>
-<%#= f.error_notification %>
-
-<div class='col-md-12'>
-  <%= f.button :submit, class: 'btn btn-success' %>
-</div>
-
-<br>
+<%= f.error_notification %>
 
 <div class='well col-md-12'>
 
@@ -50,6 +44,10 @@
   <div class='col-md-4'>
     <%= f.input :duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false, checked: '15' %>
   </div>
+</div>
+
+<div class='col-md-12'>
+  <%= f.button :submit, class: 'btn btn-success' %>
 </div>
 
 <% end %>
