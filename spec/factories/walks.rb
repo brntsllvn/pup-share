@@ -25,7 +25,7 @@ FactoryGirl.define do
 
   factory :walk_with_offers, class: Walk do
     transient do
-      offers_count 6
+      offers_count 2
     end
     after(:create) do |offer, evaluator|
       create_list(:upcoming_walk, evaluator.offers_count, offer: offer)

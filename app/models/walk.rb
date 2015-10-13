@@ -9,24 +9,19 @@ class Walk < ActiveRecord::Base
   validates :zip,                   presence: true
 
   belongs_to :pup
-#   belongs_to :user
   belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
 
-  scope :for_user, ->(user) { where('owner_id = ? or walker_id = ?', user, user) }
+  scope :for_user, -> (user) { where('owner_id = ? or walker_id = ?', user, user) }
+  scope :upcoming, -> { where('begin_time > ?' , Time.now) }
+  scope :past,     -> { where('begin_time <= ?', Time.now) }
 
+  
   # TODO: change 600000 to a reasonable number in prod
   def coming_up?
     return self.begin_time - Time.now < 600000.minutes
     false
   end
 
-  def past
-    where('begin_time <= ?', Time.now)
-  end
-
-  def upcoming
-    where('begin_time > ?', Time.now)
-  end
 end
