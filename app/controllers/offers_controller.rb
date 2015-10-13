@@ -18,8 +18,7 @@ class OffersController < ApplicationController
     redirect_to :back, notice: 'Offer to walk sent to the owner'
   end
 
-  def edit   
-  end
+  def edit; end
 
   def update; end
 

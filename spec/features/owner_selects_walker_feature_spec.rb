@@ -8,9 +8,8 @@ feature 'Owner selects walker' do
   background do
     # owner creates pup and walk
     sign_in owner
-    visit user_path(owner)
     create_pup('Ace', 'Lab', 'M')
-    visit walks_path
+    click_on 'Post a Walk'
     create_walk
     click_on 'Sign Out'
     # walker offers to walk
@@ -20,14 +19,16 @@ feature 'Owner selects walker' do
     click_on 'My Upcoming Walks'
     # 'Accept offer' button only visible to pup's owner
     expect(page).to have_no_content('Accept offer')
+    expect(page).to have_content('Offers')
+    expect(page).to have_content('Ace')
     click_on 'Sign Out'
   end
 
-  scenario 'success' do # , :js => true
+  scenario 'success' do # , js: true
     sign_in owner
-    visit user_upcoming_walks_path(owner)
+    click_on 'My Upcoming Walks'
     # owner has not chosen a walker yet
-    expect(page).to have_content('offers')
+    expect(page).to have_content('Offers')
     # owner can see offer
     expect(page).to have_content(walker.first_name)
     expect(page).to have_content('Accept offer') # button

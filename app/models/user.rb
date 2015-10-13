@@ -25,25 +25,16 @@ class User < ActiveRecord::Base
       )
   end
 
-  def walks
-    Walk.for_user(self)
+  def walks_via_offers
+    Walk.walks_through_offers(self)
   end
 
+  def upcoming_walks_and_offers
+    self.walks_as_owner.upcoming + self.walks_via_offers.upcoming 
+  end
 
-  #   def upcoming_walks_and_offers
-  #     self.walks.upcoming 
-  #     #       + self.walks.upcoming_walks_through_offers).uniq.sort_by{ |e| e[:begin_time] }
-  #   end
+  def past_walks_and_offers
+    self.walks_as_owner.past + self.walks_via_offers.past 
+  end
 
-  #   def past_walks_through_offers
-  #     Walk.past.includes(:offers).where(offers: { user: self })
-  #   end
-
-  #   def past_walks_and_offers
-  #     (walks.past + past_walks_through_offers).uniq.sort_by{ |e| e[:begin_time] }
-  #   end
-
-  #   def upcoming_walks_through_offers
-  #     Walk.upcoming.includes(:offers).where(offers: { user: self })
-  #   end
 end

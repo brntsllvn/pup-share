@@ -13,11 +13,19 @@ class Walk < ActiveRecord::Base
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
 
-  scope :for_user, -> (user) { where('owner_id = ? or walker_id = ?', user, user) }
   scope :upcoming, -> { where('begin_time > ?' , Time.now) }
   scope :past,     -> { where('begin_time <= ?', Time.now) }
 
-  
+  def self.walks_through_offers(walker)
+    includes(:offers).where(offers: { walker: walker })
+  end
+
+  # Note: hack until Rails 5 (includes unions)
+  #   def self.walks_plus_offers
+
+  #     binding.pry
+  # end
+
   # TODO: change 600000 to a reasonable number in prod
   def coming_up?
     return self.begin_time - Time.now < 600000.minutes

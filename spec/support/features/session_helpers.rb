@@ -1,6 +1,7 @@
 module Features
   module SessionHelpers
     def sign_in(user)
+      
       OmniAuth.config.add_mock(:linkedin, 
         {uid: user.uid, 
           info: { "email" => "infinite@jest.com",
