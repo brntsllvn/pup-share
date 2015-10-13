@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :pups, dependent: :destroy, foreign_key: :owner_id
 
-  has_many :offers_as_walker, dependent: :destroy, class_name: 'Offer', foreign_key: :walker_id
+  has_many :offers, dependent: :destroy, foreign_key: :walker_id
 
   # Passes hash to built-in Rails method; no need to test
   def self.find_or_create_by_hash(auth)

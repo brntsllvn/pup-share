@@ -13,7 +13,7 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = current_user.offers_as_walker.create(offer_params)
+    @offer = current_user.offers.create(offer_params)
     @offer.send_mailer
     redirect_to :back, notice: 'Offer to walk sent to the owner'
   end
