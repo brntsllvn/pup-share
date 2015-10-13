@@ -6,6 +6,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
   </head>
 
   <body>
@@ -55,7 +56,7 @@
       <%= yield %>      
     </div>
 
-    <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-bottom footer" role="navigation">
       <p class='pull-left'><%= link_to 'Contact', new_visitor_message_path %></p>
       <p class='pull-right'><%= link_to 'Terms of Service', terms_of_service_path %></p>
       <p class='pull-left'><%= link_to 'About', about_path %></p>
