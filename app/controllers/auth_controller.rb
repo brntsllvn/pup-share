@@ -7,7 +7,7 @@ class AuthController < ApplicationController
 
     # find or create
     User.find_or_create_by_hash(session[:userinfo])
-
+    
     # Redirect after successful auth
     redirect_to user_upcoming_walks_path(current_user), notice: 'hi there'
   end
