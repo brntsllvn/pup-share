@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params) && @user == current_user
-      redirect_to @user, notice: 'User updated'
+      redirect_to new_walk_path, notice: 'Profile updated'
     else
       render :edit
     end
