@@ -1,20 +1,17 @@
 class WalksController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
+  before_action :authenticate_user!, except: :index
+  before_action :get_pup, only: :new
+  before_action :get_phone, only: :new
   before_action :set_walk, except: [:index, :new, :create]
 
   def index
-    @walks = Walk.all
-    # @walks = Walk.upcoming
+    @walks = Walk.upcoming
   end
 
   def show; end
 
   def new
-    if current_user.pups.empty?
-      redirect_to new_user_pup_path(current_user), notice: 'Add a pup first'
-    else
-      @walk = Walk.new
-    end
+    @walk = Walk.new
   end
 
   def edit # mailer links
@@ -46,6 +43,18 @@ class WalksController < ApplicationController
 
   def set_walk
     @walk = Walk.find(params[:id])
+  end
+
+  def get_pup
+    if current_user.pups.empty?
+      redirect_to new_user_pup_path(current_user), notice: 'Add a pup first'
+    end
+  end
+  
+  def get_phone
+    if current_user.phone.empty? or current_user.emergency_phone.empty?
+      redirect_to edit_user_path(current_user), alert: 'Please update your phone and emergency phone'
+    end
   end
 
   def walk_params

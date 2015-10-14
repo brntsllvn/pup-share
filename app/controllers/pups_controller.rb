@@ -17,7 +17,7 @@ class PupsController < ApplicationController
   def create
     @pup = current_user.pups.new(pup_params)
     if @pup.save
-      redirect_to new_walk_path(current_user), notice: "You created a pup. Use this form to post a walk"
+      redirect_to new_walk_path(current_user), notice: 'You created a pup. Use this form to post a walk'
     else
       render :new 
     end
@@ -32,7 +32,7 @@ class PupsController < ApplicationController
   end
 
   def destroy
-    @pup.destroy if @pup.user == current_user
+    @pup.destroy if @pup.owner == current_user
     redirect_to user_path(current_user), notice: 'Pup destroyed'
   end
 

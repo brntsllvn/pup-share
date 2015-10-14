@@ -20,12 +20,6 @@ class Walk < ActiveRecord::Base
     includes(:offers).where(offers: { walker: walker })
   end
 
-  # Note: hack until Rails 5 (includes unions)
-  #   def self.walks_plus_offers
-
-  #     binding.pry
-  # end
-
   # TODO: change 600000 to a reasonable number in prod
   def coming_up?
     return self.begin_time - Time.now < 600000.minutes
