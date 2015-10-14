@@ -17,10 +17,7 @@ module Features
       expect(current_path).to eql(new_walk_path)
       fill_in 'Building', with: 'Ruby'
       fill_in 'Desk', with: 'xyz-123'
-      fill_in 'Street', with: '111 West St.'
-      fill_in 'City', with: 'New York'
-      select 'Washington', from: 'walk[state]'
-      fill_in 'Zip', with: '98111'
+      fill_in 'Full street address', with: '1 West St. new york ny 10008'
       choose "walk_pup_id_#{Pup.last.id}"  
       select Time.now.year + 1, from: "walk[begin_time(1i)]" 
       choose 'walk_duration_15'    

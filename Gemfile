@@ -57,3 +57,5 @@ gem 'omniauth-linkedin-oauth2' # authentication with Linkedin
 gem 'pundit' # authorization from the creators of Capybara
 
 gem 'active_record_union' # until Rails 5
+
+gem "geocoder"

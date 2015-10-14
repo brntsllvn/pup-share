@@ -5,10 +5,7 @@ FactoryGirl.define do
     duration 15
     desk "xyz-123"
     building "Ruby"
-    street "111 Harvard Ave. E"
-    city "Seattle"
-    state "Washington"
-    zip "98111"
+    full_street_address "111 Harvard Ave. E Seattle WA 98111"
 
     association :owner
     association :walker
