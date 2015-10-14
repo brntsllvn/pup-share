@@ -20,7 +20,7 @@ class PupsController < ApplicationController
       redirect_to new_walk_path(current_user), notice: 'You created a pup. Use this form to post a walk'
     else
       render :new 
-    end
+    end 
   end
 
   def update

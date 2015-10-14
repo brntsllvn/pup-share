@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :authenticate_user!, except: [:edit]
+  before_action :authenticate_user!, except: :edit
 
   def index
     @walks  = current_user.walks
@@ -31,7 +31,7 @@ class OffersController < ApplicationController
   end
 
   private
-
+    
   def offer_params
     params.require(:offer).permit!
   end
