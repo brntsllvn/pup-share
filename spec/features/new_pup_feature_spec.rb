@@ -7,7 +7,7 @@ feature 'User creates a new pup' do
   background do
     sign_in owner
     click_on "Profile \& Pups"
-    expect(page).to have_content 'New Pup'
+    expect(page).to have_content 'Add Pup'
   end
 
   scenario 'success' do

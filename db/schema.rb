@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151014151345) do
+ActiveRecord::Schema.define(version: 20151015215541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.string  "desk"
+    t.string  "building"
+    t.string  "full_street_address"
+    t.float   "latitude"
+    t.float   "longitude"
+    t.integer "owner_id"
+  end
 
   create_table "offers", force: :cascade do |t|
     t.integer  "walk_id"
@@ -43,10 +52,9 @@ ActiveRecord::Schema.define(version: 20151014151345) do
     t.string   "email"
     t.string   "image"
     t.string   "headline"
-    t.string   "phone",           default: ""
-    t.string   "emergency_phone", default: ""
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "mobile",       default: ""
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "provider"
     t.string   "uid"
     t.text     "auth_hash"
@@ -71,18 +79,15 @@ ActiveRecord::Schema.define(version: 20151014151345) do
     t.integer  "owner_id"
     t.integer  "walker_id"
     t.integer  "pup_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.boolean  "started_by_owner",    default: false
-    t.boolean  "started_by_walker",   default: false
-    t.boolean  "ended_by_owner",      default: false
-    t.boolean  "ended_by_walker",     default: false
-    t.string   "desk"
-    t.string   "building"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.boolean  "started_by_owner",  default: false
+    t.boolean  "started_by_walker", default: false
+    t.boolean  "ended_by_owner",    default: false
+    t.boolean  "ended_by_walker",   default: false
     t.text     "message"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "full_street_address"
+    t.integer  "location_id"
+    t.string   "mobile"
   end
 
 end

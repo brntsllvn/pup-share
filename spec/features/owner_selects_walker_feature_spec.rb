@@ -8,8 +8,10 @@ feature 'Owner selects walker' do
   background do
     # owner creates pup and walk
     sign_in owner
-    create_pup('Ace', 'Lab', 'M')
     click_on 'Post a Walk'
+    create_mobile
+    create_location
+    create_pup('Ace', 'Lab', 'M')
     create_walk
     click_on 'Sign Out'
     # walker offers to walk

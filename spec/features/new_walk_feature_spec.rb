@@ -4,19 +4,34 @@ feature 'Create new walk' do
 
   let (:owner) { create(:user) }
 
-  scenario 'fails when no pup' do
+  background :each do
     visit '/'
     sign_in owner
     click_on 'Post a Walk'
-    expect(page).to have_content 'Add a pup first'
-    expect(page).to have_content 'New Pup'
+    click_on 'Create Walk'
+  end
+
+  scenario 'fails when no mobile' do
+    expect(page).to have_content 'can\'t be blank'
+    expect(page).to have_content 'Add Mobile'
+  end
+
+  scenario 'fails when no location' do
+    expect(page).to have_content 'can\'t be blank'
+    expect(page).to have_content 'Add Location'
+  end
+
+  scenario 'fails when no pup' do
+    expect(page).to have_content 'can\'t be blank'
+    expect(page).to have_content 'Add Pup'
   end
 
   scenario 'success' do
     expect{
-      sign_in owner
+      click_on 'Post a Walk'
+      # create location
+      create_location
       # create pup
-      visit user_path(owner)
       create_pup('Ace', 'Lab', 'M')
       # create walk
       create_walk

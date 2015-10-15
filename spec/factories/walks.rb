@@ -3,10 +3,9 @@ FactoryGirl.define do
   factory :walk do
     begin_time Time.now + 1.hour
     duration 15
-    desk "xyz-123"
-    building "Ruby"
-    full_street_address "111 Harvard Ave. E Seattle WA 98111"
+    mobile '555-981-0678'
 
+    association :location
     association :owner
     association :walker
     association :pup

@@ -1,0 +1,22 @@
+<%= simple_form_for [current_user, @location] do |f| %>
+<%= f.error_notification %>
+
+<div class="well form-inputs row">
+
+  <div class="col-md-4">
+    <%= f.input :desk %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :building %>
+  </div>
+  <div class="col-md-4">
+    <%= f.input :full_street_address %> 
+  </div>
+
+</div>
+
+<div class="form-actions">
+  <%= f.button :submit, class: 'btn btn-success'%>
+</div>
+
+<% end %>

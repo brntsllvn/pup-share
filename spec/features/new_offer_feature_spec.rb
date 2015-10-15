@@ -8,11 +8,13 @@ feature 'User offers to walk a pup' do
   scenario 'success' do
     # sign in
     sign_in owner
+    click_on 'Post a Walk'
+    create_mobile
+    # location
+    create_location
     # pup
-    visit user_path(owner)
     create_pup('Ace', 'Lab', 'M')
     # walk
-    visit walks_path
     create_walk
     # sign owner out
     click_on 'Sign Out'

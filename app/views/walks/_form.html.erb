@@ -3,20 +3,28 @@
 
 <div class='well col-md-12'>
 
-  <div class='col-md-3'>
-    <%= f.input :building, placeholder: 'Ruby' %>
+  <div class='col-md-2'>
+    <%= link_to 'Add Mobile', edit_user_path(current_user), class: 'btn btn-primary' %> 
   </div>
-  <div class='col-md-3'>
-    <%= f.input :desk, placeholder: 'xyz-123' %>
+  <div class='col-md-4'>
+    <%= f.input :mobile, as: :radio_buttons, collection: [current_user.mobile], include_blank: false %>
   </div>
-  <div class='col-md-6'>
-    <%= f.input :full_street_address, placeholder: '123 Fake Street, Sometown, OH' %>
+</div>
+
+
+<div class='well col-md-12'>
+
+  <div class='col-md-2'>
+    <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary' %> 
+  </div>
+  <div class='col-md-4'>
+    <%= f.association :location, as: :radio_buttons, label_method: :full_street_address, collection: current_user.locations, include_blank: false %>
   </div>
 </div>
 
 <div class='well col-md-12'>
   <div class='col-md-2'>
-    <%= link_to 'New pup', new_user_pup_path(current_user), class: 'btn btn-primary' %> 
+    <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %> 
   </div>
   <div class='col-md-4'>
     <%= f.association :pup, as: :radio_buttons, label_method: :name, collection: current_user.pups, include_blank: false %>

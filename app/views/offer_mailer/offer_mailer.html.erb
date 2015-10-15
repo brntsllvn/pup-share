@@ -2,17 +2,3 @@
 
 <!-- # TODO: fix path -->
 <%= link_to "Approve or Decline here", root_url %>
-
-<h3>Walk</h3>
-<p>Begin: <%= @offer.walk.begin_time.to_formatted_s(:long_ordinal) %></p>
-
-<h3>Pup</h3>
-<p>Pup: <%= @offer.walk.pup.name %></p>
-<p><%= image_tag(@offer.walk.pup.pic, class: 'img-responsive') %></p>
-
-<h3>Walker</h3>
-<p><%= image_tag @offer.walker.image %></p>
-<p>First: <%= @offer.walker.first_name %></p>
-<p>Last: <%= @offer.walker.last_name %></p>
-<p>Phone: <%= @offer.walker.phone %></p>
-<p>Email: <%= @offer.walker.email %></p>

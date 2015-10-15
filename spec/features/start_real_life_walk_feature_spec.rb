@@ -6,16 +6,21 @@ feature 'Start real life walk' do
   let (:walker) { create(:user) }
 
   background do
-    # owner creates pup and walk
+    # sign in
     sign_in owner
+    click_on 'Post a Walk'
+    # mobile
+    create_mobile
+    # location
+    create_location
+    # pup
     create_pup('Ace', 'Lab', 'M')
-    visit walks_path
+    # walk
     create_walk
-    # walk not yet visible b/c too far in the future
-    expect(page).to have_no_content('Start Walk')
-    # make walk 5min from now to simulate time passing
-    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
+    # sign owner out
     click_on 'Sign Out'
+    # time warp
+    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
     # walker offers to walk
     sign_in walker
     click_on 'Walk a Pup' 
