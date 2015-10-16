@@ -14,7 +14,7 @@ feature 'User offers to walk a pup' do
     # location
     create_location
     # pup
-    create_pup('Ace', 'Lab', 'M')
+    create_pup
     # walk
     create_walk
     # sign owner out

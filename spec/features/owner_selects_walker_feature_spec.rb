@@ -12,7 +12,7 @@ feature 'Owner selects walker' do
     # create mobile
     create_phone_number
     create_location
-    create_pup('Ace', 'Lab', 'M')
+    create_pup
     create_walk
     click_on 'Sign Out'
     # walker offers to walk

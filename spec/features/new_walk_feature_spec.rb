@@ -34,7 +34,7 @@ feature 'Create new walk' do
       # create location
       create_location
       # create pup
-      create_pup('Ace', 'Lab', 'M')
+      create_pup
       # create walk
       create_walk
       }.to change(Walk, :count).by (1)

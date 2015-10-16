@@ -14,7 +14,7 @@ feature 'Start real life walk' do
     # location
     create_location
     # pup
-    create_pup('Ace', 'Lab', 'M')
+    create_pup
     # walk
     create_walk
     # sign owner out

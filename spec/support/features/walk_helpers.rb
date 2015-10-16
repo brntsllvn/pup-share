@@ -18,11 +18,11 @@ module Features
       click_on 'Create Location'
     end
 
-    def create_pup(name, breed, gender)
+    def create_pup
       click_on 'Add Pup'
       # fill out new pup form
-      fill_in 'Name', with: name
-      fill_in 'Breed', with: breed
+      fill_in 'Name', with: 'Ace'
+      fill_in 'Breed', with: 'Lab'
       find(:css, "#pup_male_female_m").set(true)
       fill_in 'Age', with: 4
       fill_in 'Weight', with: 71

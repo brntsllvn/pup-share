@@ -7,24 +7,29 @@ feature 'User creates a new pup' do
   background do
     sign_in owner
     click_on "Profile \& Pups"
-    expect(page).to have_content 'Add Pup'
+    click_on 'Add Pup'
   end
 
   scenario 'success' do
     expect{
-      create_pup('Ace', 'Lab', 'M')
+      fill_in 'Name', with: 'Ace'
+      fill_in 'Breed', with: 'Lab'
+      find(:css, "#pup_male_female_m").set(true)
+      fill_in 'Age', with: 4
+      fill_in 'Weight', with: 71
+      click_on 'Create Pup'
       }.to change(Pup, :count).by(1)
     expect(page).to have_content 'You created a pup'
   end
 
   context 'fails when' do
     scenario 'pup name blank' do
-      create_pup(nil, 'Lab', 'M')
+      click_on 'Create Pup'
       expect(page).to have_content "can't be blank"
     end
 
     scenario 'pup breed blank' do
-      create_pup('Ace', nil, 'M')
+      click_on 'Create Pup'
       expect(page).to have_content "can't be blank" 
     end
   end
