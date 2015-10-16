@@ -2,13 +2,8 @@ class PupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_pup, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @pups = current_user.pups
-  end
-
-  def show; end
-
   def new
+    session[:prev_url] = request.referer
     @pup = Pup.new
   end
 
@@ -17,7 +12,7 @@ class PupsController < ApplicationController
   def create
     @pup = current_user.pups.new(pup_params)
     if @pup.save
-      redirect_to new_walk_path(current_user), notice: 'You created a pup. Use this form to post a walk'
+      redirect_to session[:prev_url], notice: 'Pup added'
     else
       render :new 
     end 

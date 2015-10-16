@@ -10,7 +10,7 @@ feature 'User adds phone number' do
 
   scenario 'success' do
     expect{ create_phone_number }.to change(PhoneNumber, :count).by(1)
-    expect(page).to have_content 'You added a phone number'
+    expect(page).to have_content 'Number added'
   end
 
 end

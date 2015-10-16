@@ -3,13 +3,14 @@ class LocationsController < ApplicationController
   before_action :set_location, only: :destroy
 
   def new
+    session[:prev_url] = request.referer
     @location = Location.new
   end
 
   def create
     @location = current_user.locations.new(location_params)
     if @location.save
-      redirect_to new_walk_path(current_user), notice: 'You added a location. Use this form to post a walk'
+      redirect_to session[:prev_url], notice: 'Location added'
     else
       render :new 
     end 

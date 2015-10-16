@@ -19,7 +19,7 @@ feature 'User creates a new pup' do
       fill_in 'Weight', with: 71
       click_on 'Create Pup'
       }.to change(Pup, :count).by(1)
-    expect(page).to have_content 'You created a pup'
+    expect(page).to have_content 'Pup added'
   end
 
   context 'fails when' do

@@ -10,7 +10,7 @@ feature 'User adds location' do
 
   scenario 'success' do
     expect{ create_location }.to change(Location, :count).by(1)
-    expect(page).to have_content 'You added a location'
+    expect(page).to have_content 'Location added'
   end
 
   context 'fails when' do

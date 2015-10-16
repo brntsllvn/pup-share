@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'static_pages#privacy_policy'
 
   resources :users, except: [:edit, :update] do
-    resources :pups
+    resources :pups, except: [:index, :show]
     resources :offers, only: [:new, :create, :destroy]
     resources :locations, only: [:new, :create, :destroy]
     resources :phone_numbers, only: [:new, :create, :destroy]
