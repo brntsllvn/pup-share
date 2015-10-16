@@ -1,0 +1,42 @@
+/* line 1, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+body {
+  background: url(/assets/whitey-dac36825f28192305cb765d11d9d0d0247c7dbaff4d541f7bd7584683555c033.png);
+}
+
+/* line 5, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+#nav-sign-in {
+  max-width: auto;
+  max-height: auto;
+  padding: 5px;
+}
+
+/* line 11, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+.panel-title {
+  overflow: auto;
+}
+
+/* line 15, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+a {
+  color: #fff;
+}
+
+/* line 19, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+a.linkedin-profile {
+  color: #337ab7;
+  text-decoration: underline;
+}
+
+/* line 24, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-heading.walker {
+  background-color: #F0D8A8;
+}
+
+/* line 28, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-heading.owner {
+  background-color: #A8C090;
+}
+
+/* line 32, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.walk-detail {
+  width: 65px;
+}
