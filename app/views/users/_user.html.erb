@@ -1,15 +1,13 @@
 <div class="well row">
-  <%# fail %>
-  <div class="col-md-2">
-    <p><%= image_tag user.image, :class => 'img-responsive'  %></p>
+  <div class="col-md-12">
+    <p><%= image_tag user.image, class: 'img-responsive, control-block'  %></p>
   </div>
 
-  <div class="col-md-10">           
+  <div class="col-md-12">           
     <p><strong><%= "#{user.first_name} #{user.last_name}" %></strong></p>
     <p><%= "#{user.email}" %></p>
     <p><%= "#{user.location}" %></p>
     <p><%= "#{user.headline}" %></p>
     <p><%= link_to 'LinkedIn Public Profile', user.linkedin_url, class:'linkedin-profile' %></p>  
   </div>
-
-</div><!-- well row -->
+</div>

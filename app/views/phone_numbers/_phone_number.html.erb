@@ -1,0 +1,13 @@
+<div class="col-md-4">
+  <p><%= "#{phone_number.phone_type}" %></p>
+</div>
+
+<div class="col-md-4">
+  <p><%= "#{phone_number.number}" %></p>   
+</div>
+
+<div class="col-md-4">
+  <%= link_to user_phone_number_path(current_user, phone_number), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+  <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+  <% end %>
+</div>

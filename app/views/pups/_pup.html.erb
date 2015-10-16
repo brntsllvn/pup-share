@@ -1,10 +1,10 @@
-<div class="well row">
+<div class="row">
 
   <div class="col-md-4">  
     <%= image_tag pup.pic, class: 'img-responsive' %>  
   </div>
 
-  <div class="col-md-5">
+  <div class="col-md-4">
     <strong><p><%= "#{pup.name}" %></p></strong>
     <p><%= "#{pup.breed}" %></p>
     <p><%= "#{pup.male_female}" %></p>   
@@ -14,9 +14,11 @@
     <p><%= "Walks completed #{pup.walks_completed}" %></p>
   </div>
 
-  <div class="col-md-6">
-    <%= link_to 'Edit Pup', edit_user_pup_path(current_user, pup), class: 'btn btn-warning' %>
-    <%= link_to 'Destroy Pup', user_pup_path(current_user, pup), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <div class="col-md-4">
+    <%= link_to 'Edit', edit_user_pup_path(current_user, pup), class: 'btn btn-warning' %>
+    <%= link_to user_pup_path(current_user, pup), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+    <% end %>
   </div>
 </div><!-- row -->
 <br>

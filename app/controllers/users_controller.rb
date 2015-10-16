@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   end
 
   def show # profile & pups
-    @pups = @user.pups unless @user.pups.nil?
+    @pups = @user.pups unless !@user.pups
+    @phone_numbers = @user.phone_numbers unless !@user.phone_numbers
+    @locations = @user.locations unless !@user.locations
   end
 
   def upcoming_walks

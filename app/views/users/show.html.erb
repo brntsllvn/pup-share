@@ -5,19 +5,24 @@
 </div>
 
 <div class="col-md-12">
+  <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %>
+</div>
+<div class='well col-md-12'>
+  <%= render @pups %>
+</div>
+
+<div class="col-md-12">
   <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary' %>
+</div>
+<div class='well col-md-12'>
+  <%= render @phone_numbers %>
 </div>
 
 <div class="col-md-12">
   <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary' %>
 </div>
-
-<div class="col-md-12">
-  <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %>
-</div>
-
-<div class="col-md-12">
-  <%= render @pups %>
+<div class='well col-md-12'>
+  <%= render @locations %>
 </div>
 
 <%= link_to 'Delete Account :(', user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
