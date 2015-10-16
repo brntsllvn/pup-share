@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151016041317) do
+ActiveRecord::Schema.define(version: 20151016221036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,9 +90,7 @@ ActiveRecord::Schema.define(version: 20151016041317) do
     t.integer  "pup_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
-    t.boolean  "started_by_owner",  default: false
     t.boolean  "started_by_walker", default: false
-    t.boolean  "ended_by_owner",    default: false
     t.boolean  "ended_by_walker",   default: false
     t.text     "message"
     t.integer  "location_id"

@@ -14,7 +14,7 @@ class Walk < ActiveRecord::Base
   has_many   :offers, dependent: :destroy
 
   scope :upcoming, -> { where('begin_time > ?' , Time.now) }
-  scope :past,     -> { where('begin_time <= ?', Time.now) }
+  scope :past,     -> { where('begin_time <= ? OR ended_by_walker = ?', Time.now, true) }
 
   def self.walks_through_offers(walker)
     includes(:offers).where(offers: { walker: walker })
@@ -25,5 +25,5 @@ class Walk < ActiveRecord::Base
     return self.begin_time - Time.now < 600000.minutes
     false
   end
-
+  
 end

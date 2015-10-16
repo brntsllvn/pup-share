@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy if @user == current_user
-    redirect_to root_path, notice: 'Account deleted'
+    redirect_to root_path, notice: 'Account destroyed'
   end
 
   private
