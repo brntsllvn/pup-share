@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'terms_of_service', to: 'static_pages#terms_of_service'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
 
-  resources :users do
+  resources :users, except: [:edit, :update] do
     resources :pups
     resources :offers, only: [:new, :create, :destroy]
     resources :locations, only: [:new, :create, :destroy]

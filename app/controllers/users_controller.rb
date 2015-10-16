@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:upcoming_walks, :update, :destroy]
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:upcoming_walks, :destroy]
+  before_action :set_user, only: [:show, :destroy]
 
   def index
     @users = User.all
@@ -18,9 +18,9 @@ class UsersController < ApplicationController
     @walks_plus_offers = current_user.past_walks_and_offers.sort_by{ |e| e[:begin_time] }
   end
 
-  def new; end
+  def new
+  end
 
-  def edit; end
 
   def create
     @user = User.new(user_params)
@@ -28,14 +28,6 @@ class UsersController < ApplicationController
       redirect_to users_path(current_user), notice: 'User created'
     else
       render :new
-    end
-  end
-
-  def update
-    if @user.update(user_params) && @user == current_user
-      redirect_to new_walk_path, notice: 'Profile updated'
-    else
-      render :edit
     end
   end
 
