@@ -6,8 +6,6 @@ class WalksController < ApplicationController
     @walks = Walk.upcoming
   end
 
-  def show; end
-
   def new
     @walk = Walk.new
   end
@@ -41,24 +39,6 @@ class WalksController < ApplicationController
 
   def set_walk
     @walk = Walk.find(params[:id])
-  end
-
-  def get_location
-    if current_user.locations.nil?
-      redirect_to new_user_location_path(current_user), notice: 'Add a location first'
-    end
-  end
-
-  def get_pup
-    if current_user.pups.empty?
-      redirect_to new_user_pup_path(current_user), notice: 'Add a pup first'
-    end
-  end
-
-  def get_phone
-    if current_user.phone.empty?
-      redirect_to edit_user_path(current_user), alert: 'Please update your mobile'
-    end
   end
 
   def walk_params
