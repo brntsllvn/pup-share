@@ -11,18 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015234629) do
+ActiveRecord::Schema.define(version: 20151016041317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "locations", force: :cascade do |t|
-    t.string  "desk"
-    t.string  "building"
-    t.string  "full_street_address"
-    t.float   "latitude"
-    t.float   "longitude"
-    t.integer "owner_id"
+    t.string   "desk"
+    t.string   "building"
+    t.string   "full_street_address"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "offers", force: :cascade do |t|
@@ -30,6 +32,14 @@ ActiveRecord::Schema.define(version: 20151015234629) do
     t.integer  "walker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "phone_numbers", force: :cascade do |t|
+    t.string   "number"
+    t.integer  "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "phone_type"
   end
 
   create_table "pups", force: :cascade do |t|
@@ -52,7 +62,6 @@ ActiveRecord::Schema.define(version: 20151015234629) do
     t.string   "email"
     t.string   "image"
     t.string   "headline"
-    t.string   "mobile"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "provider"
@@ -87,7 +96,7 @@ ActiveRecord::Schema.define(version: 20151015234629) do
     t.boolean  "ended_by_walker",   default: false
     t.text     "message"
     t.integer  "location_id"
-    t.string   "mobile"
+    t.integer  "phone_number_id"
   end
 
 end

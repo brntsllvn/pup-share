@@ -9,7 +9,8 @@ feature 'User offers to walk a pup' do
     # sign in
     sign_in owner
     click_on 'Post a Walk'
-    create_mobile
+    # create mobile
+    create_phone_number
     # location
     create_location
     # pup

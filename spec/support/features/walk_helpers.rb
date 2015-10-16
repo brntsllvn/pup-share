@@ -1,10 +1,12 @@
 module Features
   module WalkHelpers
 
-    def create_mobile
-      click_on 'Add Mobile'
-      fill_in 'Mobile', with: '555-555-5555'
-      click_on 'Update Profile'
+    def create_phone_number
+      click_on 'Add Phone Number'
+      # fill out phone form
+      choose 'phone_number_phone_type_mobile'
+      fill_in 'Number', with: '555-555-5555'
+      click_on 'Create Phone number'
     end
 
     def create_location
@@ -30,7 +32,7 @@ module Features
     def create_walk
       click_on 'Post a Walk'
       # fill out new walk form
-      choose "walk_mobile_555-555-5555" # hard-coded using phone number from above
+      choose "walk_phone_number_id_#{PhoneNumber.last.id}"
       choose "walk_location_id_#{Location.last.id}"
       choose "walk_pup_id_#{Pup.last.id}"  
       select Time.now.year + 1, from: "walk[begin_time(1i)]" 

@@ -9,8 +9,8 @@ feature 'Start real life walk' do
     # sign in
     sign_in owner
     click_on 'Post a Walk'
-    # mobile
-    create_mobile
+    # create mobile
+    create_phone_number
     # location
     create_location
     # pup

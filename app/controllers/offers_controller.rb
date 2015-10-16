@@ -1,26 +1,15 @@
 class OffersController < ApplicationController
   before_action :authenticate_user!, except: :edit
 
-  def index
-    @walks  = current_user.walks
-    @offers = current_user.offers
-  end
-
-  def show; end
-
   def new
     @offer = Offer.new
   end
 
   def create
     @offer = current_user.offers.create(offer_params)
-    @offer.send_mailer
+    @offer.send_mailer # TODO: revisit
     redirect_to :back, notice: 'Offer to walk sent to the owner'
   end
-
-  def edit; end
-
-  def update; end
 
   def destroy
     @offer = Offer.find(params[:id])

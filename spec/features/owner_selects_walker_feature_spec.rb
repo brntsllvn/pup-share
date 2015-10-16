@@ -9,7 +9,8 @@ feature 'Owner selects walker' do
     # owner creates pup and walk
     sign_in owner
     click_on 'Post a Walk'
-    create_mobile
+    # create mobile
+    create_phone_number
     create_location
     create_pup('Ace', 'Lab', 'M')
     create_walk

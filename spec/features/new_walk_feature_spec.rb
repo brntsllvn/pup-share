@@ -13,7 +13,7 @@ feature 'Create new walk' do
 
   scenario 'fails when no mobile' do
     expect(page).to have_content 'can\'t be blank'
-    expect(page).to have_content 'Add Mobile'
+    expect(page).to have_content 'Add Phone Number'
   end
 
   scenario 'fails when no location' do
@@ -29,6 +29,8 @@ feature 'Create new walk' do
   scenario 'success' do
     expect{
       click_on 'Post a Walk'
+      # create mobile
+      create_phone_number
       # create location
       create_location
       # create pup

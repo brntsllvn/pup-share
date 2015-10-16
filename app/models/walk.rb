@@ -2,12 +2,13 @@ class Walk < ActiveRecord::Base
   validates :begin_time,            presence: true,
   date: { after: Proc.new { Time.now }, message: 'Walk must be in the future' }
   validates :duration,              presence: true
-  validates :mobile,                presence: true
+  validates :phone_number_id,       presence: true
   validates :location_id,           presence: true
   validates :pup_id,                presence: true
 
   belongs_to :pup
   belongs_to :location
+  belongs_to :phone_number
   belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy

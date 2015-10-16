@@ -3,8 +3,8 @@ FactoryGirl.define do
   factory :walk do
     begin_time Time.now + 1.hour
     duration 15
-    mobile '555-981-0678'
 
+    association :phone_number
     association :location
     association :owner
     association :walker
