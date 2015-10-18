@@ -7,7 +7,7 @@
     <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary' %> 
   </div>
   <div class='col-md-4'>
-    <%= f.association :phone_number, as: :radio_buttons, label_method: :number, collection: current_user.phone_numbers, include_blank: false %>
+    <%= f.association :phone_number, as: :radio_buttons, label_method: :number, collection: current_user.phone_numbers, include_blank: false, checked: "checked", item_wrapper_class: 'inline' %>
   </div>
 </div>
 
