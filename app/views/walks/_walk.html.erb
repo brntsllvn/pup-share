@@ -57,13 +57,48 @@
             <%= "#{walk.begin_time.strftime("%A")}, #{walk.begin_time.to_formatted_s(:short)}" %>
           </div>
 
-          <div class="col-md-2">
+          <div class="col-md-3">
             <h3>Where</h3>
-            <%#= walk.desk %>
+
+            <!--------->
+            <!-- MAP -->
+            <!--------->
+
+            <% if  walk.location.latitude.present? and walk.location.longitude.present? %>
+
+            <script>
+
+              function initMap() {
+                var myLatLng = {lat: <%= walk.location.latitude %>, lng: <%= walk.location.longitude %> }
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 15,
+                  center: myLatLng
+                });
+
+                var marker = new google.maps.Marker({
+                  position: myLatLng,
+                  map: map,
+                  title: 'Walk Location'
+                });
+              }
+
+            </script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+            <div id="map">stuff</div>
+
+            <% end %><!-- if lat/lng are present -->
+
+            <%= walk.location.full_street_address %>
+            
+            <!--------->
+            <!-- MAP -->
+            <!--------->
+
           </div>
 
           <!-- Start/End Buttons -->
-          <div class="col-md-3">
+          <div class="col-md-2">
 
             <% if walk.walker %>
 
