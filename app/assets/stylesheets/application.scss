@@ -11,12 +11,14 @@
 * file per style scope.
 *
 
+*= require jquery-ui/datepicker
 *= require application
 *= require master
 */
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import 'bootstrap-datetimepicker';
+
 
 div.bottom-padding { padding-bottom: 100px; }

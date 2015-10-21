@@ -5,16 +5,16 @@
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
 
           <div class="col-md-2">
-            <%= "Job ID: #{walk.id}" %><!-- TODO: for testing; to be removed -->
             <%= image_tag walk.pup.pic, class: 'img-responsive center-block img-rounded' %>
           </div>
 
           <div class="col-md-2">
-            <%= "#{walk.pup.name} the #{walk.pup.weight}lb, #{walk.pup.age} year-old #{walk.pup.breed} (#{walk.pup.male_female})" %>
+            <h1><%= walk.pup.name %></h1>
+            <h4><%= "#{walk.pup.weight}lb, #{walk.pup.age} year-old #{walk.pup.breed} (#{walk.pup.male_female})" %></h4>
           </div>
 
           <div class="col-md-4">
-            <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %>
+            <h4><%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %></h4>
 
           </div>
 
@@ -23,7 +23,7 @@
           </div>
 
           <div class="col-md-2">
-            <%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %>
+            <h4><%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %></h4>
           </div>
 
         </a>
@@ -43,13 +43,6 @@
             <h3>Owner</h3>
             <%= walk.owner.first_name %>
             <%= link_to image_tag(walk.owner.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.owner) %>
-          </div>
-
-          <div class="col-md-2">
-            <h3>Pup</h3>
-            <%= walk.pup.name%>
-            <%= link_to image_tag(walk.pup.pic, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.owner) %>
-
           </div>
 
           <div class="col-md-2">
@@ -88,9 +81,9 @@
             <div id="map">stuff</div>
 
             <% end %><!-- if lat/lng are present -->
-            
+
             <%= walk.location.full_street_address %>
-            
+
             <!--------->
             <!-- MAP -->
             <!--------->

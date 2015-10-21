@@ -7,6 +7,7 @@ module Features
       choose 'phone_number_phone_type_mobile'
       fill_in 'Number', with: '555-555-5555'
       click_on 'Create Phone number'
+      expect(page).to have_content("Number added")
     end
 
     def create_location
@@ -16,6 +17,7 @@ module Features
       fill_in 'Building', with: 'Ruby'
       fill_in 'Full street address', with: "500 5th Ave N, Seattle, WA 98109"
       click_on 'Create Location'
+      expect(page).to have_content("Location added")
     end
 
     def create_pup
@@ -27,6 +29,7 @@ module Features
       fill_in 'Age', with: 4
       fill_in 'Weight', with: 71
       click_on 'Create Pup'
+      expect(page).to have_content("Pup added")
     end
 
     def create_walk

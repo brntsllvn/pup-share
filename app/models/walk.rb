@@ -25,5 +25,5 @@ class Walk < ActiveRecord::Base
     return self.begin_time - Time.now < 600000.minutes
     false
   end
-  
+
 end

@@ -2,29 +2,8 @@
 <%= f.error_notification %>
 
 <div class='well col-md-12'>
-
   <div class='col-md-2'>
-    <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary' %> 
-  </div>
-  <div class='col-md-4'>
-    <%= f.association :phone_number, as: :radio_buttons, label_method: :number, collection: current_user.phone_numbers, include_blank: false, checked: "checked", item_wrapper_class: 'inline' %>
-  </div>
-</div>
-
-
-<div class='well col-md-12'>
-
-  <div class='col-md-2'>
-    <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary' %> 
-  </div>
-  <div class='col-md-4'>
-    <%= f.association :location, as: :radio_buttons, label_method: :full_street_address, collection: current_user.locations, include_blank: false %>
-  </div>
-</div>
-
-<div class='well col-md-12'>
-  <div class='col-md-2'>
-    <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %> 
+    <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %>
   </div>
   <div class='col-md-4'>
     <%= f.association :pup, as: :radio_buttons, label_method: :name, collection: current_user.pups, include_blank: false %>
@@ -38,8 +17,28 @@
   <div class='col-md-4'>
     <%= f.input :begin_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 15, start_year: Time.now.year, end_year: Time.now.year + 1 %>
   </div>
+</div>
 
+<div class='well col-md-12'>
+  <div class='col-md-2'>
+    <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary' %>
+  </div>
   <div class='col-md-4'>
+    <%= f.association :location, as: :radio_buttons, label_method: :full_street_address, collection: current_user.locations, include_blank: false %>
+  </div>
+</div>
+
+<div class='well col-md-12'>
+  <div class='col-md-2'>
+    <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary' %>
+  </div>
+  <div class='col-md-4'>
+    <%= f.association :phone_number, as: :radio_buttons, label_method: :number, collection: current_user.phone_numbers, include_blank: false %>
+  </div>
+</div>
+
+<div class='well col-md-12'>
+  <div class='col-md-12'>
     <%= f.input :duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false, checked: '15' %>
   </div>
 </div>
@@ -49,3 +48,8 @@
 </div>
 
 <% end %>
+
+
+
+
+

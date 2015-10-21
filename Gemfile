@@ -5,16 +5,18 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 gem 'bootstrap-sass', '~> 3.3.4'
-gem 'sass-rails', '>= 3.2'
-gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'jquery-rails'
-gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease
-
-gem 'simple_form'
-
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.15.35'
+
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+gem 'sass-rails', '>= 3.2'
+gem 'simple_form'
+gem 'uglifier', '>= 1.3.0'
+
+gem 'jbuilder', '~> 2.0' # Build JSON APIs with ease
 
 gem 'carrierwave-aws' # picture uploading
 gem 'mini_magick'
@@ -59,3 +61,5 @@ gem 'pundit' # authorization from the creators of Capybara
 gem 'active_record_union' # until Rails 5
 
 gem "geocoder"
+
+gem 'phony_rails'

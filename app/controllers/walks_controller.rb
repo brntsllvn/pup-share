@@ -13,7 +13,8 @@ class WalksController < ApplicationController
   def edit # mailer links
   end
 
-  def create
+  def create 
+    
     @walk = current_user.walks_as_owner.new(walk_params)
     if @walk.save
       redirect_to user_upcoming_walks_path(current_user), notice: 'Walk created'
