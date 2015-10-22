@@ -36,7 +36,7 @@
         <!-------------->
         <!---- BODY ---->
         <!-------------->
-        
+
         <h2>Details</h2>
 
         <div class="row well">
@@ -144,11 +144,11 @@
           </div>
 
           <div class="col-md-4">
-            Pup experience:<strong> insert some comment </strong>
+            Any pups registered with PupShare? <strong><%= offer.walker.pups.count > 0 ? "Yes" : "No" %></strong> 
           </div>
 
           <div class="col-md-2">
-            Any pups registered with PupShare? <strong><%= offer.walker.pups.count > 0 ? "Yes" : "No" %></strong> 
+            PupShare walks completed: <strong><%= offer.walker.walks_completed %></strong> 
           </div>
 
           <div class="col-md-2">
