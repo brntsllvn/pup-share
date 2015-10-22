@@ -36,7 +36,7 @@ feature 'Start real life walk' do
   scenario 'success' do
     # walker starts walk
     sign_in walker
-    click_on 'My Upcoming Walks'
+    click_on "#{walker.first_name}'s Upcoming Walks"
     click_on 'Start Walk'
     # walk begins in the real world
     expect(page).to have_content('Walk officially started')

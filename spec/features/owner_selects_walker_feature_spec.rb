@@ -19,7 +19,7 @@ feature 'Owner selects walker' do
     sign_in walker
     click_on 'Walk a Pup'
     expect{click_on 'Walk this pup!'}.to change(Offer, :count).by (1)
-    click_on 'My Upcoming Walks'
+    click_on "#{walker.first_name}'s Upcoming Walks"
     # 'Accept offer' button only visible to pup's owner
     expect(page).to have_no_content('Accept offer')
     expect(page).to have_content('Offers')
@@ -29,7 +29,7 @@ feature 'Owner selects walker' do
 
   scenario 'success' do # , js: true
     sign_in owner
-    click_on 'My Upcoming Walks'
+    click_on "#{owner.first_name}'s Upcoming Walks"
     # owner has not chosen a walker yet
     expect(page).to have_content('Offers')
     # owner can see offer
