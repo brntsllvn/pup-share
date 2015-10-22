@@ -57,32 +57,12 @@
             <!-- MAP -->
             <!--------->
 
-            <% if  walk.location.latitude.present? and walk.location.longitude.present? %>
-
-            <script>
-
-              function initMap() {
-                var myLatLng = {lat: <%= walk.location.latitude %>, lng: <%= walk.location.longitude %> }
-
-                var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 15,
-                  center: myLatLng
-                });
-
-                var marker = new google.maps.Marker({
-                  position: myLatLng,
-                  map: map,
-                  title: 'Walk Location'
-                });
-              }
-
-            </script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
-            <div id="map"></div>
-
-            <% end %><!-- if lat/lng are present -->
-
             <%= walk.location.full_street_address %>
+            <br>
+            <% if  walk.location.latitude.present? and walk.location.longitude.present? %>
+            <!-- TODO: short term hack -->
+            <%= link_to 'Plot in Google Maps', "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank", class: 'btn btn-primary btn-lg' %>
+            <% end %>
 
             <!--------->
             <!-- MAP -->
