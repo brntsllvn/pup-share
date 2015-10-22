@@ -36,13 +36,22 @@
         <!-------------->
         <!---- BODY ---->
         <!-------------->
+        
+        <h2>Details</h2>
 
-        <div class="row">
+        <div class="row well">
 
           <div class="col-md-2">
             <h3>Owner</h3>
             <%= walk.owner.first_name %>
             <%= link_to image_tag(walk.owner.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.owner) %>
+          </div>
+
+          <div class="col-md-2">
+            <h3>About</h3>
+            <%= walk.owner.location %>
+            <br><br>
+            <%= walk.owner.headline %>
           </div>
 
           <div class="col-md-2">
@@ -60,7 +69,8 @@
             <%= walk.location.full_street_address %>
             <br>
             <% if  walk.location.latitude.present? and walk.location.longitude.present? %>
-            <!-- TODO: short term hack -->
+            <br>
+            <!-- TODO: short term hack in place of geocoder -->
             <%= link_to 'Plot in Google Maps', "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank", class: 'btn btn-primary btn-lg' %>
             <% end %>
 
@@ -72,11 +82,12 @@
 
           <!-- Start/End Buttons -->
           <div class="col-md-2">
+            <h3>What now?</h3>
 
             <% if walk.walker %>
 
             <% if policy(walk).walker_current_user? %>
-            <h3>What now?</h3>
+
 
             <% if policy(walk).walker_update_start? %>
             <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
@@ -96,12 +107,12 @@
             <%= walk.walker.first_name %>
             <%= link_to image_tag(walk.walker.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.walker) %> 
 
-            <% end %><%# if policy(walk).walker_current_user? %>
+            <% end %>
 
             <% else %>
-            <h5>Choose a walker from the offers below</h5>
+            Choose a walker from the offers below
 
-            <% end %><%# if walk.walker %>
+            <% end %>
 
           </div>
           <!-- Start/End Buttons -->
@@ -113,25 +124,31 @@
           <%= 'Walk officially ended' if policy(walk).ended? %>
         </div>
 
+        <h2>Offers</h2>
 
-        <div class="row">
+        <div class="row well">
 
           <% if !walk.walker %>
-
-          <h2>Offers</h2>
 
           <% walk.offers.each do |offer| %>
 
           <div class="col-md-2">
+            <%= offer.walker.first_name %>
             <%= link_to image_tag(offer.walker.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(offer.walker) %>
           </div>
 
           <div class="col-md-2">
-            <%= "#{offer.walker.first_name} #{offer.walker.last_name[0]}." %>
+            <%= offer.walker.location %>
+            <br><br>
+            <%= offer.walker.headline %>
           </div>
 
           <div class="col-md-4">
-            <%= offer.walker.headline %>
+            Pup experience:<strong> insert some comment </strong>
+          </div>
+
+          <div class="col-md-2">
+            Any pups registered with PupShare? <strong><%= offer.walker.pups.count > 0 ? "Yes" : "No" %></strong> 
           </div>
 
           <div class="col-md-2">
