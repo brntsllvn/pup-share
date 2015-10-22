@@ -27,22 +27,23 @@ p.about {
   font-family: 'Helvetica Neue', Helvetica;
 }
 
-.btn-transparent {
+a.btn-transparent {
   max-width: 100%;
   background-color: transparent;
-  border: 1px solid white;
+  /*   border: 1px solid white; */
   padding: 0 8px;
   border-radius: 10px;
   text-decoration: none;
   color: white;
+  font-size: 85px;
 }
 
-.big-button {
-  font-size: 65px;
-}
+/* div.big-button {
+font-size: 65px;
+} */
 
 h1.glyphicon {
-  font-size: 3.45em;
+  font-size: 65px;
   position: relative;
 }
 

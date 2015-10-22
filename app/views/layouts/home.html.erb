@@ -10,7 +10,7 @@
 
   <body>
 
-    <div class='col-md-9 col-md-offset-1'>
+    <div class='col-md-9 col-md-offset-2'>
 
       <% if notice.present? %>
       <p class="alert alert-info small"><%= notice %></p>	
@@ -33,12 +33,12 @@
         <h1><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent md-buttont' %></h1>
         <h1><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent md-button' %></h1>
         <% else %>
-        <h1><%= link_to 'in', "/auth/linkedin", class: 'btn-transparent big-button' %></h1>
+        <h1><%= link_to 'in', "/auth/linkedin", class: 'btn btn-transparent big-button' %></h1>
         <% end %>
       </div>
 
       <div class='col-md-2 big-button'>
-        <%= link_to new_visitor_message_path, class: "btn btn-transparent contact" do %>
+        <%= link_to new_visitor_message_path, class: 'btn btn-transparent contact' do %>
         <h1 class="glyphicon glyphicon-envelope"></h1>
         <% end %>
       </div>
