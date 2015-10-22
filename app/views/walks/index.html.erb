@@ -1,3 +1,5 @@
+<h1>Pick a pup to take for a walk!</h1>
+
 <% @walks.order(:begin_time).each_with_index do |walk, index| %>
 
 <%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
