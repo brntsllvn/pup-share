@@ -44,6 +44,5 @@ feature 'Owner selects walker' do
     expect(page).to have_content('Walk updated')
     # 'Nobody yet', 'Accept offer', and 'Offers' disappear
     expect(page).to have_no_content('Accept offer')
-    expect(page).to have_no_content('Offers')
   end
 end
