@@ -7,6 +7,7 @@ FactoryGirl.define do
     pic 'some_file.png'
     age 4
     weight 71
+    personality 'mellow'
     walks_completed 100
 
     association :owner

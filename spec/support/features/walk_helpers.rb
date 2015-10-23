@@ -25,9 +25,10 @@ module Features
       # fill out new pup form
       fill_in 'Name', with: 'Ace'
       fill_in 'Breed', with: 'Lab'
-      find(:css, "#pup_male_female_m").set(true)
       fill_in 'Age', with: 4
-      fill_in 'Weight', with: 71
+      find(:css, "#pup_male_female_m").set(true)
+      find(:css, "#pup_weight_0-25").set(true)
+      find(:css, "#pup_personality_mellow").set(true)
       click_on 'Create Pup'
       expect(page).to have_content("Pup added")
     end

@@ -8,17 +8,38 @@
     <%= f.input :pic %>
   </div>  
 
-  <div class="col-md-4">
-    <%= f.input :name %>
-    <%= f.input :breed %>
-    <%= f.input :male_female, as: :radio_buttons, collection: ['M', 'F'], include_blank: false %> 
+  <div class="col-md-8">
+    <div class="col-md-4">
+      <%= f.input :name %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :breed %>
+    </div>
+    <div class="col-md-4">
+      <%= f.input :age %>
+      <!-- switch this to icon categories -->
+    </div>
   </div>
 
-  <div class="col-md-4">
-    <%= f.input :age %>
-    <%= f.input :weight %>
+  <div class="col-md-8">
+    <div class="col-md-4">
+      <%= f.input :male_female, as: :radio_buttons, collection: ['M', 'F'], include_blank: false %> 
+
+
+      <%# f.collection_radio_buttons(:default_image_id, DefaultImage.all, :id, :image) do |b| %>
+      <%#= b.label { b.radio_button + image_tag(b.object.image) } %>
+      <%# end %>
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :weight, as: :radio_buttons, collection: ['0-25', '25-75', '75-125', '125+'], include_blank: false %> 
+    </div>
+
+    <div class="col-md-4">
+      <%= f.input :personality, as: :radio_buttons, collection: ['mellow','temperate','energetic'], include_blank: false %> 
+    </div>
   </div>
-  
+
   <div class="col-md-8 col-md-offset-4">
     <%= f.input :additional_info, label: 'Additional Information' %>
   </div>

@@ -4,6 +4,7 @@ class Pup < ActiveRecord::Base
   validates :male_female,    presence: true
   validates :age,            presence: true
   validates :weight,         presence: true
+  validates :personality,    presence: true
 
   belongs_to :owner, class_name: 'User'
   has_many :walks, dependent: :destroy
