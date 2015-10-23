@@ -4,6 +4,7 @@ feature 'Owner selects walker' do
 
   let (:owner)  { create(:user) }
   let (:walker) { create(:user) }
+  let (:other)  { create(:user) }
 
   background do
     # owner creates pup and walk
@@ -31,7 +32,7 @@ feature 'Owner selects walker' do
     sign_in owner
     click_on "#{owner.first_name}'s Upcoming Walks"
     # owner has not chosen a walker yet
-    expect(page).to have_content('Offers')
+    expect(page).to have_content("#{walker.first_name}")
     # owner can see offer
     expect(page).to have_content(walker.first_name)
     expect(page).to have_content('Accept offer') # button
@@ -42,7 +43,11 @@ feature 'Owner selects walker' do
     ### puts page.driver.browser.alert.text, this does not really work
     # owner confirms
     expect(page).to have_content('Walk updated')
-    # 'Nobody yet', 'Accept offer', and 'Offers' disappear
     expect(page).to have_no_content('Accept offer')
+    click_on 'Sign Out'
+    # random person should not be able to make an offer if a walker has been selected
+    sign_in other
+    click_on 'Walk a Pup'
+    expect(page).to have_no_content('Walk this pup!')
   end
 end
