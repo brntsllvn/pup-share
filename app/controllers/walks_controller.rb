@@ -1,6 +1,8 @@
 class WalksController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_walk, except: [:index, :new, :create]
+  before_action :increment_walks_completed, only: :update
+
 
   def index
     @walks = Walk.upcoming
@@ -14,7 +16,6 @@ class WalksController < ApplicationController
   end
 
   def create 
-    
     @walk = current_user.walks_as_owner.new(walk_params)
     if @walk.save
       redirect_to user_upcoming_walks_path(current_user), notice: 'Walk created'
@@ -32,7 +33,7 @@ class WalksController < ApplicationController
   end
 
   def destroy
-    @walk.destroy
+    @walk.destroy if @walk.owner == current_user
     redirect_to user_upcoming_walks_path(@walk.owner), notice: 'Walk destroyed'
   end
 
@@ -45,4 +46,12 @@ class WalksController < ApplicationController
   def walk_params
     params.require(:walk).permit!
   end
+
+  def increment_walks_completed
+    if params[:walk][:ended_by_walker] # truthy
+      @walk.walker.increment! :walks_completed, 1
+      @walk.pup.increment! :walks_completed, 1
+    end
+  end
+
 end

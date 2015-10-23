@@ -82,12 +82,11 @@
 
           <!-- Start/End Buttons -->
           <div class="col-md-2">
-            <h3>What now?</h3>
 
             <% if walk.walker %>
 
             <% if policy(walk).walker_current_user? %>
-
+            <h3>What now?</h3>
 
             <% if policy(walk).walker_update_start? %>
             <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
