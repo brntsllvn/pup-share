@@ -23,22 +23,23 @@
       </div>
 
       <div class='col-md-12'>
-        <p class='about'>Sign in to walk a pup or find a walker for your pup</p>
+        <p class='about'>Walk a pup or find a walker for your pup</p>
       </div>
 
-      <br>
+      <br><br><br><br><br>
 
       <div class='col-md-12'>
         <% if user_signed_in? %>
-        <h1><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn-transparent md-buttont' %></h1>
-        <h1><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn-transparent md-button' %></h1>
+        <h1><%= link_to 'My Walks', user_upcoming_walks_path(current_user), class: 'btn btn-transparent md-button' %></h1>
+        <h1><%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'btn btn-transparent md-button' %></h1>
         <% else %>
-        <h1><%= link_to 'in', "/auth/linkedin", class: 'btn btn-transparent big-button' %></h1>
+        <h1><%= link_to 'Walk a Pup', "/auth/linkedin", class: 'btn btn-transparent' %></h1>
+        <h1><%= link_to 'Find a Walker', "/auth/linkedin", class: 'btn btn-transparent' %></h1>
         <% end %>
       </div>
 
       <div class='col-md-2 big-button'>
-        <%= link_to new_visitor_message_path, class: 'btn btn-transparent contact' do %>
+        <%= link_to new_visitor_message_path, class: 'btn contact' do %>
         <h1 class="glyphicon glyphicon-envelope"></h1>
         <% end %>
       </div>

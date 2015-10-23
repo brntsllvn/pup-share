@@ -17,7 +17,7 @@ body {
 .banner {
   color: white;
   font-weight: 100;
-  font-size: 500%;
+  font-size: 400%;
 }
 
 p.about {
@@ -29,22 +29,20 @@ p.about {
 
 a.btn-transparent {
   max-width: 100%;
-  background-color: transparent;
-  /*   border: 1px solid white; */
+  background: rgba(0,0,0,0.65);
   padding: 0 8px;
   border-radius: 10px;
   text-decoration: none;
   color: white;
-  font-size: 85px;
+  font-size: 40px;
 }
 
-/* div.big-button {
-font-size: 65px;
-} */
-
 h1.glyphicon {
-  font-size: 65px;
+  font-size: 40px;
   position: relative;
+  color: white;
+  text-decoration: none;
+  padding: 0 8px;
 }
 
 @import "bootstrap-sprockets";
