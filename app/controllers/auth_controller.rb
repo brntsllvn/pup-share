@@ -1,7 +1,7 @@
 class AuthController < ApplicationController
   skip_before_action :authenticate_user!
 
-  def callback
+  def callback    
     # Stores user information from the provider
     session[:userinfo] = request.env['omniauth.auth']
 
