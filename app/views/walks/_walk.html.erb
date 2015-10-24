@@ -123,6 +123,8 @@
           <%= 'Walk officially ended' if policy(walk).ended? %>
         </div>
 
+        <% if !policy(walk).ended? %>
+
         <h2>Offers</h2>
 
         <div class="row well">
@@ -166,6 +168,8 @@
             <% end %>
           </div>
         </div> <!-- class="row" -->
+
+        <% end %>
 
         <!-------------->
         <!-- END BODY -->
