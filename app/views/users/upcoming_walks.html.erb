@@ -1,12 +1,28 @@
 <div class="col-md-12 text-center">
   <h1><%= "#{current_user.first_name}'s " %>Upcoming Walks</h1> 
-  <%= link_to 'Past Walks', user_past_walks_path(current_user), class:'btn btn-primary' %>
 </div>
 
-<br>
+<br><br><br><br>
 
 <div class="col-md-12 text-center">
+
+  <% if @walks_plus_offers.empty? %>
+
+  <h1>You don't have any walks yet...</h1>
+  <div class="col-md-3 col-md-offset-3">
+    <%= link_to 'Walk a Pup', walks_path, class:'btn btn-info btn-lg' %>
+  </div>
+
+  <div class="col-md-3">
+    <%= link_to 'Post a Walk', new_walk_path, class:'btn btn-danger btn-lg' %>
+  </div>
+
+  <% else %>
+
   <% @walks_plus_offers.each_with_index do |walk, index| %>
   <%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
+  <% end %>
+  <%= link_to 'Past Walks', user_past_walks_path(current_user), class:'btn btn-primary' %>
+
   <% end %>
 </div>
