@@ -65,3 +65,5 @@ gem "geocoder"
 gem 'phony_rails'
 
 gem 'has_scope'
+
+gem "paranoia", "~> 2.0" # soft delete

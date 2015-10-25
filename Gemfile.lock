@@ -184,6 +184,8 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    paranoia (2.1.3)
+      activerecord (~> 4.0)
     pg (0.18.3)
     phony (2.15.4)
     phony_rails (0.12.10)
@@ -325,6 +327,7 @@ DEPENDENCIES
   mini_magick
   momentjs-rails (>= 2.9.0)
   omniauth-linkedin-oauth2
+  paranoia (~> 2.0)
   pg
   phony_rails
   pry-byebug

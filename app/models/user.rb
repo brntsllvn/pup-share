@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_paranoid # soft delete
+  
   serialize :auth_hash, Hash
 
   has_many :walks_as_walker, dependent: :destroy, class_name: 'Walk', foreign_key: :walker_id

@@ -13,6 +13,12 @@ class Walk < ActiveRecord::Base
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
 
+  # display content that has been soft-deleted by
+  # overriding the getter set by belongs_to above
+  def user
+    User.unscoped { super }
+  end
+
   scope :upcoming, -> { where('begin_time > ?' , Time.now) }
   scope :past,     -> { where('begin_time <= ? OR ended_by_walker = ?', Time.now, true) }
 
