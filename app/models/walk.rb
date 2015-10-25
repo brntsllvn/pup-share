@@ -16,6 +16,8 @@ class Walk < ActiveRecord::Base
   scope :upcoming, -> { where('begin_time > ?' , Time.now) }
   scope :past,     -> { where('begin_time <= ? OR ended_by_walker = ?', Time.now, true) }
 
+  scope :next_week, -> { where('begin_time <= ?' , Time.now + 7.days) }
+
   def self.walks_through_offers(walker)
     includes(:offers).where(offers: { walker: walker })
   end

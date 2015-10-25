@@ -63,3 +63,5 @@ gem 'active_record_union' # until Rails 5
 gem "geocoder"
 
 gem 'phony_rails'
+
+gem 'has_scope'

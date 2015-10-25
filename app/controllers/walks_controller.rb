@@ -3,9 +3,10 @@ class WalksController < ApplicationController
   before_action :set_walk, except: [:index, :new, :create]
   before_action :increment_walks_completed, only: :update
 
+#   has_scope :next_week
 
   def index
-    @walks = Walk.upcoming
+    @walks = Walk.upcoming #.next_week
   end
 
   def new
