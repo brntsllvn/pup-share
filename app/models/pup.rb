@@ -3,7 +3,7 @@ class Pup < ActiveRecord::Base
   validates :breed,          presence: true
   validates :male_female,    presence: true
   validates :age,            presence: true
-  validates :weight,         presence: true
+  validates :size,           presence: true
   validates :personality,    presence: true
 
   belongs_to :owner, class_name: 'User'
