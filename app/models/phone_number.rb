@@ -1,4 +1,6 @@
 class PhoneNumber < ActiveRecord::Base
+  acts_as_paranoid # soft delete
+
   # Normalizes the attribute itself before validation
   phony_normalize :number, default_country_code: 'US'
 

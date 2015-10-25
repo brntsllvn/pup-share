@@ -1,6 +1,8 @@
 class Location < ActiveRecord::Base
-  validates :full_street_address,   presence: true
+  acts_as_paranoid # soft delete
   
+  validates :full_street_address,   presence: true
+
   belongs_to :owner, class_name: 'User'
   has_many :walks
 

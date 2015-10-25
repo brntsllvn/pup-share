@@ -1,4 +1,6 @@
 class Pup < ActiveRecord::Base
+  acts_as_paranoid # soft delete
+
   validates :name,           presence: true
   validates :breed,          presence: true
   validates :male_female,    presence: true

@@ -1,4 +1,6 @@
 class Walk < ActiveRecord::Base
+  acts_as_paranoid # soft delete
+
   validates :begin_time,            presence: true,
   date: { after: Proc.new { Time.now }, message: 'Walk must be in the future' }
   validates :duration,              presence: true
@@ -12,12 +14,6 @@ class Walk < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
-
-  # display content that has been soft-deleted by
-  # overriding the getter set by belongs_to above
-  def user
-    User.unscoped { super }
-  end
 
   scope :upcoming, -> { where('begin_time > ?' , Time.now) }
   scope :past,     -> { where('begin_time <= ? OR ended_by_walker = ?', Time.now, true) }

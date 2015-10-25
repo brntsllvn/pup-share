@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025190248) do
+ActiveRecord::Schema.define(version: 20151025193318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,14 +25,20 @@ ActiveRecord::Schema.define(version: 20151025190248) do
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
   end
+
+  add_index "locations", ["deleted_at"], name: "index_locations_on_deleted_at", using: :btree
 
   create_table "offers", force: :cascade do |t|
     t.integer  "walk_id"
     t.integer  "walker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "offers", ["deleted_at"], name: "index_offers_on_deleted_at", using: :btree
 
   create_table "phone_numbers", force: :cascade do |t|
     t.string   "number"
@@ -40,7 +46,10 @@ ActiveRecord::Schema.define(version: 20151025190248) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "phone_type"
+    t.datetime "deleted_at"
   end
+
+  add_index "phone_numbers", ["deleted_at"], name: "index_phone_numbers_on_deleted_at", using: :btree
 
   create_table "pups", force: :cascade do |t|
     t.string   "name"
@@ -55,7 +64,10 @@ ActiveRecord::Schema.define(version: 20151025190248) do
     t.integer  "size"
     t.text     "additional_info"
     t.string   "personality"
+    t.datetime "deleted_at"
   end
+
+  add_index "pups", ["deleted_at"], name: "index_pups_on_deleted_at", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -99,6 +111,9 @@ ActiveRecord::Schema.define(version: 20151025190248) do
     t.text     "message"
     t.integer  "location_id"
     t.integer  "phone_number_id"
+    t.datetime "deleted_at"
   end
+
+  add_index "walks", ["deleted_at"], name: "index_walks_on_deleted_at", using: :btree
 
 end
