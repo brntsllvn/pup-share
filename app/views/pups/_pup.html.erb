@@ -1,25 +1,95 @@
 <div class="row">
 
-  <div class="col-md-4">  
+  <div class="col-md-2">  
     <%= image_tag pup.pic, class: 'img-responsive' %>  
   </div>
 
-  <div class="col-md-4">
-    <strong><p><%= "#{pup.name}" %></p></strong>
-    <p><%= "#{pup.breed}" %></p>
-    <p><%= "#{pup.male_female}" %></p>   
-    <p><%= "#{pup.age} years old" %></p>  
-    <p><%= "#{pup.size} pounds" %></p>  
-    <p><%= pup.personality %></p>
-    <p><%= "#{pup.additional_info}" %></p>
-    <p><%= "Walks completed #{pup.walks_completed}" %></p>
+  <div class="col-md-10">
+    <div class="col-md-3">
+      <p><strong><%= "#{pup.name}" %></strong></p>
+    </div>
+    <div class="col-md-3">
+      <p><%= "Walks completed #{pup.walks_completed}" %></p>
+    </div>
+    <div class="col-md-6"></div>
   </div>
 
-  <div class="col-md-4">
-    <%= link_to 'Edit', edit_user_pup_path(current_user, pup), class: 'btn btn-warning' %>
-    <%= link_to user_pup_path(current_user, pup), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
-    <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
-    <% end %>
+  <div class="col-md-10">
+    <div class="col-md-3">
+      <p><%= "#{pup.breed}" %></p>
+    </div>
+    <div class="col-md-3">
+      <p><%= "#{pup.age} years old" %></p> 
+    </div>
   </div>
-</div><!-- row -->
+
+  <div class="col-md-10">
+    <div class="col-md-1">
+      <p>
+        <% if pup.male_female == 'm' %>
+        <%= image_tag 'male.png', class: 'paw' %>
+        <% else %>
+        <%= image_tag 'female.png', class: 'paw' %>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-2">
+      <p>
+        <% if pup.size == 1 %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-black.png', class: 'paw' %>
+        <%= image_tag 'paw-black.png', class: 'paw' %>
+        <%= image_tag 'paw-black.png', class: 'paw' %>
+        <% elsif pup.size == 2 %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-black.png', class: 'paw' %>
+        <%= image_tag 'paw-black.png', class: 'paw' %>
+        <% elsif pup.size == 3 %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-black.png', class: 'paw' %>
+        <% else %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <%= image_tag 'paw-gray.png', class: 'paw' %>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-2">
+      <p>
+        <% if pup.personality == 'mellow' %>
+        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
+        <%= image_tag 'lightning-bolt-gray.png', class: 'paw' %>
+        <%= image_tag 'lightning-bolt-gray.png', class: 'paw' %>
+        <% elsif pup.personality == 'temperate' %>
+        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
+        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
+        <%= image_tag 'lightning-bolt-gray.png', class: 'paw' %>
+        <% else %>
+        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
+        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
+        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
+        <% end %>
+      </p>
+    </div>
+    <div class="col-md-9"></div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="col-md-8 well">
+      <p>Additional Info: <%= "#{pup.additional_info}" %></p>
+    </div>
+
+    <div class="col-md-4">
+      <%= link_to 'Edit', edit_user_pup_path(current_user, pup), class: 'btn btn-warning' %>
+      <%= link_to user_pup_path(current_user, pup), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do %>
+      <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+      <% end %>
+    </div>
+  </div><!-- row -->
+</div>
+
 <br>
