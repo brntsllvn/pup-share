@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025193318) do
+ActiveRecord::Schema.define(version: 20151026014237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,12 +90,11 @@ ActiveRecord::Schema.define(version: 20151025193318) do
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true, using: :btree
 
   create_table "visitor_messages", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
     t.string   "message_type"
     t.text     "message"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
   end
 
   create_table "walks", force: :cascade do |t|

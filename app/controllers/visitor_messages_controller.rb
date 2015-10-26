@@ -5,7 +5,7 @@ class VisitorMessagesController < ApplicationController
   end
 
   def create
-    @visitor_message = VisitorMessage.new(visitor_message_params)
+    @visitor_message = current_user.visitor_messages.new(visitor_message_params)
     if @visitor_message.save
       VisitorMessageMailer.visitor_message_mailer(@visitor_message).deliver_now 
       redirect_to root_path, notice: 'Thanks for the message'
