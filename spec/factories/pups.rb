@@ -6,7 +6,7 @@ FactoryGirl.define do
     male_female 'M'
     pic 'some_file.png'
     age 4
-    size 71
+    size 2
     personality 'mellow'
     walks_completed 100
 

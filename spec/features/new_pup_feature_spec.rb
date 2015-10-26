@@ -16,7 +16,7 @@ feature 'User creates a new pup' do
       fill_in 'Breed', with: 'Lab'
       fill_in 'Age', with: 4
       find(:css, "#pup_male_female_m").set(true)
-      find(:css, "#pup_size_0-25").set(true)
+      find(:css, "#pup_size_2").set(true)
       find(:css, "#pup_personality_mellow").set(true)
       click_on 'Create Pup'
       }.to change(Pup, :count).by(1)
