@@ -1,10 +1,12 @@
-<div class='row well'>
+<div class='row'>
   
   <%= render partial: 'pups/pup_sub', locals: { pup: pup } %>
 
+  <br>
+  
   <div class="col-md-10">
     <div class="col-md-10">
-      <p>Additional Info: <%= "#{pup.additional_info}" %></p>
+      <h4>Additional Info: <%= "#{pup.additional_info}" %></h4>
     </div>
 
     <div class="col-md-2">
