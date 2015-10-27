@@ -1,46 +1,42 @@
-<div class="panel-group text-center" id="accordion">
+<div class="panel-group" id="accordion">
   <div class='<%="panel panel-default"%>'>
+
+    <!----------------->
+    <!---- HEADING ---->
+    <!----------------->
+
     <div class='<%="panel-heading #{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
 
-          <div class="col-md-2">
-            <%= image_tag walk.pup.pic, class: 'img-responsive center-block img-rounded' %>
-          </div>
+          <div class='row'><!-- see _pup_sub for formatting -->
 
-          <div class="col-md-2">
-            <h2><%= walk.pup.name %></h2>
-            <h4><%= "#{walk.pup.age} year-old #{walk.pup.breed}" %></h4>
-            <h4><%= gender_icon walk.pup %></h4>
-            <h4><%= size_icon walk.pup %></h4>
-            <h4><%= energy_icon walk.pup %></h4>
-          </div>
+            <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
 
-          <div class="col-md-4">
-            <h4><%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %></h4>
+            <div class="col-md-10">
+              <div class="col-md-12">
+                <h4>Walk Starts: <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %></h4>
+                <h4><%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %></h4>
+              </div>
+            </div>
 
-          </div>
-
-          <div class="col-md-2">
-            <%#= walk.full_street_address %>
-          </div>
-
-          <div class="col-md-2">
-            <h4><%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %></h4>
-          </div>
-
+          </div><!-- <div class="panel-heading"> -->
         </a>
       </h4>
     </div><!-- <div class="panel-heading"> -->
 
+    <!--------------------->
+    <!---- END HEADING ---->
+    <!--------------------->
+
+    <!-------------->
+    <!---- BODY ---->
+    <!-------------->
+
     <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse">
       <div class="panel-body"> 
 
-        <!-------------->
-        <!---- BODY ---->
-        <!-------------->
-
-        <h2>Details</h2>
+        <h4>Details</h4>
 
         <div class="row well">
 
