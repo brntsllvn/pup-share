@@ -12,5 +12,4 @@ class Pup < ActiveRecord::Base
   has_many :walks, dependent: :destroy
 
   mount_uploader :pic, PupPicUploader
-
 end

@@ -25,55 +25,13 @@
 
   <div class="col-md-10">
     <div class="col-md-1">
-      <p>
-        <% if pup.male_female == 'm' %>
-        <%= image_tag 'male.png', class: 'paw' %>
-        <% else %>
-        <%= image_tag 'female.png', class: 'paw' %>
-        <% end %>
-      </p>
+      <p><%= gender_icon pup %></p>
     </div>
     <div class="col-md-2">
-      <p>
-        <% if pup.size == 1 %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-black.png', class: 'paw' %>
-        <%= image_tag 'paw-black.png', class: 'paw' %>
-        <%= image_tag 'paw-black.png', class: 'paw' %>
-        <% elsif pup.size == 2 %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-black.png', class: 'paw' %>
-        <%= image_tag 'paw-black.png', class: 'paw' %>
-        <% elsif pup.size == 3 %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-black.png', class: 'paw' %>
-        <% else %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <%= image_tag 'paw-gray.png', class: 'paw' %>
-        <% end %>
-      </p>
+      <p><%= size_icon pup %></p>
     </div>
     <div class="col-md-2">
-      <p>
-        <% if pup.personality == 'mellow' %>
-        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
-        <%= image_tag 'lightning-bolt-gray.png', class: 'paw' %>
-        <%= image_tag 'lightning-bolt-gray.png', class: 'paw' %>
-        <% elsif pup.personality == 'temperate' %>
-        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
-        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
-        <%= image_tag 'lightning-bolt-gray.png', class: 'paw' %>
-        <% else %>
-        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
-        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
-        <%= image_tag 'lightning-bolt-orange.png', class: 'paw' %>
-        <% end %>
-      </p>
+      <p><%= energy_icon pup %></p>
     </div>
     <div class="col-md-9"></div>
   </div>
