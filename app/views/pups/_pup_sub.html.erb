@@ -3,20 +3,27 @@
 </div>
 
 <div class="col-md-10">
-  <div class="col-md-12">
-    <h2><%= "#{pup.name}" %>
+  <h2>
+    <div class="col-md-3">
+      <%= "#{pup.name}" %>
       <%= gender_icon pup %>
-      <%= " the #{pup.age} year-old #{pup.breed}" %>
-    </h2>
-  </div>
+    </div>
+    <div class="col-md-4">
+      <%= "#{pup.age} year-old #{pup.breed}" %>
+    </div>
+  </h2>
 </div>
 
 <div class="col-md-10">
-  <div class="col-md-12">
-    <h4>
+  <h4>
+    <div class="col-md-3">
       Size: <%= size_icon pup %>
+    </div>
+    <div class="col-md-4">
       Energy Level: <%= energy_icon pup %>
+    </div>
+    <div class="col-md-4">
       Walks Completed: <%= pup.walks_completed %>
-    </h4>
-  </div>
+    </div>
+  </h4>
 </div>
