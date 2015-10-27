@@ -4,7 +4,7 @@ class AuthController < ApplicationController
   def callback    
     # Stores user information from the provider
     session[:userinfo] = request.env['omniauth.auth']
-
+    
     # find or create
     User.find_or_create_by_hash(session[:userinfo])
     
