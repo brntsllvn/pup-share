@@ -70,8 +70,9 @@
                 <%= walk.winning_offer.walker.first_name %>
                 <%= link_to image_tag(walk.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.walker) %>
               <% end %>
+            
             <% else %>
-              Choose a walker from the offers below
+              <h3>Choose a walker from the offers below</h3>
             <% end %>
           </div>
         </div>
