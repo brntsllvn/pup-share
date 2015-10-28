@@ -10,7 +10,6 @@ feature 'Owner selects walker' do
     # owner creates pup and walk
     sign_in owner
     click_on 'Post a Walk'
-    # create mobile
     create_phone_number
     create_location
     create_pup
@@ -35,6 +34,7 @@ feature 'Owner selects walker' do
     expect(page).to have_content("#{walker.first_name}")
     # owner can see offer
     expect(page).to have_content(walker.first_name)
+
     expect(page).to have_content('Accept offer') # button
     # owner selects walker by clicking button
     click_on 'Accept offer'
@@ -42,7 +42,7 @@ feature 'Owner selects walker' do
     ### click 'OK' on pup up
     ### puts page.driver.browser.alert.text, this does not really work
     # owner confirms
-    expect(page).to have_content('Walk updated')
+    expect(page).to have_content('Offer accepted')
     expect(page).to have_no_content('Accept offer')
     click_on 'Sign Out'
     # random person should not be able to make an offer if a walker has been selected

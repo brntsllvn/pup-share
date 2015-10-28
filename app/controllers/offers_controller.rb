@@ -11,6 +11,15 @@ class OffersController < ApplicationController
     redirect_to :back, notice: 'Offer to walk sent to the owner'
   end
 
+  def update
+    @offer = Offer.find(params[:id])
+    if @offer.update(offer_params)
+      redirect_to :back, notice: 'Offer accepted. Walker notified'
+    else
+      redirect_to :back, alert: 'Something went wrong'
+    end
+  end
+
   def destroy
     @offer = Offer.find(params[:id])
     @offer.destroy if @offer.walker == current_user
@@ -20,7 +29,7 @@ class OffersController < ApplicationController
   end
 
   private
-    
+
   def offer_params
     params.require(:offer).permit!
   end

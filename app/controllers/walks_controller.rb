@@ -1,12 +1,26 @@
 class WalksController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_walk, except: [:index, :new, :create]
-  before_action :increment_walks_completed, only: :update
 
   has_scope :next_week
+  has_scope :past, type: :boolean, allow_blank: true
+  # /walks/?past=1
+  has_scope :upcoming, type: :boolean, allow_blank: true
+  # /walks/?upcoming=1
+
+  # /walks/?next_week=1&past=1
+  # /walks?next_week=1&past=1
+
+  # requires some routing trick
+  # /walks/upcoming
+  # /walks/past
+  # /walks/past/last_week
+
+
+
 
   def index
-    @walks = apply_scopes(Walk.upcoming).all
+    @walks = apply_scopes(Walk).all
   end
 
   def new
@@ -16,7 +30,7 @@ class WalksController < ApplicationController
   def edit # mailer links
   end
 
-  def create 
+  def create
     @walk = current_user.walks_as_owner.new(walk_params)
     if @walk.save
       redirect_to user_upcoming_walks_path(current_user), notice: 'Walk created'
@@ -46,13 +60,6 @@ class WalksController < ApplicationController
 
   def walk_params
     params.require(:walk).permit!
-  end
-
-  def increment_walks_completed
-    if params[:walk][:ended_by_walker] # truthy
-      @walk.walker.increment! :walks_completed, 1
-      @walk.pup.increment! :walks_completed, 1
-    end
   end
 
 end

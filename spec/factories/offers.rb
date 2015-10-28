@@ -1,8 +1,8 @@
 FactoryGirl.define do  
 
   factory :offer do
-    association :user
-    association :walk
+    association :walker #bt
+    association :walk #bt
   end
 
 end

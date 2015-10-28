@@ -6,8 +6,7 @@ FactoryGirl.define do
 
     association :phone_number
     association :location
-    association :owner
-    association :walker
+    association :owner # belongs_to
     association :pup
   end
 

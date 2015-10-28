@@ -44,10 +44,5 @@ feature 'End real life walk' do
     expect(page).to have_content('Walk updated')
     expect(page).to have_no_content('Walk officially started')
     expect(page).to have_content('Walk officially ended')
-    # increment walks completed
-    # walker
-    expect(User.last.walks_completed).to eq 1
-    # pup
-    expect(Pup.last.walks_completed).to eq 1
   end
 end

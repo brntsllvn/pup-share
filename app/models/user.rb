@@ -1,12 +1,18 @@
 class User < ActiveRecord::Base
   acts_as_paranoid # soft delete
-  
+
   serialize :auth_hash, Hash
 
-  has_many :walks_as_walker, dependent: :destroy, class_name: 'Walk', foreign_key: :walker_id
+
   has_many :walks_as_owner, dependent: :destroy, class_name: 'Walk', foreign_key: :owner_id
+
   has_many :pups, dependent: :destroy, foreign_key: :owner_id
   has_many :offers, dependent: :destroy, foreign_key: :walker_id
+
+  has_many :walks_as_walker, through: :offers, class_name: 'Walk', source: :walk
+
+
+
   has_many :locations, dependent: :destroy, foreign_key: :owner_id
   has_many :phone_numbers, dependent: :destroy, foreign_key: :owner_id
   has_many :visitor_messages
@@ -33,11 +39,11 @@ class User < ActiveRecord::Base
   end
 
   def upcoming_walks_and_offers
-    self.walks_as_owner.upcoming + self.walks_via_offers.upcoming 
+    self.walks_as_owner.upcoming + self.walks_via_offers.upcoming
   end
 
   def past_walks_and_offers
-    self.walks_as_owner.past + self.walks_via_offers.past 
+    self.walks_as_owner.past + self.walks_via_offers.past
   end
 
 end

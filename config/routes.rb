@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:edit, :update] do
     resources :pups, except: [:index, :show]
-    resources :offers, only: [:new, :create, :destroy]
+    resources :offers, only: [:new, :create, :update, :destroy]
     resources :locations, only: [:new, :create, :destroy]
     resources :phone_numbers, only: [:new, :create, :destroy]
     get 'upcoming_walks'

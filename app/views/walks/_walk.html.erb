@@ -1,45 +1,26 @@
 <div class="panel-group" id="accordion">
   <div class='<%="panel panel-default"%>'>
 
-    <!----------------->
-    <!---- HEADING ---->
-    <!----------------->
-
     <div class='<%="panel-heading #{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
-
           <div class='row'><!-- see _pup_sub for formatting -->
-
             <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
-
             <div class="col-md-10">
               <div class="col-md-12">
                 <h4>Walk Starts: <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %></h4>
-                <h4><%= walk.walker.nil? ? "#{walk.offers.count} offers" : "#{walk.walker.first_name} #{walk.walker.last_name[0]}" %></h4>
+                <h4><%= !walk.winning_offer ? "#{walk.offers.count} offers" : "#{walk.winning_offer.walker.first_name} #{walk.winning_offer.walker.last_name[0]}" %></h4>
               </div>
             </div>
-
-          </div><!-- <div class="panel-heading"> -->
+          </div>
         </a>
       </h4>
     </div><!-- <div class="panel-heading"> -->
 
-    <!--------------------->
-    <!---- END HEADING ---->
-    <!--------------------->
-
-    <!-------------->
-    <!---- BODY ---->
-    <!-------------->
-
     <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse">
-      <div class="panel-body"> 
-
+      <div class="panel-body">
         <h2>Details</h2>
-
         <div class="row well">
-
           <div class="col-md-2">
             <h3>Owner</h3>
             <%= walk.owner.first_name %>
@@ -60,121 +41,60 @@
 
           <div class="col-md-3">
             <h3>Drop-off and pick-up</h3>
-
-            <!--------->
-            <!-- MAP -->
-            <!--------->
-
             <%= walk.location.full_street_address %>
             <br>
-            <% if  walk.location.latitude.present? and walk.location.longitude.present? %>
-            <br>
-            <!-- TODO: short term hack in place of geocoder -->
-            <%= link_to 'Plot in Google Maps', "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank", class: 'btn btn-primary btn-lg' %>
+            <% if walk.location.latitude.present? and walk.location.longitude.present? %>
+              <%= link_to 'Plot in Google Maps', "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank", class: 'btn btn-primary btn-lg' %>
             <% end %>
-
-            <!--------->
-            <!-- MAP -->
-            <!--------->
-
           </div>
 
-          <!-- Start/End Buttons -->
           <div class="col-md-2">
+            <% if walk.winning_offer %>
+              <% if policy(walk).walker_current_user? %>
+                <h3>What now?</h3>
 
-            <% if walk.walker %>
+                <% if policy(walk).walker_update_start? %>
+                  <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
+                <% else %>
+                  <%= link_to 'Start Walk', {}, method: :put, class: 'btn btn-success btn-xl disabled' %>
+                <% end %>
 
-            <% if policy(walk).walker_current_user? %>
-            <h3>What now?</h3>
+                <% if policy(walk).walker_update_end? %>
+                  <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl' %>
+                <% else %>
+                  <%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>
+                <% end %>
+              <% else %>
 
-            <% if policy(walk).walker_update_start? %>
-            <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
+                <h3>Walker</h3>
+                <%= walk.winning_offer.walker.first_name %>
+                <%= link_to image_tag(walk.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.walker) %>
+              <% end %>
             <% else %>
-            <%= link_to 'Start Walk', {}, method: :put, class: 'btn btn-success btn-xl disabled' %>
+              Choose a walker from the offers below
             <% end %>
-
-            <% if policy(walk).walker_update_end? %>
-            <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl' %>
-            <% else %>
-            <%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>    
-            <% end %>
-
-            <% else %>
-
-            <h3>Walker</h3>
-            <%= walk.walker.first_name %>
-            <%= link_to image_tag(walk.walker.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(walk.walker) %> 
-
-            <% end %>
-
-            <% else %>
-            Choose a walker from the offers below
-
-            <% end %>
-
           </div>
-          <!-- Start/End Buttons -->
-
-        </div> <!-- class="row" -->
+        </div>
 
         <div class="col-md-12">
-          <%= 'Walk officially started' if policy(walk).started? %> 
+          <%= 'Walk officially started' if policy(walk).started? %>
           <%= 'Walk officially ended' if policy(walk).ended? %>
         </div>
 
-        <% if !policy(walk).ended? %>
-
-        <h2>Offers</h2>
-
-        <div class="row well">
-
-          <% if !walk.walker %>
-
-          <% walk.offers.each do |offer| %>
-
-          <div class="col-md-2">
-            <%= offer.walker.first_name %>
-            <%= link_to image_tag(offer.walker.image, class: 'img-responsive center-block img-rounded walk-detail'), user_path(offer.walker) %>
+        <% if !walk.winning_offer %>
+          <h2>Offers</h2>
+          <div class="row well">
+             <%= render walk.offers %>
           </div>
 
-          <div class="col-md-2">
-            <%= offer.walker.location %>
-            <br><br>
-            <%= offer.walker.headline %>
+          <div class="row">
+            <div class="col-md-12">
+              <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if policy(walk).not_started? %>
+            </div>
           </div>
-
-          <div class="col-md-4">
-            Any pups registered with PupShare? <strong><%= offer.walker.pups.count > 0 ? "Yes" : "No" %></strong> 
-          </div>
-
-          <div class="col-md-2">
-            PupShare walks completed: <strong><%= offer.walker.walks_completed %></strong> 
-          </div>
-
-          <div class="col-md-2">
-            <%= link_to 'Accept offer', walk_path(offer.walk, walk: { walker_id: offer.walker.id }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-lg' if policy(offer.walk).owner_current_user? %>
-          </div>
-
-          <% end %><!-- end walk.offers loop -->
-          <% end %><!-- end !walk.walker if-stmt -->
-
-        </div> <!-- class="row" -->
-
-        <div class="row">
-          <div class="col-md-12">
-            <% if policy(walk).not_started? %>
-            <%= render partial: 'walks/buttons', locals: { walk: walk } %>
-            <% end %>
-          </div>
-        </div> <!-- class="row" -->
-
         <% end %>
 
-        <!-------------->
-        <!-- END BODY -->
-        <!-------------->
-
-      </div><!-- <div class="panel-body"> -->
-    </div><!-- <div id="collapseOne" class="panel-collapse collapse in"> -->
-  </div><!-- <div class="panel panel-default"> -->
-</div><!-- <div class="panel-group" id="accordion"> -->
+      </div>
+    </div>
+  </div>
+</div>

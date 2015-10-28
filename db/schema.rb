@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026014237) do
+ActiveRecord::Schema.define(version: 20151028192332) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20151026014237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
+    t.boolean  "winner"
   end
 
   add_index "offers", ["deleted_at"], name: "index_offers_on_deleted_at", using: :btree
@@ -101,7 +102,6 @@ ActiveRecord::Schema.define(version: 20151026014237) do
     t.datetime "begin_time"
     t.integer  "duration"
     t.integer  "owner_id"
-    t.integer  "walker_id"
     t.integer  "pup_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20151026014237) do
     t.integer  "location_id"
     t.integer  "phone_number_id"
     t.datetime "deleted_at"
+    t.integer  "winning_offer_id"
   end
 
   add_index "walks", ["deleted_at"], name: "index_walks_on_deleted_at", using: :btree

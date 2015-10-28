@@ -10,10 +10,12 @@ class Walk < ActiveRecord::Base
 
   belongs_to :pup
   belongs_to :location
-  belongs_to :phone_number
+  belongs_to :phone_number # TODO: not logical... should be owner or walker phone
   belongs_to :owner, class_name: 'User'
-  belongs_to :walker, class_name: 'User'
   has_many   :offers, dependent: :destroy
+
+  has_one :winning_offer, -> { where winner: true }, class_name: 'Offer'
+  has_one :walker, through: :winning_offer
 
   scope :upcoming, -> { where('begin_time > ?' , Time.now) }
   scope :past,     -> { where('begin_time <= ? OR ended_by_walker = ?', Time.now, true) }

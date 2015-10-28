@@ -1,25 +1,15 @@
-<% if user_signed_in? %>
-
-
-
 <% if walk.owner == current_user %>
-<%= link_to 'Cancel Walk', walk_path(walk), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-lg' %>
 
-<% # elsif current_user is the offerer, then allow them to destroy their request %>
+  <%= link_to 'Cancel Walk', walk_path(walk), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-lg' %>
+
+<!-- elsif current_user is the offerer, then allow them to destroy their request -->
 <% elsif !walk.offers.where(walker_id: current_user.id).empty? %>
-<%= link_to 'Rescind Offer', [current_user, walk.offers.where(walker_id: current_user.id).first], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-lg' %>
+    <%= link_to 'Rescind Offer', [current_user, walk.offers.where(walker_id: current_user.id).first], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-lg' %>
 
-<% # else allow user to create an offer if a walker has not already been selected %>
-<% elsif !walk.walker %>
-<%= simple_form_for Offer.new, url: user_offers_path(current_user, 
-  offer: { walker_id: current_user, walk_id: walk }), method: :post do |f| %>
-<%= f.button :submit, 'Walk this pup!', class: 'btn btn-success btn-lg' %>
+<!-- else allow user to create an offer if a walker has not already been selected -->
+  <% elsif !walk.winning_offer %>
+    <%= simple_form_for Offer.new, url: user_offers_path(current_user, 
+      offer: { walker_id: current_user, walk_id: walk.id }), method: :post do |f| %>
+    <%= f.button :submit, 'Walk this pup!', class: 'btn btn-success btn-lg' %>
+    <% end %>
 <% end %>
-<% end %>
-
-
-
-<% else %>
-<%= link_to "Sign in", "/auth/linkedin", class: 'btn btn-success btn-lg' %> 
-to walk this pup
-<% end%>
