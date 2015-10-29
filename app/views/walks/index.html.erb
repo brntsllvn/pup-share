@@ -8,7 +8,8 @@
     <div class="well">
       <!-- TODO: extract to partial -->
       <%= form_tag walks_path, method: :get do %>
-      <%#= check_box_tag :past %>
+        <%= check_box_tag 'next_week' %>
+        <%= check_box_tag 'next_month' %>
         <%= submit_tag "Filter" %>
       <% end %>
     </div>

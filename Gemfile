@@ -65,3 +65,5 @@ gem "geocoder"
 gem 'phony_rails'
 
 gem "paranoia", "~> 2.0" # soft delete
+
+gem 'lupa' # poro orm-independent filtering
