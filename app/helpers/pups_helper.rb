@@ -2,7 +2,7 @@ module PupsHelper
 
   def male
     raw [
-      image_tag('male.png', class: 'paw')
+      image_tag('male.png', class: 'paw male')
       ].join()
   end
 

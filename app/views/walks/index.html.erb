@@ -10,38 +10,42 @@
       <%= form_tag walks_path, method: :get do %>
       <div class="col-md-12">
         Time
-
-        <%= label_tag 'today' %>
+        <br>
         <%= check_box_tag 'today' %>
-        <%= label_tag 'next week?' %>
+        <%= label_tag 'today' %>
         <%= check_box_tag 'next_week' %>
+        <%= label_tag 'next week?' %>
+        <%= check_box_tag 'next_month' %>
         <%= label_tag 'next month?' %>
-        <%= check_box_tag 'next_month' %>
-
+        <br>
         Location
-
+        <br>
         Pup
-
+        <br>
         Gender
-        <%= label_tag 'male' %>
         <%= check_box_tag 'male' %>
-        <%= label_tag 'female' %>
+        <%= male %>
         <%= check_box_tag 'female' %>
-
+        <%= female %>
+        <br>
         Size
-        <%= label_tag 'xsml' %>
         <%= check_box_tag 'xsml' %>
-        <%= label_tag 'sml' %>
+        <%= xsml %>
         <%= check_box_tag 'sml' %>
-        <%= label_tag 'med' %>
+        <%= sml %>
         <%= check_box_tag 'med' %>
-        <%= label_tag 'lrg' %>
+        <%= med %>
         <%= check_box_tag 'lrg' %>
-
+        <%= lrg %>
+        <br>
         Energy Level
-        <%= label_tag 'Energy Level' %>
-        <%= check_box_tag 'next_month' %>
-
+        <%= check_box_tag 'mellow' %>
+        <%= mellow %>
+        <%= check_box_tag 'temperate' %>
+        <%= temperate %>
+        <%= check_box_tag 'energetic' %>
+        <%= energetic %>
+        <br>
         <%= submit_tag "Go", class: 'btn btn-success btn-md' %>
         <% end %>
       </div>
