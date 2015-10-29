@@ -6,7 +6,11 @@
   </a>
   <div class="collapse" id="collapseExample">
     <div class="well">
-      Filters go here
+      <!-- TODO: extract to partial -->
+      <%= form_tag walks_path, method: :get do %>
+      <%#= check_box_tag :past %>
+        <%= submit_tag "Filter" %>
+      <% end %>
     </div>
   </div>
 </div>
