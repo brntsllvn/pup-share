@@ -46,9 +46,8 @@ class WalksController < ApplicationController
     params.require(:walk).permit!
   end
 
-
   def search_params
-    params.permit(:next_week, :next_month)
+    params.permit(:today, :next_week, :next_month, :male, :female, :xsml, :sml, :med, :lrg, :mellow, :temperate, :energetic)
   end
 
 end

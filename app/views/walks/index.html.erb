@@ -5,13 +5,46 @@
     Filters
   </a>
   <div class="collapse" id="collapseExample">
-    <div class="well">
+    <div class="col-md-12 well">
       <!-- TODO: extract to partial -->
       <%= form_tag walks_path, method: :get do %>
+      <div class="col-md-12">
+        Time
+
+        <%= label_tag 'today' %>
+        <%= check_box_tag 'today' %>
+        <%= label_tag 'next week?' %>
         <%= check_box_tag 'next_week' %>
+        <%= label_tag 'next month?' %>
         <%= check_box_tag 'next_month' %>
-        <%= submit_tag "Filter" %>
-      <% end %>
+
+        Location
+
+        Pup
+
+        Gender
+        <%= label_tag 'male' %>
+        <%= check_box_tag 'male' %>
+        <%= label_tag 'female' %>
+        <%= check_box_tag 'female' %>
+
+        Size
+        <%= label_tag 'xsml' %>
+        <%= check_box_tag 'xsml' %>
+        <%= label_tag 'sml' %>
+        <%= check_box_tag 'sml' %>
+        <%= label_tag 'med' %>
+        <%= check_box_tag 'med' %>
+        <%= label_tag 'lrg' %>
+        <%= check_box_tag 'lrg' %>
+
+        Energy Level
+        <%= label_tag 'Energy Level' %>
+        <%= check_box_tag 'next_month' %>
+
+        <%= submit_tag "Go", class: 'btn btn-success btn-md' %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
