@@ -23,20 +23,6 @@
 
   <div class='col-md-6'>
     <%= f.input :duration, as: :radio_buttons, collection: [5,10,15,30,45,60], include_blank: false, checked: '15', item_wrapper_class: 'inline', class: 'custom-radio' %>
-
-    <!--     <div class='col-md-12'>
-<strong>* Duration</strong>
-<div class='form-group radio_buttons required walk_duration'>
-<%# [5,10,15,30,45,60].each_with_index do |duration, index| %>
-<label class="radio-inline radio_buttons required control-label">
-<input type="radio" name="walk[duration]" id='<%#="walk_duration_#{duration}"%>' value='<%#= duration %>'><%#= duration %>
-</label>
-<%# end %>
-</div>
-</div> -->
-
-    <%# = f.collection_radio_buttons :duration, [[5, '5'], [10, '10'], [15, '15'], [30, '30'], [45, '45'], [60, '60']], :first, :last, {item_wrapper_class: 'inline'}, {class: 'radio-inline' } %>
-
   </div>
 </div>
 

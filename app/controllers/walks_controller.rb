@@ -2,25 +2,8 @@ class WalksController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_walk, except: [:index, :new, :create]
 
-  has_scope :next_week
-  has_scope :past, type: :boolean, allow_blank: true
-  # /walks/?past=1
-  has_scope :upcoming, type: :boolean, allow_blank: true
-  # /walks/?upcoming=1
-
-  # /walks/?next_week=1&past=1
-  # /walks?next_week=1&past=1
-
-  # requires some routing trick
-  # /walks/upcoming
-  # /walks/past
-  # /walks/past/last_week
-
-
-
-
   def index
-    @walks = apply_scopes(Walk).all
+    @walks = WalkSearch.new(Walk.all).search(search_params)
   end
 
   def new
@@ -60,6 +43,15 @@ class WalksController < ApplicationController
 
   def walk_params
     params.require(:walk).permit!
+  end
+
+  def search_params
+    params.permit(
+      :today, :next_week, :next_month, 
+      :male, :female, :gender, 
+      :xsml, :sml, :med, :lrg, :size,
+      :mellow, :temperate, :energetic, :energy
+      )
   end
 
 end

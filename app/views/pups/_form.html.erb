@@ -25,39 +25,39 @@
     <div class="col-md-4">
       <strong>* Gender</strong>
       <br><br>
-      <%= radio_button_tag 'pup[male_female]', 'm', class: 'required' %>
+      <%= radio_button_tag 'pup[male_female]', 'm', @pup.male_female == 'm', class: 'required' %>
       <%= male %>
       <br><br>
-      <%= radio_button_tag 'pup[male_female]', 'f', class: 'required' %>
+      <%= radio_button_tag 'pup[male_female]', 'f', @pup.male_female == 'f', class: 'required' %>
       <%= female %>
     </div>
 
     <div class="col-md-4">
       <strong>* Size</strong>
       <br><br>
-      <%= radio_button_tag 'pup[size]', '1', class: 'required' %>
+      <%= radio_button_tag 'pup[size]', '1', @pup.size == 1, class: 'required' %>
       <%= xsml %>
       <br><br>
-      <%= radio_button_tag 'pup[size]', '2', class: 'required' %>
+      <%= radio_button_tag 'pup[size]', '2', @pup.size == 2, class: 'required' %>
       <%= sml %>
       <br><br>
-      <%= radio_button_tag 'pup[size]', '3', class: 'required' %>
+      <%= radio_button_tag 'pup[size]', '3', @pup.size == 3, class: 'required' %>
       <%= med %>
       <br><br>
-      <%= radio_button_tag 'pup[size]', '4', class: 'required' %>
+      <%= radio_button_tag 'pup[size]', '4', @pup.size == 4, class: 'required' %>
       <%= lrg %>
     </div>
 
     <div class="col-md-4">
       <strong>* Energy Level</strong> 
       <br><br>
-      <%= radio_button_tag 'pup[personality]', 'mellow', class: 'required' %>
+      <%= radio_button_tag 'pup[personality]', 'mellow', @pup.personality == 'mellow', class: 'required' %>
       <%= mellow %>
       <br><br>
-      <%= radio_button_tag 'pup[personality]', 'temperate', class: 'required' %>
+      <%= radio_button_tag 'pup[personality]', 'temperate', @pup.personality == 'temperate', class: 'required' %>
       <%= temperate %>
       <br><br>
-      <%= radio_button_tag 'pup[personality]', 'energetic', class: 'required' %>
+      <%= radio_button_tag 'pup[personality]', 'energetic', @pup.personality == 'energetic', class: 'required' %>
       <%= energetic %>
     </div>
   </div>

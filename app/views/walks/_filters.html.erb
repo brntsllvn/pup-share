@@ -1,0 +1,72 @@
+<div class='col-md-12'>
+  <a class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Filters
+  </a>
+  <div class="collapse" id="collapseExample">
+    <div class="col-md-12 well">
+      <!-- TODO: extract to partial -->
+      <%= form_tag walks_path, method: :get do %>
+      <div class="col-md-12">
+        <div class="col-md-2">
+          <h3>Time</h3>
+          <%= check_box_tag 'today' %>
+          <%= label_tag 'today' %>
+          <br>
+          <%= check_box_tag 'next_week' %>
+          <%= label_tag 'next week?' %>
+          <br>
+          <%= check_box_tag 'next_month' %>
+          <%= label_tag 'next month?' %>
+        </div>
+
+        <div class="col-md-2">
+          <h3>Location</h3>
+        </div>
+
+        <div class="col-md-2">
+          <h3>Pup</h3>
+          <%= check_box_tag 'male', 'm', @walks.search_attributes[:male] == 'm' %>
+          <%= male %>
+          <br>
+          <%= check_box_tag 'female', 'f', @walks.search_attributes[:female] == 'f'  %>
+          <%= female %>
+          <%= hidden_field_tag 'gender', 'does not matter' %>
+        </div>
+        <div class="col-md-2">
+          <h3>Size</h3>
+          <%= check_box_tag 'xsml', '1', @walks.search_attributes[:xsml] == '1' %>
+          <%= xsml %>
+          <br>
+          <%= check_box_tag 'sml', '2', @walks.search_attributes[:sml] == '2'  %>
+          <%= sml %>
+          <br>
+          <%= check_box_tag 'med', '3', @walks.search_attributes[:med] == '3'  %>
+          <%= med %>
+          <br>
+          <%= check_box_tag 'lrg', '4', @walks.search_attributes[:lrg] == '4'  %>
+          <%= lrg %>
+          <%= hidden_field_tag 'size', 'does not matter' %>
+        </div>
+        <div class="col-md-2">
+          <h3>Energy Level</h3>
+          <%= check_box_tag 'mellow', 'mellow', @walks.search_attributes[:mellow] == 'mellow' %>
+          <%= mellow %>
+          <br>
+          <%= check_box_tag 'temperate', 'temperate', @walks.search_attributes[:temperate] == 'temperate' %>
+          <%= temperate %>
+          <br>
+          <%= check_box_tag 'energetic', 'energetic', @walks.search_attributes[:energetic] == 'energetic' %>
+          <%= energetic %>
+          <%= hidden_field_tag 'energy', 'does not matter' %>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <br><br>
+        <%= submit_tag "Go", class: 'btn btn-success btn-lg' %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
