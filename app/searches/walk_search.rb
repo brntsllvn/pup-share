@@ -1,5 +1,5 @@
 class WalkSearch < Lupa::Search
-  # Scope class holds all your search methods.
+
   class Scope
 
     def today
@@ -15,40 +15,70 @@ class WalkSearch < Lupa::Search
     end
 
     def male
-      scope.joins(:pup).where('pups.male_female' => 'm')
     end
 
     def female
-      scope.joins(:pup).where('pups.male_female' => 'f')
+    end
+
+    def gender
+      male   = search_attributes[:male]
+      female = search_attributes[:female]
+
+      # any but never neither
+      if male or female
+        scope.joins(:pup).where('pups.male_female' => [male, female])
+      else
+        scope.joins(:pup).where('pups.male_female' => ['m', 'f'])
+      end
     end
 
     def xsml
-      scope.joins(:pup).where('pups.size' => '1')
     end
 
     def sml
-      scope.joins(:pup).where('pups.size' => '2')
     end
 
     def med
-      scope.joins(:pup).where('pups.size' => '3')
     end
 
     def lrg
-      scope.joins(:pup).where('pups.size' => '4')
     end
 
+    def size
+      xsml = search_attributes[:xsml]
+      sml  = search_attributes[:sml]
+      med  = search_attributes[:med]
+      lrg  = search_attributes[:lrg]
+
+      if xsml or sml or med or lrg
+        scope.joins(:pup).where('pups.size' => [xsml, sml, med, lrg])
+      else
+        scope.joins(:pup).where('pups.size' => ['1', '2', '3', '4'])
+      end
+    end
+
+
     def mellow
-      scope.joins(:pup).where('pups.personality' => 'mellow')
     end
 
     def temperate
-      scope.joins(:pup).where('pups.personality' => 'temperate')
     end
 
     def energetic
-      scope.joins(:pup).where('pups.personality' => 'energetic')
+    end
+
+    def energy
+      mellow = search_attributes[:mellow]
+      temperate = search_attributes[:temperate]
+      energetic = search_attributes[:energetic]
+
+      if mellow or temperate or energetic
+        scope.joins(:pup).where('pups.personality' => [mellow, temperate, energetic])
+      else 
+        scope.joins(:pup).where('pups.personality' => ['mellow', 'temperate', 'energetic'])
+      end
     end
 
   end
+
 end

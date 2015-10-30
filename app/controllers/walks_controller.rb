@@ -3,7 +3,6 @@ class WalksController < ApplicationController
   before_action :set_walk, except: [:index, :new, :create]
 
   def index
-#     binding.pry
     @walks = WalkSearch.new(Walk.all).search(search_params)
   end
 
@@ -47,7 +46,12 @@ class WalksController < ApplicationController
   end
 
   def search_params
-    params.permit(:today, :next_week, :next_month, :male, :female, :xsml, :sml, :med, :lrg, :mellow, :temperate, :energetic)
+    params.permit(
+      :today, :next_week, :next_month, 
+      :male, :female, :gender, 
+      :xsml, :sml, :med, :lrg, :size,
+      :mellow, :temperate, :energetic, :energy
+      )
   end
 
 end
