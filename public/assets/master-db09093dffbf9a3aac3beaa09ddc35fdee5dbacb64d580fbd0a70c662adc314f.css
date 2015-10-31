@@ -1,0 +1,76 @@
+/* line 1, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+body {
+  /*   background: image-url('debut_dark.png'); */
+  background-color: #333333;
+}
+
+/* line 6, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+h1 {
+  color: #f5f5f5;
+}
+
+/* line 10, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+#nav-sign-in {
+  max-width: auto;
+  max-height: auto;
+  padding: 5px;
+}
+
+/* line 16, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+a {
+  color: #fff;
+}
+
+/* line 20, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+a.linkedin-profile {
+  color: #337ab7;
+  text-decoration: underline;
+}
+
+/* line 25, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-heading.walker {
+  background-color: #cdb28a;
+}
+
+/* line 29, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-heading.owner {
+  background-color: #a9cba6;
+}
+
+/* line 33, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.walk-detail {
+  width: 65px;
+}
+
+/* line 37, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+#map {
+  height: 200px;
+}
+
+/* line 41, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.nav-img {
+  margin-top: 5px;
+  height: 40px;
+}
+
+/* line 46, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+span.badge {
+  background-color: gray;
+}
+
+/* line 50, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+span.glyphicon-envelope {
+  font-size: 24px;
+  margin-top: -1px;
+}
+
+/* line 55, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.paw {
+  height: 18px;
+  padding: 0px 3px;
+}
+
+/* line 60, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.male {
+  border-radius: 0px;
+}
