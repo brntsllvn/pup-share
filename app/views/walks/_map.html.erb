@@ -1,0 +1,28 @@
+<script>
+
+  function initMap() {
+    var myLatLng = { lat: <%= @walks.first.location.latitude %>, 
+                    lng: <%= @walks.first.location.longitude %> };
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 5,
+      center: myLatLng
+    });
+
+    <% @walks.each_with_index do |walk, index| %>
+    var marker = new google.maps.Marker({
+      position: { lat: <%= walk.location.latitude %>, 
+                 lng: <%= walk.location.longitude %> },
+      map: map,
+      title: 'hi, something',
+      zIndex: <%= index %>
+    });
+      <% end %>
+    }
+
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"></script>
+
+<div id="map"></div>
