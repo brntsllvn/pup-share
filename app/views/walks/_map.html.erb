@@ -1,23 +1,25 @@
 <script>
 
   function initMap() {
-    var myLatLng = { lat: <%= @walks.first.location.latitude %>, 
-                    lng: <%= @walks.first.location.longitude %> };
-
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 5,
-      center: myLatLng
+      center: new google.maps.LatLng(0, 0)
     });
 
+    var bounds = new google.maps.LatLngBounds(); 
+
     <% @walks.each_with_index do |walk, index| %>
-    var marker = new google.maps.Marker({
-      position: { lat: <%= walk.location.latitude %>, 
-                 lng: <%= walk.location.longitude %> },
+    var myLatLng = new google.maps.LatLng(
+      <%= walk.location.latitude %>, <%= walk.location.longitude %>);
+    var marker   = new google.maps.Marker({
+      position: myLatLng,
       map: map,
       title: 'hi, something',
       zIndex: <%= index %>
     });
+      bounds.extend(myLatLng);   
       <% end %>
+      map.fitBounds(bounds);
     }
 
 </script>
