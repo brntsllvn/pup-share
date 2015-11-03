@@ -8,14 +8,15 @@
     <div class="col-md-12">
       <div class="col-md-2">
         <h3>Time</h3>
-        <%= check_box_tag 'today' %>
+        <%= check_box_tag 'today', Time.now + 1.days, @walks.search_attributes[:today] == Time.now + 1.days %>
         <%= label_tag 'today' %>
         <br>
-        <%= check_box_tag 'next_week' %>
-        <%= label_tag 'next week?' %>
+        <%= check_box_tag 'this_week', Time.now + 7.days, @walks.search_attributes[:this_week] == Time.now + 7.days %>
+        <%= label_tag 'this week?' %>
         <br>
-        <%= check_box_tag 'next_month' %>
-        <%= label_tag 'next month?' %>
+        <%= check_box_tag 'next_week', Time.now + 14.days, @walks.search_attributes[:next_week] == Time.now + 14.days %>
+        <%= label_tag 'next week?' %>
+        <%= hidden_field_tag 'walk_begin_time', 'any' %>
       </div>
 
       <div class="col-md-2">
@@ -29,7 +30,7 @@
         <br>
         <%= check_box_tag 'female', 'f', @walks.search_attributes[:female] == 'f'  %>
         <%= female %>
-        <%= hidden_field_tag 'gender', 'does not matter' %>
+        <%= hidden_field_tag 'gender', 'any' %>
       </div>
       <div class="col-md-2">
         <h3>Size</h3>
@@ -44,7 +45,7 @@
         <br>
         <%= check_box_tag 'lrg', '4', @walks.search_attributes[:lrg] == '4'  %>
         <%= lrg %>
-        <%= hidden_field_tag 'size', 'does not matter' %>
+        <%= hidden_field_tag 'size', 'any' %>
       </div>
       <div class="col-md-2">
         <h3>Energy Level</h3>
@@ -56,7 +57,7 @@
         <br>
         <%= check_box_tag 'energetic', 'energetic', @walks.search_attributes[:energetic] == 'energetic' %>
         <%= energetic %>
-        <%= hidden_field_tag 'energy', 'does not matter' %>
+        <%= hidden_field_tag 'energy', 'any' %>
       </div>
     </div>
 

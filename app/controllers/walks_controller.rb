@@ -47,7 +47,7 @@ class WalksController < ApplicationController
 
   def search_params
     params.permit(
-      :today, :next_week, :next_month, 
+      :today, :this_week, :next_week, :walk_begin_time,
       :male, :female, :gender, 
       :xsml, :sml, :med, :lrg, :size,
       :mellow, :temperate, :energetic, :energy

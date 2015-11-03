@@ -5,24 +5,21 @@
 </div>
 
 <div class="col-md-12">
-  <h1>Pups</h1>
-  <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary' %>
+  <h1>Pups <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary btn-lg pull-right' %></h1>
 </div>
 <div class='well col-md-12'>
   <%= render @pups %>
 </div>
 
 <div class="col-md-12">
-  <h1>Phone Numbers</h1>
-  <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary' %>
+  <h1>Phone Numbers <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary btn-lg pull-right' %></h1>
 </div>
 <div class='well col-md-12'>
   <%= render @phone_numbers %>
 </div>
 
 <div class="col-md-12">
-  <h1>Pick-up and Drop-off Locations</h1>
-  <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary' %>
+  <h1>Pick-up and Drop-off Locations <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary btn-lg pull-right' %></h1>
 </div>
 <div class='well col-md-12'>
   <%= render @locations %>
