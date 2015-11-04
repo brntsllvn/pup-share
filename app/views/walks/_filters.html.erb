@@ -8,13 +8,14 @@
     <div class="col-md-12">
       <div class="col-md-2">
         <h3>Time</h3>
-        <%= check_box_tag 'today', Time.now + 1.days, @walks.search_attributes[:today] == Time.now + 1.days %>
+        <%# fail %>
+        <%= check_box_tag 'today', Time.now + 1.days, @walks.search_attributes[:today] %>
         <%= label_tag 'today' %>
         <br>
-        <%= check_box_tag 'this_week', Time.now + 7.days, @walks.search_attributes[:this_week] == Time.now + 7.days %>
+        <%= check_box_tag 'this_week', Time.now + 7.days, @walks.search_attributes[:this_week] %>
         <%= label_tag 'this week?' %>
         <br>
-        <%= check_box_tag 'next_week', Time.now + 14.days, @walks.search_attributes[:next_week] == Time.now + 14.days %>
+        <%= check_box_tag 'next_week', Time.now + 14.days, @walks.search_attributes[:next_week] %>
         <%= label_tag 'next week?' %>
         <%= hidden_field_tag 'walk_begin_time', 'any' %>
       </div>
@@ -25,37 +26,37 @@
 
       <div class="col-md-2">
         <h3>Pup</h3>
-        <%= check_box_tag 'male', 'm', @walks.search_attributes[:male] == 'm' %>
+        <%= check_box_tag 'male', 'm', @walks.search_attributes[:male] %>
         <%= male %>
         <br>
-        <%= check_box_tag 'female', 'f', @walks.search_attributes[:female] == 'f'  %>
+        <%= check_box_tag 'female', 'f', @walks.search_attributes[:female] %>
         <%= female %>
         <%= hidden_field_tag 'gender', 'any' %>
       </div>
       <div class="col-md-2">
         <h3>Size</h3>
-        <%= check_box_tag 'xsml', '1', @walks.search_attributes[:xsml] == '1' %>
+        <%= check_box_tag 'xsml', '1', @walks.search_attributes[:xsml] %>
         <%= xsml %>
         <br>
-        <%= check_box_tag 'sml', '2', @walks.search_attributes[:sml] == '2'  %>
+        <%= check_box_tag 'sml', '2', @walks.search_attributes[:sml] %>
         <%= sml %>
         <br>
-        <%= check_box_tag 'med', '3', @walks.search_attributes[:med] == '3'  %>
+        <%= check_box_tag 'med', '3', @walks.search_attributes[:med] %>
         <%= med %>
         <br>
-        <%= check_box_tag 'lrg', '4', @walks.search_attributes[:lrg] == '4'  %>
+        <%= check_box_tag 'lrg', '4', @walks.search_attributes[:lrg] %>
         <%= lrg %>
         <%= hidden_field_tag 'size', 'any' %>
       </div>
       <div class="col-md-2">
         <h3>Energy Level</h3>
-        <%= check_box_tag 'mellow', 'mellow', @walks.search_attributes[:mellow] == 'mellow' %>
+        <%= check_box_tag 'mellow', 'mellow', @walks.search_attributes[:mellow] %>
         <%= mellow %>
         <br>
-        <%= check_box_tag 'temperate', 'temperate', @walks.search_attributes[:temperate] == 'temperate' %>
+        <%= check_box_tag 'temperate', 'temperate', @walks.search_attributes[:temperate] %>
         <%= temperate %>
         <br>
-        <%= check_box_tag 'energetic', 'energetic', @walks.search_attributes[:energetic] == 'energetic' %>
+        <%= check_box_tag 'energetic', 'energetic', @walks.search_attributes[:energetic] %>
         <%= energetic %>
         <%= hidden_field_tag 'energy', 'any' %>
       </div>
