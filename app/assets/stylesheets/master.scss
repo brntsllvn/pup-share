@@ -34,7 +34,7 @@ img.walk-detail {
 }
 
 #map {
-  height: 300px;
+  height: 500px;
 }
 
 img.nav-img {
@@ -52,10 +52,15 @@ span.glyphicon-envelope {
 }
 
 img.paw {
-  height: 18px;
-  padding: 0px 3px;
+  height: 16px;
+  padding: 0px 2px;
 }
 
 img.male {
   border-radius: 0px;
+}
+
+div.filter {
+  padding: 15px 0px;
+  border-top: thin solid gray;
 }
