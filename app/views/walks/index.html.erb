@@ -1,4 +1,5 @@
 <div class='col-md-12 text-center well hidden-xs hidden-sm'>
+  
   <div class='col-md-6'>
     <%= render 'filters' %>
   </div>
@@ -6,16 +7,23 @@
   <div class='col-md-6'>
     <%= render 'map' %>
   </div>
+
 </div>
 
-
 <div class='col-md-12'>
+  
   <% if @walks.count > 0 %>
-  <h1><%= "#{@walks.count} upcoming walks" %></h1>
-  <% @walks.order(:begin_time).each_with_index do |walk, index| %>
-  <%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
-  <% end %>
+    <h1><%= "#{@walks.count} upcoming walks" %></h1>
+    <% @walks.order(:begin_time).each_with_index do |walk, index| %>
+
+    <div class='col-md-6'>
+      <%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
+    </div>
+  
+    <% end %>
+
   <% else %>
-  <h1>No search results. Try adjusting your filters</h1>
+    <h1>No search results. Try adjusting your filters</h1>
   <% end %>
+
 </div>

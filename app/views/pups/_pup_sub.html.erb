@@ -1,29 +1,11 @@
-<div class="col-md-2">  
+<div class="col-md-5 col-md-offset-2" >
   <%= image_tag pup.pic, class: 'img-responsive' %>  
 </div>
 
-<div class="col-md-10">
-  <h2>
-    <div class="col-md-3">
-      <%= "#{pup.name}" %>
-      <%= gender_icon pup %>
-    </div>
-    <div class="col-md-4">
-      <%= "#{pup.age} year-old #{pup.breed}" %>
-    </div>
-  </h2>
-</div>
-
-<div class="col-md-10">
-  <h4>
-    <div class="col-md-3">
-      Size: <%= size_icon pup %>
-    </div>
-    <div class="col-md-4">
-      Energy Level: <%= energy_icon pup %>
-    </div>
-    <div class="col-md-4">
-      Walks Completed: <%= pup.walks_completed %>
-    </div>
-  </h4>
+<div class="col-md-5">
+  <%= "#{pup.name}" %>
+  <%= gender_icon pup %><br>
+  <%= "#{pup.age} year-old #{pup.breed}" %><br>
+  Size: <%= size_icon pup %><br>
+  Energy Level: <%= energy_icon pup %>
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101194643) do
+ActiveRecord::Schema.define(version: 20151104040248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,10 +57,9 @@ ActiveRecord::Schema.define(version: 20151101194643) do
     t.string   "breed"
     t.string   "male_female"
     t.string   "pic"
-    t.integer  "walks_completed", default: 0
     t.integer  "owner_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "age"
     t.integer  "size"
     t.text     "additional_info"
@@ -76,14 +75,13 @@ ActiveRecord::Schema.define(version: 20151101194643) do
     t.string   "email"
     t.string   "image"
     t.string   "headline"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "provider"
     t.string   "uid"
     t.text     "auth_hash"
     t.string   "linkedin_url"
     t.string   "location"
-    t.integer  "walks_completed", default: 0
     t.datetime "deleted_at"
   end
 

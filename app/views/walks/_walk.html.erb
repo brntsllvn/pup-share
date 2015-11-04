@@ -1,78 +1,65 @@
 <div class="panel-group" id="accordion">
-  <div class='<%="panel panel-default"%>'>
+  <div class='panel panel-default'>
 
     <div class='<%="panel-heading #{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
-          <div class='row'><!-- see _pup_sub for formatting -->
+      <div class="col-md-2">
+        <%= link_to image_tag(walk.owner.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.owner) %>
+      </div>
+      <div class="col-md-10">
+        <%= link_to walk.owner.first_name, user_path(walk.owner) %>
+      </div>
+
+      <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
+        <div class='row'>
+          <div class="col-md-12">
             <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
-            <div class="col-md-10">
-              <div class="col-md-12">
-                <h4>Walk Starts: <%= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %></h4>
-                <h4><%= !walk.winning_offer ? "#{walk.offers.count} offers" : "#{walk.winning_offer.walker.first_name} #{walk.winning_offer.walker.last_name[0]}" %></h4>
-              </div>
-            </div>
           </div>
-        </a>
-      </h4>
+        </div>
+      </a>
     </div><!-- <div class="panel-heading"> -->
+
+    <%#= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %>
+    <%#= !walk.winning_offer ? "#{walk.offers.count} offers" : "#{walk.winning_offer.walker.first_name} #{walk.winning_offer.walker.last_name[0]}" %>
 
     <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse">
       <div class="panel-body">
-        <h2>Details</h2>
         <div class="row well">
-          <div class="col-md-2">
-            <h3>Owner</h3>
-            <%= walk.owner.first_name %>
-            <%= link_to image_tag(walk.owner.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.owner) %>
-          </div>
 
-          <div class="col-md-2">
-            <h3>About</h3>
-            <%= walk.owner.location %>
-            <br><br>
-            <%= walk.owner.headline %>
-          </div>
-
-          <div class="col-md-2">
-            <h3>When</h3>
-            <%= "#{walk.begin_time.strftime("%A")}, #{walk.begin_time.to_formatted_s(:short)}" %>
-          </div>
 
           <div class="col-md-3">
             <h3>Drop-off and pick-up</h3>
             <%= walk.location.full_street_address %>
             <br>
             <% if walk.location.latitude.present? and walk.location.longitude.present? %>
-              <%= link_to 'Plot in Google Maps', "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank", class: 'btn btn-primary btn-lg' %>
+            <%= link_to 'Google Maps', "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank" %>
             <% end %>
           </div>
 
           <div class="col-md-2">
             <% if walk.winning_offer %>
-              <% if policy(walk).walker_current_user? %>
-                <h3>What now?</h3>
+            <% if policy(walk).walker_current_user? %>
+            <h3>What now?</h3>
 
-                <% if policy(walk).walker_update_start? %>
-                  <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
-                <% else %>
-                  <%= link_to 'Start Walk', {}, method: :put, class: 'btn btn-success btn-xl disabled' %>
-                <% end %>
-
-                <% if policy(walk).walker_update_end? %>
-                  <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl' %>
-                <% else %>
-                  <%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>
-                <% end %>
-              <% else %>
-
-                <h3>Walker</h3>
-                <%= walk.winning_offer.walker.first_name %>
-                <%= link_to image_tag(walk.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.walker) %>
-              <% end %>
-            
+            <% if policy(walk).walker_update_start? %>
+            <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
             <% else %>
-              <h3>Choose a walker from the offers below</h3>
+            <%= link_to 'Start Walk', {}, method: :put, class: 'btn btn-success btn-xl disabled' %>
+            <% end %>
+
+            <% if policy(walk).walker_update_end? %>
+            <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl' %>
+            <% else %>
+            <%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>
+            <% end %>
+            <% else %>
+
+            <h3>Walker</h3>
+            <%= walk.winning_offer.walker.first_name %>
+            <%= link_to image_tag(walk.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.walker) %>
+            <% end %>
+
+            <% else %>
+            <h3>Choose a walker from the offers below</h3>
             <% end %>
           </div>
         </div>
@@ -83,19 +70,20 @@
         </div>
 
         <% if !walk.winning_offer %>
-          <h2>Offers</h2>
-          <div class="row well">
-             <%= render walk.offers %>
-          </div>
+        <h2>Offers</h2>
+        <div class="row well">
+          <%= render walk.offers %>
+        </div>
 
-          <div class="row">
-            <div class="col-md-12">
-              <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if policy(walk).not_started? %>
-            </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if policy(walk).not_started? %>
           </div>
+        </div>
         <% end %>
 
       </div>
     </div>
+
   </div>
 </div>

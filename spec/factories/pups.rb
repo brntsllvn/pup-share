@@ -8,7 +8,6 @@ FactoryGirl.define do
     age 4
     size 2
     personality 'mellow'
-    walks_completed 100
 
     association :owner
   end
