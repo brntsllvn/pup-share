@@ -1,9 +1,7 @@
-<div class="col-md-2">
-  <div class="col-md-6">
-    <%= link_to image_tag(offer.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(offer.walker) %>
-  </div>
-  
-  <div class="col-md-6">
-    <%= link_to 'Accept offer', user_offer_path(current_user, offer, offer: { winner: true }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-md' if policy(offer).acceptable? %>
-  </div>
+<div class='pull-left offer'>
+  <%= link_to image_tag(offer.walker.image, class: 'walk-detail'), user_path(offer.walker) %>
+  <%= link_to user_offer_path(current_user, offer, offer: { winner: true }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success' do %>
+  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+  <% end %>
+  <!--   # if policy(offer).acceptable? %> -->
 </div>

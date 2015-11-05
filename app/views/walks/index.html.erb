@@ -12,10 +12,10 @@
 
 
 <% if @walks.count > 0 %>
-<h1><%= "#{@walks.count} upcoming walks" %></h1>
+<p><strong><%= "#{@walks.count} upcoming walks" %></strong></p>
 <% @walks.order(:begin_time).each_with_index do |walk, index| %>
 
-<div class='col-md-6'>
+<div class='col-md-6 walk'>
   <%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
 </div>
 

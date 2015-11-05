@@ -3,7 +3,7 @@ body {
 }
 
 a {
- color: black;
+  color: black;
 }
 
 #nav-sign-in {
@@ -20,8 +20,13 @@ div.panel-heading.owner {
   background-color: #f5f5f5;
 }
 
+div.offer {
+  padding: 5px 15px;
+}
+
 img.walk-detail {
-  width: 65px;
+  width: 34px;
+  height: 34px;
 }
 
 #map {
@@ -54,4 +59,20 @@ img.male {
 div.filter {
   padding: 15px 0px;
   border-top: thin solid gray;
+}
+
+div.walk {
+  padding: 0px 3px; 
+}
+
+div.panel-body {
+  padding: 5px 15px; 
+}
+
+div.well {
+  margin-bottom: 0px;
+}
+
+div.panel-default {
+  padding: 5px;
 }
