@@ -1,11 +1,11 @@
-<div class="col-md-5 col-md-offset-2" >
+<div class="col-md-6 col-md-offset-2" >
   <%= image_tag pup.pic, class: 'img-responsive' %>  
 </div>
 
-<div class="col-md-5">
-  <%= "#{pup.name}" %>
-  <%= gender_icon pup %><br>
-  <%= "#{pup.age} year-old #{pup.breed}" %><br>
-  Size: <%= size_icon pup %><br>
-  Energy Level: <%= energy_icon pup %>
+<div class="col-md-4">
+  <p><strong><%= pup.name %></strong>
+  <%= gender_icon pup %></p>
+  <p><%= "#{pup.age} year-old #{pup.breed}" %></p>
+  <p>Size: <%= size_icon pup %></p>
+  <p>Energy Level: <%= energy_icon pup %></p>
 </div>

@@ -1,18 +1,9 @@
 <div class="col-md-2">
-  <%= offer.walker.first_name %>
-  <%= link_to image_tag(offer.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(offer.walker) %>
-</div>
-
-<div class="col-md-2">
-  <%= offer.walker.location %>
-  <br><br>
-  <%= offer.walker.headline %>
-</div>
-
-<div class="col-md-4">
-  Any pups registered with PupShare? <strong><%= offer.walker.pups.count > 0 ? "Yes" : "No" %></strong>
-</div>
-
-<div class="col-md-2">
-  <%= link_to 'Accept offer', user_offer_path(current_user, offer, offer: { winner: true }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-lg' if policy(offer).acceptable? %>
+  <div class="col-md-6">
+    <%= link_to image_tag(offer.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(offer.walker) %>
+  </div>
+  
+  <div class="col-md-6">
+    <%= link_to 'Accept offer', user_offer_path(current_user, offer, offer: { winner: true }), method: :put, confirm: 'Are you sure?', class: 'btn btn-success btn-md' if policy(offer).acceptable? %>
+  </div>
 </div>
