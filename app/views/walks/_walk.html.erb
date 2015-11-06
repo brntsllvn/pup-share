@@ -1,72 +1,76 @@
-<div class="panel-group" id="accordion">
-  <div class='panel panel-default'>
+<div class='col-md-6 walk'>
+  <div class="panel-group" id="accordion">
+    <div class='panel panel-default'>
 
-    <div class='<%="#{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
-      <div class="col-md-1 no-margin hidden-xs">
-        <%= link_to image_tag(walk.owner.image, class: 'walk-owner'), user_path(walk.owner) %>
-      </div>
-      <div class="col-md-8 bottom-space">
-        <strong class="hidden-xs"><%= link_to walk.owner.first_name, user_path(walk.owner) %></strong>
-        <br>
-        <small class="hidden-xs">PICK-UP/DROP-OFF</small> 
-        <%= link_to walk.location.full_street_address, "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank" if walk.location.latitude.present? and walk.location.longitude.present? %>           
-        <br>
-        <small class="hidden-xs">BEGIN TIME</small>
-        <%= walk.begin_time.to_formatted_s(:long_ordinal) %>
-      </div>
+      <div class='<%="#{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
 
-      <div class="col-md-3 bottom-space">
-        <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if policy(walk).not_started? %>
-      </div>
-
-      <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
-        <div class='row'>
-          <div class="col-md-11 col-md-offset-1 text-center bottom-space">
-            <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
-          </div>
-          <div class="col-md-12 text-center">
-            <small><%= walk.offers.count %> OFFERS</small>
-          </div>
+        <div class="col-md-12 bottom-space btn-block">
+          <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if policy(walk).not_started? %>
         </div>
-      </a>
-    </div><!-- <div class="panel-heading"> -->
+        
+        <div class="col-md-1 no-margin hidden-xs">
+          <%= link_to image_tag(walk.owner.image, class: 'walk-owner'), user_path(walk.owner) %>
+        </div>
 
-    <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse">
-      <div class="panel-body well">
-        <div class="col-md-12 text-center">
-          <p><small>CHOOSE ONE</small></p>
-          <%= render walk.offers %>
+        <div class="col-md-11 bottom-space">
+          <strong class="hidden-xs"><%= link_to walk.owner.first_name, user_path(walk.owner) %></strong>
+          <br>
+          <small class="hidden-xs">LOC.</small> 
+          <%= link_to walk.location.full_street_address, "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank" if walk.location.latitude.present? and walk.location.longitude.present? %>           
+          <br>
+          <small class="hidden-xs">TIME</small>
+          <%= walk.begin_time.to_formatted_s(:long_ordinal) %>
+        </div>
+
+        <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
+          <div class='row'>
+            <div class="col-md-11 col-md-offset-1 text-center bottom-space">
+              <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
+            </div>
+            <div class="col-md-12 text-center">
+              <small><%= walk.offers.count %> OFFERS </small><span class="glyphicon glyphicon-triangle-bottom"></span>
+            </div>
+          </div>
+        </a>
+      </div><!-- <div class="panel-heading"> -->
+
+      <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse">
+        <div class="panel-body well">
+          <div class="col-md-12 text-center">
+            <p><small>CHOOSE ONE</small></p>
+            <%= render walk.offers %>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <%#= !walk.winning_offer ? "#{walk.offers.count} offers" : "#{walk.winning_offer.walker.first_name} #{walk.winning_offer.walker.last_name[0]}" %>
+
+  <% if walk.winning_offer %>
+  <% if policy(walk).walker_current_user? %>
+
+  <% if policy(walk).walker_update_start? %>
+  <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
+  <% else %>
+  <%= link_to 'Start Walk', {}, method: :put, class: 'btn btn-success btn-xl disabled' %>
+  <% end %>
+
+  <% if policy(walk).walker_update_end? %>
+  <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl' %>
+  <% else %>
+  <%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>
+  <% end %>
+  <% end %>
+
+  <% else %>
+  <!-- <p><small>WALKER</small></p> -->
+  <%#= walk.winning_offer.walker.first_name %>
+  <%#= link_to image_tag(walk.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.walker) %>
+  <% end %>
+
+
+  <%= 'Walk officially started' if policy(walk).started? %>
+  <%= 'Walk officially ended' if policy(walk).ended? %>
+
 </div>
-
-<%#= !walk.winning_offer ? "#{walk.offers.count} offers" : "#{walk.winning_offer.walker.first_name} #{walk.winning_offer.walker.last_name[0]}" %>
-
-<% if walk.winning_offer %>
-<% if policy(walk).walker_current_user? %>
-
-<% if policy(walk).walker_update_start? %>
-<%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl' %>
-<% else %>
-<%= link_to 'Start Walk', {}, method: :put, class: 'btn btn-success btn-xl disabled' %>
-<% end %>
-
-<% if policy(walk).walker_update_end? %>
-<%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl' %>
-<% else %>
-<%= link_to 'End Walk', {}, method: :put, class: 'btn btn-danger btn-xl disabled' %>
-<% end %>
-<% end %>
-
-<% else %>
-<!-- <p><small>WALKER</small></p> -->
-<%#= walk.winning_offer.walker.first_name %>
-<%#= link_to image_tag(walk.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.walker) %>
-<% end %>
-
-
-<%= 'Walk officially started' if policy(walk).started? %>
-<%= 'Walk officially ended' if policy(walk).ended? %>
-
