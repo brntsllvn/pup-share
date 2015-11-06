@@ -1,7 +1,7 @@
 <%= form_tag walks_path, method: :get do %>
 
 <div class="col-md-12 filter">
-  <p>Time</p>
+  <p>TIME</p>
   <div class="col-md-4">
     <%= check_box_tag 'today', Time.now + 1.days, @walks.search_attributes[:today] %>
     <%= label_tag 'today' %>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="col-md-12 filter">
-  <p>Location</p>
+  <p>LOCATION</p>
   <div class="col-md-4">
     <%= label_tag 'placeholder 1' %>
   </div>
@@ -33,7 +33,7 @@
 </div>
 
 <div class="col-md-12 filter">
-  <p>Pup</p>
+  <p>PUP</p>
   <div class="col-md-6">
     <%= check_box_tag 'male', 'm', @walks.search_attributes[:male] %>
     <%= male %>
@@ -47,7 +47,7 @@
 </div>
 
 <div class="col-md-12 filter">
-  <p>Size</p>
+  <p>SIZE</p>
   <div class="col-md-3">
     <%= check_box_tag 'xsml', '1', @walks.search_attributes[:xsml] %>
     <%= xsml %>
@@ -71,7 +71,7 @@
 </div>
 
 <div class="col-md-12 filter">
-  <p>Energy Level</p>
+  <p>ENERGY LEVEL</p>
   <div class="col-md-4">
     <%= check_box_tag 'mellow', 'mellow', @walks.search_attributes[:mellow] %>
     <%= mellow %>

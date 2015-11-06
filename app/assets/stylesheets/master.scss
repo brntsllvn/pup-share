@@ -21,7 +21,12 @@ div.panel-heading.owner {
 }
 
 div.offer {
-  padding: 5px 15px;
+  padding: 0px 30px 0px 00px;
+}
+
+img.walk-owner {
+  width: 56px;
+  height: 56px; 
 }
 
 img.walk-detail {
@@ -75,4 +80,18 @@ div.well {
 
 div.panel-default {
   padding: 5px;
+}
+
+div.walk-details {
+  padding: 15px;
+  border-top: thin solid gray;
+}
+
+div.no-margin {
+  margin: 0px;
+  padding: 0px;
+}
+
+div.bottom-space {
+  margin-bottom: 15px; 
 }

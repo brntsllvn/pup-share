@@ -29,7 +29,7 @@ feature 'Start real life walk' do
     # owner accepts offer
     sign_in owner
     visit user_upcoming_walks_path(owner)
-    click_on 'Accept offer'
+    click_link 'accept-offer'
     click_on 'Sign Out'
   end
 
