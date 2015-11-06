@@ -5,7 +5,7 @@
       <div class="col-md-1 no-margin hidden-xs">
         <%= link_to image_tag(walk.owner.image, class: 'walk-owner'), user_path(walk.owner) %>
       </div>
-      <div class="col-md-11 bottom-space">
+      <div class="col-md-8 bottom-space">
         <strong class="hidden-xs"><%= link_to walk.owner.first_name, user_path(walk.owner) %></strong>
         <br>
         <small class="hidden-xs">PICK-UP/DROP-OFF</small> 
@@ -13,6 +13,10 @@
         <br>
         <small class="hidden-xs">BEGIN TIME</small>
         <%= walk.begin_time.to_formatted_s(:long_ordinal) %>
+      </div>
+
+      <div class="col-md-3 bottom-space">
+        <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if policy(walk).not_started? %>
       </div>
 
       <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
@@ -38,10 +42,6 @@
   </div>
 </div>
 
-<div class="col-md-12">
-  <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if policy(walk).not_started? %>
-</div>
-<%#= "#{distance_of_time_in_words_to_now walk.begin_time} from now" %>
 <%#= !walk.winning_offer ? "#{walk.offers.count} offers" : "#{walk.winning_offer.walker.first_name} #{walk.winning_offer.walker.last_name[0]}" %>
 
 <% if walk.winning_offer %>
@@ -61,7 +61,7 @@
 <% end %>
 
 <% else %>
-<p><small>WALKER</small></p>
+<!-- <p><small>WALKER</small></p> -->
 <%#= walk.winning_offer.walker.first_name %>
 <%#= link_to image_tag(walk.walker.image, class: 'img-responsive img-rounded walk-detail'), user_path(walk.walker) %>
 <% end %>
