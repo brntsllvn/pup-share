@@ -5,7 +5,7 @@ class WalkPolicy < ApplicationPolicy
   end
 
   def not_yet_started_by_winning_walker?
-    record.winning_offer and record.walker == user and not record.started_by_walker and record.coming_up?
+    record.winning_offer and record.walker == user and not record.started_by_walker
   end
 
   def not_yet_ended_by_winning_walker?

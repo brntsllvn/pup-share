@@ -6,10 +6,9 @@
 
         <div class="col-md-12 bottom-space">
           <!-- walk/cancel/rescind > 15min before walk -->
-          <%= render(partial: 'walks/buttons', locals: { walk: walk } ) if not walk.coming_up? %>
+          <%= render(partial: 'walks/buttons_distant', locals: { walk: walk } ) if not walk.coming_up? %>
           <!-- start/stop < 15 min before walk -->
-          <%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl btn-block' if policy(walk).not_yet_started_by_winning_walker? %>
-          <%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl btn-block' if policy(walk).not_yet_ended_by_winning_walker? %>
+          <%= render(partial: 'walks/buttons_close', locals: { walk: walk } ) if walk.coming_up? %>
           <!-- walk ended -->
           <%= 'Walk officially ended' if policy(walk).ended? %>
         </div>
