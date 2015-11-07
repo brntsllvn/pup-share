@@ -15,14 +15,12 @@ feature 'Owner selects walker' do
     create_pup
     create_walk
     click_on 'Sign Out'
-    # walker offers to walk
+    # walker offers
     sign_in walker
     click_on 'Walk a Pup'
     expect{click_on 'Walk this pup!'}.to change(Offer, :count).by (1)
     click_on "#{walker.first_name}'s Upcoming Walks"
-    # 'Accept offer' button only visible to pup's owner
-    expect(page).to have_content('OFFERS')
-    expect(page).to have_content('Ace')
+    expect(page).to have_no_link('accept-offer')
     click_on 'Sign Out'
   end
 
@@ -31,8 +29,6 @@ feature 'Owner selects walker' do
     click_on "#{owner.first_name}'s Upcoming Walks"
     # owner has not chosen a walker yet
     expect(page).to have_content("#{walker.first_name}")
-    # owner can see offer
-    expect(page).to have_css('span.glyphicon-ok') # check-mark 'accept' button for each offer
     # owner selects walker by clicking button
     click_link 'accept-offer'
     ### see alert pop-up

@@ -32,11 +32,13 @@ feature 'Start real life walk' do
   end
 
   scenario 'success' do
-    # time warp
-    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
     sign_in walker
     # walker starts walk
     click_on "#{walker.first_name}'s Upcoming Walks"
+    expect(page).to have_content('Rescind Offer')
+    # time warp
+    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
+    click_on "#{walker.first_name}'s Upcoming Walks" # refresh page
     click_on 'Start Walk'
     # walk begins in the real world
     expect(page).to have_content('End Walk')

@@ -1,6 +1,6 @@
 class OfferPolicy < ApplicationPolicy
 
-  def acceptable?
+  def user_authorized_to_accept?
     record.walk.owner.eql? user
   end
   
