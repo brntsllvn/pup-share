@@ -25,9 +25,8 @@ class Walk < ActiveRecord::Base
     includes(:offers).where(offers: { walker: walker })
   end
 
-  # TODO: change 600000 to a reasonable number in prod
   def coming_up?
-    return self.begin_time - Time.now < 600000.minutes
+    return self.begin_time - Time.now < 15.minutes
     false
   end
 

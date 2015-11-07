@@ -19,18 +19,18 @@ feature 'End real life walk' do
     create_walk
     # sign owner out
     click_on 'Sign Out'
-    # time warp
-    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
-    # walker offers to walk
+    # walker offers
     sign_in walker
     click_on 'Walk a Pup' 
     click_on 'Walk this pup!'
     click_on 'Sign Out'
-    # owner accepts offer
+    # owner accepts
     sign_in owner
     visit user_upcoming_walks_path(owner)
     click_link 'accept-offer'
     click_on 'Sign Out'
+    # time warp
+    Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
     # walker starts walk
     sign_in walker
     click_on "#{walker.first_name}'s Upcoming Walks"
@@ -42,7 +42,6 @@ feature 'End real life walk' do
     # walker ends walk
     click_on 'End Walk'    
     expect(page).to have_content('Walk updated')
-    expect(page).to have_no_content('Walk officially started')
     expect(page).to have_content('Walk officially ended')
   end
 end

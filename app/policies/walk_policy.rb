@@ -1,5 +1,26 @@
 class WalkPolicy < ApplicationPolicy
 
+  def beginning_soon?
+    record.coming_up?
+  end
+
+  def not_yet_started_by_winning_walker?
+    record.winning_offer and record.walker == user and not record.started_by_walker and record.coming_up?
+  end
+
+  def not_yet_ended_by_winning_walker?
+    record.winning_offer and record.walker == user and record.started_by_walker and not record.ended_by_walker
+  end
+
+  def ended?
+    record.ended_by_walker
+  end
+
+
+  
+  
+  
+
   def owner_current_user?
     record.owner == user
   end
