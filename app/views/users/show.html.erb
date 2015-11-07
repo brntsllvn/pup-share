@@ -1,28 +1,43 @@
-<h1>Linkedin Info</h1>
+<h1>Profile</h1>
 
-<div class="col-md-12">
-  <%= render @user %>
-</div>
+<div class="text-center">
 
-<div class="col-md-12">
-  <h1>Pups <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary btn-lg pull-right' %></h1>
-</div>
-<div class='well col-md-12'>
-  <%= render @pups %>
-</div>
+  <div class="col-md-12">
+    <%= render @user %>
+  </div>
 
-<div class="col-md-12">
-  <h1>Phone Numbers <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary btn-lg pull-right' %></h1>
-</div>
-<div class='well col-md-12'>
-  <%= render @phone_numbers %>
-</div>
+  <div class="col-md-12">
+    <h3>Pups</h3>
+  </div>
+  <div class='col-md-12 center-block'>
+    <%= link_to 'Add Pup', new_user_pup_path(current_user), class: 'btn btn-primary btn-xl btn-block' %>
+  </div>
+  <div class='col-md-12'>
+    <%= render @pups %>
+  </div>
 
-<div class="col-md-12">
-  <h1>Pick-up and Drop-off Locations <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary btn-lg pull-right' %></h1>
-</div>
-<div class='well col-md-12'>
-  <%= render @locations %>
-</div>
+  <div class="col-md-12">
+    <h3>Phone Numbers</h3> 
+  </div>
+  <div class='col-md-12 center-block'>
+    <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary btn-xl' %>
+  </div>
+  <div class='col-md-12'>
+    <%= render @phone_numbers %>
+  </div>
 
-<%= link_to 'Delete Account :(', user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <div class='col-md-12'>
+    <h3>Pick-up and Drop-off Locations</h3> 
+  </div>
+  <div class='col-md-12 center-block'>
+    <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary btn-xl' %>
+  </div>
+  <div class='col-md-12'>
+    <%= render @locations %>
+  </div>
+
+  <div class="col-md-12 center-block">
+    <%= link_to 'Delete Account :(', user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  </div>
+
+</div>
