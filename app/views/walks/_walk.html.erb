@@ -13,7 +13,7 @@
           <%= 'Walk officially ended' if policy(walk).ended? %>
         </div>
 
-        <div class="col-md-12 bottom-space">
+        <div class="col-md-12 bottom-space filter">
           <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
           <div class="col-md-6">
             <%= link_to image_tag(walk.owner.image, class: 'walk-detail'), user_path(walk.owner) %>
@@ -21,7 +21,7 @@
           </div>
         </div>
 
-        <div class="col-md-12 bottom-space">
+        <div class="col-md-12 bottom-space filter">
           <div class="col-md-6 hide-overflow">
             <small class="hidden-xs">DROPOFF</small><br> 
             <%= link_to walk.location.full_street_address, "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank" if walk.location.latitude.present? and walk.location.longitude.present? %>           

@@ -1,6 +1,19 @@
 <%= form_tag walks_path, method: :get do %>
 
 <div class="col-md-12 filter">
+  <p><small>LOCATION</small></p>
+  <div class="col-md-4">
+    <%= "My location #{@my_location.data["city"]}, #{@my_location.data["region_code"]}" %>
+  </div>
+  <div class="col-md-4">
+    <%= label_tag 'within 1 mile' %>
+  </div>
+  <div class="col-md-4">
+    <%= label_tag 'within 2 miles' %>
+  </div>
+</div>
+
+<div class="col-md-12 filter">
   <p><small>TIME</small></p>
   <div class="col-md-4">
     <%= check_box_tag 'today', Time.now + 1.days, @walks.search_attributes[:today] %>
@@ -16,19 +29,6 @@
     <%= check_box_tag 'next_week', Time.now + 14.days, @walks.search_attributes[:next_week] %>
     <%= label_tag 'next week?' %>
     <%= hidden_field_tag 'walk_begin_time', 'any' %>
-  </div>
-</div>
-
-<div class="col-md-12 filter">
-  <p><small>LOCATION</small></p>
-  <div class="col-md-4">
-    <%= "My location #{@my_location.data["city"]}, #{@my_location.data["region_code"]}" %>
-  </div>
-  <div class="col-md-4">
-    <%= label_tag 'within 1 mile' %>
-  </div>
-  <div class="col-md-4">
-    <%= label_tag 'within 2 miles' %>
   </div>
 </div>
 
