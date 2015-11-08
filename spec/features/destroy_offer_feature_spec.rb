@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User offers to walk a pup' do
+feature 'User destroys offer' do
 
   let (:owner)  { create(:user) }
   let (:walker) { create(:user) }

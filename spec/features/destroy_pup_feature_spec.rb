@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User destroys phone number' do
+feature 'User destroys pup' do
 
   let (:owner)        { create(:user) }
   let (:someone_else) { create(:user) }

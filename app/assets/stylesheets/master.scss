@@ -21,7 +21,7 @@ div.panel-heading.owner {
 }
 
 div.offer {
-  padding: 0px 30px 0px 00px;
+  padding: 0px 15px 0px 00px;
 }
 
 img.walk-owner {
@@ -45,6 +45,9 @@ img.nav-img {
 
 span.badge {
   background-color: gray; 
+  vertical-align: initial;
+  border-radius: 5px;
+  font-weight: normal;
 }
 
 span.glyphicon-envelope {

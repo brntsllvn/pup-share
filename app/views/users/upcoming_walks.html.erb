@@ -1,5 +1,5 @@
-<div class="col-md-12 text-center">
-  <h1><%= "#{current_user.first_name}'s " %>Upcoming Walks</h1>
+<div class="col-md-12 text-center bottom-space">
+  <h3><%= "#{current_user.first_name}'s " %>Upcoming Walks</h3>
   <%= link_to 'Past Walks', user_past_walks_path(current_user), class:'btn btn-primary btn-xl btn-block' %>
 </div>
 
@@ -9,13 +9,13 @@
 
   <% if @walks_plus_offers.empty? %>
 
-  <h1>You don't have any walks yet...</h1>
-  <div class="col-md-12">
-    <%= link_to 'Walk a Pup', walks_path, class:'btn btn-info btn-lg btn-xl btn-block' %>
+  <h3>You don't have any walks yet...</h3>
+  <div class="col-md-12 bottom-space">
+    <%= link_to 'Walk a Pup', walks_path, class:'btn btn-info btn-xl btn-block' %>
   </div>
 
-  <div class="col-md-12">
-    <%= link_to 'Post a Walk', new_walk_path, class:'btn btn-danger btn-lg btn-xl btn-block' %>
+  <div class="col-md-12 bottom-space">
+    <%= link_to 'Post a Walk', new_walk_path, class:'btn btn-info btn-xl btn-block' %>
   </div>
 
   <% else %>
