@@ -15,7 +15,7 @@ feature 'User adds location' do
 
   context 'fails when' do
     scenario 'full street address blank' do
-      click_on 'Post a Walk'
+      click_on 'Request a Walker'
       click_on 'Add Location'
       click_on 'Create Location'
       expect(page).to have_content "can't be blank"

@@ -9,7 +9,7 @@ feature 'Owner selects walker' do
   background do
     # owner creates pup and walk
     sign_in owner
-    click_on 'Post a Walk'
+    click_on 'Request a Walker'
     create_phone_number
     create_location
     create_pup

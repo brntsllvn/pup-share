@@ -8,7 +8,7 @@ feature 'User offers to walk a pup' do
   scenario 'success' do
     # sign in
     sign_in owner
-    click_on 'Post a Walk'
+    click_on 'Request a Walker'
     # create mobile
     create_phone_number
     # location

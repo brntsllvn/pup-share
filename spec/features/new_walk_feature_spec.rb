@@ -7,7 +7,7 @@ feature 'Create new walk' do
   background :each do
     visit '/'
     sign_in owner
-    click_on 'Post a Walk'
+    click_on 'Request a Walker'
     click_on 'Create Walk'
   end
 
@@ -28,7 +28,7 @@ feature 'Create new walk' do
 
   scenario 'success' do
     expect{
-      click_on 'Post a Walk'
+      click_on 'Request a Walker'
       # create mobile
       create_phone_number
       # create location

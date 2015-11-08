@@ -34,7 +34,7 @@ module Features
     end
 
     def create_walk
-      click_on 'Post a Walk'
+      click_on 'Request a Walker'
       # fill out new walk form
       choose "walk_phone_number_id_#{PhoneNumber.last.id}"
       choose "walk_location_id_#{Location.last.id}"

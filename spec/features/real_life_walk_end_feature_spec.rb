@@ -8,7 +8,7 @@ feature 'End real life walk' do
   background do
     # sign in
     sign_in owner
-    click_on 'Post a Walk'
+    click_on 'Request a Walker'
     # create mobile
     create_phone_number
     # location
