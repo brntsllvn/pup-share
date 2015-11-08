@@ -3,7 +3,8 @@ class WalksController < ApplicationController
   before_action :set_walk, except: [:index, :new, :create]
 
   def index
-    @walks = WalkSearch.new(Walk.all).search(search_params)
+    @my_location = request.location
+    @walks = WalkSearch.new(Walk.upcoming).search(search_params)
   end
 
   def new

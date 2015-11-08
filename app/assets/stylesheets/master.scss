@@ -95,3 +95,8 @@ div.no-margin {
 div.bottom-space {
   margin-bottom: 15px; 
 }
+
+div.hide-overflow {
+  display: block;
+  text-overflow: ellipsis;
+}

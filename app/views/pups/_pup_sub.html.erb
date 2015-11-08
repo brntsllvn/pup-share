@@ -1,20 +1,13 @@
-<div class="col-md-4" >
+<div class="col-md-12" >
+  <strong><%= pup.name %></strong><%= gender_icon pup %>
+</div>
+
+<div class="col-md-6" >
   <%= image_tag pup.pic, class: 'img-responsive' %>  
 </div>
 
-<div class="col-md-8">
-  <h4><strong><%= pup.name %></strong><%= gender_icon pup %></h4>
-
-  <div class="col-md-12 hidden-xs">
-    <p><%= "#{pup.age} year-old #{pup.breed}" %></p>
-  </div>
-
-  <div class="col-md-6 hidden-xs">
-    <p><%= size_icon pup %><br><small>SIZE</small></p>
-  </div>
-
-  <div class="col-md-6 hidden-xs">
-    <p><%= energy_icon pup %><br><small>ENERGY LEVEL</small></p>
-  </div>
-  
+<div class="col-md-6">
+  <p class='hidden-xs'><%= "#{pup.age} year-old #{pup.breed}" %></p>
+  <p class='hidden-xs'><small>SIZE &middot</small><%= size_icon pup %></p>
+  <p class='hidden-xs'><small>ENERGY &middot</small><%= energy_icon pup %></p>
 </div>
