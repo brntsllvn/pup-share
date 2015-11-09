@@ -20,11 +20,7 @@ feature 'User destroys location' do
     create_location
     click_on 'Sign Out'
     sign_in someone_else
-    # hacker can see, but not destroy
     visit user_path owner
-    expect(page).to have_content(Location.last.full_street_address)
-    expect{ 
-      first('.btn-danger').click
-      }.to change(Location, :count).by(0)
+    expect(page).to have_no_content(Location.last.full_street_address) # not visible
   end
 end

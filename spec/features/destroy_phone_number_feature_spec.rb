@@ -20,11 +20,7 @@ feature 'User destroys phone number' do
     create_phone_number
     click_on 'Sign Out'
     sign_in someone_else
-    # hacker can see, but not destroy
     visit user_path owner
-    expect(page).to have_content(PhoneNumber.last.number)
-    expect{ 
-      first('.btn-danger').click
-      }.to change(PhoneNumber, :count).by(0)
+    expect(page).to have_no_content(PhoneNumber.last.number) # not visible
   end
 end
