@@ -1,6 +1,7 @@
 <div class='col-md-12'>
+  <h3>Profile</h3>  
+
   <div class="col-md-12 panel panel-default">
-    <h3>Profile</h3>    
     <%= render @user %>
   </div>
 
@@ -16,27 +17,32 @@
 
   <div class="col-md-12">
     <h3>Phone Numbers</h3> 
+    <small>PRIVATE INFO</small>
   </div>
   <div class='col-md-12 center-block bottom-space'>
     <%= link_to 'Add Phone Number', new_user_phone_number_path(current_user), class: 'btn btn-primary btn-xl btn-block' %>
   </div>
   <br><br>
   <div class='col-md-12'>
-    <%= render @phone_numbers %>
+    <% if not @phone_numbers.empty? %>
+    <%= render @phone_numbers if @phone_numbers.first.owner == current_user %>
+    <% end %>
   </div>
 
   <div class='col-md-12'>
     <h3>Pick-up and Drop-off Locations</h3> 
+    <small>PRIVATE INFO</small>
   </div>
   <div class='col-md-12 center-block bottom-space'>
     <%= link_to 'Add Location', new_user_location_path(current_user), class: 'btn btn-primary btn-xl btn-block' %>
   </div>
   <div class='col-md-12'>
-    <%= render @locations %>
+    <% if not @locations.empty? %>
+    <%= render @locations if @locations.first.owner == current_user %>
+    <% end %>
   </div>
 
   <div class="col-md-12 center-block bottom-space">
     <%= link_to 'Delete Account :(', user_path(current_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-block' %>
   </div>
-
 </div>
