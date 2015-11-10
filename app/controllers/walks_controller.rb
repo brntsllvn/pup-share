@@ -3,7 +3,7 @@ class WalksController < ApplicationController
   before_action :set_walk, except: [:index, :new, :create]
 
   def index
-    @my_location = request.location
+    @my_location = request.location || "Seattle, WA, US"
     @walks = WalkSearch.new(Walk.upcoming).search(search_params)
   end
 

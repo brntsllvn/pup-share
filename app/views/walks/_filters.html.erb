@@ -1,15 +1,14 @@
 <%= form_tag walks_path, method: :get do %>
 
 <div class="col-md-12 filter">
-  <p><small>LOCATION</small></p>
-  <div class="col-md-4">
-    <%= "My location #{@my_location.data["city"]}, #{@my_location.data["region_code"]}" %>
-  </div>
-  <div class="col-md-4">
+  <p><small>LOCATION (in development)</small></p>
+  <div class="col-md-6">
+    <%= check_box_tag 'one_mile', 1, @walks.search_attributes[:one_mile] %>
     <%= label_tag 'within 1 mile' %>
   </div>
-  <div class="col-md-4">
-    <%= label_tag 'within 2 miles' %>
+  <div class="col-md-6">
+    <%= check_box_tag 'five_miles', 5, @walks.search_attributes[:five_miles] %>
+    <%= label_tag 'within 5 miles' %>
   </div>
 </div>
 
