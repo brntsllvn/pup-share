@@ -1,0 +1,128 @@
+/* line 1, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+body {
+  background-color: #e7e9ec;
+}
+
+/* line 5, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+a {
+  color: black;
+}
+
+/* line 9, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+#nav-sign-in {
+  max-width: auto;
+  max-height: auto;
+  padding: 5px;
+}
+
+/* line 15, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-heading.walker {
+  background-color: #f5f5f5;
+}
+
+/* line 19, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-heading.owner {
+  background-color: #f5f5f5;
+}
+
+/* line 23, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.offer {
+  padding: 0px 15px 0px 00px;
+}
+
+/* line 27, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.walk-owner {
+  width: 56px;
+  height: 56px;
+}
+
+/* line 32, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.walk-detail {
+  width: 34px;
+  height: 34px;
+}
+
+/* line 37, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+#map {
+  height: 500px;
+}
+
+/* line 41, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.nav-img {
+  margin-top: 5px;
+  height: 40px;
+}
+
+/* line 46, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+span.badge {
+  background-color: gray;
+  vertical-align: initial;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+/* line 53, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+span.glyphicon-envelope {
+  font-size: 24px;
+  margin-top: -1px;
+}
+
+/* line 58, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.paw {
+  height: 16px;
+  padding: 0px 2px;
+}
+
+/* line 63, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+img.male {
+  border-radius: 0px;
+}
+
+/* line 67, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.filter {
+  padding: 15px 0px;
+  border-top: thin solid lightgray;
+}
+
+/* line 72, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.walk {
+  padding: 0px 3px;
+}
+
+/* line 76, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-body {
+  padding: 5px 15px;
+}
+
+/* line 80, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.well {
+  margin-bottom: 0px;
+}
+
+/* line 84, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.panel-default {
+  padding: 5px;
+}
+
+/* line 88, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.walk-details {
+  padding: 15px;
+  border-top: thin solid gray;
+}
+
+/* line 93, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.no-margin {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 98, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.bottom-space {
+  margin-bottom: 15px;
+}
+
+/* line 102, /home/nitrous/pup-share/app/assets/stylesheets/master.scss */
+div.hide-overflow {
+  display: block;
+  text-overflow: ellipsis;
+}
