@@ -2,6 +2,22 @@ class WalkSearch < Lupa::Search
 
   class Scope
 
+#     def one_mile; end
+#     def two_miles; end
+#     def five_miles; end
+    
+#     def walk_location_distance_from_me
+#       one_mile   = search_attributes[:one_mile]
+#       two_miles  = search_attributes[:two_miles]
+#       five_miles = search_attributes[:five_miles]
+      
+#       if one_mile or two_miles or five_miles
+        
+#       else
+        
+#       end
+#     end
+    
     def today; end
     def this_week; end
     def next_week;end

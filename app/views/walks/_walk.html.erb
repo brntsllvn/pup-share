@@ -11,7 +11,7 @@
           <%= render(partial: 'walks/buttons_close', locals: { walk: walk } ) if walk.coming_up? %>
           <!-- walk ended -->
           <%= 'Walk officially ended' if policy(walk).ended? %>
-          <%= walk.id %><----- for debugging
+<!--           <%#= walk.id %><----- for debugging -->
         </div>
 
         <div class="col-md-12 bottom-space filter">

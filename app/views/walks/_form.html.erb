@@ -16,7 +16,8 @@
 
 <div class='well col-md-12'>
   <div class='col-md-6'>
-    <%= f.input :begin_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 15, start_year: Time.now.year, end_year: Time.now.year + 1 %>
+    <%#= f.input :begin_time, ampm: true, start_hour: 7, end_hour: 18, minute_step: 15, start_year: Time.now.year, end_year: Time.now.year + 1 %>
+    <%= f.input :begin_time, as: :string, input_html: { class: 'datetimepicker' }  %>
   </div>
 
   <div class='col-md-6'>

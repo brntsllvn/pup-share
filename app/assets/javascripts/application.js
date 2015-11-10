@@ -17,3 +17,9 @@
 //= require bootstrap-datetimepicker
 //= require_tree .
 //= require bootstrap-sprockets
+
+
+
+$(document).on("page:load ready", function(){
+    $(".datetimepicker").datetimepicker();
+});
