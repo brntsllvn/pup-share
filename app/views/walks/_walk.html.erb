@@ -12,43 +12,44 @@
           <!-- walk ended -->
           <%= 'Walk officially ended' if policy(walk).ended? %>
           <%= walk.id %><----- for debugging
-        </div>
+                               </div>
 
-        <div class="col-md-12 bottom-space filter">
-          <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
-          <div class="col-md-6">
-            <%= link_to image_tag(walk.owner.image, class: 'walk-detail'), user_path(walk.owner) %>
-            <small>OWNER &middot</small><strong><%= link_to " #{walk.owner.first_name}", user_path(walk.owner) %></strong>
-          </div>
-        </div>
-
-        <div class="col-md-12 bottom-space filter">
-          <div class="col-md-6 hide-overflow">
-            <small class="hidden-xs">DROPOFF</small><br> 
-            <%= link_to walk.location.full_street_address, "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank" if walk.location.latitude.present? and walk.location.longitude.present? %>           
-          </div>
-          <div class="col-md-6">
-            <small class="hidden-xs">WHEN &middot</small><%= " #{walk.begin_time.to_formatted_s(:short)} " %><br>
-            <small class="hidden-xs">LENGTH &middot</small><%= " #{walk.duration} minutes" %>
-          </div>
-        </div>
-
-        <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
-          <div class='row'>
-            <div class="col-md-12 text-center">
-              <small><%= walk.offers.count %> OFFERS </small><span class="glyphicon glyphicon-triangle-bottom"></span>
+          <div class="col-md-12 bottom-space filter">
+            <%= render partial: 'pups/pup_sub', locals: { pup: walk.pup } %>
+            <div class="col-md-6">
+              <%= link_to image_tag(walk.owner.image, class: 'walk-detail'), user_path(walk.owner) %>
+              <small>OWNER &middot</small><strong><%= link_to " #{walk.owner.first_name}", user_path(walk.owner) %></strong>
             </div>
           </div>
-        </a>
-      </div>
 
-      <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse">
-        <div class="panel-body well">
-          <div class="col-md-12 text-center">
-            <%= render walk.offers %>
+          <div class="col-md-12 bottom-space filter">
+            <div class="col-md-6 hide-overflow">
+              <small class="hidden-xs">DROPOFF</small><br> 
+              <%= link_to walk.location.full_street_address, "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank" if walk.location.latitude.present? and walk.location.longitude.present? %>           
+            </div>
+            <div class="col-md-6">
+              <small class="hidden-xs">WHEN &middot</small><%= " #{walk.begin_time.to_formatted_s(:short)} " %><br>
+              <small class="hidden-xs">LENGTH &middot</small><%= " #{walk.duration} minutes" %>
+            </div>
+          </div>
+
+          <a data-toggle="collapse" data-parent="#accordion-walks" href='<%= "#collapse-#{index}" %>'>
+            <div class='row'>
+              <div class="col-md-12 text-center">
+                <small><%= walk.offers.count %> OFFERS </small><span class="glyphicon glyphicon-triangle-bottom"></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div id='<%= "collapse-#{index}" %>' class="panel-collapse collapse">
+          <div class="panel-body well">
+            <div class="col-md-12 text-center">
+              <p><small>CHOOSE A WALKER</small></p>
+              <%= render walk.offers %>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
