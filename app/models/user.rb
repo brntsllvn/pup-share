@@ -31,16 +31,4 @@ class User < ActiveRecord::Base
       )
   end
 
-  def walks_via_offers
-    Walk.walks_through_offers(self)
-  end
-
-  def upcoming_walks_and_offers
-    self.walks_as_owner.upcoming + self.walks_via_offers.upcoming
-  end
-
-  def past_walks_and_offers
-    self.walks_as_owner.past + self.walks_via_offers.past
-  end
-
 end

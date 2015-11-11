@@ -35,11 +35,11 @@
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
             <li><%= link_to user_upcoming_walks_path(current_user) do %>
-              <%= "#{current_user.first_name}'s Upcoming Walks  " %><span class="badge"><%= current_user.upcoming_walks_and_offers.count %></span>
+              <%= "#{current_user.first_name}'s Upcoming Walks  " %><span class="badge"><%= current_user.walks_as_owner.count %></span>
               <% end %>
             </li>
             <li><%= link_to user_offers_path(current_user) do %>
-              <%= "#{current_user.first_name}'s Offers  " %><span class="badge"><%= current_user.offers.count %></span>
+              <%= "#{current_user.first_name}'s Offers  " %><span class="badge"><%= current_user.walks_as_walker.count %></span>
               <% end %>
             </li>
             <li><%= link_to 'Profile & Pups', user_path(current_user) %>

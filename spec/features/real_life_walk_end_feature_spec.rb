@@ -33,7 +33,7 @@ feature 'End real life walk' do
     Walk.last.update_attributes(begin_time: Time.now + 5.minutes)
     # walker starts walk
     sign_in walker
-    click_on "#{walker.first_name}'s Upcoming Walks"
+    click_on "#{walker.first_name}'s Offers"
     click_on 'Start Walk'
     # walk begins in the real world
   end
