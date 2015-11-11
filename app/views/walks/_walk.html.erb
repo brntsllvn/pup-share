@@ -1,4 +1,4 @@
-<div class='col-md-4 walk'>
+<div class='col-md-6 walk'>
 
   <div class='<%="#{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
 
@@ -17,57 +17,59 @@
         <%= link_to image_tag(walk.owner.image, class: 'walk-detail'), user_path(walk.owner) %>
         <small>OWNER &middot</small><strong><%= link_to " #{walk.owner.first_name}", user_path(walk.owner) %></strong>
       </div>
+    </div>
 
+    <div class="col-md-12 filter">
       <% if walk.winning_offer %>
-      <div class="col-md-6">
+
+      <div class="col-md-12">
         <%= link_to image_tag(walk.winning_offer.walker.image, class: 'walk-detail'), user_path(walk.winning_offer.walker) %>
         <small>WALKER &middot</small><strong><%= link_to " #{walk.winning_offer.walker.first_name}", user_path(walk.winning_offer.walker) %></strong>
       </div>
+
+      <% else %>
+      <div class="col-md-12">
+
+        <!-- Modal -->
+        <button type="button" class="btn btn-primary btn-xl btn-block" data-toggle="modal" data-target='#<%= "offer-set-#{index}" %>'>
+          <%= "#{walk.offers.count} Offers" %>
+        </button>
+
+        <div class="modal fade" id='<%= "offer-set-#{index}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">OFFERS &middot CHOOSE ONE</h4>
+              </div>
+
+              <div class="modal-body">
+                <%= render walk.offers %>
+              </div>
+
+              <div class="modal-footer">
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
       <% end %>
+      <!-- Modal -->
     </div>
 
-  </div>
-
-  <div class="col-md-12 bottom-space filter">
-    <div class="col-md-6">
-      <small class="hidden-xs">DROPOFF</small><br> 
-      <%= link_to walk.location.full_street_address, "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", target: "_blank" if walk.location.latitude.present? and walk.location.longitude.present? %>           
-    </div>
-    <div class="col-md-6">
-      <small class="hidden-xs">WHEN &middot</small><%= " #{walk.begin_time.to_formatted_s(:short)} " %><br>
-      <small class="hidden-xs">LENGTH &middot</small><%= " #{walk.duration} minutes" %>
-    </div>
-  </div>
-
-  <!--  hide offers if walk has a winning offer or if the current_user is the offerer -->
-  <% if not walk.winning_offer %>
-
-  <!-- Modal -->
-  <button type="button" class="btn btn-primary btn-xl" data-toggle="modal" data-target='#<%= "offer-set-#{index}" %>'>
-    <%= "#{walk.offers.count} OFFERS" %>
-  </button>
-
-  <div class="modal fade" id='<%= "offer-set-#{index}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">OFFERS &middot CHOOSE ONE</h4>
-        </div>
-
-        <div class="modal-body">
-          <%= render walk.offers %>
-        </div>
-
-        <div class="modal-footer">
-        </div>
+    <div class="col-md-12 bottom-space filter">
+      <div class="col-md-6 text-truncate">
+        <small class="">WHERE</small><br>         
+        <%= link_to walk.location.full_street_address, "http://maps.google.com/maps?&z=15&q=#{walk.location.latitude}+#{walk.location.longitude}&ll=#{walk.location.latitude}+#{walk.location.longitude}", class: 'text-truncate', target: "_blank" if walk.location.latitude.present? and walk.location.longitude.present? %>
 
       </div>
+      <div class="col-md-6">
+        <small class="">WHEN &middot</small><%= " #{walk.begin_time.to_formatted_s(:short)} " %><br>
+        <small class="">LENGTH &middot</small><%= " #{walk.duration} minutes" %>
+      </div>
     </div>
+
   </div>
-  <!-- Modal -->
-
-  <% end %>
-
 </div>

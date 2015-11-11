@@ -24,9 +24,9 @@ div.offer {
   padding: 0px 15px 0px 00px;
 }
 
-img.walk-owner {
-  width: 56px;
-  height: 56px; 
+img.walk-pup {
+  width: 150px;
+  height: 150px; 
 }
 
 img.walk-detail {
@@ -69,17 +69,20 @@ div.filter {
   border-top: thin solid lightgray;
 }
 
-div.walk {
-  background-color: white;
-  border: 15px solid #e7e9ec;
-  height: 500px;
-}
-
 div.walk-header {
   background-color: white;
   border: 15px solid #e7e9ec;
-  
   height: 560px;
+}
+
+div.walk {
+  background-color: white;
+  border: 15px solid #e7e9ec;
+  /*   height: 550px; */
+}
+
+div.walk-footer {
+  height: 75px;
 }
 
 div.walk-details {
@@ -101,5 +104,11 @@ div.top-space {
 }
 
 div.modal-body {
- height: 105px; 
+  height: 105px; 
+}
+
+div.text-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
