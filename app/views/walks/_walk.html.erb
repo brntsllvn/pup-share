@@ -39,9 +39,10 @@
     </div>
   </div>
 
+  <!--  hide offers if walk has a winning offer or if the current_user is the offerer -->
   <% if not walk.winning_offer %>
   <div class="col-md-12 text-center">
-    <p><small><%= walk.offers.count %> OFFERS - CHOOSE ONE</small></p>
+    <p><small><%= "#{walk.offers.count} OFFERS" %> <%= "&middot".html_safe + " CHOOSE ONE" unless not walk.offers.where(walker_id: current_user.id).empty? %></small></p>
     <%= render walk.offers %>
   </div>
   <% end %>

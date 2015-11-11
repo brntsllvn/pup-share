@@ -2,7 +2,7 @@
   <%= link_to 'Cancel Walk', walk_path(walk), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xl center-block btn-block' %>
 
 <!-- elsif current_user is the offerer, then allow them to destroy their request -->
-<% elsif !walk.offers.where(walker_id: current_user.id).empty? %>
+<% elsif not walk.offers.where(walker_id: current_user.id).empty? %>
     <%= link_to 'Rescind Offer', [current_user, walk.offers.where(walker_id: current_user.id).first], method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-warning btn-xl center-block btn-block' %>
 
 <!-- else allow user to create an offer if a walker has not already been selected -->
