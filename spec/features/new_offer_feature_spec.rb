@@ -23,7 +23,7 @@ feature 'User offers to walk a pup' do
     sign_in walker
     # offer
     click_on 'Walk a Pup' 
-    expect(page).to have_content 'Ace' # same name as pup created above
+    expect(page).to have_content Pup.last.name
     # checks request submitted
     click_on 'Walk this pup!'
     expect(page).to have_content 'Offer to walk sent to the owner'
