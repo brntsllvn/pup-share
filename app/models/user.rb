@@ -3,15 +3,12 @@ class User < ActiveRecord::Base
 
   serialize :auth_hash, Hash
 
-
   has_many :walks_as_owner, dependent: :destroy, class_name: 'Walk', foreign_key: :owner_id
 
   has_many :pups, dependent: :destroy, foreign_key: :owner_id
   has_many :offers, dependent: :destroy, foreign_key: :walker_id
 
   has_many :walks_as_walker, through: :offers, class_name: 'Walk', source: :walk
-
-
 
   has_many :locations, dependent: :destroy, foreign_key: :owner_id
   has_many :phone_numbers, dependent: :destroy, foreign_key: :owner_id

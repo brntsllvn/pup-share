@@ -10,7 +10,7 @@ class Walk < ActiveRecord::Base
 
   belongs_to :pup
   belongs_to :location
-  belongs_to :phone_number # TODO: not logical... should be owner or walker phone
+  belongs_to :phone_number
   belongs_to :owner, class_name: 'User'
   has_many   :offers, dependent: :destroy
 

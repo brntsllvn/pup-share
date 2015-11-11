@@ -9,7 +9,7 @@
       <%= render(partial: 'walks/buttons_close', locals: { walk: walk } ) if walk.coming_up? %>
       <!-- walk ended -->
       <%= 'Walk officially ended' if policy(walk).ended? %>
-<!--       <%#= walk.id %><----- for debugging -->
+      <%= walk.id %><----- for debugging
                            </div>
 
       <div class="col-md-12 filter">
@@ -43,9 +43,8 @@
     <% if not walk.winning_offer %>
     <div class="col-md-12 text-center">
       <p><small><%= walk.offers.count %> OFFERS - CHOOSE ONE</small></p>
-      <%= render walk.offers.last(10) %>          
+      <%= render walk.offers %>
     </div>
-
     <% end %>
 
   </div>

@@ -1,6 +1,10 @@
 class OffersController < ApplicationController
   before_action :authenticate_user!
 
+  def index 
+    @offers = current_user.offers
+  end
+  
   def new
     @offer = Offer.new
   end

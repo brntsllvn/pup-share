@@ -1,9 +1,9 @@
 <div class='pull-left offer bottom-space'>
   <%= link_to image_tag(offer.walker.image, class: 'walk-detail'), user_path(offer.walker) %>
-  
-  <% if policy(offer).user_authorized_to_accept? %>
-  <%= link_to user_offer_path(current_user, offer, offer: { winner: true }), method: :put, data: { confirm: 'Are you sure?' }, class: 'btn btn-success', id: 'accept-offer' do %>
-      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+
+    <% if policy(offer).user_authorized_to_accept? %>
+    <%= link_to user_offer_path(current_user, offer, offer: { winner: true }), method: :put, data: { confirm: 'Are you sure?' }, class: 'btn btn-success', id: 'accept-offer' do %>
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
     <% end %>
   <% end %>
 
