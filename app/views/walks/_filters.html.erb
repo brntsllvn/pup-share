@@ -4,11 +4,11 @@
   <p><small>LOCATION (in development)</small></p>
   <div class="col-md-6">
     <%= check_box_tag 'one_mile', 1, @walks.search_attributes[:one_mile] %>
-    <%= label_tag 'within 1 mile' %>
+    <%= label_tag '< 1 mile' %>
   </div>
   <div class="col-md-6">
     <%= check_box_tag 'five_miles', 5, @walks.search_attributes[:five_miles] %>
-    <%= label_tag 'within 5 miles' %>
+    <%= label_tag '< 5 miles' %>
   </div>
 </div>
 
@@ -89,7 +89,7 @@
 </div>
 
 <div class="col-md-12 filter">
-  <%= submit_tag "Go", class: 'btn btn-success btn-xl btn-block' %>
+  <%= submit_tag "Go", class: 'btn btn-success btn-lg btn-block' %>
 </div>
 
 <% end %>

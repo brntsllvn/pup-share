@@ -27,15 +27,17 @@ feature 'Owner selects walker' do
   scenario 'success' do # , js: true
     sign_in owner
     click_on "#{owner.first_name}'s Upcoming Walks"
-    # owner has not chosen a walker yet
+    # owner sees the walker
     expect(page).to have_content("#{walker.first_name}")
-    # owner selects walker by clicking button
+    # owner selects walker
     click_link 'accept-offer'
     ### see alert pop-up
     ### click 'OK' on pup up
-    ### puts page.driver.browser.alert.text, this does not really work
-    # owner confirms
+    ### puts page.driver.browser.alert.text
     expect(page).to have_content('Offer accepted')
+    expect(page).to have_content('WALKER')
+    # disappears when winning offer is selected
+    expect(page).to have_no_content('OFFERS - CHOOSE ONE')
     click_on 'Sign Out'
     # random person should not be able to make an offer if a walker has been selected
     sign_in other

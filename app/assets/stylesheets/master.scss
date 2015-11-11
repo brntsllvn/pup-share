@@ -30,8 +30,8 @@ img.walk-owner {
 }
 
 img.walk-detail {
-  width: 34px;
-  height: 34px;
+  width: 30px;
+  height: 30px;
 }
 
 #map {
@@ -70,19 +70,16 @@ div.filter {
 }
 
 div.walk {
-  padding: 0px 3px; 
+  background-color: white;
+  border: 15px solid #e7e9ec;
+  height: 500px;
 }
 
-div.panel-body {
-  padding: 5px 15px; 
-}
-
-div.well {
-  margin-bottom: 0px;
-}
-
-div.panel-default {
-  padding: 5px;
+div.walk-header {
+  background-color: white;
+  border: 15px solid #e7e9ec;
+  
+  height: 560px;
 }
 
 div.walk-details {
@@ -99,7 +96,6 @@ div.bottom-space {
   margin-bottom: 15px; 
 }
 
-div.hide-overflow {
-  display: block;
-  text-overflow: ellipsis;
+div.top-space {
+  margin-top: 15px; 
 }
