@@ -27,7 +27,7 @@ feature 'Owner selects walker' do
   scenario 'success' do # , js: true
     sign_in owner
     click_on "#{owner.first_name}'s Upcoming Walks"
-    # owner sees the walker
+    # owner sees the offer
     expect(page).to have_content("#{walker.first_name}")
     # owner selects walker
     click_link 'accept-offer'
