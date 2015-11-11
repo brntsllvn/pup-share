@@ -1,5 +1,5 @@
 class PhoneNumbersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_phone_number, only: :destroy
 
   def new

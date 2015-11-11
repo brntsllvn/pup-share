@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :authenticate_user!, except: :edit
+  # before_action :authenticate_user!
 
   def new
     @offer = Offer.new

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:upcoming_walks, :past_walks, :destroy]
+  # before_action :authenticate_user!, only: [:upcoming_walks, :past_walks, :destroy]
   before_action :set_user, only: [:show, :destroy]
 
   def show # profile & pups
