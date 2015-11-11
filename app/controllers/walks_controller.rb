@@ -1,5 +1,5 @@
 class WalksController < ApplicationController
-  # before_action :authenticate_user!, except: :index
+  before_action :authenticate_user! #, except: :index
   before_action :set_walk, except: [:index, :new, :create]
 
   def index

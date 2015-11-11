@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
-  
   include Pundit
   protect_from_forgery with: :reset_session
 
@@ -23,5 +21,4 @@ class ApplicationController < ActionController::Base
       redirect_to root_path, notice: "Sign in, please"
     end
   end
-  
 end

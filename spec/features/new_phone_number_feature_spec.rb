@@ -4,7 +4,7 @@ feature 'User adds phone number' do
 
   let (:owner) { create(:user) }
 
-  background do
+  background do 
     sign_in owner
   end
 

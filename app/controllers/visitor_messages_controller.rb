@@ -1,5 +1,5 @@
 class VisitorMessagesController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   
   def new
     @visitor_message = VisitorMessage.new
