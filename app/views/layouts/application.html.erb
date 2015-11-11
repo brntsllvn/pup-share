@@ -40,9 +40,9 @@
             </li>
             <li><%= link_to 'Profile & Pups', user_path(current_user) %>
             <li><%= link_to 'Contact', new_visitor_message_path %></li>
-            <!--             <li class="contact" ><%#= link_to new_visitor_message_path do %> -->
-            <!--               <span class="glyphicon glyphicon-envelope"></span> -->
-            <!--               <%# end %> -->
+            <!-- <li class="contact" ><%#= link_to new_visitor_message_path do %> -->
+            <!-- <span class="glyphicon glyphicon-envelope"></span> -->
+            <!-- <%# end %> -->
             <li><%= image_tag current_user.image, class: 'img-responsive img-rounded nav-img'  %></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
             <% else %>
@@ -61,9 +61,7 @@
     <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-    <div class="bottom-padding">
-      <%= yield %>
-    </div>
+    <%= yield %>
 
   </body>
 </html>
