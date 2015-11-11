@@ -5,7 +5,7 @@
 
 <br>
 
-<% if @walks_plus_offers.empty? %>
+<% if @walks.nil? %>
 
 <h3>You don't have any walks yet...</h3>
 
@@ -15,7 +15,7 @@
 
 <% else %>
 
-<% @walks_plus_offers.each_with_index do |walk, index| %>
+<% @walks.each_with_index do |walk, index| %>
 <%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
 <% end %>
 

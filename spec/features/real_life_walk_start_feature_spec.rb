@@ -26,7 +26,7 @@ feature 'Start real life walk' do
     click_on 'Sign Out'
     # owner accepts
     sign_in owner
-    visit user_upcoming_walks_path(owner)
+    click_on "#{owner.first_name}'s Upcoming Walks"
     click_link 'accept-offer'
     click_on 'Sign Out'
   end
