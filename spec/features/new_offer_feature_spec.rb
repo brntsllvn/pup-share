@@ -23,9 +23,13 @@ feature 'User offers to walk a pup' do
     sign_in walker
     # offer
     click_on 'Walk a Pup' 
-    expect(page).to have_content 'Ace' # same name as pup created above
-    # checks request submitted
+    expect(page).to have_content Pup.last.name
+    # offer
     click_on 'Walk this pup!'
+    # test mailer
+    open_email('infinite@jest.com')
+    expect(current_email).to have_content 'PupShare: Someone Offered to Walk your Pup'
+    # notification
     expect(page).to have_content 'Offer to walk sent to the owner'
     # checks the job changes status
     expect(page).to have_content 'Rescind Offer' 
