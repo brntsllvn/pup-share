@@ -1,3 +1,9 @@
-<%= link_to 'Start Walk', walk_path(walk, walk: { started_by_walker: true }), method: :put, class: 'btn btn-success btn-xl btn-block' if policy(walk).not_yet_started_by_winning_walker? %>
+<%= link_to 'Start Walk', walk_path(walk, 
+  walk: { started_by_walker: true }), 
+  method: :put, 
+  class: 'btn btn-success btn-xl btn-block' if policy(walk).not_yet_started_by_winning_walker? %>
 
-<%= link_to 'End Walk', walk_path(walk, walk: { ended_by_walker: true }), method: :put, class: 'btn btn-danger btn-xl btn-block' if policy(walk).not_yet_ended_by_winning_walker? %>
+<%= link_to 'End Walk', walk_path(walk, 
+  walk: { ended_by_walker: true }), 
+  method: :put, 
+  class: 'btn btn-danger btn-xl btn-block' if policy(walk).not_yet_ended_by_winning_walker? %>

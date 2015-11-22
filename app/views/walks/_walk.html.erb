@@ -2,6 +2,7 @@
 
   <div class='<%="#{policy(walk).owner_current_user? ? 'walker' : 'owner'}" %>'>
 
+    <%= walk.id %>
     <div class="col-md-12 bottom-space top-space">
       <!-- walk/cancel/rescind > 15min before walk -->
       <%= render(partial: 'walks/buttons_distant', locals: { walk: walk } ) if not walk.coming_up? %>
