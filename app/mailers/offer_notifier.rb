@@ -1,10 +1,14 @@
 class OfferNotifier < ApplicationMailer
-  default from: 'any_from_address@example.com'
 
   def offer_notifier_email(offer)
-    @user = offer.walk.owner
-    mail( :to => @user.email,
-      :subject => 'pupshare offer notifier' )
-  end
+    @walker = offer.walker
+    @owner  = offer.walk.owner
+    @offer  = offer # need this in the mailer views
 
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
+    mail( to: @owner.email, 
+      subject: 'PupShare: Someone offered to walk your pup' )
+  end
 end
+
