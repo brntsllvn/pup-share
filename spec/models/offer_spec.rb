@@ -6,4 +6,9 @@ describe Offer do
   it 'has valid factory' do
     expect(subject).to be_valid
   end
+  
+  it 'sends an email' do
+    expect { subject.send_offer_notifier_email }.to change { ActionMailer::Base.deliveries.count }.by(1)
+  end
+  
 end

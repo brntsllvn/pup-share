@@ -11,7 +11,7 @@ class OffersController < ApplicationController
 
   def create
     @offer = current_user.offers.create(offer_params)
-    @offer.send_mailer # TODO: revisit
+    @offer.send_offer_notifier_email 
     redirect_to :back, notice: 'Offer to walk sent to the owner'
   end
 
