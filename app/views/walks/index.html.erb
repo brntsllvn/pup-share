@@ -12,12 +12,12 @@
 
 
 <% if @walks.count > 0 %>
-<h3 class='col-md-12 text-center'><strong><%= "#{@walks.count} Pups Need a Walk" %></strong></h3>
+  <h3 class='col-md-12 text-center'><strong><%= "#{@walks.count} Pups Need a Walk" %></strong></h3>
 
-<% @walks.order(:begin_time).each_with_index do |walk, index| %>
-<%= render partial: 'walks/walk', locals: { walk: walk, index: index } %>
-<% end %>
+  <% @walks.order(:begin_time).each do |walk| %>
+    <%= render partial: 'walks/walk', locals: { walk: walk } %>
+  <% end %>
 
 <% else %>
-<h3>No search results. Try adjusting your filters</h3>
+  <h3>No search results. Try adjusting your filters</h3>
 <% end %>

@@ -31,17 +31,17 @@
       <div class="col-md-12">
 
         <!-- Modal -->
-        <button type="button" class="btn btn-primary btn-xl btn-block" data-toggle="modal" data-target='#<%= "offer-set-#{index}" %>'>
+        <button type="button" class="btn btn-primary btn-xl btn-block" data-toggle="modal" data-target='#<%= "offer-set-#{walk.id}" %>'>
           <%= "#{walk.offers.count} Offers" %>
         </button>
 
-        <div class="modal fade" id='<%= "offer-set-#{index}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id='<%= "offer-set-#{walk.id}" %>' tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
 
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">OFFERS &middot CHOOSE ONE</h4>
+                <h4 class="modal-title" id="myModalLabel">OFFERS</h4>
               </div>
 
               <div class="modal-body">

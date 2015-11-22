@@ -9,11 +9,11 @@ class UsersController < ApplicationController
   end
 
   def upcoming_walks
-    @walks = current_user.walks_as_owner.upcoming.sort_by{ |e| e[:begin_time] }
+    @walks = current_user.walks_as_owner.upcoming.sort_by{ |e| e[:begin_time] } unless !current_user.walks_as_owner
   end
 
   def past_walks
-    @walks = current_user.walks_as_owner.past.sort_by{ |e| e[:begin_time] }
+    @walks = current_user.walks_as_owner.past.sort_by{ |e| e[:begin_time] } unless !current_user.walks_as_owner
   end
 
   def destroy
